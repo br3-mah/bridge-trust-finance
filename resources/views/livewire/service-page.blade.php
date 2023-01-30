@@ -1,6 +1,6 @@
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg"
-        style="background-image: url(assets/images/backgrounds/breadcrumb-area-bg-2.jpg);"></div>
+        style="background-image: url('{{ asset("public/box/images/services.jpg") }}');"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -33,7 +33,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{ asset('box/images/refinance.png') }}" alt="">
+                            <img src="{{ asset('public/box/images/refinance.png') }}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
@@ -74,7 +74,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{ asset('box/images/pay.png')}}" alt="">
+                            <img src="{{ asset('public/box/images/pay.png')}}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
@@ -114,7 +114,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{asset('box/images/graduated.png')}}" alt="">
+                            <img src="{{asset('public/box/images/graduated.png')}}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
@@ -154,7 +154,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{ asset('box/images/car.png') }}" alt="">
+                            <img src="{{ asset('public/box/images/car.png') }}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
@@ -194,7 +194,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{ asset('box/images/sme.png') }}" alt="">
+                            <img src="{{ asset('public/box/images/sme.png') }}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
@@ -235,7 +235,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{ asset('box/images/refinancing.png') }}" alt="">
+                            <img src="{{ asset('public/box/images/refinancing.png') }}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
@@ -280,7 +280,7 @@
                 <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="{{ asset('box/images/presentation.png') }}" alt="">
+                            <img src="{{ asset('public/box/images/presentation.png') }}" alt="">
                             <div class="overlay-icon">
                                 <a href="blog-single.php">
                                     <span class="icon-right-arrow"></span>
