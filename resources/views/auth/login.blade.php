@@ -1,48 +1,177 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
-        <x-jet-validation-errors class="mb-4" />
+<head>
+     	
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Salreo : Crypto Trading UI Admin  Bootstrap 5 Template" >
+	<meta property="og:title" content="Salreo : Crypto Trading UI Admin  Bootstrap 5 Template" >
+	<meta property="og:description" content="Salreo : Crypto Trading UI Admin  Bootstrap 5 Template" >
+	<meta property="og:image" content="social-image.png" >
+	<meta name="format-detection" content="telephone=no">
+        <!-- PAGE TITLE HERE -->
+        <title>Bridge Trust Finance | Login</title>
+        <!-- FAVICONS ICON -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-full.png') }}">
+        <link href="{{ asset('vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('vendor/bootstrap-select-country/css/bootstrap-select-country.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/jquery-nice-select/css/nice-select.css') }}">
+        <!--swiper-slider-->
+        <link rel="stylesheet" href="{{ asset('vendor/swiper/css/swiper-bundle.min.css') }}">
+        <link href="{{ asset('vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+        <!-- Style css -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+</head>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+<body class="body  h-100">
+	<div class="container-fluid h-100">
+		<div class="row h-100 align-items-center justify-contain-center">
+			<div class="col-xl-12">
+				<div class="card main-width">
+					<div class="card-body  p-0">
+						<div class="row m-0">
+							<div class="col-xl-4 col-lg-4">
+								<div class="card">
+									<div class="card-body">								
+										<div class="d-flex align-items-center justify-content-between mb-4">
+										<a href="/">
+                                            <div class="menu-icon">
+                                                <img width="65" src="images/logo-full.png" alt="" srcset="">
+                                            </div>
+										</a>
+											{{-- <span class="mt-xl-0 mt-3"><a href="javascript:void(0);" class="text-primary font-w500">Try For Free</a></span> --}}
+										</div>
+										<h2>Hi,Welcome Back!</h2>
+										<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+										
+                                        <form class="mt-4" method="POST" action="{{ route('login') }}">
+                                            @csrf
+										  <div class="form-group mb-4">
+											<label for="exampleInputEmail1">Email address</label>
+											<input  type="email" name="email" :value="old('email')"  class="form-control" id="exampleInputEmail1"  placeholder="Enter Email">
+										  </div>
+										  <div class="form-group mb-4">
+											<label for="exampleInputPassword1">Password</label>
+											<input type="password" name="password" required autocomplete="current-password"  class="form-control" id="exampleInputPassword1" placeholder="Password">
+										  </div>
+										  <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap"> 
+											  <div class="form-check">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label font-w400" for="exampleCheck1">keep me signed in</label>
+											  </div>
+											  <span><a href="page-forgot-password.html" class="text-primary font-w500 c-pointer">Forget Password ?</a></span>
+										 </div>
+                                         <button type="submit" class="btn btn-primary btn-block mb-4"><i class="fa-solid fa-lock text-white me-2"></i>Submit</button>
 
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+										</form
+										  <div class="position-relative social-log text-center mb-4">
+											<span>Or,log in with your email</span>
+										  </div>
+										<div class="text-center mb-4">	
+											<button class="btn btn-outline-light text-center">
+												
+												<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+												<svg version="1.1" width="20" height="20" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+													 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+												<path style="fill:#167EE6;" d="M492.668,211.489l-208.84-0.01c-9.222,0-16.697,7.474-16.697,16.696v66.715
+													c0,9.22,7.475,16.696,16.696,16.696h117.606c-12.878,33.421-36.914,61.41-67.58,79.194L384,477.589
+													c80.442-46.523,128-128.152,128-219.53c0-13.011-0.959-22.312-2.877-32.785C507.665,217.317,500.757,211.489,492.668,211.489z"/>
+												<path style="fill:#12B347;" d="M256,411.826c-57.554,0-107.798-31.446-134.783-77.979l-86.806,50.034
+													C78.586,460.443,161.34,512,256,512c46.437,0,90.254-12.503,128-34.292v-0.119l-50.147-86.81
+													C310.915,404.083,284.371,411.826,256,411.826z"/>
+												<path style="fill:#0F993E;" d="M384,477.708v-0.119l-50.147-86.81c-22.938,13.303-49.48,21.047-77.853,21.047V512
+													C302.437,512,346.256,499.497,384,477.708z"/>
+												<path style="fill:#FFD500;" d="M100.174,256c0-28.369,7.742-54.91,21.043-77.847l-86.806-50.034C12.502,165.746,0,209.444,0,256
+													s12.502,90.254,34.411,127.881l86.806-50.034C107.916,310.91,100.174,284.369,100.174,256z"/>
+												<path style="fill:#FF4B26;" d="M256,100.174c37.531,0,72.005,13.336,98.932,35.519c6.643,5.472,16.298,5.077,22.383-1.008
+													l47.27-47.27c6.904-6.904,6.412-18.205-0.963-24.603C378.507,23.673,319.807,0,256,0C161.34,0,78.586,51.557,34.411,128.119
+													l86.806,50.034C148.202,131.62,198.446,100.174,256,100.174z"/>
+												<path style="fill:#D93F21;" d="M354.932,135.693c6.643,5.472,16.299,5.077,22.383-1.008l47.27-47.27
+													c6.903-6.904,6.411-18.205-0.963-24.603C378.507,23.672,319.807,0,256,0v100.174C293.53,100.174,328.005,113.51,354.932,135.693z"/>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												<g>
+												</g>
+												</svg>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
+												Sign In With Google</button>
+										</div>
+										<div class="text-center">
+											{{-- <span class="">Do not have account Yet?<a href="javascript:void(0);" class="text-primary font-w500">Try for free!</a></span>	 --}}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-8 col-lg-8 position-relative bg-secondary login-border">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="content text-center py-4">
+										<h2 class="text-white mb-0">Welcome To Your Lending Center.</h2>
+										<p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry<br>Lorem Ipsum has been the industry's</p>
+									</div>
+									<div class="login-media-1">
+										{{-- <img src="images/login-index.png" alt=""> --}}
+										
+										
+									</div>
+									<div class="login-media-2">
+										{{-- <img src="images/login-dark.png" alt=""> --}}
+									</div>
+									<div class="d-flex align-items-center justify-content-between text-white pb-3 px-2">
+										<span><a href="javascript:void(0);" class="text-white d-xl-block d-none">Privacy policy and Terms of use</a></span>
+										<span class="text-center"><a href="javascript:void(0);" class="text-white">Copyright © Designed &amp; Powered by</a> <a class="text-white" href="https://greenwebbtech.com/" target="_blank">Greenwebb</a> 2023</span>
+										<span><a href="javascript:void(0);" class="text-white d-xl-block d-none"> Privacy policy</a></span>
+									</div>
+								</div>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="{{ asset('vendor/global/global.min.js') }}"></script>
+   
+	
+	
+</body>
+</html>
