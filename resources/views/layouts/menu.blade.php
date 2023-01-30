@@ -89,7 +89,7 @@
                     <div class="main-menu-style1-left">
                         <div class="logo-box-style1">
                             <a href="index.php">
-                                <img src="{{ asset('box/images/resources/logo-11.png') }}" alt="BTF" title="">
+                                <img src="{{ asset('public/box/images/resources/logo-11.png') }}" alt="BTF" title="">
                             </a>
                         </div>
     
