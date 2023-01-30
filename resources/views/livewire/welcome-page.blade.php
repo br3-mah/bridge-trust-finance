@@ -25,9 +25,9 @@
 
                 <!--Start Single Swiper Slide-->
                 <div class="swiper-slide">
-                    <div class="image-layer" style="background-image: url('{{ asset("box/images/slides/slide-v1-1.jpg") }}');">
+                    <div class="image-layer" style="background-image: url('{{ asset("public/box/images/slides/slide-v1-1.jpg") }}');">
                     </div>
-                    <div class="main-slider-style1__shape1" style="background-image: url('{{ asset("box/images/shapes/slidear-1-shape-1.png") }}');">
+                    <div class="main-slider-style1__shape1" style="background-image: url('{{ asset("public/box/images/shapes/slidear-1-shape-1.png") }}');">
                     </div>
                     <div class="container">
                         <div class="row">
@@ -60,9 +60,9 @@
 
                 <!--Start Single Swiper Slide-->
                 <div class="swiper-slide">
-                    <div class="image-layer" style="background-image: url('{{ asset("box/images/slides/slide-v1-2.jpg") }}');">
+                    <div class="image-layer" style="background-image: url('{{ asset("public/box/images/slides/slide-v1-2.jpg") }}');">
                     </div>
-                    <div class="main-slider-style1__shape1" style="background-image: url('{{ asset("box/images/shapes/slider-1-shape-1.png") }}');">
+                    <div class="main-slider-style1__shape1" style="background-image: url('{{ asset("public/box/images/shapes/slider-1-shape-1.png") }}');">
                     </div>
                     <div class="container">
                         <div class="row">
@@ -95,9 +95,9 @@
 
                 <!--Start Single Swiper Slide-->
                 <div class="swiper-slide">
-                    <div class="image-layer" style="background-image: url('{{ asset("box/images/slides/slide-v1-3.jpg") }}');">
+                    <div class="image-layer" style="background-image: url('{{ asset("public/box/images/slides/slide-v1-3.jpg") }}');">
                     </div>
-                    <div class="main-slider-style1__shape1" style="background-image: url('{{ asset("box/images/shapes/slider-1-shape-1.png") }}');">
+                    <div class="main-slider-style1__shape1" style="background-image: url('{{ asset("public/box/images/shapes/slider-1-shape-1.png") }}');">
                     </div>
                     <div class="container">
                         <div class="row">
@@ -160,13 +160,13 @@
                     <li>
                         <div class="single-features-style1-box">
                             <div class="shape-left">
-                                <img src="{{ asset("box/images/shapes/shape-1.png") }}" alt="">
+                                <img src="{{ asset("public/box/images/shapes/shape-1.png") }}" alt="">
                             </div>
                             <div class="shape-bottom">
-                                <img src="{{ asset("box/images/shapes/shape-2.png") }}" alt="">
+                                <img src="{{ asset("public/box/images/shapes/shape-2.png") }}" alt="">
                             </div>
                             <div class="counting-box">
-                                <div class="counting-box-bg" style="background-image: url('{{ asset("box/images/shapes/counting-box-bg.png") }}');"></div>
+                                <div class="counting-box-bg" style="background-image: url('{{ asset("public/box/images/shapes/counting-box-bg.png") }}');"></div>
                                 <h3>01</h3>
                             </div>
                             <div class="text-box">
@@ -187,13 +187,13 @@
                     <li>
                         <div class="single-features-style1-box">
                             <div class="shape-left">
-                                <img src="{{asset('box/images/shapes/shape-1.png')}}" alt="">
+                                <img src="{{asset('public/box/images/shapes/shape-1.png')}}" alt="">
                             </div>
                             <div class="shape-bottom">
-                                <img src="{{ asset('box/images/shapes/shape-2.png') }}" alt="">
+                                <img src="{{ asset('public/box/images/shapes/shape-2.png') }}" alt="">
                             </div>
                             <div class="counting-box">
-                                <div class="counting-box-bg" style="background-image: url('{{ asset("box/images/shapes/counting-box-bg.png") }}');"></div>
+                                <div class="counting-box-bg" style="background-image: url('{{ asset("public/box/images/shapes/counting-box-bg.png") }}');"></div>
                                 <h3>02</h3>
                             </div>
                             <div class="text-box">
@@ -217,13 +217,13 @@
                     <li>
                         <div class="single-features-style1-box">
                             <div class="shape-left">
-                                <img src="{{ asset('box/images/shapes/shape-1.png') }}" alt="">
+                                <img src="{{ asset('public/box/images/shapes/shape-1.png') }}" alt="">
                             </div>
                             <div class="shape-bottom">
-                                <img src="{{ asset('box/images/shapes/shape-2.png') }}" alt="">
+                                <img src="{{ asset('public/box/images/shapes/shape-2.png') }}" alt="">
                             </div>
                             <div class="counting-box">
-                                <div class="counting-box-bg" style="background-image: url('{{ asset("box/images/shapes/counting-box-bg.png") }}');"></div>
+                                <div class="counting-box-bg" style="background-image: url('{{ asset("public/box/images/shapes/counting-box-bg.png") }}');"></div>
                                 <h3>03</h3>
                             </div>
                             <div class="text-box">
@@ -249,7 +249,7 @@
 
     <!--Start Service Style1 Area-->
     <section class="service-style1-area">
-        <div class="service-style1-bg" style="background-image: url('{{ asset("box/images/backgrounds/service-style1.jpg") }}');">
+        <div class="service-style1-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/service-style1.jpg") }}');">
         </div>
         <div class="container">
             <div class="row">
@@ -685,7 +685,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("box/images/resources/features-style2-banner-1.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-1.jpg") }}');">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -791,7 +791,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("box/images/resources/features-style2-banner-2.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-2.jpg") }}');">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -899,7 +899,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("box/images/resources/features-style2-banner-3.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-3.jpg") }}');">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -994,7 +994,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("box/images/resources/features-style2-banner-4.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-4.jpg") }}');">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1099,7 +1099,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("box/images/resources/features-style2-banner-1.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-1.jpg") }}');">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1204,7 +1204,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("box/images/resources/features-style2-banner-1.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-1.jpg") }}');">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1233,7 +1233,7 @@
                 <div class="col-xl-6">
                     <div class="features-style3-img-box">
                         <div class="inner-img">
-                            <img class="paroller" src="{{ asset('box/images/resources/features-style3-img.png') }}" alt="">
+                            <img class="paroller" src="{{ asset('public/box/images/resources/features-style3-img.png') }}" alt="">
                         </div>
                         <div class="icon-holder float-bob-y">
                             <span class="icon-interest-rate"></span>
@@ -1333,7 +1333,7 @@
                 <div class="col-xl-6">
                     <div class="faq-style1__image">
                         <div class="inner">
-                            <img src="{{ asset('box/images/resources/faq-style1__image.jpg') }}" alt="">
+                            <img src="{{ asset('public/box/images/resources/faq-style1__image.jpg') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -1487,15 +1487,15 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <div class="img-bg" style="background-image: url('{{ asset("box/images/resources/deals-1.jpg") }}');">
+                            <div class="img-bg" style="background-image: url('{{ asset("public/box/images/resources/deals-1.jpg") }}');">
                             </div>
                             <div class="shape-left-1"></div>
                             <div class="shape-right-1"></div>
                             <div class="shape-right-2"></div>
                         </div>
                     </div>
-                    <!--End Single Deals Box-->
-                    <!--Start Single Deals Box-->
+                    <!--End Single Deals public/box-->
+                    <!--Start Single Deals public/box-->
                     <div class="single-deals-box">
                         <div class="text-box">
                             <div class="inner-title">
@@ -1533,7 +1533,7 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <div class="img-bg" style="background-image: url('{{ asset("box/images/resources/deals-2.jpg") }}');">
+                            <div class="img-bg" style="background-image: url('{{ asset("public/box/images/resources/deals-2.jpg") }}');">
                             </div>
                             <div class="shape-left-1"></div>
                             <div class="shape-right-1"></div>
@@ -1579,7 +1579,7 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <div class="img-bg" style="background-image: url('{{ asset('box/images/resources/deals-1.jpg') }}');">
+                            <div class="img-bg" style="background-image: url('{{ asset('public/box/images/resources/deals-1.jpg') }}');">
                             </div>
                             <div class="shape-left-1"></div>
                             <div class="shape-right-1"></div>
@@ -1647,7 +1647,7 @@
     <section class="slogan-area">
         <div class="container">
             <div class="slogan-content-box">
-                <div class="slogan-content-box-bg" style="background-image: url('{{ asset("box/images/backgrounds/slogan-content-box-bg.jpg") }}');"></div>
+                <div class="slogan-content-box-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/slogan-content-box-bg.jpg") }}');"></div>
                 <div class="inner-title">
                     <h2>Experience a New Digital World.</h2>
                     <p>Mobile Financing application with new & exciting features.</p>
