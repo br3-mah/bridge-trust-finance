@@ -44,8 +44,7 @@
                             </div>
                             <div class="text">
                                 <p>Corporate Office</p>
-                                <h3>141, First Floor, 12 St RootsTerrace,<br>
-                                    Lusaka Zambia 90010.</h3>
+                                <h3>Stand B19 CBU, Jambo Drive, Riverside, Kitwe.</h3>
                             </div>
                         </li>
                         <li>
@@ -54,8 +53,8 @@
                             </div>
                             <div class="text">
                                 <p>Office Hours</p>
-                                <h3>Mon - Fri: 9.00am to 5.00pm</h3>
-                                <span>[2nd Sat Holiday]</span>
+                                <h3>Mon - Fri: 8.00am to 5.00pm</h3>
+                                <span></span>
                             </div>
                         </li>
                         <li>
@@ -64,8 +63,8 @@
                             </div>
                             <div class="text">
                                 <p>Front Desk</p>
-                                <h3><a href="tel:123456789">+61 3 8376 6284</a></h3>
-                                <h3><a href="mailto:yourmail@email.com">supportyou@bridgetrustfinance.co.zm</a></h3>
+                                <h3><a href="tel:123456789">+260 976 7759 619</a></h3>
+                                <h3><a href="mailto:yourmail@email.com">admin@bridgetrustfinance.co.zm</a></h3>
                             </div>
                         </li>
                     </ul>
@@ -205,28 +204,28 @@
                 <div class="tab-content-box-item tab-content-box-item-active" id="branch">
                     <div class="branch-atm-tab-content-box-item">
                         <div class="inner-title">
-                            <h3>Bridge Trust Finance,<br> Lusaka</h3>
+                            <h3>Bridge Trust Finance,<br> Kitwe</h3>
                         </div>
                         <ul>
-                            <li>
+                            {{-- <li>
                                 <h3>ifsc</h3>
                                 <p>finbif1234</p>
-                            </li>
+                            </li> --}}
                             <li>
                                 <h3>Address</h3>
-                                <p>24/7, 1st Floor Global Str, 2nd Cross,<br> SF 94112.</p>
+                                <p>Stand B19 CBU, Jambo Drive, <br>Riverside, Kitwe.</p>
                             </li>
                             <li>
                                 <h3>Phone & Email</h3>
-                                <p><a href="tel:123456789">+415 67 890 12</a></p>
-                                <p><a href="mailto:yourmail@email.com">support@finbank1234.com</a></p>
+                                <p><a href="tel:+2609767759619">+2609767759619</a></p>
+                                <p><a href="mailto:admin@bridgetrustfinance.co.zm">support@bridgetrustfinance.co.zm</a></p>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!--Tab-->
-                <div class="tab-content-box-item" id="atm">
+                {{-- <div class="tab-content-box-item" id="atm">
                     <div class="branch-atm-tab-content-box-item">
                         <div class="inner-title">
                             <h3>Ndola, 23/8<br> West North Central</h3>
@@ -247,7 +246,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!--End Tabs Content Box-->
 
