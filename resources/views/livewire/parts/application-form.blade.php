@@ -24,7 +24,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="fname" id="fname" placeholder="First Name" required="">
+                                                        <input type="text" wire:model.prevent="fname" id="fname" placeholder="First Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -34,7 +34,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="lname" id="lname" placeholder="Last Name" required="">
+                                                        <input type="text" wire:model.prevent="lname" id="lname" placeholder="Last Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -48,7 +48,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" required="required" wire:model="amount" placeholder="Amount" id="amount">
+                                                        <input type="text" required="required" wire:model.prevent="amount" placeholder="Amount" id="amount">
                                                         <div class="icon">
                                                             <i class="fas fa-money-bill"></i>
                                                         </div>
@@ -58,7 +58,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model="type" class="wide">
+                                                        <select wire:model.prevent="type" class="wide">
                                                             <option data-display="Purpose of Loan">
                                                                 Purpose of Loan
                                                             </option>
@@ -103,7 +103,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model="repayment_plan" class="wide">
+                                                        <select wire:model.prevent="repayment_plan" class="wide">
                                                             <option data-display="Proposed repayment plan">
                                                                 Proposed repayment plan
                                                             </option>
@@ -121,7 +121,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="phone" value="" id="formPhone" placeholder="Phone">
+                                                        <input type="text" wire:model.prevent="phone" value="" id="formPhone" placeholder="Phone">
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
@@ -131,7 +131,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" wire:model="email" id="formEmail" placeholder="Email" required="">
+                                                        <input type="email" wire:model.prevent="email" id="formEmail" placeholder="Email" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
@@ -166,7 +166,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="gfname" id="gfname" placeholder="Guarantor 1's First Name" required="">
+                                                        <input type="text" wire:model.prevent="gfname" id="gfname" placeholder="Guarantor 1's First Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -176,7 +176,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="glname" id="glname" placeholder="Guarantor 1's  Last Name" required="">
+                                                        <input type="text" wire:model.prevent="glname" id="glname" placeholder="Guarantor 1's  Last Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -191,7 +191,7 @@
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
                                                         <select class="wide">
-                                                            <option wire:model="g_relation" data-display=" Relation">
+                                                            <option wire:model.prevent="g_relation" data-display=" Relation">
                                                                 Relation
                                                             </option>
                                                             <option value="1">Relative</option>
@@ -205,7 +205,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model="g_gender" class="wide">
+                                                        <select wire:model.prevent="g_gender" class="wide">
                                                             <option data-display="Gender">
                                                                 Gender
                                                             </option>
@@ -222,7 +222,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="gphone" value="" id="formPhone" placeholder="Guarantor 1's Phone">
+                                                        <input type="text" wire:model.prevent="gphone" value="" id="formPhone" placeholder="Guarantor 1's Phone">
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
@@ -232,7 +232,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" wire:model="gemail" id="formEmail" placeholder="Guarantor 1's Email" required="">
+                                                        <input type="email" wire:model.prevent="gemail" id="formEmail" placeholder="Guarantor 1's Email" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
@@ -250,7 +250,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="g2fname" id="g2fname" placeholder="Guarantor 2's First Name" required="">
+                                                        <input type="text" wire:model.prevent="g2fname" id="g2fname" placeholder="Guarantor 2's First Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -260,7 +260,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="g2lname" id="g2lname" placeholder="Guarantor 2's  Last Name" required="">
+                                                        <input type="text" wire:model.prevent="g2lname" id="g2lname" placeholder="Guarantor 2's  Last Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -275,7 +275,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model="g2_relation" class="wide">
+                                                        <select wire:model.prevent="g2_relation" class="wide">
                                                             <option data-display="Relation">
                                                                 Relation
                                                             </option>
@@ -290,7 +290,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model="g2_gender" class="wide">
+                                                        <select wire:model.prevent="g2_gender" class="wide">
                                                             <option data-display="Gender">
                                                                 Gender
                                                             </option>
@@ -307,7 +307,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model="g2phone" value="" id="formPhone" placeholder="Guarantor 2's Phone">
+                                                        <input type="text" wire:model.prevent="g2phone" value="" id="formPhone" placeholder="Guarantor 2's Phone">
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
@@ -317,7 +317,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" wire:model="g2email" id="formEmail" placeholder="Guarantor 2's Email" required="">
+                                                        <input type="email" wire:model.prevent="g2email" id="formEmail" placeholder="Guarantor 2's Email" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
@@ -354,7 +354,7 @@
                                                     <div class="input-box">
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">National ID (NRC)</label>
-                                                            <input wire:model="nrc_file" :file="$nrc_file" class="form-control" type="file" id="formFile" />
+                                                            <input wire:model.prevent="nrc_file" :file="$nrc_file" class="form-control" type="file" id="formFile" />
                                                         </div>
 
                                                     </div>
@@ -365,7 +365,7 @@
                                                     <div class="input-box">
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">Payslip (leave empty if not applicable)</label>
-                                                            <input wire:model="payslip_file" :file="$payslip_file" class="form-control" type="file"  />
+                                                            <input wire:model.prevent="payslip_file" :file="$payslip_file" class="form-control" type="file"  />
                                                         </div>
 
                                                     </div>
@@ -382,7 +382,7 @@
                                                     <div class="input-box">
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">TPIN</label>
-                                                            <input wire:model="tpin_file" :file="$tpin_file" class="form-control" type="file"  />
+                                                            <input wire:model.prevent="tpin_file" :file="$tpin_file" class="form-control" type="file"  />
                                                         </div>
 
                                                     </div>

@@ -1,7 +1,7 @@
 {{-- <x-app-layout> --}}
     <section class="breadcrumb-area">
         <div class="breadcrumb-area-bg"
-            style="background-image: url('{{asset("box/images/backgrounds/breadcrumb-area-bg-4.jpg")}}');"></div>
+            style="background-image: url('{{asset("public/box/images/home-loan.jpg")}}');"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -78,7 +78,7 @@
                 <div class="col-xl-12">
                     <div class="apply-form-box clearfix">
                         <div class="apply-form-box-bg"
-                            style="background-image: url('assets/images/resources/apply-form-box-bg.jpg');"></div>
+                            style="background-image: url('{{ asset("public/box/images/resources/apply-form-box-bg.jpg") }}');"></div>
                         <div class="apply-form-box__content">
                             <div class="sec-title">
                                 <h2>Send Your Request &<br> Get Call Back</h2>

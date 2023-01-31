@@ -1,7 +1,7 @@
  <!--Start breadcrumb area-->
  <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg"
-        style="background-image: url('{{ asset("box/images/backgrounds/breadcrumb-area-bg.jpg") }}');"></div>
+        style="background-image: url('{{ asset("public/box/images/team.jpg") }}');"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">

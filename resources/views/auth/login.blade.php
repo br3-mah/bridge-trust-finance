@@ -17,17 +17,17 @@
         <!-- PAGE TITLE HERE -->
         <title>Bridge Trust Finance | Login</title>
         <!-- FAVICONS ICON -->
-        <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-full.png') }}">
-        <link href="{{ asset('vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
-        <link href="{{ asset('vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('vendor/bootstrap-select-country/css/bootstrap-select-country.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendor/jquery-nice-select/css/nice-select.css') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('public/images/logo-full.png') }}">
+        <link href="{{ asset('public/vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('public/vendor/bootstrap-select-country/css/bootstrap-select-country.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/vendor/jquery-nice-select/css/nice-select.css') }}">
         <!--swiper-slider-->
-        <link rel="stylesheet" href="{{ asset('vendor/swiper/css/swiper-bundle.min.css') }}">
-        <link href="{{ asset('vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('public/vendor/swiper/css/swiper-bundle.min.css') }}">
+        <link href="{{ asset('public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
         <!-- Style css -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -50,7 +50,7 @@
 											{{-- <span class="mt-xl-0 mt-3"><a href="javascript:void(0);" class="text-primary font-w500">Try For Free</a></span> --}}
 										</div>
 										<h2>Hi,Welcome Back!</h2>
-										<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+										<span>Access your account</span>
 										
                                         <form class="mt-4" method="POST" action="{{ route('login') }}">
                                             @csrf
@@ -72,7 +72,7 @@
                                          <button type="submit" class="btn btn-primary btn-block mb-4"><i class="fa-solid fa-lock text-white me-2"></i>Submit</button>
 
 										</form
-										  <div class="position-relative social-log text-center mb-4">
+										  {{-- <div class="position-relative social-log text-center mb-4">
 											<span>Or,log in with your email</span>
 										  </div>
 										<div class="text-center mb-4">	
@@ -129,7 +129,7 @@
 												</svg>
 
 												Sign In With Google</button>
-										</div>
+										</div> --}}
 										<div class="text-center">
 											{{-- <span class="">Do not have account Yet?<a href="javascript:void(0);" class="text-primary font-w500">Try for free!</a></span>	 --}}
 										</div>
@@ -140,7 +140,7 @@
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">
 										<h2 class="text-white mb-0">Welcome To Your Lending Center.</h2>
-										<p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry<br>Lorem Ipsum has been the industry's</p>
+										<p class="text-white">Access tools for better for better financing.</p>
 									</div>
 									<div class="login-media-1">
 										{{-- <img src="images/login-index.png" alt=""> --}}
@@ -168,8 +168,8 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <!-- Required vendors -->
-    <script src="{{ asset('vendor/global/global.min.js') }}"></script>
+    <!-- Required public/vendors -->
+    <script src="{{ asset('public/vendor/global/global.min.js') }}"></script>
    
 	
 	

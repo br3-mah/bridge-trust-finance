@@ -100,7 +100,7 @@
     
                             <ul class="main-menu__list">
                                 <li class="megamenu">
-                                    <a href="/">Home</a>
+                                    <a href="{{ route('welcome') }}">Home</a>
                                    
                                 </li>
     

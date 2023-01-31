@@ -5,8 +5,14 @@ use App\Http\Livewire\AboutPage;
 use App\Http\Livewire\CareerPage;
 use App\Http\Livewire\ContactPage;
 use App\Http\Livewire\Dashboard\DashboardView;
+use App\Http\Livewire\Dashboard\Loans\LoanHistoryView;
+use App\Http\Livewire\Dashboard\Loans\LoanRatesView;
+use App\Http\Livewire\Dashboard\Loans\LoanRepaymentCalculatorView;
+use App\Http\Livewire\Dashboard\Loans\LoanRequestView;
+use App\Http\Livewire\Dashboard\NotificationView;
 use App\Http\Livewire\FaqPage;
 use App\Http\Livewire\Loans\AssetFinanceLoan;
+use App\Http\Livewire\Loans\EducationalLoan;
 use App\Http\Livewire\Loans\HomeLoan;
 use App\Http\Livewire\Loans\PersonalLoan;
 use App\Http\Livewire\Loans\SMELoan;
@@ -47,7 +53,7 @@ Route::get('services', ServicePage::class)->name('services');
 
 
 Route::get('personal-loans', PersonalLoan::class)->name('view-personal-loans');
-Route::get('educational-loans', PersonalLoan::class)->name('view-educational-loans');
+Route::get('educational-loans', EducationalLoan::class)->name('view-educational-loans');
 Route::get('asset-finance-loans', AssetFinanceLoan::class)->name('view-asset-loans');
 Route::get('home-improvement-loans', HomeLoan::class)->name('view-home-loans');
 Route::get('best-sme-loans', SMELoan::class)->name('view-sme-loans');
@@ -55,3 +61,11 @@ Route::get('vehicle-loans', VehicleLoan::class)->name('view-vehicle-loans');
 Route::get('women-in-business-soft-loans', WIBLoan::class)->name('view-wib-loans');
 Route::get('category/{category}', [PostController::class, 'category'])->name('posts.category');
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
+
+
+Route::get('notifications', NotificationView::class)->name('notifications');
+
+Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
+Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
+Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
+Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');

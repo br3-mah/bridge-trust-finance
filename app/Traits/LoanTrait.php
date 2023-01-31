@@ -13,7 +13,12 @@ trait LoanTrait{
     // }
 
     public function apply_loan($data){
-        dd($data);
+            try {
+                $item = Application::create($data);
+                return $item;
+            } catch (\Throwable $th) {
+                return false;
+            }
     }
 
     public function accept_loan($id){

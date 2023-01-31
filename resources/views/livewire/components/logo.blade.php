@@ -1,6 +1,6 @@
 <div class="nav-header">
     <a href="index.html" class="brand-logo">
-        <img width="65" src="images/logo-full.png" alt="" srcset="">
+        <img width="65" src="{{ asset('public/images/logo-full.png') }}" alt="" srcset="">
     </a>
     <div class="nav-control">
         <div class="hamburger">

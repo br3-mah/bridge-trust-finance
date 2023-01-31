@@ -1,6 +1,6 @@
 <!--Start breadcrumb area-->
 <section class="breadcrumb-area">
-    <div class="breadcrumb-area-bg" style="background-image: url('{{ asset("box/images/backgrounds/breadcrumb-area-bg.jpg") }}');"></div>
+    <div class="breadcrumb-area-bg" style="background-image: url('{{ asset("public/box/images/about.jpg") }}');"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -28,7 +28,7 @@
 
             <div class="col-xl-6">
                 <div class="intro-style1-video-gallery">
-                    <div class="intro-style1-video-gallery-bg" style="background-image: url('{{ asset("box/images/resources/intro-style1-video-gallery.jpg") }}');">
+                    <div class="intro-style1-video-gallery-bg" style="background-image: url('{{ asset("public/box/images/resources/intro-style1-video-gallery.jpg") }}');">
                     </div>
                     <div class="intro-video-gallery-style1">
                         <div class="icon wow zoomIn animated" data-wow-delay="300ms" data-wow-duration="1500ms">
@@ -62,7 +62,7 @@
                             <div class="intro-style1-single-box">
                                 <div class="img-box">
                                     <div class="img-box-inner">
-                                        <img src="{{ asset('box/images/resources/intro-style1-1.jpg') }}" alt="">
+                                        <img src="{{ asset('public/box/images/resources/intro-style1-1.jpg') }}" alt="">
                                     </div>
                                     <div class="overlay-text">
                                         <h3>Our Journey</h3>
@@ -79,7 +79,7 @@
                             <div class="intro-style1-single-box">
                                 <div class="img-box">
                                     <div class="img-box-inner">
-                                        <img src="{{ asset('box/images/resources/intro-style1-2.jpg') }}" alt="">
+                                        <img src="{{ asset('public/box/images/resources/intro-style1-2.jpg') }}" alt="">
                                     </div>
                                     <div class="overlay-text">
                                         <h3>Our Team</h3>
@@ -177,7 +177,7 @@
                         <li>
                             <div class="single-statements-box">
                                 <div class="img-box">
-                                    <img src="{{ asset('box/images/resources/statements-1.jpg') }}" alt="">
+                                    <img src="{{ asset('public/box/images/resources/statements-1.jpg') }}" alt="">
                                     <div class="static-content">
                                         <h2>Mission</h2>
                                     </div>
@@ -188,7 +188,7 @@
                         <li>
                             <div class="single-statements-box">
                                 <div class="img-box">
-                                    <img src="{{ asset('box/images/resources/statements-2.jpg') }}" alt="">
+                                    <img src="{{ asset('public/box/images/resources/statements-2.jpg') }}" alt="">
                                     <div class="static-content">
                                         <h2>Vision</h2>
                                     </div>
@@ -197,7 +197,7 @@
                             </div>
                             <div class="single-statements-box">
                                 <div class="img-box">
-                                    <img src="{{ asset('box/images/resources/statements-3.jpg') }}" alt="">
+                                    <img src="{{ asset('public/box/images/resources/statements-3.jpg') }}" alt="">
                                     <div class="static-content">
                                         <h2>Core Value</h2>
                                     </div>
@@ -235,7 +235,7 @@
 
 <!--Start Facts Area-->
 <section class="facts-area">
-    <div class="facts-area-bg" style="background-image: url('{{ asset("box/images/backgrounds/facts-area-bg.jpg") }}');">
+    <div class="facts-area-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/facts-area-bg.jpg") }}');">
     </div>
     <div class="container">
         <div class="sec-title text-center">

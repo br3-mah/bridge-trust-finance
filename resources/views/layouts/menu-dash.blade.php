@@ -164,7 +164,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a class="all-notification" href="javascript:void(0);">See all notifications <i class="ti-arrow-end"></i></a>
+                            <a class="all-notification" href="{{ route('notifications') }}">See all notifications <i class="ti-arrow-end"></i></a>
                         </div>
                     </li>
                     <li class="nav-item dropdown notification_dropdown">
@@ -182,10 +182,11 @@
                                     <div class="d-flex align-items-center sidebar-info">
                                         <div>
                                             <h4 class="mb-0">{{ auth()->user()->fname.' '.auth()->user()->lname }}</h4>
+                                            <h5 class="mb-0">{{ auth()->user()->name }}</h5>
                                             <span class="d-block text-end">Admin</span>
                                         </div>
                                     </div>
-                                    <img src="images/user.jpg" alt="">
+                                    <img src="{{asset('public/images/user.jpg')}}" alt="">
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" style="">
@@ -208,7 +209,7 @@
                                     </svg>
                                     <span class="ms-2">Message </span>
                                 </a>
-                                <a href="email-inbox.html" class="dropdown-item ai-icon ">
+                                <a href="{{ route('notifications') }}" class="dropdown-item ai-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
                                             <rect x="0" y="0" width="24" height="24"/>

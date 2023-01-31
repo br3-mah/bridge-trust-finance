@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class WelcomePage extends Component
 {
-    use LoanTrait, WithFileUploads;
+    use LoanTrait, EmailTrait, WithFileUploads;
 
     public $lname, $fname, $email, $phone, $gender, $type, $repayment_plan, $amount;
     public $glname, $gfname, $gemail, $gphone, $g_gender, $g_relation;
@@ -56,7 +57,16 @@ class WelcomePage extends Component
             'bill_file' => $this->bill_file,
         ];
 
-        $this->apply_loan($data);
+        $application = $this->apply_loan($data);
+        $mail = [
+            'user_id' => auth()->user()->id,
+            'appilcation_id' => $application->id,
+            'name' => auth()->user()->fname.' '.auth()->user()->lname,
+            'type' => 'loan-application',
+            'msg' => 'You have new loan application request, please visit the site to view more details'
+        ];
+        $this->send_loan_email($mail);
+        $this->clearForm();
     }
 
     public function clearForm(){

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('nrc')->nullable();
             $table->string('dob')->nullable();
             $table->string('gender')->nullable();
-            $table->foat('basic_pay', 9, 2)->nullable();
+            $table->float('basic_pay', 9, 2)->nullable();
             $table->string('loan_status')->nullable();
         });
     }

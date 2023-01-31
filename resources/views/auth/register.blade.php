@@ -17,17 +17,17 @@
 	<!-- PAGE TITLE HERE -->
 	<title>Bridge Trust Finance - Dashboard</title>
 	<!-- FAVICONS ICON -->
-	<link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-full.png') }}" >
-	<link href="vendor/wow-master/css/libs/animate.css" rel="stylesheet">
-	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="vendor/bootstrap-select-country/css/bootstrap-select-country.min.css">
-	<link rel="stylesheet" href="vendor/jquery-nice-select/css/nice-select.css">
+	<link rel="shortcut icon" type="image/png" href="{{ asset('public/images/logo-full.png') }}" >
+	<link href="public/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+	<link href="public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="public/vendor/bootstrap-select-country/css/bootstrap-select-country.min.css">
+	<link rel="stylesheet" href="public/vendor/jquery-nice-select/css/nice-select.css">
 	<!--swiper-slider-->
-	<link rel="stylesheet" href="vendor/swiper/css/swiper-bundle.min.css">
-	<link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="public/vendor/swiper/css/swiper-bundle.min.css">
+	<link href="public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<!-- Style css -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="public/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -245,8 +245,8 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <!-- Required vendors -->
-    <script src="vendor/global/global.min.js"></script>
+    <!-- Required public/vendors -->
+    <script src="public/vendor/global/global.min.js"></script>
    
 	
 	

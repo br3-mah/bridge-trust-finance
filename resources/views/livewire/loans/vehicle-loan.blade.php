@@ -1,7 +1,7 @@
 {{-- <x-app-layout> --}}
     <section class="breadcrumb-area">
         <div class="breadcrumb-area-bg"
-            style="background-image: url('{{asset("box/images/backgrounds/breadcrumb-area-bg-4.jpg")}}');"></div>
+            style="background-image: url('{{asset("public/box/images/v-loan.jpg")}}');"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -78,7 +78,7 @@
                 <div class="col-xl-12">
                     <div class="apply-form-box clearfix">
                         <div class="apply-form-box-bg"
-                            style="background-image: url('assets/images/resources/apply-form-box-bg.jpg');"></div>
+                            style="background-image: url('{{ asset('public/box/images/resources/apply-form-box-bg.jpg') }}');"></div>
                         <div class="apply-form-box__content">
                             <div class="sec-title">
                                 <h2>Send Your Request &<br> Get Call Back</h2>
@@ -230,32 +230,32 @@
 
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-1.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-1.png')}}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-2.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-2.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-3.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-3.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-4.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-4.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-5.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-5.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-6.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-6.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                 </div>

@@ -15,17 +15,17 @@
         <!-- PAGE TITLE HERE -->
         <title>Bridge Trust Finance - Dashboard</title>
         <!-- FAVICONS ICON -->
-        <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-full.png') }}">
-        <link href="{{ asset('vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
-        <link href="{{ asset('vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('vendor/bootstrap-select-country/css/bootstrap-select-country.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendor/jquery-nice-select/css/nice-select.css') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('public/images/logo-full.png') }}">
+        <link href="{{ asset('public/vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('public/vendor/bootstrap-select-country/css/bootstrap-select-country.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/vendor/jquery-nice-select/css/nice-select.css') }}">
         <!--swiper-slider-->
-        <link rel="stylesheet" href="{{ asset('vendor/swiper/css/swiper-bundle.min.css') }}">
-        <link href="{{ asset('vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('public/vendor/swiper/css/swiper-bundle.min.css') }}">
+        <link href="{{ asset('public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
         <!-- Style css -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
     
         @livewireStyles
 
@@ -58,31 +58,31 @@
 			</div>
 		</div>
 	</div>
-	<!-- Required vendors -->
-	<script src="{{ asset('vendor/global/global.min.js') }}"></script>
-	<script src="{{ asset('vendor/chart.js/Chart.bundle.min.js') }}"></script>
-	<script src="{{ asset('vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+	<!-- Required public/vendors -->
+	<script src="{{ asset('public/vendor/global/global.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 	<!-- Apex Chart -->
-	<script src="{{ asset('vendor/apexchart/apexchart.js') }}"></script>
+	<script src="{{ asset('public/vendor/apexchart/apexchart.js') }}"></script>
 	<!-- Chart piety plugin files -->
-	<script src="{{ asset('vendor/peity/jquery.peity.min.js') }}"></script>
-	<script src="{{ asset('vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/peity/jquery.peity.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 	<!--swiper-slider-->
-	<script src="{{ asset('vendor/swiper/js/swiper-bundle.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/swiper/js/swiper-bundle.min.js') }}"></script>
 
 	<!-- Date-picker -->
-	<script src="{{ asset('vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
-	<script src="{{ asset('vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
-	<!-- vendorboard 1 -->
-	<script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
-	<script src="{{ asset('vendor/wow-master/dist/wow.min.js') }}"></script>
-	<script src="{{ asset('vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
-	<script src="{{ asset('vendor/bootstrap-select-country/js/bootstrap-select-country.min.js') }}"></script>
+	<!-- public/vendorboard 1 -->
+	<script src="{{ asset('public/js/dashboard/dashboard-1.js') }}"></script>
+	<script src="{{ asset('public/vendor/wow-master/dist/wow.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-select-country/js/bootstrap-select-country.min.js') }}"></script>
 
-	<script src="{{ asset('js/deznav-2-init.js') }}"></script>
-	<script src="{{ asset('js/custom.min.js') }}"></script>
-	<script src="{{ asset('js/demo-2.js') }}"></script>
+	<script src="{{ asset('public/js/deznav-2-init.js') }}"></script>
+	<script src="{{ asset('public/js/custom.min.js') }}"></script>
+	<script src="{{ asset('public/js/demo-2.js') }}"></script>
 	<script>
 		$(function() {
 			$('#datetimepicker').datetimepicker({

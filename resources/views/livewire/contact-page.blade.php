@@ -1,13 +1,13 @@
 <!--Start breadcrumb area-->
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg"
-        style="background-image: url('{{ asset('box/images/backgrounds/breadcrumb-area-bg-6.jpg') }}');"></div>
+        style="background-image: url('{{ asset("public/box/images/backgrounds/breadcrumb-area-bg-6.jpg") }}');"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="inner-content">
                     <div class="title" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
-                        <h2>Get In Touch</h2>
+                        <h2>{{ $title }}</h2>
                     </div>
                     <div class="breadcrumb-menu" data-aos="fade-left" data-aos-easing="linear"
                         data-aos-duration="500">
@@ -105,34 +105,33 @@
 
             <div class="col-xl-6">
                 <div class="contact-form">
-                    <form id="contact-form" name="contact_form" class="default-form2"
-                        action="https://st.ourhtmldemo.com/new/finbank-demo/assets/inc/sendmail.php" method="post">
+                    <form id="contact-form" name="contact_form" class="default-form2">
 
                         <div class="form-group">
                             <label>Name</label>
                             <div class="input-box">
-                                <input type="text" name="form_name" id="formName" placeholder="xxxxxx"
+                                <input type="text" wire:model="name" id="formName" placeholder="xxxxxx"
                                     required="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
                             <div class="input-box">
-                                <input type="email" name="form_email" id="formEmail" placeholder="" required="">
+                                <input type="email" wire:model="email" id="formEmail" placeholder="" required="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Ph. Num</label>
                             <div class="input-box">
-                                <input type="text" name="form_phone" value="" id="formPhone" placeholder="">
+                                <input type="text" wire:model="phone" value="" id="formPhone" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Subject</label>
                             <div class="input-box">
-                                <input type="text" name="form_subject" value="" id="formSubject"
+                                <input type="text" wire:model="subject" value="" id="formSubject"
                                     placeholder="Subject">
                             </div>
                         </div>
@@ -140,15 +139,15 @@
                         <div class="form-group">
                             <label>Message</label>
                             <div class="input-box">
-                                <textarea name="form_message" id="formMessage" placeholder=""
+                                <textarea wire:model="message" id="formMessage" placeholder=""
                                     required=""></textarea>
                             </div>
                         </div>
 
                         <div class="button-box">
-                            <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden"
-                                value="">
-                            <button class="btn-one" type="submit" data-loading-text="Please wait...">
+                            {{-- <input id="form_botcheck" name="botcheck" class="form-control" type="hidden"
+                                value=""> --}}
+                            <button class="btn-one" wire:click="send();" data-loading-text="Please wait...">
                                 <span class="txt">
                                     send a message
                                 </span>

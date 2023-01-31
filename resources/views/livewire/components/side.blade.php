@@ -1,30 +1,31 @@
 <div class="deznav">
-    <div style="background-image: url('{{ asset("images/bg.png'") }});background-size: cover;background-color: #7b1919;" class="deznav-scroll">
+    <div style="background-image: url('{{ asset("public/images/bg.png'") }});background-size: cover;background-color: #7b1919;" class="deznav-scroll">
         <ul class="metismenu" id="menu">
             <li>
-                <a class="" href="index.php" aria-expanded="false">
+                <a class="" href="{{ route('dashboard') }}" aria-expanded="false">
                     <div class="menu-icon">
-                    <img width="40" src="images/7.svg" alt="">
+                    <img width="40" src="{{ asset('public/images/7.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
             <div class="menu-icon">
-                    <img width="40" src="{{ asset('images/2.svg') }}" alt="">
+                    <img width="40" src="{{ asset('public/images/2.svg') }}" alt="">
                     </div>
                     <span class="nav-text">My Loans</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="file-manager.html">Loan History</a></li>
-                    <li><a href="user.html">User</a></li>
-                    <li><a href="celandar.html">Calendar</a></li>
-                    <li><a href="to-do-list.html">To Do List</a></li>
+                    <li><a href="{{ route('view-loan-requests') }}">Loan Requests</a></li>
+                    <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li>
+                    <li><a href="{{ route('view-loan-history') }}">Loan History</a></li>
+                    <li><a href="{{ route('view-repayment-calculator') }}">Repayment Calculator</a></li>
+                    {{-- <li><a href="to-do-list.html">To Do List</a></li>
                     <li><a href="chat.html">Chat</a></li>
-                    <li><a href="activity.html">Activity</a></li>
+                    <li><a href="activity.html">Activity</a></li> --}}
                 </ul>
             </li>
-            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+            {{-- <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                         <img width="40" src="{{ asset('images/1.svg') }}" alt="">
                     </div>
@@ -53,25 +54,26 @@
                     <li><a href="chart-sparkline.html">Sparkline</a></li>
                     <li><a href="chart-peity.html">Peity</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
-                    <img width="40" src="{{ asset('images/4.svg') }}" alt="">
+                    <img width="40" src="{{ asset('public/images/4.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Settings</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="app-profile.html">Profile</a></li>
                     <li><a href="edit-profile.html">Edit Profile</a></li>
-                    <li><a href="post-details.html">Post Details</a></li>
-                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Email</a>
+                    <li><a href="post-details.html">Uploads</a></li>
+                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Manage Loans</a>
                         <ul aria-expanded="false">
-                            <li><a href="email-compose.html">Compose</a></li>
-                            <li><a href="email-inbox.html">Inbox</a></li>
-                            <li><a href="email-read.html">Read</a></li>
+                            <li><a href="email-compose.html">Rates</a></li>
+                            <li><a href="email-inbox.html">Packages</a></li>
+                            <li><a href="email-read.html">Policies</a></li>
+                            <li><a href="email-read.html">Terms & Conditions</a></li>
                         </ul>
                     </li>
-                    <li><a href="app-calender.html">Calendar</a></li>
+                    {{-- <li><a href="app-calender.html">Calendar</a></li>
                     <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Shop</a>
                         <ul aria-expanded="false">
                             <li><a href="ecom-product-grid.html">Product Grid</a></li>
@@ -82,7 +84,7 @@
                             <li><a href="ecom-invoice.html">Invoice</a></li>
                             <li><a href="ecom-customers.html">Customers</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
