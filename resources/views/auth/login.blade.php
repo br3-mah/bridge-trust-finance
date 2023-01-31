@@ -28,13 +28,20 @@
         <!-- Style css -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
-
+		<style>
+			html, body{
+				background: #7B1001;
+			}
+			#login{
+				background: #7B1001;
+			}
+		</style>
 </head>
 
 <body class="body  h-100">
 	<div class="container-fluid h-100">
 		<div class="row h-100 align-items-center justify-contain-center">
-			<div class="col-xl-12">
+			<div id="login" class="col-xl-12">
 				<div class="card main-width">
 					<div class="card-body  p-0">
 						<div class="row m-0">
@@ -42,21 +49,24 @@
 								<div class="card">
 									<div class="card-body">								
 										<div class="d-flex align-items-center justify-content-between mb-4">
-										<a href="/">
-                                            <div class="menu-icon">
-                                                <img width="65" src="images/logo-full.png" alt="" srcset="">
-                                            </div>
+										<a href="{{ route('welcome') }}">
+											<img  width="65" src="{{ asset('public/images/logo-full.png') }}" alt="BTF" srcset="{{ asset('public/images/logo-full.png') }}">
 										</a>
-											{{-- <span class="mt-xl-0 mt-3"><a href="javascript:void(0);" class="text-primary font-w500">Try For Free</a></span> --}}
 										</div>
 										<h2>Hi,Welcome Back!</h2>
-										<span>Access your account</span>
-										
-                                        <form class="mt-4" method="POST" action="{{ route('login') }}">
-                                            @csrf
+										<x-jet-validation-errors class="mb-4" />
+
+										@if (session('status'))
+											<div class="mb-4 font-medium text-sm text-green-600">
+												{{ session('status') }}
+											</div>
+										@endif
+								
+										<form class="mt-4" method="POST" action="{{ route('login') }}">
+											@csrf
 										  <div class="form-group mb-4">
 											<label for="exampleInputEmail1">Email address</label>
-											<input  type="email" name="email" :value="old('email')"  class="form-control" id="exampleInputEmail1"  placeholder="Enter Email">
+											<input type="email" name="email" :value="old('email')" class="form-control" id="exampleInputEmail1"  placeholder="Enter Email">
 										  </div>
 										  <div class="form-group mb-4">
 											<label for="exampleInputPassword1">Password</label>
@@ -69,10 +79,10 @@
 											  </div>
 											  <span><a href="page-forgot-password.html" class="text-primary font-w500 c-pointer">Forget Password ?</a></span>
 										 </div>
-                                         <button type="submit" class="btn btn-primary btn-block mb-4"><i class="fa-solid fa-lock text-white me-2"></i>Submit</button>
+											<button type="submit" class="btn btn-primary btn-block mb-4"><i class="fa-solid fa-lock text-white me-2"></i>Submit</button>
 
-										</form
-										  {{-- <div class="position-relative social-log text-center mb-4">
+										</form>
+										  <div class="position-relative social-log text-center mb-4">
 											<span>Or,log in with your email</span>
 										  </div>
 										<div class="text-center mb-4">	
@@ -129,30 +139,97 @@
 												</svg>
 
 												Sign In With Google</button>
-										</div> --}}
+										</div>
 										<div class="text-center">
-											{{-- <span class="">Do not have account Yet?<a href="javascript:void(0);" class="text-primary font-w500">Try for free!</a></span>	 --}}
+											<span class="">Do not have account Yet? <a href="{{ route('register') }}" class="text-primary font-w500"> Register Today</a></span>	
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-xl-8 col-lg-8 position-relative bg-secondary login-border">
+							<div class="col-xl-8 col-lg-8 position-relative bg-light login-border" style="background-image: url('{{ asset("public/box/images/about.jpg") }}');">
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">
-										<h2 class="text-white mb-0">Welcome To Your Lending Center.</h2>
-										<p class="text-white">Access tools for better for better financing.</p>
+										<h2 class="text-white mb-0">Welcome To Bridge Trust Finance Center.</h2>
+										<p class="text-white">We deliver more than just money</p>
 									</div>
 									<div class="login-media-1">
-										{{-- <img src="images/login-index.png" alt=""> --}}
-										
+										<img src="{{ asset('public/images/logo-full.png') }}" alt="">
+										{{-- <svg class="dot-svg" style="" width="40" height="40" viewBox="0 0 89 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											</svg>
+											<svg class="dot-svg-end" width="40" height="40" viewBox="0 0 89 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="87.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="70.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="19.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="36.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="2.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="23.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="44.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="65.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											<circle cx="86.5" cy="53.5" r="2.5" fill="#D9D9D9"/>
+											</svg> --}}
+
+									{{-- <svg class="t-svg" width="50" height="50" viewBox="0 0 192 169" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M61.5393 0.840397L191.627 0.840258L101.714 168.846L-4.87743e-05 113.076L61.5393 0.840397Z" fill="#2696FD" fill-opacity="0.22"/>
+									</svg> --}}
 										
 									</div>
-									<div class="login-media-2">
-										{{-- <img src="images/login-dark.png" alt=""> --}}
-									</div>
+									{{-- <div class="login-media-2">
+										<img src="images/login-dark.png" alt="">
+									</div> --}}
 									<div class="d-flex align-items-center justify-content-between text-white pb-3 px-2">
 										<span><a href="javascript:void(0);" class="text-white d-xl-block d-none">Privacy policy and Terms of use</a></span>
-										<span class="text-center"><a href="javascript:void(0);" class="text-white">Copyright © Designed &amp; Powered by</a> <a class="text-white" href="https://greenwebbtech.com/" target="_blank">Greenwebb</a> 2023</span>
+										<span class="text-center"><a href="javascript:void(0);" class="text-white">Copyright © Designed &amp; Developed by</a> <a class="text-white" href="https://dexignzone.com/" target="_blank">DexignZone</a> 2023</span>
 										<span><a href="javascript:void(0);" class="text-white d-xl-block d-none"> Privacy policy</a></span>
 									</div>
 								</div>

@@ -112,7 +112,7 @@
                         <div class="our-company-info">
                             <div class="footer-logo-style1">
                                 <a href="index.php">
-                                    <img src="{{ asset('box/images/footer/footer-logo-1.png') }}" alt="BTF" title="">
+                                    <img src="{{ asset('public/box/images/footer/footer-logo-1.png') }}" alt="BTF" title="">
                                 </a>
                             </div>
                             <div class="copyright-text">
@@ -134,13 +134,13 @@
                             <ul>
                                 <li>
                                     <h3>
-                                        <a href="tel:2512353256">(800) 123 456 78</a>
+                                        <a href="tel:2512353256">(+260) 976 7759 619</a>
                                     </h3>
                                     <p>Customer Care</p>
                                 </li>
                                 <li>
-                                    <h3>Mon - Fri: 9.00am to 5.00pm</h3>
-                                    <p>Financing Hours</p>
+                                    <h3>Mon - Fri: 8.00am to 5.00pm</h3>
+                                    <p>Working Hours</p>
                                 </li>
                             </ul>
                         </div>
