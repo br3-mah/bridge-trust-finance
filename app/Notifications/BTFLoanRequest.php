@@ -29,8 +29,7 @@ class BTFLoanRequest extends Notification
      */
     public function via($notifiable)
     {
-        // return ['mail'];
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -42,9 +41,11 @@ class BTFLoanRequest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    // ->name($this->data['name'])
-                    ->line($this->data['msg'].'. Applicant"s name is '.$this->data['name'])
-                    ->action('Notification Action', url('/'))
+                    ->subject($this->data['name'].' '.$this->data['loan_type'].' Loan Reguest')
+                    ->line($this->data['msg'])
+                    ->line('Amount: '.$this->data['amount'])
+                    ->line('Repayment Plan: '.$this->data['duration'])
+                    ->action('Manage Loan Reguest', url('/'))
                     ->line('Administrator');
     }
 

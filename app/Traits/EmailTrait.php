@@ -26,7 +26,7 @@ trait EmailTrait{
             Notification::send($admin, new BTFLoanRequest($data));
             return true;
         } catch (\Throwable $th) {
-            return false;
+            return $th;
         }
 
     }

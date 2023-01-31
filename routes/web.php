@@ -19,6 +19,7 @@ use App\Http\Livewire\Loans\SMELoan;
 use App\Http\Livewire\Loans\VehicleLoan;
 use App\Http\Livewire\Loans\WIBLoan;
 use App\Http\Livewire\ServicePage;
+use App\Http\Livewire\SuccessPage;
 use App\Http\Livewire\TeamPage;
 use App\Http\Livewire\WelcomePage;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,8 @@ Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 
 
 Route::get('notifications', NotificationView::class)->name('notifications');
+
+Route::get('successfully-applied-a-loan', SuccessPage::class)->name('success-application');
 
 Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
 Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');

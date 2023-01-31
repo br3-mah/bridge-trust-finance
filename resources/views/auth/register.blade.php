@@ -28,6 +28,14 @@
 	<!-- Style css -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="public/css/style.css" rel="stylesheet">
+	<style>
+		html, body{
+			background: #7B1001;
+		}
+		#login{
+			background: #7B1001;
+		}
+	</style>
 
 </head>
 
@@ -44,7 +52,7 @@
 										<div class="d-flex align-items-center justify-content-between mb-4">
 										<a href="index.html">
                                             <div class="menu-icon">
-                                                <img width="65" src="{{ asset('images/logo-full.png') }}" alt="" srcset="">
+                                                <img width="65" src="{{ asset('public/images/logo-full.png') }}" alt="" srcset="">
                                             </div>
 										</a>
 											{{-- <span class="mt-xl-0 mt-3"><a href="javascript:void(0);" class="text-primary font-w500">Try For Free</a></span> --}}
@@ -224,14 +232,14 @@
 									</svg>
 										
 									</div>
-									<div class="login-media-2">
+									{{-- <div class="login-media-2">
 										<img src="https://img.freepik.com/premium-vector/interest-rate-system-vector-illustration_353502-455.jpg?w=740" alt="">
 									</div>
 									<div class="d-flex align-items-center justify-content-between text-white pb-3 px-2">
 										<span><a href="javascript:void(0);" class="text-white d-xl-block d-none">Privacy policy and Terms of use</a></span>
 										<span class="text-center"><a href="javascript:void(0);" class="text-white">Copyright © Designed &amp; Prowered by</a> <a class="text-white" href="https://greenwebb.com/" target="_blank">Green webb </a> 2023</span>
 										<span><a href="javascript:void(0);" class="text-white d-xl-block d-none"> Privacy policy</a></span>
-									</div>
+									</div> --}}
 								</div>
 							</div>							
 						</div>

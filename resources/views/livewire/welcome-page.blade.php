@@ -1,6 +1,7 @@
 
+    {{-- @if($modal) --}}
     @include('livewire.parts.application-form');
-    
+    {{-- @endif --}}
     <!--Main Slider Start-->
     <section class="main-slider main-slider-style1">
         <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,

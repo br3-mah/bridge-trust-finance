@@ -15,7 +15,7 @@ trait LoanTrait{
     public function apply_loan($data){
             try {
                 $item = Application::create($data);
-                return $item;
+                return $item->id;
             } catch (\Throwable $th) {
                 return false;
             }

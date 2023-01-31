@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade {{ $class}}" style="{{ $style }}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-body">
@@ -24,7 +24,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="fname" id="fname" placeholder="First Name" required="">
+                                                        <input type="text" wire:model.defer="fname" id="fname" placeholder="First Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -34,7 +34,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="lname" id="lname" placeholder="Last Name" required="">
+                                                        <input type="text" wire:model.defer="lname" id="lname" placeholder="Last Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -48,7 +48,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" required="required" wire:model.prevent="amount" placeholder="Amount" id="amount">
+                                                        <input type="text" required="required" wire:model.defer="amount" placeholder="Amount" id="amount">
                                                         <div class="icon">
                                                             <i class="fas fa-money-bill"></i>
                                                         </div>
@@ -58,16 +58,16 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model.prevent="type" class="wide">
+                                                        <select wire:model.defer="type" class="wide">
                                                             <option data-display="Purpose of Loan">
                                                                 Purpose of Loan
                                                             </option>
-                                                            <option value="1">Personal</option>
-                                                            <option value="1">Education</option>
-                                                            <option value="2">Asset Financing</option>
-                                                            <option value="3">Home Improvements</option>
-                                                            <option value="4">SME Based</option>
-                                                            <option value="4">Women in Business</option>
+                                                            <option value="Personal">Personal</option>
+                                                            <option value="Education">Education</option>
+                                                            <option value="Asset Financing">Asset Financing</option>
+                                                            <option value="Home Improvement">Home Improvements</option>
+                                                            <option value="SME Based">SME Based</option>
+                                                            <option value="Women in Business (Femiprise) Soft">Women in Business</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -77,38 +77,29 @@
                                         </div>
                                         <div class="row">
 
-                                            {{-- <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <div class="select-box clearfix">
-                                                        <select class="wide">
-                                                            <option data-display="Duration">
-                                                                Duration
-                                                            </option>
-                                                            <option value="1">1 month</option>
-                                                            <option value="2">2 months</option>
-                                                            <option value="3">3 months</option>
-                                                            <option value="4">4 months</option>
-                                                            <option value="5">5 months</option>
-                                                            <option value="6">6 months</option>
-                                                            <option value="7">7 months</option>
-                                                            <option value="8">8 months</option>
-                                                            <option value="9">9 months</option>
-                                                            <option value="10">10 months</option>
-                                                            <option value="11">11 months</option>
-                                                            <option value="12">12 months</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model.prevent="repayment_plan" class="wide">
+                                                        <select class="wide">
+                                                            <option data-display="Your Gender">
+                                                                Gender
+                                                            </option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Gender">Gener</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="select-box clearfix">
+                                                        <select wire:model.defer="repayment_plan" class="wide">
                                                             <option data-display="Proposed repayment plan">
                                                                 Proposed repayment plan
                                                             </option>
-                                                            <option value="1">Weekly</option>
-                                                            <option value="2">Monthly</option>
+                                                            <option value="1 Week">After 1 Week</option>
+                                                            <option value="1 Month">After 1 Month</option>
+                                                            <option value="3 Month">After 3 Months</option>
 
                                                         </select>
                                                     </div>
@@ -121,7 +112,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="phone" value="" id="formPhone" placeholder="Phone">
+                                                        <input type="text" wire:model.defer="phone" value="" id="formPhone" placeholder="Phone">
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
@@ -131,20 +122,16 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" wire:model.prevent="email" id="formEmail" placeholder="Email" required="">
+                                                        <input type="email" wire:model.defer="email" id="formEmail" placeholder="Email" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
 
-
                                     </div>
-
                                 </div>
                             </section>
                             <h3>Step 2 Title</h3>
@@ -166,7 +153,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="gfname" id="gfname" placeholder="Guarantor 1's First Name" required="">
+                                                        <input type="text" wire:model.defer="gfname" id="gfname" placeholder="Guarantor 1's First Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -176,7 +163,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="glname" id="glname" placeholder="Guarantor 1's  Last Name" required="">
+                                                        <input type="text" wire:model.defer="glname" id="glname" placeholder="Guarantor 1's  Last Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -191,12 +178,12 @@
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
                                                         <select class="wide">
-                                                            <option wire:model.prevent="g_relation" data-display=" Relation">
+                                                            <option wire:model.defer="g_relation" data-display=" Relation">
                                                                 Relation
                                                             </option>
-                                                            <option value="1">Relative</option>
-                                                            <option value="2">Work Mate</option>
-                                                            <option value="2">Close Friend</option>
+                                                            <option value="Relative">Relative</option>
+                                                            <option value="Work Mate">Work Mate</option>
+                                                            <option value="Close Friend">Close Friend</option>
 
                                                         </select>
                                                     </div>
@@ -205,12 +192,12 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model.prevent="g_gender" class="wide">
+                                                        <select wire:model.defer="g_gender" class="wide">
                                                             <option data-display="Gender">
                                                                 Gender
                                                             </option>
-                                                            <option value="1">Female</option>
-                                                            <option value="2">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Male">Male</option>
 
                                                         </select>
                                                     </div>
@@ -222,7 +209,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="gphone" value="" id="formPhone" placeholder="Guarantor 1's Phone">
+                                                        <input type="text" wire:model.defer="gphone" value="" id="formPhone" placeholder="Guarantor 1's Phone">
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
@@ -232,7 +219,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" wire:model.prevent="gemail" id="formEmail" placeholder="Guarantor 1's Email" required="">
+                                                        <input type="email" wire:model.defer="gemail" id="formEmail" placeholder="Guarantor 1's Email" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
@@ -250,7 +237,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="g2fname" id="g2fname" placeholder="Guarantor 2's First Name" required="">
+                                                        <input type="text" wire:model.defer="g2fname" id="g2fname" placeholder="Guarantor 2's First Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -260,7 +247,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="g2lname" id="g2lname" placeholder="Guarantor 2's  Last Name" required="">
+                                                        <input type="text" wire:model.defer="g2lname" id="g2lname" placeholder="Guarantor 2's  Last Name" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-user"></i>
                                                         </div>
@@ -275,13 +262,13 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model.prevent="g2_relation" class="wide">
+                                                        <select wire:model.defer="g2_relation" class="wide">
                                                             <option data-display="Relation">
                                                                 Relation
                                                             </option>
-                                                            <option value="1">Relative</option>
-                                                            <option value="2">Work Mate</option>
-                                                            <option value="2">Close Friend</option>
+                                                            <option value="Relative">Relative</option>
+                                                            <option value="Work Mate">Work Mate</option>
+                                                            <option value="Close Friend">Close Friend</option>
 
                                                         </select>
                                                     </div>
@@ -290,12 +277,12 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select wire:model.prevent="g2_gender" class="wide">
+                                                        <select wire:model.defer="g2_gender" class="wide">
                                                             <option data-display="Gender">
                                                                 Gender
                                                             </option>
-                                                            <option value="1">Female</option>
-                                                            <option value="2">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Male">Male</option>
 
                                                         </select>
                                                     </div>
@@ -307,7 +294,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" wire:model.prevent="g2phone" value="" id="formPhone" placeholder="Guarantor 2's Phone">
+                                                        <input type="text" wire:model.defer="g2phone" value="" id="formPhone" placeholder="Guarantor 2's Phone">
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
@@ -317,20 +304,15 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" wire:model.prevent="g2email" id="formEmail" placeholder="Guarantor 2's Email" required="">
+                                                        <input type="email" wire:model.defer="g2email" id="formEmail" placeholder="Guarantor 2's Email" required="">
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
-
-
                                     </div>
-
                                 </div>
                             </section>
                             <h3>Step 3 Title</h3>
@@ -341,7 +323,7 @@
                                         <p>Fill in all the necessary details to started with the first step.</p>
                                     </div>
                                 </div>
-                                <div class="apply-form-box__content">
+                                <div wire:ignore.self class="apply-form-box__content">
 
 
                                     <div id="apply-form">
@@ -354,7 +336,7 @@
                                                     <div class="input-box">
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">National ID (NRC)</label>
-                                                            <input wire:model.prevent="nrc_file" :file="$nrc_file" class="form-control" type="file" id="formFile" />
+                                                            <input wire:model.prevent="nrc_file" class="form-control" type="file" id="formFile" />
                                                         </div>
 
                                                     </div>
@@ -365,7 +347,7 @@
                                                     <div class="input-box">
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">Payslip (leave empty if not applicable)</label>
-                                                            <input wire:model.prevent="payslip_file" :file="$payslip_file" class="form-control" type="file"  />
+                                                            <input wire:model.prevent="payslip_file" class="form-control" type="file"  />
                                                         </div>
 
                                                     </div>
@@ -382,7 +364,7 @@
                                                     <div class="input-box">
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">TPIN</label>
-                                                            <input wire:model.prevent="tpin_file" :file="$tpin_file" class="form-control" type="file"  />
+                                                            <input wire:model.prevent="tpin_file" class="form-control" type="file"  />
                                                         </div>
 
                                                     </div>
@@ -404,6 +386,9 @@
                                     </div>
                                     <button class="btn btn-warning" wire:click="submit()">Submit</button>
                                 </div>
+                                <div wire:loading wire:target="submit">
+                                    Loading...
+                                 </div> 
                             </section>
                         </div>
                     </div>

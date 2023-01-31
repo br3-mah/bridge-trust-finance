@@ -17,7 +17,11 @@ class Application extends Model
         'gender',
         'type',
         'repayment_plan',
-
+        'amount',
+        'amount',
+        'interest',
+        'payback_amount',
+        
         'glname',
         'gfname',
         'gemail',

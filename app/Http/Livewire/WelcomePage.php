@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
+use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,6 +12,7 @@ class WelcomePage extends Component
 {
     use LoanTrait, EmailTrait, WithFileUploads;
 
+    public $class, $style;
     public $lname, $fname, $email, $phone, $gender, $type, $repayment_plan, $amount;
     public $glname, $gfname, $gemail, $gphone, $g_gender, $g_relation;
     public $g2lname, $g2fname, $g2email, $g2phone, $g2_gender, $g2_relation;
@@ -19,15 +21,27 @@ class WelcomePage extends Component
 
     public function render()
     {
+        // $this->class = 'show'; $this->style = 'display:block';
         return view('livewire.welcome-page');
     }
 
-    public function submit(){
-        
+    public function submit(Request $request){
+        // $this->class = 'show'; $this->style = 'display:block';
+        // $this->validate([
+        //     'nrc_file' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024', 
+        //     'tpin_file' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024', 
+        //     'payslip_file' => 'required|image|mimes:jpeg,png,svg,jpg,gif|max:1024', 
+        // ]);
+ 
+        // $nrc_file = $this->nrc_file->store('applicant_doc');
+        // $tpin_file = $this->tpin_file->store('applicant_doc');
+        // $payslip_file = $this->payslip_file->store('applicant_doc');
+
         $data = [
             'lname'=> $this->lname,
             'fname'=> $this->fname,
             'email'=> $this->email,
+            'amount'=> $this->amount,
             'phone'=> $this->phone,
             'gender'=> $this->gender,
             'type'=> $this->type,
@@ -45,28 +59,35 @@ class WelcomePage extends Component
             'g2email'=> $this->g2email,
             'g2phone'=> $this->g2phone,
             'g2_gender'=> $this->g2_gender,
-            'g2_relation'=> $this->g2_relation
-        ];
+            'g2_relation'=> $this->g2_relation,
 
-        $files = [
-            'nrc_file' => $this->nrc_file,
-            'tpin_file' => $this->tpin_file,
-            'business_file' => $this->business_file,
-            'payslip_file' => $this->payslip_file,
-            'bank_trans_file' => $this->bank_trans_file,
-            'bill_file' => $this->bill_file,
+            // 'nrc_file' => $nrc_file,
+            // 'tpin_file' => $tpin_file,
+            // 'payslip_file' => $payslip_file
+            // 'bank_trans_file' => $this->bank_trans_file,
+            // 'bill_file' => $this->bill_file,
+            // 'business_file' => $this->business_file,
         ];
-
         $application = $this->apply_loan($data);
+        // dd($application);
         $mail = [
-            'user_id' => auth()->user()->id,
-            'appilcation_id' => $application->id,
-            'name' => auth()->user()->fname.' '.auth()->user()->lname,
+            'user_id' => '',
+            'application_id' => $application,
+            'name' => $this->fname.' '.$this->lname,
+            'loan_type' => $this->type,
+            'phone' => $this->phone,
+            'duration' => $this->repayment_plan,
+            'amount' => $this->amount,
             'type' => 'loan-application',
-            'msg' => 'You have new loan application request, please visit the site to view more details'
+            'msg' => 'You have new a '.$this->type.' loan application request, please visit the site to view more details'
         ];
-        $this->send_loan_email($mail);
-        $this->clearForm();
+
+        $process = $this->send_loan_email($mail);
+        if($process){
+            return redirect()->to('/successfully-applied-a-loan');
+        }else{
+            return redirect()->to('/contact-us');
+        }
     }
 
     public function clearForm(){
