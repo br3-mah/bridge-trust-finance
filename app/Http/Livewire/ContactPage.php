@@ -20,12 +20,17 @@ class ContactPage extends Component
     public function send(){
         $data = [
             'name' => $this->name,
-            'email' => User::first()->email,
+            'to' => User::first()->email,
+            'from' => $this->email,
             'phone' => $this->phone,
             'subject' => $this->subject,
             'message' => $this->message,
         ];
 
-        $this->send_contact_email($data);
+        if($this->send_contact_email($data)){
+            return redirect()->to('/email-sent-successfully');
+        }else{
+            return redirect()->to('/contact-us');
+        }
     }
 }

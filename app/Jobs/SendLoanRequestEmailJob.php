@@ -33,6 +33,6 @@ class SendLoanRequestEmailJob implements ShouldQueue
     public function handle()
     {
         $contact_email = new ContactEmail($this->emailData);
-        Mail::to($this->emailData['email'])->send($contact_email);
+        Mail::to($this->emailData['to'])->send($contact_email);
     }
 }

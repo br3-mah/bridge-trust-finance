@@ -16,7 +16,7 @@ class WelcomePage extends Component
     public $lname, $fname, $email, $phone, $gender, $type, $repayment_plan, $amount;
     public $glname, $gfname, $gemail, $gphone, $g_gender, $g_relation;
     public $g2lname, $g2fname, $g2email, $g2phone, $g2_gender, $g2_relation;
-    public $nrc_file, $tpin_file, $business_file, $payslip_file, $bank_trans_file, $bill_file;
+    // public $nrc_file, $tpin_file, $business_file, $payslip_file, $bank_trans_file, $bill_file;
     public $step_1_title = 'Loan Details';
 
     public function render()

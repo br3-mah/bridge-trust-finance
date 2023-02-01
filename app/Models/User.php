@@ -37,6 +37,7 @@ class User extends Authenticatable
         'gender',
         'loan_status',
         'basic_pay',
+        'profile_photo_path',
         'email',
         'password',
     ];

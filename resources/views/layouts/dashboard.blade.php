@@ -23,6 +23,10 @@
         <!--swiper-slider-->
         <link rel="stylesheet" href="{{ asset('public/vendor/swiper/css/swiper-bundle.min.css') }}">
         <link href="{{ asset('public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+            
+        <!-- Datatable -->
+        <link href="{{ asset('public/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
         <!-- Style css -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
@@ -73,6 +77,10 @@
 	<!-- Date-picker -->
 	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
 	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+	
+    <!-- Datatable -->
+    <script src="{{ asset('public/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/js/plugins-init/datatables.init.js') }}"></script>
 
 	<!-- public/vendorboard 1 -->
 	<script src="{{ asset('public/js/dashboard/dashboard-1.js') }}"></script>

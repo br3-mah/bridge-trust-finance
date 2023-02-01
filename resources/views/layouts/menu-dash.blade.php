@@ -10,7 +10,7 @@
                 <ul class="navbar-nav header-right">
                     <li class="nav-item">
                         <div class="input-group search-area me-3">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="NRC">
                             <span class="input-group-text"><a href="javascript:void(0)">
                             <svg class="me-3 mb-1 user-search" width="15" height="15" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.625 16.3125C4.3875 16.3125 0.9375 12.8625 0.9375 8.625C0.9375 4.3875 4.3875 0.9375 8.625 0.9375C12.8625 0.9375 16.3125 4.3875 16.3125 8.625C16.3125 12.8625 12.8625 16.3125 8.625 16.3125ZM8.625 2.0625C5.0025 2.0625 2.0625 5.01 2.0625 8.625C2.0625 12.24 5.0025 15.1875 8.625 15.1875C12.2475 15.1875 15.1875 12.24 15.1875 8.625C15.1875 5.01 12.2475 2.0625 8.625 2.0625Z" fill="#2696FD"/>
@@ -19,7 +19,8 @@
                             </a></span>
                         </div>
                     </li>
-                    <li class="nav-item dropdown notification_dropdown">
+                    {{-- @can('view system settings') --}}
+                    {{-- <li class="nav-item dropdown notification_dropdown">
                         <a class="nav-link " href="javascript:void(0);" data-bs-toggle="dropdown">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11 14.4375C9.1025 14.4375 7.5625 12.8975 7.5625 11C7.5625 9.1025 9.1025 7.5625 11 7.5625C12.8975 7.5625 14.4375 9.1025 14.4375 11C14.4375 12.8975 12.8975 14.4375 11 14.4375ZM11 8.9375C9.86333 8.9375 8.9375 9.86333 8.9375 11C8.9375 12.1367 9.86333 13.0625 11 13.0625C12.1367 13.0625 13.0625 12.1367 13.0625 11C13.0625 9.86333 12.1367 8.9375 11 8.9375Z" fill="var(--primary)"/>
@@ -28,17 +29,14 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <div id="DZ_W_TimeLine02" class="widget-timeline dz-scroll style-1  p-3 height370">
-                                <ul class="timeline">
+                                <ul>
                                     <li>
-                                        <div class="timeline-badge primary"></div>
                                         <a class="timeline-panel text-muted" href="javascript:void(0);">
                                             <span>10 minutes ago</span>
                                             <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="timeline-badge info">
-                                        </div>
                                         <a class="timeline-panel text-muted" href="javascript:void(0);">
                                             <span>20 minutes ago</span>
                                             <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
@@ -46,49 +44,27 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="timeline-badge danger">
-                                        </div>
                                         <a class="timeline-panel text-muted" href="javascript:void(0);">
                                             <span>30 minutes ago</span>
                                             <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
                                         </a>
                                     </li>
-                                    <li>
-                                        <div class="timeline-badge success">
-                                        </div>
-                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
-                                            <span>15 minutes ago</span>
-                                            <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-badge warning">
-                                        </div>
-                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
-                                            <span>20 minutes ago</span>
-                                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-badge dark">
-                                        </div>
-                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
-                                            <span>20 minutes ago</span>
-                                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
+                    {{-- @endcan --}}
                     <li class="nav-item dropdown notification_dropdown">
-                        <a class="nav-link bell-icon " href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                        {{-- @can('view settings') --}}
+                        <a  class="nav-link bell-icon " href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                             <svg class="bell-animi" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.0183 18.8193C8.88246 18.8193 6.74663 18.4801 4.72079 17.8018C3.95079 17.5359 3.36413 16.9951 3.10746 16.2893C2.84163 15.5834 2.93329 14.8043 3.35496 14.1076L4.40913 12.3568C4.62913 11.9901 4.83079 11.2568 4.83079 10.8259V8.17676C4.83079 4.76676 7.6083 1.98926 11.0183 1.98926C14.4283 1.98926 17.2058 4.76676 17.2058 8.17676V10.8259C17.2058 11.2476 17.4075 11.9901 17.6275 12.3659L18.6725 14.1076C19.0666 14.7676 19.14 15.5651 18.8741 16.2893C18.6083 17.0134 18.0308 17.5634 17.3066 17.8018C15.29 18.4801 13.1541 18.8193 11.0183 18.8193ZM11.0183 3.36426C8.36913 3.36426 6.20579 5.51842 6.20579 8.17676V10.8259C6.20579 11.4951 5.93079 12.4851 5.59163 13.0626L4.53746 14.8134C4.33579 15.1526 4.28079 15.5101 4.39996 15.8126C4.50996 16.1243 4.78496 16.3626 5.16079 16.4909C8.99246 17.7743 13.0533 17.7743 16.885 16.4909C17.215 16.3809 17.4716 16.1334 17.5908 15.8034C17.71 15.4734 17.6825 15.1159 17.4991 14.8134L16.445 13.0626C16.0966 12.4668 15.8308 11.4859 15.8308 10.8168V8.17676C15.8308 5.51842 13.6766 3.36426 11.0183 3.36426Z" fill="var(--primary)"/>
                             <path d="M12.7232 3.61203C12.6591 3.61203 12.5949 3.60286 12.5307 3.58453C12.2649 3.5112 12.0082 3.4562 11.7607 3.41953C10.9816 3.3187 10.2299 3.3737 9.52407 3.58453C9.2674 3.66703 8.9924 3.58453 8.81823 3.39203C8.64407 3.19953 8.58907 2.92453 8.6899 2.67703C9.06573 1.71453 9.9824 1.08203 11.0274 1.08203C12.0724 1.08203 12.9891 1.70536 13.3649 2.67703C13.4566 2.92453 13.4107 3.19953 13.2366 3.39203C13.0991 3.5387 12.9066 3.61203 12.7232 3.61203Z" fill="var(--primary)"/>
                             <path d="M11.0183 20.9092C10.1108 20.9092 9.23081 20.5425 8.58914 19.9008C7.94748 19.2592 7.58081 18.3792 7.58081 17.4717H8.95581C8.95581 18.0125 9.17581 18.5442 9.56081 18.9292C9.94581 19.3142 10.4775 19.5342 11.0183 19.5342C12.155 19.5342 13.0808 18.6083 13.0808 17.4717H14.4558C14.4558 19.3692 12.9158 20.9092 11.0183 20.9092Z" fill="var(--primary)"/>
                             </svg>
                         </a>
+                        {{-- @endcan --}}
                         <div class="dropdown-menu dropdown-menu-end of-visible">
                             <div class="dropdown-header">
                                 <h4 class="title mb-0">Notification</h4>
@@ -96,18 +72,24 @@
                             </div>
                             <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3" style="height:380px;">
                                 <ul class="timeline">
+                                    @forelse (auth()->user()->unreadNotifications as $item)
                                     <li>
                                         <div class="timeline-panel">
                                             <div class="media me-2">
-                                                <img alt="image" width="50" src="images/avatar/1.jpg">
+                                                <img alt="image" width="50" src="{{ ('public/images/avatar/1.jpg') }}">
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="mb-1">Dr sultads Send you Photo</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                <h6 class="mb-1">{{ $note->data['name'] }}</h6>
+                                                <small class="d-block">{{ $note->data['msg'] }}</small>
                                             </div>
                                         </div>
                                     </li>
+                                    @empty
                                     <li>
+                                        <p>No notifications.</p>
+                                    </li>
+                                    @endforelse
+                                    {{-- <li>
                                         <div class="timeline-panel">
                                             <div class="media me-2 media-info">
                                                 KG
@@ -161,20 +143,20 @@
                                                 <small class="d-block">29 July 2020 - 02:26 PM</small>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                             <a class="all-notification" href="{{ route('notifications') }}">See all notifications <i class="ti-arrow-end"></i></a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown notification_dropdown">
+                    {{-- <li class="nav-item dropdown notification_dropdown">
                         <a class="nav-link bell-link" href="javascript:void(0);">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.5833 19.4788H6.41659C3.07075 19.4788 1.14575 17.5538 1.14575 14.208V7.79134C1.14575 4.44551 3.07075 2.52051 6.41659 2.52051H15.5833C18.9291 2.52051 20.8541 4.44551 20.8541 7.79134V14.208C20.8541 17.5538 18.9291 19.4788 15.5833 19.4788ZM6.41659 3.89551C3.79492 3.89551 2.52075 5.16967 2.52075 7.79134V14.208C2.52075 16.8297 3.79492 18.1038 6.41659 18.1038H15.5833C18.2049 18.1038 19.4791 16.8297 19.4791 14.208V7.79134C19.4791 5.16967 18.2049 3.89551 15.5833 3.89551H6.41659Z" fill="var(--primary)"/>
                             <path d="M10.9999 11.797C10.2299 11.797 9.45071 11.5587 8.85488 11.0728L5.98571 8.78115C5.69238 8.54282 5.63738 8.11198 5.87571 7.81865C6.11405 7.52532 6.54488 7.47032 6.83822 7.70865L9.70737 10.0003C10.404 10.5595 11.5865 10.5595 12.2832 10.0003L15.1524 7.70865C15.4457 7.47032 15.8857 7.51615 16.1149 7.81865C16.3532 8.11198 16.3074 8.55199 16.0049 8.78115L13.1357 11.0728C12.549 11.5587 11.7699 11.797 10.9999 11.797Z" fill="var(--primary)"/>
                             </svg>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <div class="dropdown header-profile2">
                             <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -183,14 +165,14 @@
                                         <div>
                                             <h4 class="mb-0">{{ auth()->user()->fname.' '.auth()->user()->lname }}</h4>
                                             <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                            <span class="d-block text-end">Admin</span>
+                                            <span class="d-block text-end">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) ?? 'Guest' }}</span>
                                         </div>
                                     </div>
                                     <img src="{{asset('public/images/user.jpg')}}" alt="">
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" style="">
-                                <a href="app-profile.html" class="dropdown-item ai-icon ">
+                                <a href="{{ route('profile.show') }}" class="dropdown-item ai-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24"/>
@@ -200,7 +182,7 @@
                                     </svg>
                                     <span class="ms-2">Profile </span>
                                 </a>
-                                <a href="chat.html" class="dropdown-item ai-icon ">
+                                {{-- <a href="chat.html" class="dropdown-item ai-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
@@ -208,7 +190,7 @@
                                         </g>
                                     </svg>
                                     <span class="ms-2">Message </span>
-                                </a>
+                                </a> --}}
                                 <a href="{{ route('notifications') }}" class="dropdown-item ai-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
@@ -219,7 +201,7 @@
                                     </svg>
                                     <span class="ms-2">Notification </span>
                                 </a>
-                                <a href="javascript:void(0);" class="dropdown-item ai-icon ">
+                                {{-- <a href="javascript:void(0);" class="dropdown-item ai-icon ">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
@@ -228,7 +210,7 @@
                                         </g>
                                     </svg>
                                     <span class="ms-2">Settings </span>
-                                </a>
+                                </a> --}}
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
                                     <button type="submit" class="dropdown-item ai-icon">

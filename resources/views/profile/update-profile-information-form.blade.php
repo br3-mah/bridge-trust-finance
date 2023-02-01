@@ -54,15 +54,21 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-jet-input-error for="name" class="mt-2" />
+            <x-jet-label for="fname" value="{{ __('First Name') }}" />
+            <x-jet-input id="fname" type="text" class="mt-1 block w-full form-control input-default " wire:model.defer="state.fname" autocomplete="name" />
+            <x-jet-input-error for="fname" class="mt-2" />
+        </div>
+        <!-- Name -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="lname" value="{{ __('Last Name') }}" />
+            <x-jet-input id="lname" type="text" class="mt-1 block w-full form-control input-default " wire:model.defer="state.lname" autocomplete="name" />
+            <x-jet-input-error for="lname" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <x-jet-input id="email" type="email" class="mt-1 block w-full form-control input-default" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
     </x-slot>
@@ -72,7 +78,7 @@
             {{ __('Saved.') }}
         </x-jet-action-message>
 
-        <x-jet-button wire:loading.attr="disabled" wire:target="photo">
+        <x-jet-button wire:loading.attr="disabled" class="btn  btn-square btn-primary" wire:target="photo">
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>

@@ -17,9 +17,9 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('view-loan-requests') }}">Loan Requests</a></li>
-                    <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li>
+                    {{-- <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li>
                     <li><a href="{{ route('view-loan-history') }}">Loan History</a></li>
-                    <li><a href="{{ route('view-repayment-calculator') }}">Repayment Calculator</a></li>
+                    <li><a href="{{ route('view-repayment-calculator') }}">Repayment Calculator</a></li> --}}
                     {{-- <li><a href="to-do-list.html">To Do List</a></li>
                     <li><a href="chat.html">Chat</a></li>
                     <li><a href="activity.html">Activity</a></li> --}}
@@ -55,34 +55,29 @@
                     <li><a href="chart-peity.html">Peity</a></li>
                 </ul>
             </li> --}}
-            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+            @can('view system setting')
+            <li>
+                <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                     <img width="40" src="{{ asset('public/images/4.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Settings</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="app-profile.html">Profile</a></li>
-                    <li><a href="edit-profile.html">Edit Profile</a></li>
-                    <li><a href="post-details.html">Uploads</a></li>
-                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Manage Loans</a>
+                    <li><a href="{{ route('users') }}">Users</a></li>
+                    <li><a href="{{ route('roles') }}">Roles & Permissions</a></li>
+                    {{-- <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Manage Loans</a>
                         <ul aria-expanded="false">
                             <li><a href="email-compose.html">Rates</a></li>
                             <li><a href="email-inbox.html">Packages</a></li>
+                        </ul>
+                    </li> --}}
+                    {{-- <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Site Manager</a>
+                        <ul aria-expanded="false">
+                            <li><a href="email-compose.html">Contact Details</a></li>
+                            <li><a href="email-inbox.html">Social Media</a></li>
                             <li><a href="email-read.html">Policies</a></li>
                             <li><a href="email-read.html">Terms & Conditions</a></li>
-                        </ul>
-                    </li>
-                    {{-- <li><a href="app-calender.html">Calendar</a></li>
-                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Shop</a>
-                        <ul aria-expanded="false">
-                            <li><a href="ecom-product-grid.html">Product Grid</a></li>
-                            <li><a href="ecom-product-list.html">Product List</a></li>
-                            <li><a href="ecom-product-detail.html">Product Details</a></li>
-                            <li><a href="ecom-product-order.html">Order</a></li>
-                            <li><a href="ecom-checkout.html">Checkout</a></li>
-                            <li><a href="ecom-invoice.html">Invoice</a></li>
-                            <li><a href="ecom-customers.html">Customers</a></li>
                         </ul>
                     </li> --}}
                 </ul>

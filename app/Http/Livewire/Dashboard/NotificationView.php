@@ -6,8 +6,10 @@ use Livewire\Component;
 
 class NotificationView extends Component
 {
+    public $notifications;
     public function render()
     {
+        $this->notifications = auth()->user()->notifications()->get();
         return view('livewire.dashboard.notification-view')
         ->layout('layouts.dashboard');
     }

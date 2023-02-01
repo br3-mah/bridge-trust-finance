@@ -1,3 +1,4 @@
+<div>
 <!--Start breadcrumb area-->
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg"
@@ -105,24 +106,24 @@
 
             <div class="col-xl-6">
                 <div class="contact-form">
-                    <form id="contact-form" name="contact_form" class="default-form2">
+                    <form name="contact_form" class="default-form2">
 
                         <div class="form-group">
                             <label>Name</label>
                             <div class="input-box">
-                                <input type="text" wire:model="name" id="formName" placeholder="xxxxxx"
+                                <input type="text" wire:model="name" id="formName" placeholder="Fullname"
                                     required="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
                             <div class="input-box">
-                                <input type="email" wire:model="email" id="formEmail" placeholder="" required="">
+                                <input type="email" wire:model="email" id="formEmail" placeholder="example@mail.com" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Ph. Num</label>
+                            <label>Phone. Num</label>
                             <div class="input-box">
                                 <input type="text" wire:model="phone" value="" id="formPhone" placeholder="">
                             </div>
@@ -139,22 +140,24 @@
                         <div class="form-group">
                             <label>Message</label>
                             <div class="input-box">
-                                <textarea wire:model="message" id="formMessage" placeholder=""
-                                    required=""></textarea>
+                                <textarea wire:model="message" id="formMessage" placeholder=""required="">
+                                    
+                                </textarea>
                             </div>
                         </div>
 
-                        <div class="button-box">
-                            {{-- <input id="form_botcheck" name="botcheck" class="form-control" type="hidden"
-                                value=""> --}}
-                            <button class="btn-one" wire:click="send();" data-loading-text="Please wait...">
-                                <span class="txt">
-                                    send a message
-                                </span>
-                            </button>
-                        </div>
+                        
 
                     </form>
+                    <div class="button-box">
+                        {{-- <input id="form_botcheck" name="botcheck" class="form-control" type="hidden"
+                            value=""> --}}
+                        <button class="btn-one" wire:click.prevent="send()" data-loading-text="Please wait...">
+                            <span class="txt">
+                                send a message
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -405,3 +408,5 @@
     </div>
 </section>
 <!--End Customer Care Numbers Area-->
+
+</div>

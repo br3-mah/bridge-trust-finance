@@ -54,7 +54,7 @@
 										</a>
 										</div>
 										<h2>Hi,Welcome Back!</h2>
-										<x-jet-validation-errors class="mb-4" />
+										<x-jet-validation-errors class="mb-4 text-danger" />
 
 										@if (session('status'))
 											<div class="mb-4 font-medium text-sm text-green-600">
