@@ -38,7 +38,7 @@
                                                 <span>{{ $user->name[0] }}</span>
                                             @endif
                                         @else
-                                            <img class="rounded-circle" width="35" src="{{ asset('public/storage/'.$user->profile_photo_path) }}" />
+                                            <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
                                     <td>{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>

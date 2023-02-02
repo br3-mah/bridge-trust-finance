@@ -167,8 +167,18 @@
                                             <h5 class="mb-0">{{ auth()->user()->name }}</h5>
                                             <span class="d-block text-end">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) ?? 'Guest' }}</span>
                                         </div>
-                                    </div>
-                                    <img src="{{asset('public/images/user.jpg')}}" alt="">
+                                    </div>                                        
+                                    @if(auth()->user()->profile_photo_path == null)
+                                        <div class="p-3 rounded-full">
+                                            @if(auth()->user()->fname != null && auth()->user()->lname != null)
+                                                <span class="text-primary">{{ auth()->user()->fname[0].' '.auth()->user()->lname[0] }}</span>
+                                            @else
+                                                <span class="text-primary">{{ auth()->user()->name[0] }}</span>
+                                            @endif
+                                        </div>
+                                    @else
+                                    <img src="{{ Storage::url('public/'.auth()->user()->profile_photo_path) }}" alt="">
+                                    @endif
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" style="">

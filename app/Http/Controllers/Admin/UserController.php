@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -29,15 +30,15 @@ class UserController extends Controller
     {
         try {
             //For demo purposes only. When creating user or inviting a user
-            // you should create a generated random password and email it to the user
-            if($request->file('image_path') != null){
-                $image_path = $request->file('image_path')->store('image_path', 'public');
+            // you should create a generated random password and email it to the user        
+            if ($request->file('image_path')) {
+                $url = Storage::put('public/users', $request->file('image_path'));
             }
-
+            
             $u = $user->create(array_merge($request->all(), [
                 'password' => bcrypt('peace2u'),
                 'active' => 1,
-                'image_path' => $image_path ?? ''
+                'profile_photo_path' => $url ?? ''
             ]));
 
             $details = [
