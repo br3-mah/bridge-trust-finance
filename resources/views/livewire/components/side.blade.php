@@ -9,23 +9,34 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
-            <div class="menu-icon">
-                    <img width="40" src="{{ asset('public/images/2.svg') }}" alt="">
+            @can('view loans')
+            <li>
+                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <div class="menu-icon">
+                        <img width="40" src="{{ asset('images/1.svg') }}" alt="">
                     </div>
-                    <span class="nav-text">My Loans</span>
+                    <span class="nav-text">My Loan</span>
                 </a>
                 <ul aria-expanded="false">
+                    @can('view loan requests')
                     <li><a href="{{ route('view-loan-requests') }}">Loan Requests</a></li>
-                    {{-- <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li>
+                    @endcan
+                    @can('view loan rates')
+                    <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li>
+                    @endcan
+                    @can('view loan history')
                     <li><a href="{{ route('view-loan-history') }}">Loan History</a></li>
-                    <li><a href="{{ route('view-repayment-calculator') }}">Repayment Calculator</a></li> --}}
-                    {{-- <li><a href="to-do-list.html">To Do List</a></li>
-                    <li><a href="chat.html">Chat</a></li>
-                    <li><a href="activity.html">Activity</a></li> --}}
+                    @endcan
+                    @can('view loan calculator')
+                    <li><a href="{{ route('view-repayment-calculator') }}">Repayment Calculator</a></li>
+                    @endcan 
                 </ul>
             </li>
-            {{-- <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+            @endcan
+            
+            @can('view kyc')
+            <li>
+                <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                         <img width="40" src="{{ asset('images/1.svg') }}" alt="">
                     </div>
@@ -39,8 +50,11 @@
 
                 </ul>
             </li>
-
-            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+            @endcan
+            
+            @can('help-desk and support')
+            <li>
+                <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                     <img width="40" src="{{ asset('images/3.svg') }}" alt="">
                     </div>
@@ -54,8 +68,10 @@
                     <li><a href="chart-sparkline.html">Sparkline</a></li>
                     <li><a href="chart-peity.html">Peity</a></li>
                 </ul>
-            </li> --}}
-            @can('view system setting')
+            </li> 
+            @endcan
+
+            @can('view system settings')
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -65,7 +81,9 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('users') }}">Users</a></li>
+                    @can('view user roles')
                     <li><a href="{{ route('roles') }}">Roles & Permissions</a></li>
+                    @endcan
                     {{-- <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Manage Loans</a>
                         <ul aria-expanded="false">
                             <li><a href="email-compose.html">Rates</a></li>
@@ -82,13 +100,13 @@
                     </li> --}}
                 </ul>
             </li>
+            @endcan
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                     <img width="40" src="{{ asset('images/6.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Logout</span>
                 </a>
-
             </li>
 
         </ul>

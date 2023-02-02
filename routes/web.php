@@ -45,6 +45,17 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', DashboardView::class)->name('dashboard');
+    // Administrator
+    Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
+    Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
+    Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
+    Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');
+    // ----- settings
+    Route::get('users', UserView::class)->name('users');
+    Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
+    Route::get('notifications', NotificationView::class)->name('notifications');
+
+    Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');
 });
 
 Route::resource('posts', PostController::class);
@@ -70,17 +81,5 @@ Route::get('category/{category}', [PostController::class, 'category'])->name('po
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 
 // Alerts and Notifications
-Route::get('notifications', NotificationView::class)->name('notifications');
 Route::get('successfully-applied-a-loan', SuccessPage::class)->name('success-application');
 Route::get('email-sent-successfully', SuccessEmailPage::class)->name('success-email');
-
-// Administrator
-Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
-Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
-Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
-Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');
-// ----- settings
-Route::get('users', UserView::class)->name('users');
-Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
-
-Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');

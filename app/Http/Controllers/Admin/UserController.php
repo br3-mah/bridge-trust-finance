@@ -30,8 +30,8 @@ class UserController extends Controller
         try {
             //For demo purposes only. When creating user or inviting a user
             // you should create a generated random password and email it to the user
-            if($request->file('profile_photo_path') != null){
-                $image_path = $request->file('profile_photo_path')->store('image_path', 'public');
+            if($request->file('image_path') != null){
+                $image_path = $request->file('image_path')->store('image_path', 'public');
             }
 
             $u = $user->create(array_merge($request->all(), [
@@ -51,8 +51,7 @@ class UserController extends Controller
             return redirect()->route('users')
                 ->withSuccess(__('User created successfully.'));
         } catch (\Throwable $th) {
-            Session::flash('attention', "User created successfully.");
-            Session::flash('error_msg', "Looks like the email was not sent.");
+            Session::flash('error_msg', substr($th->getMessage(),16,110));
             return redirect()->route('users');
         }
 

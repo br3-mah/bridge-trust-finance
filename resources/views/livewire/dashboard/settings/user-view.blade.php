@@ -7,23 +7,7 @@
                     <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button>
 
                 </div>
-                @if (Session::has('attention'))
-                <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
-                    <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
-                    {{ Session::get('attention') }}
-                    <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
-                        <i data-lucide="x" class="w-4 h-4"></i> 
-                    </button> 
-                </div>
-                @elseif (Session::has('error_msg'))
-                <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
-                    <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
-                    {{ Session::get('error_msg') }}
-                    <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
-                        <i data-lucide="x" class="w-4 h-4"></i> 
-                    </button> 
-                </div>
-                @endif
+
                 <div class="card-body pb-0">
 
                     <div class="table-responsive">
@@ -86,6 +70,20 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        @if (Session::has('attention'))
+                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-check"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button> {{ Session::get('attention') }}
+                        </div>
+                        @elseif (Session::has('error_msg'))
+                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-help"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button>
+                            <strong>Error!</strong> {{ Session::get('error_msg') }}
+                        </div
+                        @endif
                     </div>
                 </div>
             </div>
@@ -102,7 +100,7 @@
                     </button>
                 </div>
                 
-                <form method="POST" action="{{ route('create-user') }}"  class="needs-validation" novalidate enctype="multipart/form-data">
+                <form method="POST" action="{{ route('create-user') }}"  class="needs-validation" validate enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="col-lg-12">
@@ -110,17 +108,17 @@
                                 <div class="card-body">
                                     <div class="form-validation">
                                             <div class="row">
-                                                <div class="col-xl-6">
+                                                <div class="col-xl-6 col-xxl-6 col-lg-6">
                                                     <div class="mb-2">
-                                                        <div class="col-12">
-                                                            <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                                                                <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" id="preview-image-before-upload_create" src="{{ asset('dist/images/profile-10.jpg') }}">
+                                                        <div class="col-6">
+                                                            <div class="border-2 border-dashed shadow-xs border-slate-200/60 dark:border-darkmode-400 rounded-md p-0">
+                                                                <div class="h-20 relative image-fit cursor-pointer zoom-in mx-auto">
+                                                                    <img class="col-12" alt="" id="preview-image-before-upload_create" src="{{ asset('public/images/noimage.jpg') }}">
                                                                     {{-- <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div> --}}
                                                                 </div>
                                                                 <div class="mx-auto cursor-pointer relative mt-5">
-                                                                <button type="button" class="btn btn-primary w-full">Add Photo</button>
-                                                                    <input type="file" id="prof_image_create" name="profile_photo_path" class="w-full h-full top-0 left-0 absolute opacity-0"> 
+                                                                    {{-- <button type="button" class="btn btn-square btn-primary">Add Photo</button> --}}
+                                                                    <input type="file" id="prof_image_create" name="image_path" class="w-full h-full top-0 left-0"> 
                                                                     {{-- <input type="file" name="image_path" class="w-full h-full"> --}}
                                                                 </div>
                                                                 <small>
@@ -258,7 +256,7 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <textarea name="address" class="form-control" id="validationCustom04"  rows="5" placeholder="What would you like to see?" required></textarea>
+                                                            <textarea name="address" class="form-control" id="validationCustom04"  rows="5" placeholder="Where does the user stay?" required></textarea>
                                                             <div class="invalid-feedback">
                                                                 Please enter an Address.
                                                             </div>
@@ -544,3 +542,34 @@
     @endif
 
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function (e) {
+   $('#prof_image_create').change(function(){
+        let reader = new FileReader();
+        reader.onload = (e) => { 
+            $('#preview-image-before-upload_create').attr('src', e.target.result); 
+        }
+        reader.readAsDataURL(this.files[0]); 
+    });
+
+    // const select = document.getElementById('user_group_select');
+
+    // select.addEventListener('change', function handleChange(event) {
+    //     if(event.target.value == 'patient'){
+    //         $('#professional_details').hide();
+    //         $('#medical_details').show();
+    //     }else{
+    //         $('#professional_details').show();
+    //         $('#medical_details').hide();
+    //     }
+
+    //     // // 👇️ get selected VALUE even outside event handler
+    //     // console.log(select.options[select.selectedIndex].value);
+
+    //     // // 👇️ get selected TEXT in or outside event handler
+    //     // console.log(select.options[select.selectedIndex].text);
+    // });
+});
+
+</script>

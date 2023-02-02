@@ -44,7 +44,8 @@ class UserRolesView extends Component
             $this->clearFields();
             return redirect()->back();
         } catch (\Throwable $th) {
-            dd($th);
+            Session::flash('error_msg', substr($th->getMessage(),16,110));
+            return redirect()->route('users');
         }
     }
 
@@ -72,7 +73,8 @@ class UserRolesView extends Component
             $role->syncPermissions($this->permission);
             Session::flash('attention', "Role updated successfully.");
         } catch (\Throwable $th) {
-            dd($th);
+            Session::flash('error_msg', substr($th->getMessage(),16,110));
+            return redirect()->route('users');
         }
         // return redirect()->route('roles.index');
     }
