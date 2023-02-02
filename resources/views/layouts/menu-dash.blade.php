@@ -77,8 +77,8 @@
                                                 <img alt="image" width="50" src="{{ ('public/images/avatar/1.jpg') }}">
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="mb-1">{{ $note->data['name'] }}</h6>
-                                                <small class="d-block">{{ $note->data['msg'] }}</small>
+                                                <h6 class="mb-1">{{ $item->data['name'] }}</h6>
+                                                <small class="d-block">{{ $item->data['msg'] }}</small>
                                             </div>
                                         </div>
                                     </li>

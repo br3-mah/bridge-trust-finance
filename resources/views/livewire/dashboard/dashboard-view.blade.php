@@ -59,20 +59,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header ">
-                    <h5 class="modal-title">Enter Debit or Credit card Details</h5>
+                    <h5 class="modal-title">Transfer Funds to Customer</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label class="form-label">Card Number</label>
-                    <input type="number" class="form-control mb-3" id="exampleInputEmail7" placeholder="card no.">
-                    <label class="form-label">Expiry/Validity</label>
+                    <label class="form-label">Loan Application</label>
+                    <select multiple class="default-select uppercase form-control wide mb-3" id="exampleInputEmail7" placeholder="Find Customer">
+                        @forelse ($all_loan_requests as $item)
+                        <option value="{{ $item->id }}">{{ $item->fname.' '.$item->lname.' | K'.$item->amount.' - '.$item->type.' Loan'.' | Duration '.$item->repayment_plan}}</option>
+                        @empty
+                        <option>No Customers Yet</option>
+                        @endforelse
+                    </select>
+                    {{-- <label class="form-label">Expiry/Validity</label>
                     <input type="number" class="form-control mb-3" id="exampleInputEmail8" placeholder="Year/Month">
                     <label class="form-label">CVV</label>
-                    <input type="number" class="form-control mb-3" id="exampleInputEmail9" placeholder="123">
+                    <input type="number" class="form-control mb-3" id="exampleInputEmail9" placeholder="123"> --}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Proceed to Transfer</button>
                 </div>
             </div>
         </div>
@@ -81,14 +87,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header ">
-                    <h5 class="modal-title">Send invoice</h5>
+                    <h5 class="modal-title">Send Payment Remainders</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <label class="form-label">Send email to</label>
-                    <input type="email" class="form-control mb-3" id="exampleInputEmail10" placeholder="Art Vandelay<art@vandelay.com>">
+                    <select multiple class="default-select uppercase form-control wide mb-3" id="exampleInputEmail7" placeholder="Find Customer">
+                        @forelse ($all_loan_requests as $item)
+                        <option value="{{ $item->email }}">{{ $item->fname.' '.$item->lname.' | K'.$item->amount.' - '.$item->type.' Loan'}}</option>
+                        @empty
+                        <option>No Customers Found</option>
+                        @endforelse
+                    </select>
                     <label class="form-label">Subject</label>
-                    <input type="number" class="form-control mb-3" id="exampleInputEmail11" placeholder="invoice Vi-001 from America">
+                    <input type="number" class="form-control mb-3" id="exampleInputEmail11" placeholder="Loan Payback Remainder">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Body</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -96,7 +108,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Remaind Customer(s)</button>
                 </div>
             </div>
         </div>
@@ -145,6 +157,7 @@
                                             <circle cx="19.2278" cy="19.2278" r="19.2278" fill="white" fill-opacity="0.2" />
                                         </svg>
                                     </div>
+                                    @can('transfer funds to customers')
                                     <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal3">
                                         <span class="dz-wallet icon-box icon-box-lg m-auto mb-1 d-block">
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,14 +168,16 @@
                                         </span>
                                         <span>Transfer </span>
                                     </button>
-
+                                    @endcan
                                 </div>
                                 <div class="card-body py-3 pt-1 d-flex align-items-center justify-content-between flex-wrap pe-3">
                                     <div class="wallet-info">
                                         <span class="fs-14 font-w400 d-block">Wallet Balance</span>
-                                        <h2 class="font-w600 mb-0">K0,50.93</h2>
-                                        <span>+0,8% than last week</span>
+                                        <h2 class="font-w600 mb-0">ZMW 0</h2>
+                                        {{-- <span>0% than last week</span> --}}
                                     </div>
+
+                                    @can('payment remainders to customers')
                                     <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal4">
                                         <span class="dz-wallet icon-box icon-box-lg ms-3 mb-1 d-block">
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,8 +186,9 @@
                                                 <path d="M11.6667 17.5H8.16667C7.52233 17.5 7 18.0223 7 18.6667C7 19.311 7.52233 19.8333 8.16667 19.8333H11.6667C12.311 19.8333 12.8333 19.311 12.8333 18.6667C12.8333 18.0223 12.311 17.5 11.6667 17.5Z" fill="white" />
                                             </svg>
                                         </span>
-                                        <span>Send Invoices</span>
+                                        <span>Send<br>Remainders</span>
                                     </button>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -180,10 +196,10 @@
                             <div class="card dz-wallet">
                                 <div class="card-header border-0 align-items-start pb-0">
                                     <div>
-                                        <span class="fs-18 d-block mb-2">Main Balance</span>
-                                        <h2 class="fs-28 font-w600 ">K 98,452.44</h2>
+                                        <span class="fs-18 d-block mb-2">Total Customer Borrowed</span>
+                                        <h2 class="fs-28 font-w600 ">K 0</h2>
                                     </div>
-                                    <div class="dropdown send style-1">
+                                    {{-- <div class="dropdown send style-1">
                                         <a href="javascript:void(0);" class="btn-link btn sharp tp-btn-light btn-primary pill" data-bs-toggle="dropdown" aria-expanded="false">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M8.47908 4.58333C8.47908 3.19 9.60659 2.0625 10.9999 2.0625C12.3933 2.0625 13.5208 3.19 13.5208 4.58333C13.5208 5.97667 12.3933 7.10417 10.9999 7.10417C9.60658 7.10417 8.47908 5.97667 8.47908 4.58333ZM12.1458 4.58333C12.1458 3.95083 11.6324 3.4375 10.9999 3.4375C10.3674 3.4375 9.85408 3.95083 9.85408 4.58333C9.85408 5.21583 10.3674 5.72917 10.9999 5.72917C11.6324 5.72917 12.1458 5.21583 12.1458 4.58333Z" fill="#fff" />
@@ -195,26 +211,26 @@
                                             <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                             <a class="dropdown-item" href="javascript:void(0);">Edit</a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="card-body py-4 pt-md-2">
                                     <div class="progress default-progress mb-3">
                                         <div class="progress-bar bg-vigit progress-animated" style="width: 80%; height:8px;" role="progressbar">
-                                            <span class="sr-only">90% Complete</span>
+                                            <span class="sr-only">5% Complete</span>
                                         </div>
                                     </div>
                                     <div class="row mt-1">
                                         <div class="value-data col-xl-3 col-md-4 col-6">
-                                            <p class="mb-1">VALID THRU</p>
-                                            <h4 class="mb-0 font-w500 text-white">08/21</h4>
+                                            <p class="mb-1">LOANED OUT</p>
+                                            <h4 class="mb-0 font-w500 text-white">K 0</h4>
                                         </div>
                                         <div class="value-data col-xl-3 col-md-4 col-6">
-                                            <p class="mb-1">CARD HOLDER</p>
-                                            <h4 class="mb-0 text-white font-w500">Adam Jackson</h4>
+                                            <p class="mb-1">EXPECTED (Profit)</p>
+                                            <h4 class="mb-0 text-white font-w500">K 0</h4>
                                         </div>
                                         <div class="value-data col-xl-4 col-md-4 col-12">
-                                            <p class="mb-1">CARD NUMBER</p>
-                                            <h4 class="mb-0 text-white font-w500">**** **** **** 1234</h4>
+                                            <p class="mb-1">EXPECTED (Loss)</p>
+                                            <h4 class="mb-0 text-white font-w500">K 0</h4>
                                         </div>
                                         <div class="col-xl-2"></div>
 
@@ -298,7 +314,7 @@
                             <div class="card-header pb-0 border-0 flex-wrap">
                                 <div>
                                     <div class="chart-title mb-3">
-                                        <h2 class="heading">Project Statistic</h2>
+                                        <h2 class="heading">Loan Recoveries</h2>
                                     </div>
                                     <div class="d-flex align-items-center mb-2">
                                         <div class="round weekly" id="dzOldSeries">
@@ -331,7 +347,7 @@
                                             <option value="today">Today</option>
                                         </select>
 
-                                        <div class="dropdown custom-dropdown">
+                                        {{-- <div class="dropdown custom-dropdown">
                                             <div class="btn sharp btn-primary tp-btn " data-bs-toggle="dropdown">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M8.47908 4.58333C8.47908 3.19 9.60659 2.0625 10.9999 2.0625C12.3933 2.0625 13.5208 3.19 13.5208 4.58333C13.5208 5.97667 12.3933 7.10417 10.9999 7.10417C9.60658 7.10417 8.47908 5.97667 8.47908 4.58333ZM12.1458 4.58333C12.1458 3.95083 11.6324 3.4375 10.9999 3.4375C10.3674 3.4375 9.85408 3.95083 9.85408 4.58333C9.85408 5.21583 10.3674 5.72917 10.9999 5.72917C11.6324 5.72917 12.1458 5.21583 12.1458 4.58333Z" fill="#252289" />
@@ -344,7 +360,7 @@
                                                 <a class="dropdown-item" href="javascript:void(0);">Option 2</a>
                                                 <a class="dropdown-item" href="javascript:void(0);">Option 3</a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="progress-content">
                                         <div class="d-flex justify-content-between">
@@ -366,9 +382,9 @@
                         <div class="card lastest_trans h-auto">
                             <div class="card-header dz-border flex-wrap pb-3">
                                 <div>
-                                    <h2 class="heading">Lastest Requests</h2>
+                                    <h2 class="heading">Lastest 5 Requests</h2>
                                 </div>
-                                <div class="d-flex align-items-center">
+                                {{-- <div class="d-flex align-items-center">
                                     <select class="image-select default-select dashboard-select me-2 bg-white" aria-label="Default">
                                         <option selected>This Month</option>
                                         <option value="1">This Weeks</option>
@@ -388,7 +404,7 @@
                                             <a class="dropdown-item" href="javascript:void(0);">Option 3</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-body p-0">
                                 <!--list-->
@@ -400,7 +416,7 @@
                                                 <td>
                                                     <div class="trans-list">
                                                         <div class="profile-img">
-                                                            <img src="images/trans/3.jpg" class="avtar" alt="">
+                                                            <img src="{{ asset('public/images/trans/3.jpg') }}" class="avtar" alt="">
                                                         </div>
                                                         <div class="user-info">
                                                             <h6 class="font-w500 mb-0 ms-3">{{ $loan->fname.' '.$loan->lname }}</h6>
@@ -415,7 +431,7 @@
                                                 </td>
                                                 <td class="pe-3">
                                                     <div class="d-flex align-items-center justify-content-center">
-                                                        <div class="icon-box btn-secondary light me-2">
+                                                        {{-- <div class="icon-box btn-secondary light me-2">
                                                             <a href="javascript:void(0);">
                                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="#252289" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M13.7499 20.8538H8.24992C3.27242 20.8538 1.14575 18.7272 1.14575 13.7497V8.24967C1.14575 3.27217 3.27242 1.14551 8.24992 1.14551H13.7499C18.7274 1.14551 20.8541 3.27217 20.8541 8.24967V13.7497C20.8541 18.7272 18.7274 20.8538 13.7499 20.8538ZM8.24992 2.52051C4.02409 2.52051 2.52075 4.02384 2.52075 8.24967V13.7497C2.52075 17.9755 4.02409 19.4788 8.24992 19.4788H13.7499C17.9758 19.4788 19.4791 17.9755 19.4791 13.7497V8.24967C19.4791 4.02384 17.9758 2.52051 13.7499 2.52051H8.24992Z" fill="#252289" />
@@ -424,9 +440,8 @@
                                                                     <path d="M11.0001 16.7107C9.0659 16.7107 7.12257 16.399 5.28007 15.7848C4.92257 15.6657 4.73007 15.2715 4.84924 14.914C4.96841 14.5565 5.3534 14.3548 5.72007 14.4832C9.13007 15.6198 12.8792 15.6198 16.2892 14.4832C16.6467 14.364 17.0409 14.5565 17.1601 14.914C17.2792 15.2715 17.0867 15.6657 16.7292 15.7848C14.8776 16.4082 12.9342 16.7107 11.0001 16.7107Z" fill="#252289" />
                                                                 </svg>
                                                             </a>
-
-                                                        </div>
-                                                        <div class="dropdown custom-dropdown">
+                                                        </div> --}}
+                                                        {{-- <div class="dropdown custom-dropdown">
                                                             <div class="btn sharp btn-secondary light icon-box  border-0 me-0 " data-bs-toggle="dropdown">
                                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M8.47908 4.58333C8.47908 3.19 9.60659 2.0625 10.9999 2.0625C12.3933 2.0625 13.5208 3.19 13.5208 4.58333C13.5208 5.97667 12.3933 7.10417 10.9999 7.10417C9.60658 7.10417 8.47908 5.97667 8.47908 4.58333ZM12.1458 4.58333C12.1458 3.95083 11.6324 3.4375 10.9999 3.4375C10.3674 3.4375 9.85408 3.95083 9.85408 4.58333C9.85408 5.21583 10.3674 5.72917 10.9999 5.72917C11.6324 5.72917 12.1458 5.21583 12.1458 4.58333Z" fill="#252289" />
@@ -440,7 +455,7 @@
                                                                 <a wire:click="reject({{ $loan->id }})" class="dropdown-item" href="#">Reject Loan Request</a>
                                                                 <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -456,8 +471,9 @@
                                 </div>
                             </div>
                             <div class="table-pagenation pt-3 mt-0">
-                                <p>Showing 1-5 from 100 data</p>
-                                <nav>
+                                <a class="btn btn-xs btn-square btn-info" href="{{ route('view-loan-requests') }}">See more</a>
+                                {{-- <p>Showing 1-5 from 100 data</p> --}}
+                                {{-- <nav>
                                     <ul class="pagination pagination-gutter pagination-primary no-bg me-3">
                                         <li class="page-item page-indicator">
                                             <a class="page-link" href="javascript:void(0)">
@@ -472,7 +488,7 @@
                                                 <i class="fa-solid fa-angle-right"></i></a>
                                         </li>
                                     </ul>
-                                </nav>
+                                </nav> --}}
                             </div>
                         </div>
                         <div class="row">
@@ -480,8 +496,8 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center justify-content-between mb-3">
-                                            <h4 class="fs-20 font-w600 mb-0">Pie Chart</h4>
-                                            <div class="dropdown custom-dropdown">
+                                            <h4 class="fs-20 font-w600 mb-0">Users</h4>
+                                            {{-- <div class="dropdown custom-dropdown">
                                                 <div class="btn sharp btn-primary tp-btn " data-bs-toggle="dropdown">
                                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M8.47908 4.58333C8.47908 3.19 9.60659 2.0625 10.9999 2.0625C12.3933 2.0625 13.5208 3.19 13.5208 4.58333C13.5208 5.97667 12.3933 7.10417 10.9999 7.10417C9.60658 7.10417 8.47908 5.97667 8.47908 4.58333ZM12.1458 4.58333C12.1458 3.95083 11.6324 3.4375 10.9999 3.4375C10.3674 3.4375 9.85408 3.95083 9.85408 4.58333C9.85408 5.21583 10.3674 5.72917 10.9999 5.72917C11.6324 5.72917 12.1458 5.21583 12.1458 4.58333Z" fill="#252289" />
@@ -494,7 +510,7 @@
                                                     <a class="dropdown-item" href="javascript:void(0);">Option 2</a>
                                                     <a class="dropdown-item" href="javascript:void(0);">Option 3</a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div id="pieChart1"></div>
                                         <div class="chart-labels">
@@ -502,25 +518,25 @@
                                                 <li>
                                                     <svg class="me-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="14" height="14" rx="7" fill="#D7D7D7" />
-                                                    </svg><span class="font-w300">Grey</span>
+                                                    </svg><span class="font-w300">Guests</span>
                                                 </li>
                                                 <li>
                                                     <svg class="me-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="14" height="14" rx="7" fill="#9568ff" />
                                                     </svg>
-                                                    <span class="font-w300">Green</span>
+                                                    <span class="font-w300">Registered Customers</span>
                                                 </li>
                                                 <li>
                                                     <svg class="me-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="14" height="14" rx="7" fill="#2696FD" />
                                                     </svg>
-                                                    <span class="font-w300">Blue</span>
+                                                    <span class="font-w300">Loan Officers</span>
                                                 </li>
                                                 <li>
                                                     <svg class="me-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="14" height="14" rx="7" fill="#252289" />
                                                     </svg>
-                                                    <span class="font-w300">Dark</span>
+                                                    <span class="font-w300">Blacklisted</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -552,14 +568,14 @@
                                         <svg class="me-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="0.000488281" width="14" height="14" rx="3" fill="#FF9F00" />
                                         </svg>
-                                        <h6 class="mb-0 fs-14 font-w400">Income</h6>
+                                        <h6 class="mb-0 fs-14 font-w400">Disbursments</h6>
                                         <span class="text-primary font-w700 ms-auto">30%</span>
                                     </div>
                                     <div class="d-flex align-items-center mb-2">
                                         <svg class="me-2" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="0.000488281" width="14" height="14" rx="3" fill="#FD5353" />
                                         </svg>
-                                        <h6 class="mb-0 fs-14 font-w400">Expense</h6>
+                                        <h6 class="mb-0 fs-14 font-w400">Repayments</h6>
                                         <span class="text-primary font-w700 ms-auto">46%</span>
                                     </div>
                                     <div class="d-flex align-items-center">

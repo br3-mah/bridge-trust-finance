@@ -9,7 +9,7 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            {{-- @can('view loans') --}}
+            @can('view loans')
             <li>
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -32,7 +32,7 @@
                     @endcan 
                 </ul>
             </li>
-            {{-- @endcan --}}
+            @endcan
             
             @can('view kyc')
             <li>

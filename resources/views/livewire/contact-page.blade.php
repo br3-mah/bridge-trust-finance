@@ -219,7 +219,7 @@
                             </li>
                             <li>
                                 <h3>Phone & Email</h3>
-                                <p><a href="tel:+2609767759619">+2609767759619</a></p>
+                                <p><a href="tel:+2609767759619">+260 976 775 9619</a></p>
                                 <p><a href="mailto:admin@bridgetrustfinance.co.zm">support@bridgetrustfinance.co.zm</a></p>
                             </li>
                         </ul>
@@ -302,28 +302,28 @@
                                                     <td class="contact-info">
                                                         <ul>
                                                             <li>
-                                                                <a href="tel:2512353256">+844 123 4567 89</a>
-                                                                <span>(Toll Free)</span>
+                                                                <a href="tel:2512353256">+260 976 7759 619</a>
+                                                                {{-- <span>(Toll Free)</span> --}}
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
-                                                                    href="mailto:yourmail@email.com">customercare@bridgetrustfinance.co.zm</a>
+                                                                    href="mailto:yourmail@email.com">admin@bridgetrustfinance.co.zm</a>
                                                             </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="inner-title">
-                                                        <h3>Credit Card</h3>
+                                                        <h3>Loans & Payments</h3>
                                                     </td>
                                                     <td class="contact-info">
                                                         <ul>
                                                             <li>
-                                                                <a href="tel:2512353256">+844 789 0123 45</a>
+                                                                <a href="tel:2512353256">+260 976 7759 619</a>
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
-                                                                    href="mailto:yourmail@email.com">creditcard@bridgetrustfinance.co.zm</a>
+                                                                    href="mailto:yourmail@email.com">admin@bridgetrustfinance.co.zm</a>
                                                             </li>
                                                         </ul>
                                                     </td>
@@ -362,7 +362,7 @@
                                                         <ul>
                                                             <li>
                                                                 <a href="tel:2512353256">+844 123 4567 89</a>
-                                                                <span>(Toll Free)</span>
+                                                                {{-- <span>(Charges Apply)</span> --}}
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
@@ -373,7 +373,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="inner-title">
-                                                        <h3>Credit Card</h3>
+                                                        <h3>Loans & Payments</h3>
                                                     </td>
                                                     <td class="contact-info">
                                                         <ul>
