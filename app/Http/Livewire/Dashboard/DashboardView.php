@@ -15,10 +15,10 @@ class DashboardView extends Component
     public function render()
     {
         $this->all_loan_requests = Application::get();
-        $this->loan_requests = Application::where('email', auth()->user()->email)
+        $this->my_loan = Application::where('email', auth()->user()->email)
                                             ->where('status', 0)
                                             ->get()->first();
-                                            
+
         return view('livewire.dashboard.dashboard-view')
         ->layout('layouts.dashboard');
     }

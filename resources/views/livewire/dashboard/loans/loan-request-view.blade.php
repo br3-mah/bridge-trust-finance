@@ -34,13 +34,14 @@
                                                 <label class="form-check-label" for="checkAll"></label>
                                             </div>
                                         </th>
-                                        <th>ID</th>
+                                        <th>Loan #.</th>
                                         <th>Applicant</th>
                                         <th>Loan Type</th>
                                         <th>Amount</th>
                                         <th>Repayment Plan</th>
                                         <th>Status</th>
                                         <th>Date Sent</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -54,7 +55,7 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td>#A-{{ $loan->id }}</td>
+                                        <td>L{{ $loan->id }}</td>
                                         <td>{{ $loan->fname.' '.$loan->lname }}</td>
                                         <td>{{ $loan->type }}</td>
                                         <td>{{ $loan->amount }}</td>
@@ -83,6 +84,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $loan->created_at->toFormattedDateString() }}</td>
+                                        @can('accept and reject loan requests')
                                         <td>
                                             <div class="dropdown ms-auto text-end">
                                                 <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">
@@ -92,14 +94,19 @@
                                                     <path d="M13.5202 10.9997C13.5202 12.393 12.3927 13.5205 10.9994 13.5205C9.60601 13.5205 8.47852 12.393 8.47852 10.9997C8.47852 9.6063 9.60601 8.4788 10.9994 8.4788C12.3927 8.4788 13.5202 9.6063 13.5202 10.9997ZM9.85352 10.9997C9.85352 11.6322 10.3669 12.1455 10.9994 12.1455C11.6319 12.1455 12.1452 11.6322 12.1452 10.9997C12.1452 10.3672 11.6319 9.8538 10.9994 9.8538C10.3669 9.8538 9.85352 10.3672 9.85352 10.9997Z" fill="#2696FD"/>
                                                     </svg>
                                                 </div>
-                                                <div class="dropdown-menu dropdown-menu-end">
+                                                <div class="dropdown-menu dropdown-menu-start">
                                                     <a wire:click="stall({{ $loan->id }})" class="dropdown-item" href="#">Stall</a>
                                                     <a wire:click="accept({{ $loan->id }})" class="dropdown-item" href="#">Accept Request</a>
                                                     <a wire:click="reject({{ $loan->id }})" class="dropdown-item" href="#">Reject Loan Request</a>
                                                     <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a>
                                                 </div>
                                             </div>
-                                        </td>												
+                                        </td>
+                                        @endcan		
+                                        
+                                        @cannot('accept and reject loan requests')
+                                        <td></td>
+                                        @endcan									
                                     </tr>
                                     @empty
                                     <div class="intro-y col-span-12 md:col-span-6">

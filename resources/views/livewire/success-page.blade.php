@@ -109,7 +109,9 @@
                                     <div class="card">
                                         <div class="card-body">	
                                             <h2>Sign Up Today</h2>
-                                            <form class="mt-4">
+                                            <x-jet-validation-errors class="mb-4 text-danger" style="font-weight:bold; color:#f82003" />
+                                            <form class="mt-4" method="POST" action="{{ route('register') }}">
+                                                @csrf
                                                 <div class="form-group mb-2">
                                                     <label for="exampleInputEmail1">First Name</label>
                                                     <input name="fname" :value="old('fname')"  type="text" class="form-control" id="exampleInputname"  placeholder="Enter User Name">
@@ -138,7 +140,7 @@
                                                 </div>
                                                 {{-- <span><a href="javascript:void(0);" class="text-primary font-w500 c-pointer">Forget Password ?</a></span> --}}
                                             </div>
-                                                <button type="submit" style="background: #7B1001; p" class="btn text-white mb-4">Sign me up</button>
+                                                <button type="submit" style="background: #7B1001; padding:5px" class="btn  text-white  mb-4">Sign me up</button>
                                             </form>
                                         </div>
                                     </div>

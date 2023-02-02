@@ -59,7 +59,10 @@
 										</div>
 										<h2>Welcome</h2>
 										<span>Create your account today.</span>
-										<form class="mt-4">
+										<x-jet-validation-errors class="mb-4" />
+										<form class="mt-4" method="POST" action="{{ route('register') }}">
+											@csrf
+											
                                             <div class="form-group mb-4">
                                                 <label for="exampleInputEmail1">First Name</label>
                                                 <input name="fname" :value="old('fname')"  type="text" class="form-control" id="exampleInputname"  placeholder="Enter User Name">
@@ -154,14 +157,14 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xl-7 col-lg-7 position-relative bg-secondary login-border">
+							<div class="col-xl-7 col-lg-7 position-relative bg-secondary login-border" style="background-image: url('{{ asset("public/box/images/about.jpg") }}');">
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">
 										<h2 class="text-white mb-0">Welcome To Brige Trust Finance.</h2>
 										<p class="text-white">Your number one lending platform</p>
 									</div>
 									<div class="login-media-1">
-										<img src="https://img.freepik.com/premium-vector/funding-small-business-backing-startup-project-banking-loan-start-new-business-investment_566886-6085.jpg?w=740" alt="">
+										{{-- <img src="https://img.freepik.com/premium-vector/funding-small-business-backing-startup-project-banking-loan-start-new-business-investment_566886-6085.jpg?w=740" alt=""> --}}
 										<svg class="dot-svg" width="40" height="40" viewBox="0 0 89 90" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
 											<circle cx="23.5" cy="2.5" r="2.5" fill="#D9D9D9"/>

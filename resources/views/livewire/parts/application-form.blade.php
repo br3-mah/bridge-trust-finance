@@ -386,7 +386,7 @@
 
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-warning">Submit</button>
+                                    <button type="submit" class="btn-one">Submit</button>
                                 </div>
                                 <div wire:loading wire:target="submit">
                                     Loading...
@@ -454,7 +454,8 @@
         $('#wizard').find('a[href="#finish"]').remove(); 
         // alert(currentIndex);
         setTimeout(() => {
-            $('#wizard .actions li:last-child').append('<a href="#" style="display:block" wire:click="submit" role="menuitem">Send</a>');
+            // $('#wizard .actions li:last-child').$(selected).attr('" your attribute "', '" value you want to set "');
+            // $('#wizard .actions li:last-child').append('<a href="#" style="display:block" wire:click="submit" role="menuitem">Send</a>');
         }, 3000);
         //append a submit type button 
 

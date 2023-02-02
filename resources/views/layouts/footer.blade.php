@@ -1,6 +1,6 @@
 <footer class="footer-area">
     <div class="right-shape">
-        <img src="{{ asset('box/images/shapes/footer-right-shape.png') }}" alt="">
+        <img src="{{ asset('public/box/images/shapes/footer-right-shape.png') }}" alt="">
     </div>
 
     <!--Start Footer Top-->

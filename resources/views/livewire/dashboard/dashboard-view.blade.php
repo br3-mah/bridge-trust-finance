@@ -258,17 +258,17 @@
                                         <div class="value-data col-xl-3 col-md-4 col-6">
                                             <p class="mb-1">APPLICATION STATUS</p>
                                             <h4 class="mb-0 font-w500 text-white">
-                                                @if($my_loan->status ?? '' == 0)
+                                                @if($my_loan->status == 0)
                                                 <span class="badge badge-sm light badge-danger">
                                                     <i class="fa fa-circle text-danger me-1"></i>
                                                     Pending
                                                 </span>
-                                                @elseif($my_loan->status ?? '' == 1)
+                                                @elseif($my_loan->status == 1)
                                                 <span class="badge badge-sm light badge-success">
                                                     <i class="fa fa-circle text-success me-1"></i>
                                                     Accepted
                                                 </span>
-                                                @elseif($$my_loan->status ?? '' == 2)
+                                                @elseif($$my_loan->status == 2)
                                                 <span class="badge badge-sm light badge-warning">
                                                     <i class="fa fa-circle text-warning me-1"></i>
                                                     Under Review

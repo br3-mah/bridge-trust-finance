@@ -2,25 +2,25 @@
     <div style="background-image: url('{{ asset("public/images/bg.png'") }});background-size: cover;background-color: #7b1919;" class="deznav-scroll">
         <ul class="metismenu" id="menu">
             <li>
-                <a class="" href="{{ route('dashboard') }}" aria-expanded="false">
-                    <div class="menu-icon">
-                    <img width="40" src="{{ asset('public/images/7.svg') }}" alt="">
-                    </div>
+                <a href="{{ route('dashboard') }}" aria-expanded="false">
+                    <span class="menu-icon">
+                        <img width="25" src="{{ asset('public/images/7.svg') }}" alt="">
+                    </span>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            @can('view loans')
+            {{-- @can('view loans') --}}
             <li>
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
-                        <img width="40" src="{{ asset('images/1.svg') }}" alt="">
+                        <img width="25" src="{{ asset('public/images/2.svg') }}" alt="">
                     </div>
                     <span class="nav-text">My Loan</span>
                 </a>
                 <ul aria-expanded="false">
-                    @can('view loan requests')
+                    {{-- @can('view loan requests') --}}
                     <li><a href="{{ route('view-loan-requests') }}">Loan Requests</a></li>
-                    @endcan
+                    {{-- @endcan --}}
                     @can('view loan rates')
                     <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li>
                     @endcan
@@ -32,13 +32,13 @@
                     @endcan 
                 </ul>
             </li>
-            @endcan
+            {{-- @endcan --}}
             
             @can('view kyc')
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
-                        <img width="40" src="{{ asset('images/1.svg') }}" alt="">
+                        <img width="25" src="{{ asset('public/images/1.svg') }}" alt="">
                     </div>
                     <span class="nav-text">KYC</span>
                 </a>
@@ -56,7 +56,7 @@
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
-                    <img width="40" src="{{ asset('images/3.svg') }}" alt="">
+                    <img width="25" src="{{ asset('public/images/3.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Support/Chat</span>
                 </a>
@@ -75,7 +75,7 @@
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
-                    <img width="40" src="{{ asset('public/images/4.svg') }}" alt="">
+                    <img width="25" src="{{ asset('public/images/4.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Settings</span>
                 </a>
@@ -103,13 +103,14 @@
             @endcan
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
-                    <img width="40" src="{{ asset('images/6.svg') }}" alt="">
+                    <img width="25" src="{{ asset('public/images/6.svg') }}" alt="">
                     </div>
                     <span class="nav-text">Logout</span>
                 </a>
             </li>
 
         </ul>
+        @role('user')
         <div class="plus-box">
             <div class="media">
                 <span>
@@ -142,5 +143,6 @@
                 <a href="javascript:void(0);" class="btn bg-white btn-sm">Upgrade</a>
             </div>
         </div>
+        @endrole
     </div>
 </div>

@@ -35,6 +35,7 @@ class UserController extends Controller
                 $url = Storage::put('public/users', $request->file('image_path'));
             }
             
+            // Hash::make($input['password']),
             $u = $user->create(array_merge($request->all(), [
                 'password' => bcrypt('peace2u'),
                 'active' => 1,
