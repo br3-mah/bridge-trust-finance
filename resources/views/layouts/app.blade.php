@@ -6,9 +6,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Bridge Trust Finance || The Financial bridge you can trust!</title>
         <!-- Favicons Icons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/box/images/favicons/apple-touch-icon.png') }}" />
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/box/images/favicons/favicon-32x32.png') }}" />
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/box/images/favicons/favicon-16x16.png') }}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('public/images/logo-full.png') }}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/images/logo-full.png') }}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/images/logo-full.png') }}" />
         <link rel="manifest" href="{{ asset('public/images/logo-full.png') }}" />
         <meta name="description" content="Bridge Trust Finance" />
         <!-- fonts -->

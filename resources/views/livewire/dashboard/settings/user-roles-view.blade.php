@@ -1,4 +1,4 @@
-<div class="content-body">
+<div x-data="{ on:true }" class="content-body">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -34,7 +34,7 @@
                                                             </svg>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" wire:click="edit({{ $role->id }})">Edit</a>
+                                                            <button class="dropdown-item" wire:click="edit({{ $role->id }})">Edit</button>
                                                             <a class="dropdown-item" href="#">Delete</a>
                                                         </div>
                                                     </div>
@@ -192,7 +192,7 @@
     </div>
 
     {{-- Modal --}}
-    @if($createModal)
+    {{-- @if($createModal) --}}
     <div class="modal fade" id="exampleModalLong">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -241,17 +241,17 @@
             </div>
         </div>
     </div>
-    @endif
+    {{-- @endif --}}
     {{-- End Modal --}}
 
     {{-- Edit User Role Modal --}}
-    @if($editModal)
-    <div class="modal fade show" style="display: block; " id="exampleModalLong">
+
+    <div wire:ingore class="modal fade {{ $editModal }}" id="editUserRoleModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit {{ $role->name }} Role</h5>
-                    <button wire:click="toggleEditModal" type="button" class="btn-close" data-bs-dismiss="modal">
+                    <button wire:click="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
                 
@@ -264,26 +264,27 @@
                                     <div class="mb-3">
                                         <input class="form-control" wire:model.defer="name" value="{{ $role->name }}" type="text" placeholder="{{ $role->name }}">
                                     </div>
-                                    <div class="mb-2">
-                                        
-                                        @foreach($permissions as $key => $perm)
+                                    <div wire:ignore class="mb-2">
+                                        @forelse($permissions as $key => $perm)
                                         <div class="col-sm-9">
                                             <div class="form-check">
                                                 <input type="checkbox"
                                                 class="form-check-input permission" 
                                                 {{-- wire:model.defer="permission.{{ $key }}" --}}
+                                                @if(!empty($rolePermissions))
                                                 value="{{ $perm->name }}" 
                                                 {{ 
                                                     in_array($perm->name, $rolePermissions) ? 'checked' : '' 
                                                 }} 
+                                                @endif
                                                 >
                                                 <label class="form-check-label">
                                                     {{ $perm->name }}
                                                 </label>
                                             </div>
                                         </div>
-                                            
-                                        @endforeach
+                                        @empty
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
@@ -297,6 +298,5 @@
             </div>
         </div>
     </div>
-    @endif
     {{-- End Modal --}}
 </div>

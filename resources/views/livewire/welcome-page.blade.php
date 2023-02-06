@@ -351,8 +351,11 @@
                                                 </div>
                                                 <h3><a href="#">Women in Business Loans</a></h3>
                                                 <div class="border-box"></div>
-                                                <p>Equal blame belongs to those who fail their duty through
-                                                    weakness.</p>
+                                                <p>Bridge Trust Finance helps women entrepreneurs 
+                                                    launch new businesses and compete in the marketplace. 
+                                                    Connect with the training and funding opportunities 
+                                                    specifically for women.
+                                                </p>
                                                 <br>
                                                 <h6><span>*</span> Terms & Conditions</h6>
                                                 <div class="btn-box">
@@ -658,7 +661,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Educational Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -668,7 +671,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Personal Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -678,7 +681,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Asset Financing Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -764,7 +767,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Mobile / Internet Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -774,7 +777,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Home Improvement Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -784,7 +787,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div> -->
                                                             <!--End Single Item-->
@@ -872,7 +875,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>SME Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -882,7 +885,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Women in Business Soft Loans (Femiprise)</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -892,7 +895,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Asset Finance loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -967,7 +970,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Help-desk Support</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -977,7 +980,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Requests & Enquiries</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -987,7 +990,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Compliments & Complaints</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1072,7 +1075,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1082,7 +1085,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1092,7 +1095,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1177,7 +1180,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1187,7 +1190,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1197,7 +1200,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">+8 (222) 123 456 78</a>
+                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1234,9 +1237,9 @@
                 <div class="col-xl-6">
                     <div class="features-style3-img-box">
                         <div class="inner-img">
-                            <img class="paroller" src="{{ asset('public/box/images/resources/features-style3-img.png') }}" alt="">
+                            <img class="paroller" src="{{ asset('public/box/images/mobile.png') }}" alt="">
                         </div>
-                        <div class="icon-holder float-bob-y">
+                        {{-- <div class="icon-holder float-bob-y">
                             <span class="icon-interest-rate"></span>
                         </div>
                         <div class="icon-holder two">
@@ -1244,7 +1247,7 @@
                         </div>
                         <div class="icon-holder three">
                             <span class="icon-theater"></span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -1269,7 +1272,7 @@
                                     <div class="icon">
                                         <span class="icon-checkbox-mark"></span>
                                     </div>
-                                    <p>Great explorer of financing</p>
+                                    <p>Great explorer of Loans</p>
                                 </li>
                             </ul>
                             {{-- <div class="apply-credit-card">
@@ -1408,8 +1411,8 @@
                     <div class="faq-style1-bottom-box text-center">
                         <p>Didn’t get, Click below button to more anwers or <a href="{{ route('contact') }}">contact us.</a></p>
                         <div class="btns-box">
-                            <a class="btn-one" href="#">
-                                <span class="txt">Grab Your Deals</span>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn-one" href="#staticBackdrop">
+                                <span class="txt">Grab Your Loan</span>
                             </a>
                         </div>
                     </div>
@@ -1482,13 +1485,13 @@
                                 </li>
                             </ul> --}}
                             <div class="btns-box">
-                                <a class="btn-one" href="">
+                                {{-- <a class="btn-one" href="">
                                     <span class="txt">Grab Your Deals</span>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                         <div class="img-box">
-                            <div class="img-bg" style="background-image: url('{{ asset("public/box/images/resources/deals-1.jpg") }}');">
+                            <div class="img-bg" style="background-image: url('{{ asset("public/box/images/fam.jpg") }}');">
                             </div>
                             <div class="shape-left-1"></div>
                             <div class="shape-right-1"></div>
@@ -1528,13 +1531,13 @@
                                 </li>
                             </ul> --}}
                             <div class="btns-box">
-                                <a class="btn-one" href="#">
+                                {{-- <a class="btn-one" href="#">
                                     <span class="txt">Grab Your Deals</span>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                         <div class="img-box">
-                            <div class="img-bg" style="background-image: url('{{ asset("public/box/images/resources/deals-2.jpg") }}');">
+                            <div class="img-bg" style="background-image: url('{{ asset("public/box/images/graduate.jpg") }}');">
                             </div>
                             <div class="shape-left-1"></div>
                             <div class="shape-right-1"></div>
@@ -1574,13 +1577,13 @@
                                 </li>
                             </ul> --}}
                             <div class="btns-box">
-                                <a class="btn-one" href="#">
+                                {{-- <a class="btn-one" href="#">
                                     <span class="txt">Grab Your Deals</span>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                         <div class="img-box">
-                            <div class="img-bg" style="background-image: url('{{ asset('public/box/images/resources/deals-1.jpg') }}');">
+                            <div class="img-bg" style="background-image: url('{{ asset('public/box/images/v-loan.jpg') }}');">
                             </div>
                             <div class="shape-left-1"></div>
                             <div class="shape-right-1"></div>
@@ -1648,7 +1651,7 @@
     <section class="slogan-area">
         <div class="container">
             <div class="slogan-content-box">
-                <div class="slogan-content-box-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/slogan-content-box-bg.jpg") }}');"></div>
+                <div class="slogan-content-box-bg" style="background-image: url('{{ asset("public/box/images/mobile.jpg") }}');"></div>
                 <div class="inner-title">
                     <h2>Experience a New Digital World.</h2>
                     <p>Mobile Financing application with new & exciting features.</p>

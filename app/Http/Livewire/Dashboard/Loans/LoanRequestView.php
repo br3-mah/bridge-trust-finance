@@ -64,6 +64,7 @@ class LoanRequestView extends Component
                 'msg' => 'Your '.$x->type.' loan application is under review'
             ];
             $this->send_loan_feedback_email($mail);
+            $this->render();
         } catch (\Throwable $th) {
             dd($th);
         }

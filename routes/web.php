@@ -7,6 +7,7 @@ use App\Http\Livewire\AboutPage;
 use App\Http\Livewire\CareerPage;
 use App\Http\Livewire\ContactPage;
 use App\Http\Livewire\Dashboard\DashboardView;
+use App\Http\Livewire\Dashboard\Loans\LoanDetailView;
 use App\Http\Livewire\Dashboard\Loans\LoanHistoryView;
 use App\Http\Livewire\Dashboard\Loans\LoanRatesView;
 use App\Http\Livewire\Dashboard\Loans\LoanRepaymentCalculatorView;
@@ -54,8 +55,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('users', UserView::class)->name('users');
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
     Route::get('notifications', NotificationView::class)->name('notifications');
-
     Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');
+
+    // ---- loans
+    Route::get('loan-details', LoanDetailView::class)->name('loan-details');
 });
 
 Route::resource('posts', PostController::class);

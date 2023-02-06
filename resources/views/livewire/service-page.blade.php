@@ -22,322 +22,191 @@
 </section>
 <!--End breadcrumb area-->
 
-
-<!--Start Blog Style1 Area-->
-<section class="blog-page-one">
+<section class="service-style1-area">
+    <div class="service-style1-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/service-style1.jpg") }}');">
+    </div>
     <div class="container">
         <div class="row">
-
-            <!--Start Single blog Style1-->
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{ asset('public/box/images/refinance.png') }}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>Asset Financing Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
+            <div class="col-xl-12">
+                <div class="service-style1-title">
+                    <div class="sec-title">
+                        <h2>Financing For Your Needs</h2>
+                        <div class="sub-title">
+                            <p>The Institution that builds better relationships.</p>
                         </div>
                     </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-asset-loans') }}">
-                                A form of asset-based finance that uses assets on your balance sheet as security against lending.            
-                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{ asset('public/box/images/pay.png')}}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>Personal Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-personal-loans') }}">
-                                We know how to give you the BEST chance of getting approved. Great rates and expert knowledge.                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{asset('public/box/images/graduated.png')}}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>Educational Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-asset-loans') }}">
-                                Let us get sort out your asset and equipment finance so you can get on with running your business.                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>  
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{ asset('public/box/images/car.png') }}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>Vehicle Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-asset-loans') }}">
-                                With access to special rates our team can get you behind the wheel faster and cheaper!                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{ asset('public/box/images/sme.png') }}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>SME Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-asset-loans') }}">
-                                Fast access to business loans. if your business is eligible¹ to apply and approved
-                                 for a loan, funds are transferred as fast as the next business day                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{ asset('public/box/images/refinancing.png') }}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>Home Improvement Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-asset-loans') }}">
-                                You can rely on Home Improvement Loans from HDFC Bank for internal and 
-                                external repairs and restructuring. This loan covers various home 
-                                repair/renovation activities like painting, waterproofing and roofing, plumbing, 
-                                electrical work, tiling and flooring, grills, windows, compound walls, 
-                                and much more.                            
-                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="{{ asset('public/box/images/presentation.png') }}" alt="">
-                            <div class="overlay-icon">
-                                <a href="blog-single.php">
-                                    <span class="icon-right-arrow"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="category-date-box">
-                            <div class="category">
-                                <span class="icon-play-button-1"></span>
-                                <h5>Women In Business (Femiprise) Soft Loan</h5>
-                            </div>
-                            <div class="date">
-                                {{-- <h5>May 29, 2022</h5> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <small>
-                            <a href="{{ route('view-asset-loans') }}">
-                                Bridge Trust Finance helps women entrepreneurs launch new businesses and compete in the marketplace. 
-                                Connect with the training and funding opportunities specifically for women.                            </a>
-                        </small>
-                        {{-- <div class="bottom">
-                            <div class="meta-box">
-                                <ul class="meta-info">
-                                    <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
-                                    <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
-                                </ul>
-                            </div>
-                            <div class="share-btn">
-                                <a href="#"><span class="icon-share"></span></a>
-                            </div>
-                        </div> --}}
+                    <div class="get-assistant-box">
+                        {{-- <a href="#"><span class="icon-chatting"></span></a> --}}
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-xl-12">
-                <ul class="styled-pagination clearfix">
-                    <li class="arrow prev">
-                        <a href="#">
-                            <span class="fas fa-arrow-left left"></span>Prev
-                        </a>
-                    </li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="arrow next">
-                        <a href="#">
-                            Next<span class="fas fa-arrow-right right"></span>
-                        </a>
-                    </li>
-                </ul>
+                <div class="service-style1-tab">
+                    <!--Start Service Style1 Tab Button-->
+                    <div class="service-style1-tab__button">
+                        <ul class="tabs-button-box clearfix">
+                            <li data-tab="#individuals" class="tab-btn-item">
+                                <div class="inner">
+                                    <div class="left">
+                                        <h4>Financing for</h4>
+                                        <h3>Individuals</h3>
+                                    </div>
+                                    <div class="right">
+                                        <span class="icon-down-arrow"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li data-tab="#companies" class="tab-btn-item active-btn-item">
+                                <div class="inner">
+                                    <div class="left">
+                                        <h4>Financing for</h4>
+                                        <h3>Companies</h3>
+                                    </div>
+                                    <div class="right">
+                                        <span class="icon-down-arrow"></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--End Service Style1 Tab Button-->
+
+                    <!--Start Tabs Content Box-->
+                    <div class="tabs-content-box">
+
+                        <!--Tab-->
+                        <div class="tab-content-box-item" id="individuals">
+                            <div class="service-style1-tab-content-box-item">
+                                <div class="row">
+                                    <!--Start Single Service Box Style1-->
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="single-service-box-style1">
+                                            <div class="icon">
+                                                <span class="icon-safebox"></span>
+                                            </div>
+                                            <h3><a href="#">Personal Loans</a></h3>
+                                            <div class="border-box"></div>
+                                            <p>Good credit means a great rate. Got good credit? Get a low-interest, 
+                                                fixed-rate personal loan</p>
+                                            <h6><span>*</span> Interest rate up to 5% p.a</h6>
+                                            <div class="btn-box">
+                                                <a href="{{ route('view-personal-loans') }}"><span class="icon-right-arrow"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Single Service Box Style1-->
+                                    <!--Start Single Service Box Style1-->
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="single-service-box-style1">
+                                            <div class="icon">
+                                                <span class="icon-loan"></span>
+                                            </div>
+                                            <h3><a href="#">Educational Loans</a></h3>
+                                            <div class="border-box"></div>
+                                            <p>
+                                                An education loan can assist you in gaining admission to the university of your interest. 
+                                            </p>
+                                            <h6><span>*</span> Check today’s Interest Rates</h6>
+                                            <div class="btn-box">
+                                                <a href="{{ route('view-educational-loans') }}"><span class="icon-right-arrow"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Single Service Box Style1-->
+                                    <!--Start Single Service Box Style1-->
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="single-service-box-style1">
+                                            <div class="icon">
+                                                <span class="icon-online"></span>
+                                            </div>
+                                            <h3><a href="#">Women in Business Loans</a></h3>
+                                            <div class="border-box"></div>
+                                            <p>Bridge Trust Finance helps women entrepreneurs launch new 
+                                                businesses and compete in the marketplace. 
+                                                Connect with the training and funding 
+                                                opportunities specifically for women.
+                                            </p>
+                                            <br>
+                                            <h6><span>*</span> Terms & Conditions</h6>
+                                            <div class="btn-box">
+                                                <a href="{{ route('view-wib-loans') }}"><span class="icon-right-arrow"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Single Service Box Style1-->
+                                    <!--Start Single Service Box Style1-->
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="single-service-box-style1">
+                                            <div class="icon">
+                                                <span class="icon-online"></span>
+                                            </div>
+                                            <h3><a href="#">Home Improvement Loans</a></h3>
+                                            <div class="border-box"></div>
+                                            <p>Turn your dream of owning a home into reality with Mighty Trust Finance Home Loans. Whether you are 
+                                                buying an apartment, constructing a house or renovating your home, 
+                                                we have the right Home Loan for you.</p>
+                                            <br>
+                                            <h6><span>*</span> Terms & Conditions</h6>
+                                            <div class="btn-box">
+                                                <a href="{{ route('view-home-loans') }}"><span class="icon-right-arrow"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Single Service Box Style1-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Tab-->
+                        <div class="tab-content-box-item tab-content-box-item-active" id="companies">
+                            <div class="service-style1-tab-content-box-item">
+                                <div class="row">
+                                    <!--Start Single Service Box Style1-->
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="single-service-box-style1">
+                                            <div class="icon">
+                                                <span class="icon-safebox"></span>
+                                            </div>
+                                            <h3><a href="#">SMEs Loans</a></h3>
+                                            <div class="border-box"></div>
+                                            <p>Small business loans provide financing to help business owners launch, run and grow their businesses.</p>
+                                            {{-- <h6><span>*</span> Interest rate up to 5% p.a</h6> --}}
+                                            <div class="btn-box">
+                                                <a href="{{ route('view-sme-loans') }}"><span class="icon-right-arrow"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Single Service Box Style1-->
+                                    
+                                    <!--Start Single Service Box Style1-->
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="single-service-box-style1">
+                                            <div class="icon">
+                                                <span class="icon-loan"></span>
+                                            </div>
+                                            <h3><a href="#">Asset Finanance Loans</a></h3>
+                                            <div class="border-box"></div>
+                                            <p>A form of asset-based finance that uses assets on your balance sheet as security against lending.</p>
+                                            <h6><span>*</span> Check today’s Interest Rates</h6>
+                                            <div class="btn-box">
+                                                <a href="{{ route('view-asset-loans') }}"><span class="icon-right-arrow"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Single Service Box Style1-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--End Tabs Content Box-->
+
+                </div>
             </div>
-        </div> --}}
+        </div>
 
     </div>
 </section>

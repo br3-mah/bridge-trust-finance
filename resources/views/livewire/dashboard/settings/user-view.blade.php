@@ -279,7 +279,7 @@
                                                         </label>
                                                         <div class="col-lg-6">
                                                             <input type="text" class="form-control" id="validationCustom11" placeholder="4" required>
-                                                            <div class="invalid-feedback">
+                                                           <div class="invalid-feedback">
                                                                 Please select a range.
                                                             </div>
                                                         </div>

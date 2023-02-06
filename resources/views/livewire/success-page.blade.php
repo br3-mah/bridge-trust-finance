@@ -7,7 +7,7 @@
                         <div class="p-0">
                             <div class="row m-0">
                                 
-                                <div class="col-xl-7 col-lg-7 position-relative " style="color: #7B1001;">
+                                <div class="col-xl-12 col-lg-12 position-relative " style="color: #7B1001;">
                                     <div class="d-flex flex-column justify-content-between h-100">
                                         <div class="content text-center py-4" style="/* From https://css.glass */
                                         background: rgba(255, 255, 255, 0.4);
@@ -105,7 +105,7 @@
                                         </div> --}}
                                     </div>
                                 </div>
-                                <div class="col-xl-5 col-lg-5">
+                                {{-- <div class="col-xl-5 col-lg-5">
                                     <div class="card">
                                         <div class="card-body">	
                                             <h2>Sign Up Today</h2>
@@ -138,13 +138,12 @@
                                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                                     <label class="form-check-label font-w400" for="exampleCheck1">keep me signed in</label>
                                                 </div>
-                                                {{-- <span><a href="javascript:void(0);" class="text-primary font-w500 c-pointer">Forget Password ?</a></span> --}}
                                             </div>
                                                 <button type="submit" style="background: #7B1001; padding:5px" class="btn  text-white  mb-4">Sign me up</button>
                                             </form>
                                         </div>
                                     </div>
-                                </div>							
+                                </div>							 --}}
                             </div>
                         </div>
                     </div>

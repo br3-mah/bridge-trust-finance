@@ -22,13 +22,13 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
 
-        $this->call(CategorySeeder::class);
+        // $this->call(CategorySeeder::class);
 
-        Tag::factory(8)->create();
+        // Tag::factory(8)->create();
 
         Storage::makeDirectory('public/posts');
 
-        $this->call(PostSeeder::class);
+        // $this->call(PostSeeder::class);
 
     }
 }

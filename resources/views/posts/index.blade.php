@@ -1647,7 +1647,7 @@
     <section class="slogan-area">
         <div class="container">
             <div class="slogan-content-box">
-                <div class="slogan-content-box-bg" style="background-image: url('{{ asset("box/images/backgrounds/slogan-content-box-bg.jpg") }}');"></div>
+                <div class="slogan-content-box-bg" style="background-image: url('{{ asset("box/images/mobile.jpg") }}');"></div>
                 <div class="inner-title">
                     <h2>Experience a New Digital World.</h2>
                     <p>Mobile Financing application with new & exciting features.</p>

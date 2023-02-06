@@ -23,14 +23,15 @@ class RoleSeeder extends Seeder
         
         // Dashboard Page
         Permission::create(['name' => 'view dashboard', 'description' => 'See the dashboard'])->syncRoles([$role1, $role2, $role3]);
-        Permission::create(['name' => 'view financial overview', 'description' => 'view financial overview'])->syncRoles([$role1]);
+        Permission::create(['name' => 'view company financial statistics', 'description' => 'View company financial statistics'])->syncRoles([$role1]);
         Permission::create(['name' => 'help-desk and support', 'description' => 'Help-desk and support'])->syncRoles([$role1]);
         Permission::create(['name' => 'view kyc', 'description' => 'view financial overview'])->syncRoles([$role1, $role2]);
-        
+        Permission::create(['name' => 'company overview dashboard', 'description' => 'View company overview dashboard'])->syncRoles([$role1]);
+
         // User Page
         Permission::create(['name' => 'see the list of users', 'description'=> 'Sees all the list of users registered in the system'])->syncRoles([$role1]);
         Permission::create(['name' => 'create a user', 'description'=> 'Creates a new user'])->syncRoles([$role1]);
-        Permission::create(['name' => 'edit a user', 'description'=> 'Updates a user'])->syncRoles([$role1, $P]);
+        Permission::create(['name' => 'edit a user', 'description'=> 'Updates a user'])->syncRoles([$role1]);
         // Roles Page
         Permission::create(['name' => 'view user roles', 'description' => 'View user roles'])->syncRoles([$role1]);
         Permission::create(['name' => 'add user roles', 'description' => 'Add new roles'])->syncRoles([$role1]);
@@ -53,10 +54,7 @@ class RoleSeeder extends Seeder
         
         // Payments
         Permission::create(['name' => 'transfer funds to customers', 'description' => 'Transfer funds to customers'])->syncRoles([$role1]);
-        Permission::create(['name' => 'payment remainders to customers', 'description' => 'Payment remainders to customers'])->syncRoles([$role1]);
-
-        
-
+        Permission::create(['name' => 'payment remainders to customers', 'description' => 'Send payment remainders to customers'])->syncRoles([$role1]);
 
         // Permission::create(['name' => 'admin.categories.index', 'description' => 'See the list of categories'])->syncRoles([$role1, $role2]);
         // Permission::create(['name' => 'admin.categories.create', 'description' => 'Create a new category'])->syncRoles([$role1]);

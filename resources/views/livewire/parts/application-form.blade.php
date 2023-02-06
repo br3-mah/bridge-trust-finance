@@ -96,12 +96,13 @@
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
                                                         <select name="repayment_plan" class="wide">
-                                                            <option data-display="Proposed repayment plan">
-                                                                Proposed repayment plan
+                                                            <option data-display="Duration">
+                                                                Duration
                                                             </option>
-                                                            <option value="1 Week">After 1 Week</option>
-                                                            <option value="1 Month">After 1 Month</option>
-                                                            <option value="3 Month">After 3 Months</option>
+                                                            <option value="1 Week">1 Week</option>
+                                                            <option value="1 Month">1 Month</option>
+                                                            <option value="2 Month">2 Month</option>
+                                                            <option value="3 Month">3 Months</option>
 
                                                         </select>
                                                     </div>
@@ -386,7 +387,6 @@
 
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn-one">Submit</button>
                                 </div>
                                 <div wire:loading wire:target="submit">
                                     Loading...
@@ -450,15 +450,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        //remove default #finish button
-        $('#wizard').find('a[href="#finish"]').remove(); 
-        // alert(currentIndex);
-        setTimeout(() => {
-            // $('#wizard .actions li:last-child').$(selected).attr('" your attribute "', '" value you want to set "');
-            // $('#wizard .actions li:last-child').append('<a href="#" style="display:block" wire:click="submit" role="menuitem">Send</a>');
-        }, 3000);
-        //append a submit type button 
-
     }); 
         function submit_request(){
             var data = $('form').serialize();

@@ -15,12 +15,13 @@ class UserRolesView extends Component
     use WithPagination;
     public $user_roles, $permissions, $name, $role, $rolePermissions;
     public $permission = [];
-    public $editModal = false;
+    public $editModal;
     public $createModal = false;
     // public $checked = 'checked';
 
     public function render()
     {
+        $this->editModal = '';
         $this->user_roles = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
@@ -59,7 +60,12 @@ class UserRolesView extends Component
     {
         $this->role = $role;
         $this->rolePermissions = $role->permissions->pluck('name')->toArray();
-        $this->editModal = true;
+        $this->editModal = 'show';
+         
+    }
+
+    public function updatedEditModal(){
+        $this->editModal = 'show';
     }
 
     public function update(Role $role)
@@ -91,9 +97,9 @@ class UserRolesView extends Component
         $this->createModal = !$this->createModal;
         $this->clearFields();
     }
-    public function toggleEditModal(){
-        $this->editModal = !$this->editModal;
-        $this->clearEditModal();
+
+    public function closeModal(){
+        $this->editModal = '';
     }
 
     // ------------------ Clear

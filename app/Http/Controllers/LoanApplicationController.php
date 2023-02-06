@@ -57,6 +57,7 @@ class LoanApplicationController extends Controller
             'phone'=> $form['phone'],
             'gender'=> $form['gender'],
             'type'=> $form['type'],
+            'complete'=> 1,
             'repayment_plan'=> $form['repayment_plan'],
 
             'glname'=> $form['glname'],

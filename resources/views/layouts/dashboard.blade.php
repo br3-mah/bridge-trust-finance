@@ -23,7 +23,8 @@
         <!--swiper-slider-->
         <link rel="stylesheet" href="{{ asset('public/vendor/swiper/css/swiper-bundle.min.css') }}">
         <link href="{{ asset('public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-            
+        <!-- Form step -->
+        <link href="{{ asset('public/vendor/jquery-smartwizard/dist/css/smart_wizard.min.css') }}" rel="stylesheet">
         <!-- Datatable -->
         <link href="{{ asset('public/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
         <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
@@ -87,7 +88,9 @@
 	<script src="{{ asset('public/vendor/wow-master/dist/wow.min.js') }}"></script>
 	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
 	<script src="{{ asset('public/vendor/bootstrap-select-country/js/bootstrap-select-country.min.js') }}"></script>
-
+	<!-- Form Steps -->
+	<script src="{{ asset('public/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js') }}"></script>
+    
 	<script src="{{ asset('public/js/deznav-2-init.js') }}"></script>
 	<script src="{{ asset('public/js/custom.min.js') }}"></script>
 	<script src="{{ asset('public/js/demo-2.js') }}"></script>
@@ -99,6 +102,9 @@
 		});
 
 		$(document).ready(function() {
+			// SmartWizard initialize
+			$('#smartwizard').smartWizard();
+
 			$(".booking-calender .fa.fa-clock-o").removeClass(this);
 			$(".booking-calender .fa.fa-clock-o").addClass('fa-clock');
 		});
