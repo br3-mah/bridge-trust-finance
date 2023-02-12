@@ -4,13 +4,14 @@ namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Application;
 use App\Traits\EmailTrait;
+use App\Traits\WalletTrait;
 use Livewire\Component;
 
 class DashboardView extends Component
 {
 
-    use EmailTrait;
-    public $loan_requests, $loan_request, $all_loan_requests, $my_loan;
+    use EmailTrait, WalletTrait;
+    public $loan_requests, $loan_request, $all_loan_requests, $my_loan, $wallet;
 
     public function render()
     {
@@ -18,6 +19,7 @@ class DashboardView extends Component
         $this->my_loan = Application::where('email', auth()->user()->email)
                                             ->get()->first();
 
+        $this->wallet = $this->getWalletBalance(auth()->user()->id);
         return view('livewire.dashboard.dashboard-view')
         ->layout('layouts.dashboard');
     }

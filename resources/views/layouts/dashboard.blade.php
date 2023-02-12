@@ -104,7 +104,14 @@
 		$(document).ready(function() {
 			// SmartWizard initialize
 			$('#smartwizard').smartWizard();
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
+                if($('button.sw-btn-next').hasClass('disabled')){
+                    $('.sw-btn-group-extra').show(); // show the button extra only in the last page
+                }else{
+                    $('.sw-btn-group-extra').hide();				
+                }
 
+            });
 			$(".booking-calender .fa.fa-clock-o").removeClass(this);
 			$(".booking-calender .fa.fa-clock-o").addClass('fa-clock');
 		});

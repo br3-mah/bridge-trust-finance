@@ -3327,7 +3327,7 @@ animation: spinner 1s infinite linear;
   background-attachment: scroll;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top right;
+  background-position: center;
   background-color: #646464;
   background-blend-mode: luminosity;
   z-index: -1;

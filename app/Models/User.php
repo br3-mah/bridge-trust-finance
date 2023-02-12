@@ -81,4 +81,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function blacklist(){
+        return $this->hasOne(BlackList::class);
+    }
+
+    public function wallet(){
+        return $this->hasMany(Wallet::class);
+    }
+
+    public function loans(){
+        return $this->hasMany(Application::class);
+    }
 }

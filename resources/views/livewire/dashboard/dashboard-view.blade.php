@@ -124,7 +124,11 @@
                     <div class="d-flex  justify-content-between flex-wrap">
                         <div class="payment-content">
                             <h1 class="font-w500 mb-2">Good morning, {{ auth()->user()->fname ?? auth()->user()->name }} </h1>
-                            <p class="dz-para">We are glad to see you! Make sure your kyc profile Continue </p>
+                            @isset($my_loan)
+                                @if ($my_loan->complete == 0)
+                                <p class="dz-para">We are glad to see you! Make sure your kyc profile is Complete </p>
+                                @endif
+                            @endisset
                         </div>
                         <div class="mb-4 mb-xl-0">
                             @can('make payments')
@@ -174,7 +178,7 @@
                                 <div class="card-body py-3 pt-1 d-flex align-items-center justify-content-between flex-wrap pe-3">
                                     <div class="wallet-info">
                                         <span class="fs-14 font-w400 d-block">Wallet Balance</span>
-                                        <h2 class="font-w600 mb-0">ZMW 0</h2>
+                                        <h2 class="font-w600 mb-0">ZMW {{ $wallet ?? '0.00' }}</h2>
                                         {{-- <span>0% than last week</span> --}}
                                     </div>
 

@@ -34,7 +34,7 @@
                                                             </svg>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <button class="dropdown-item" wire:click="edit({{ $role->id }})">Edit</button>
+                                                            <button data-bs-toggle="modal" data-bs-target="#editUserRoleModal" class="dropdown-item" wire:click="edit({{ $role->id }})">Edit</button>
                                                             <a class="dropdown-item" href="#">Delete</a>
                                                         </div>
                                                     </div>
@@ -245,26 +245,24 @@
     {{-- End Modal --}}
 
     {{-- Edit User Role Modal --}}
-
-    <div wire:ingore class="modal fade {{ $editModal }}" id="editUserRoleModal">
+    @if($show)
+    <div class="modal fade show" style="display: block" id="">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit {{ $role->name }} Role</h5>
-                    <button wire:click="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
+                    <h5 class="modal-title">Edit {{ $role_name }} Role</h5>
+                    <button wire:click="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                
-                <form method="POST" wire:submit.prevent="update({{ $role->id }})">
+                <form method="POST" wire:submit.prevent="updateUser({{ $role_id }})">
                     <div class="modal-body">
                         <div class="col-xl-12 col-lg-12">
                             <div class="card">
                                 <div class="basic-form">
                                     @csrf
                                     <div class="mb-3">
-                                        <input class="form-control" wire:model.defer="name" value="{{ $role->name }}" type="text" placeholder="{{ $role->name }}">
+                                        <input class="form-control" wire:model.defer="name" value="{{ $role_name }}" type="text" placeholder="">
                                     </div>
-                                    <div wire:ignore class="mb-2">
+                                    <div class="mb-2">
                                         @forelse($permissions as $key => $perm)
                                         <div class="col-sm-9">
                                             <div class="form-check">
@@ -298,5 +296,6 @@
             </div>
         </div>
     </div>
+    @endif
     {{-- End Modal --}}
 </div>

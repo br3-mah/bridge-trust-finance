@@ -4,24 +4,26 @@ namespace App\Http\Livewire\Dashboard\Loans;
 
 use App\Models\Application;
 use App\Traits\EmailTrait;
+use App\Traits\WalletTrait;
 use Livewire\Component;
 
 class LoanRequestView extends Component
 {
-    use EmailTrait;
+    use EmailTrait, WalletTrait;
     public $loan_requests, $loan_request;
     public function render()
     {
-        if(auth()->user()->can('view all loan requests')){
-            $this->loan_requests = Application::get();
-        }else{
-            $this->loan_requests = Application::where('user_id', auth()->user()->id)->get();
-        }
+        $this->loan_requests = Application::get();
+        // if(auth()->user()->can('view all loan requests')){
+        //     $this->loan_requests = Application::get();
+        // }else{
+        //     $this->loan_requests = Application::where('user_id', auth()->user()->id)->get();
+        // }
         return view('livewire.dashboard.loans.loan-request-view')
         ->layout('layouts.dashboard');
     }
 
-    public function approve($id){
+    public function accept($id){
         try {
             $x = Application::find($id);
             $x->status = 1;
@@ -38,6 +40,7 @@ class LoanRequestView extends Component
                 'type' => 'loan-application',
                 'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
             ];
+            $this->deposit($x->amount, $x);
             $this->send_loan_feedback_email($mail);
         } catch (\Throwable $th) {
             dd($th);

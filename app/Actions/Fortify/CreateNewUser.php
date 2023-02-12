@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\Application;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -42,6 +43,10 @@ class CreateNewUser implements CreatesNewUsers
         
                 // Get my applications
                 Application::where('email', $input['email'])->update(['user_id' => $user->id]);
+                Wallet::where('email', $input['email'])->get()->toArray();
+                if(!empty($wallet)){
+                    Wallet::where('email', $input['email'])->update(['user_id' => $user->id]);
+                }
                 return $user;
             } catch (\Throwable $th) {
                 dd($th);

@@ -51,8 +51,12 @@
                         <p class="mb-1">DURATION</p>
                         <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->repayment_plan }}</h4>
                     </div>
-                    <div class="col-xl-2"></div>
-
+                    @if($my_loan->status == 1)
+                    <div class="value-data col-xl-3 col-md-4 col-6">
+                        <p class="mb-1">DUE DATE</p>
+                        <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->due_date ?? '' }}</h4>
+                    </div>
+                    @endif
                 </div>
             </div>
             
@@ -62,15 +66,15 @@
                         <div class="card-body p-4">
                             <div class="media">
                                 <span class="me-3">
-                                    <i class="la la-dollar"></i>
+                                    <i class="la la-money"></i>
                                 </span>
                                 <div class="media-body text-white">
                                     <p class="mb-1 text-white">{{ $my_loan->type }} Loan Payback Total</p>
-                                    <h3 class="text-white">K {{ ($my_loan->amount * 1.5 ) + $my_loan->amount }}</h3>
-                                    <div class="progress mb-2 bg-secondary">
+                                    <h3 class="text-white">K {{ App\Models\Application::payback($my_loan->amount, preg_replace('/[^0-9]/','', $my_loan->repayment_plan)) }}</h3>
+                                    {{-- <div class="progress mb-2 bg-secondary">
                                         <div class="progress-bar progress-animated bg-white" style="width: 30%"></div>
-                                    </div>
-                                    <small>30% after Due</small>
+                                    </div> --}}
+                                    {{-- <small>10% penalty addition after Due</small> --}}
                                 </div>
                             </div>
                         </div>
@@ -109,7 +113,27 @@
                                             <span><i class="mdi mdi-help-circle-outline"></i></span>
                                         </div>
                                         <div class="media-body">
-                                            <h5 class="mt-1 mb-2">Under Review!</h5>
+                                            <h5 class="mt-1 mb-2">  @if($my_loan->status == 0)
+                                                <span class="badge badge-sm light badge-danger">
+                                                    <i class="fa fa-circle text-danger me-1"></i>
+                                                    Pending
+                                                </span>
+                                                @elseif($my_loan->status == 1)
+                                                <span class="badge badge-sm light badge-success">
+                                                    <i class="fa fa-circle text-success me-1"></i>
+                                                    Accepted
+                                                </span>
+                                                @elseif($my_loan->status == 2)
+                                                <span class="badge badge-sm light badge-warning">
+                                                    <i class="fa fa-circle text-warning me-1"></i>
+                                                    Under Review
+                                                </span>
+                                                @else
+                                                <span class="badge badge-sm light badge-default">
+                                                    <i class="fa fa-circle text-warning me-1"></i>
+                                                    Rejected
+                                                </span>
+                                                @endif</h5>
                                             <p class="mb-0">Your application is currently under review</p>
                                         </div>
                                     </div>

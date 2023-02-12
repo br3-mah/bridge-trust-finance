@@ -1,7 +1,7 @@
 {{-- <x-app-layout> --}}
     <section class="breadcrumb-area">
         <div class="breadcrumb-area-bg"
-            style="background-image: url('{{asset("public/box/images/wib-1.jpg")}}');"></div>
+            style="background-image: url('{{asset("public/box/images/wib.jpg")}}');"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">

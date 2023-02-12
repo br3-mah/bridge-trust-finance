@@ -125,10 +125,10 @@
     
         <!--  js -->
         <script src="{{ asset('public/box/js/custom.js') }}"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     
-      <script src="{{ asset('public/box/js/jquery.steps.min.js') }}"></script>
-      <script src="{{ asset('public/box/js/bd-wizard.js') }}"></script>
+        <script src="{{ asset('public/box/js/jquery.steps.min.js') }}"></script>
+        <script src="{{ asset('public/box/js/bd-wizard.js') }}"></script>
     
     
     </body>

@@ -79,6 +79,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       toolbarButtonPosition: 'right',
       // left, right, center
       showNextButton: true,
+      showFinishButton: true,
       // show/hide a Next button
       showPreviousButton: true,
       // show/hide a Previous button
@@ -110,6 +111,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     lang: {
       // Language variables for button
       next: 'Next',
+      finish: 'Finish',
       previous: 'Previous'
     },
     disabledSteps: [],
@@ -141,6 +143,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
       this._initLoad();
+      
+    
+      this.main.find('.sw-btn-finish').hide();
     } // Initial Load Method
 
 
@@ -269,7 +274,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           e.preventDefault();
 
           _this._showNext();
-        }); // Previous button event
+        }); 
+        
+        // Previous button event
+        this.main.find('.sw-btn-finish').on("click", function () {
+          // e.preventDefault();
+          document.getElementById("kyc_form").submit();
+        }); 
+        
+        // Previous button event
 
         this.main.find('.sw-btn-prev').on("click", function (e) {
           e.preventDefault();
@@ -335,8 +348,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var toolbar = $('<div></div>').addClass('toolbar toolbar-' + position).attr('role', 'toolbar'); // Create the toolbar buttons
 
         var btnNext = this.options.toolbarSettings.showNextButton !== false ? $('<button></button>').text(this.options.lang.next).addClass('btn btn-primary   sw-btn-next').attr('type', 'button') : null;
+        var btnFinish = this.options.toolbarSettings.showFinishButton !== false ? $('<button></button>').text(this.options.lang.finish).addClass('btn btn-primary   sw-btn-finish').attr('type', 'submit') : null;
         var btnPrevious = this.options.toolbarSettings.showPreviousButton !== false ? $('<button></button>').text(this.options.lang.previous).addClass('btn btn-primary sw-btn-prev').attr('type', 'button') : null;
-        toolbar.append(btnPrevious, btnNext); // Add extra toolbar buttons
+        toolbar.append(btnPrevious, btnNext, btnFinish); // Add extra toolbar buttons
 
         if (this.options.toolbarSettings.toolbarExtraButtons && this.options.toolbarSettings.toolbarExtraButtons.length > 0) {
           $.each(this.options.toolbarSettings.toolbarExtraButtons, function (_i, n) {
@@ -795,10 +809,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           switch (this._getStepPosition(idx)) {
             case 'first':
               this.main.find('.sw-btn-prev').addClass("disabled");
+              
+              this.main.find('.sw-btn-finish').hide();
               break;
 
             case 'last':
               this.main.find('.sw-btn-next').addClass("disabled");
+              // this.main.find('.sw-btn-next').hide();
+              this.main.find('.sw-btn-finish').show();
               break;
 
             default:

@@ -47,13 +47,17 @@
                     </div>
                     <div class="text">
                         <p>
-                            Bridge Trust Finance provides an online loan application service with experienced loan processing staff. 
-                            We provide access to personal loans, car loans, debt consolidation and asset finance. 
-                            We have developed industry best software to access loans that will suit your needs.
+                            Bridgetrust Finance Limited (BTF) is a limited
+                            company that was established in 2018.
+                            BTF seeks to solve the challenges in accessing
+                            affordable finance solutions such as health
+                            and educational expenses to public university
+                            employees in Zambia.
+                            
                         </p>
 
-                        <p>Choice is untrammelled and when nothing prevents our being able to do
-                            what we like best every pleasure is to be welcomed. </p>
+                        {{-- <p>Choice is untrammelled and when nothing prevents our being able to do
+                            what we like best every pleasure is to be welcomed. </p> --}}
                     </div>
 
                     <div class="row">
@@ -62,14 +66,15 @@
                             <div class="intro-style1-single-box">
                                 <div class="img-box">
                                     <div class="img-box-inner">
-                                        <img src="{{ asset('public/box/images/resources/intro-style1-1.jpg') }}" alt="">
+                                        <img src="{{ asset('public/box/images/family.jpg') }}" alt="">
                                     </div>
                                     <div class="overlay-text">
-                                        <h3>Our Journey</h3>
+                                        <h3>Built For You</h3>
                                     </div>
                                 </div>
                                 <div class="title-box">
-                                    <h3><a href="#">For Over Four Decades Our Bank</a></h3>
+                                    <h3><a href="#">Financial Bridges built
+                                        for families.</a></h3>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +84,7 @@
                             <div class="intro-style1-single-box">
                                 <div class="img-box">
                                     <div class="img-box-inner">
-                                        <img src="{{ asset('public/box/images/resources/intro-style1-2.jpg') }}" alt="">
+                                        <img src="{{ asset('public/box/images/office.webp') }}" alt="">
                                     </div>
                                     <div class="overlay-text">
                                         <h3>Our Team</h3>
@@ -101,6 +106,11 @@
 </section>
 <!--End Intro Style1 Area-->
 
+
+
+
+
+
 <!--Start Choose Style1 Area-->
 <section class="choose-style1-area">
     <div class="container">
@@ -116,10 +126,45 @@
                         <div class="counting">01</div>
                     </div>
                     <div class="text">
-                        <h3>We deliver more than just money</h3>
+                        <h3>EFFICIENCY</h3>
                         <p>
-                            We are here – rain or shine – working with you as trusted partners and 
-                            identifying opportunities for your business. We want to grow alongside you.</p>
+                            Accelerating Loan Services for Your Financial Needs</p>
+                    </div>
+                </div>
+            </li>
+            <!--End Single Choose Style1-->
+
+            <!--Start Single Choose Style1-->
+            <li class="col-xl-4 col-lg-4 single-choose-style1-colum text-center">
+                <div class="single-choose-style1">
+                    <div class="icon">
+                        <div class="icon-inner">
+                            <span class="icon-award"></span>
+                        </div>
+                        <div class="counting">02</div>
+                    </div>
+                    <div class="text">
+                        <h3>TEAMWORK</h3>
+                        <p>
+                            Collaboration breeds success: Uniting teams for superior loan services.</p>
+                    </div>
+                </div>
+            </li>
+            <!--End Single Choose Style1-->
+
+            <!--Start Single Choose Style1-->
+            <li class="col-xl-4 col-lg-4 single-choose-style1-colum text-center">
+                <div class="single-choose-style1">
+                    <div class="icon">
+                        <div class="icon-inner">
+                            <span class="icon-certificate"></span>
+                        </div>
+                        <div class="counting">03</div>
+                    </div>
+                    <div class="text">
+                        <h3>QUALITY SERVICE</h3>
+                        <p>
+                            Experience the Difference: Quality Loan Services Tailored to Your Needs.</p>
                     </div>
                 </div>
             </li>
@@ -132,12 +177,28 @@
                         <div class="icon-inner">
                             <span class="icon-commitment"></span>
                         </div>
-                        <div class="counting">02</div>
+                        <div class="counting">04</div>
                     </div>
                     <div class="text">
-                        <h3>Commitment</h3>
-                        <p>Business it will frequently occur that pleasures have to be repudiated and
-                            annoyances accepted.</p>
+                        <h3>INTEGRITY</h3>
+                        <p>Your Partner in Financial Integrity: Providing Honest and Reliable Loan Services.</p>
+                    </div>
+                </div>
+            </li>
+            <!--End Single Choose Style1-->
+            
+            <!--Start Single Choose Style1-->
+            <li class="col-xl-4 col-lg-4 single-choose-style1-colum text-center">
+                <div class="single-choose-style1">
+                    <div class="icon">
+                        <div class="icon-inner">
+                            <span class="icon-consistency"></span>
+                        </div>
+                        <div class="counting">05</div>
+                    </div>
+                    <div class="text">
+                        <h3>EQUALITY</h3>
+                        <p>Fairness and Inclusion at the Core of Our Loan Services: Serving All Equally.</p>
                     </div>
                 </div>
             </li>
@@ -148,12 +209,12 @@
                 <div class="single-choose-style1">
                     <div class="icon">
                         <div class="icon-inner">
-                            <span class="icon-consistency"></span>
+                            <span class="icon-accept"></span>
                         </div>
-                        <div class="counting">03</div>
+                        <div class="counting">06</div>
                     </div>
                     <div class="text">
-                        <h3>Consistency</h3>
+                        <h3>ETHICAL CONDUCT</h3>
                         <p>Being able to do what we like best every pleasure is to be welcomed and pain
                             avoided but in certain.</p>
                     </div>
@@ -177,9 +238,14 @@
                         <li>
                             <div class="single-statements-box">
                                 <div class="img-box">
-                                    <img src="{{ asset('public/box/images/resources/statements-1.jpg') }}" alt="">
+                                    <img src="{{ asset('public/box/images/mission.webp') }}" alt="">
                                     <div class="static-content">
                                         <h2>Mission</h2>
+                                        <small style="color:#fff; text-align:left; padding:5%">
+                                            To provide timely and reliable microloan services that help
+                                            individuals in the public university fraternity to attain
+                                            their economic and financial goals with little or no stress.
+                                        </small>
                                     </div>
                                     <div class="overlay-content">m</div>
                                 </div>
@@ -188,16 +254,19 @@
                         <li>
                             <div class="single-statements-box">
                                 <div class="img-box">
-                                    <img src="{{ asset('public/box/images/resources/statements-2.jpg') }}" alt="">
+                                    <img src="{{ asset('public/box/images/vission.jpg') }}" alt="">
                                     <div class="static-content">
                                         <h2>Vision</h2>
+                                        <small style="color:#fff; padding:5%">
+                                            To be a leading brand in the efficient delivery of excellent and affordable micro finance services to individuals, smaller businesses and corporate clients in Zambia.
+                                        </small>
                                     </div>
                                     <div class="overlay-content">v</div>
                                 </div>
                             </div>
                             <div class="single-statements-box">
                                 <div class="img-box">
-                                    <img src="{{ asset('public/box/images/resources/statements-3.jpg') }}" alt="">
+                                    <img src="{{ asset('public/box/images/core.webp') }}" alt="">
                                     <div class="static-content">
                                         <h2>Core Value</h2>
                                     </div>
@@ -218,9 +287,12 @@
                         <h2>A Great<br> Mission Statement</h2>
                     </div>
                     <div class="text">
-                        <p>As your trusted financial solutions partner, we’re here to help you prepare for it. 
-                            Our hassle-free solutions promise to make it simple to get 
-                            financial assistance when you need it.</p>
+                        <p>To provide timely and reliable
+                            microloan services that help
+                            individuals in the public
+                            university fraternity to attain
+                            their economic and financial
+                            goals with little or no stress.</p>
                         {{-- <div class="btn-box">
                             <a href="blog-single.php"><span class="icon-right-arrow"></span>Read More</a>
                         </div> --}}
@@ -235,7 +307,7 @@
 
 <!--Start Facts Area-->
 <section class="facts-area">
-    <div class="facts-area-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/facts-area-bg.jpg") }}');">
+    <div class="facts-area-bg" style="background-image: url('{{ asset("public/box/images/shake.jpg") }}');">
     </div>
     <div class="container">
         <div class="sec-title text-center">

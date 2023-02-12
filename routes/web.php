@@ -6,13 +6,22 @@ use App\Http\Controllers\PostController;
 use App\Http\Livewire\AboutPage;
 use App\Http\Livewire\CareerPage;
 use App\Http\Livewire\ContactPage;
+use App\Http\Livewire\Dashboard\Accounting\LoanStatementView;
+use App\Http\Livewire\Dashboard\Accounts\AccountView;
+use App\Http\Livewire\Dashboard\Borrowers\BorrowerView;
+use App\Http\Livewire\Dashboard\Borrowers\SendBorrowerMessageView;
 use App\Http\Livewire\Dashboard\DashboardView;
+use App\Http\Livewire\Dashboard\Employees\EmployeesView;
+use App\Http\Livewire\Dashboard\Loans\GuarantorsView;
 use App\Http\Livewire\Dashboard\Loans\LoanDetailView;
 use App\Http\Livewire\Dashboard\Loans\LoanHistoryView;
 use App\Http\Livewire\Dashboard\Loans\LoanRatesView;
 use App\Http\Livewire\Dashboard\Loans\LoanRepaymentCalculatorView;
 use App\Http\Livewire\Dashboard\Loans\LoanRequestView;
+use App\Http\Livewire\Dashboard\Loans\MissedRepaymentsView;
+use App\Http\Livewire\Dashboard\Loans\PastMaturityDateView;
 use App\Http\Livewire\Dashboard\NotificationView;
+use App\Http\Livewire\Dashboard\Settings\LoanWalletView;
 use App\Http\Livewire\Dashboard\Settings\UserRolesView;
 use App\Http\Livewire\Dashboard\Settings\UserView;
 use App\Http\Livewire\FaqPage;
@@ -23,11 +32,13 @@ use App\Http\Livewire\Loans\PersonalLoan;
 use App\Http\Livewire\Loans\SMELoan;
 use App\Http\Livewire\Loans\VehicleLoan;
 use App\Http\Livewire\Loans\WIBLoan;
+use App\Http\Livewire\ReportView;
 use App\Http\Livewire\ServicePage;
 use App\Http\Livewire\SuccessEmailPage;
 use App\Http\Livewire\SuccessPage;
 use App\Http\Livewire\TeamPage;
 use App\Http\Livewire\WelcomePage;
+use App\Models\LoanWallet;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,14 +62,34 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
     Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
     Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');
+
+    // ---- Borrowers
+    Route::get('borrowers', BorrowerView::class)->name('borrowers');
+    Route::get('send-messages-to-borrowers', SendBorrowerMessageView::class)->name('notify-borrowers');
+
+    // ---- loans
+    Route::get('loan-details', LoanDetailView::class)->name('loan-details');
+    Route::get('past-maturity-date', PastMaturityDateView::class)->name('past-maturity-date');
+    Route::get('guarantors', GuarantorsView::class)->name('guarantors');
+    Route::get('missed-repayments', MissedRepaymentsView::class)->name('missed-repayments');
+
+    // ---- Employees
+    Route::get('view-employees', EmployeesView::class)->name('employees');
+
+    // ---- Accounts
+    Route::get('client-account', AccountView::class)->name('client-account');
+    Route::get('loan-statement', LoanStatementView::class)->name('loan-statement');
+    Route::get('loan-wallet-account', LoanWalletView::class)->name('loan-wallet');
+
+    // ----- Reports
+    Route::get('reports/loan-report', ReportView::class)->name('loan-report');
+    Route::get('reports/borrower-report', ReportView::class)->name('borrower-report');
+
     // ----- settings
     Route::get('users', UserView::class)->name('users');
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
     Route::get('notifications', NotificationView::class)->name('notifications');
     Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');
-
-    // ---- loans
-    Route::get('loan-details', LoanDetailView::class)->name('loan-details');
 });
 
 Route::resource('posts', PostController::class);

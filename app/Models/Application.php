@@ -45,7 +45,18 @@ class Application extends Model
         'status',
 
         'user_id',
-        'guest_id'
+        'guest_id',
+        'payback_amount',
+        'penalty_addition',
+        'due_date'
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function payback($amount, $duration){
+        $interest_rate = 20 / 100;
+        return $amount * (1 + ($interest_rate * (int)$duration));
+    }
 }

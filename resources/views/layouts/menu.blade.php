@@ -123,7 +123,7 @@
                                     <a href="#">About</a>
                                     <ul>
                                         <li><a href="{{ route('about.us') }}">About Us</a></li>
-                                        <li><a href="{{ route('about.team') }}">Our Team</a></li>
+                                        {{-- <li><a href="{{ route('about.team') }}">Our Team</a></li> --}}
                                         <li><a href="{{ route('about.careers') }}">Careers</a></li>
                                         
                                     </ul>
@@ -167,8 +167,8 @@
                         <h4>Updates:</h4>
                     </div>
                     <div class="text">
-                        <p>Get upto 4%* on our Savings Account Balances with Bridge Trust Finance.</p>
-                        <a href="#"><span class="icon-chevron"></span>More Details</a>
+                        <p>Get low interest rates on your first loan application with Bridge Trust Finance.</p>
+                        {{-- <a href="#"><span class="icon-chevron"></span>More Details</a> --}}
                     </div>
                 </div>
                 <div class="slogan-box">

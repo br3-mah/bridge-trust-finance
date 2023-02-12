@@ -661,7 +661,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Educational Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -671,7 +671,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Personal Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -681,7 +681,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Asset Financing Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -767,7 +767,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Mobile / Internet Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -777,7 +777,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Home Improvement Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -787,7 +787,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div> -->
                                                             <!--End Single Item-->
@@ -875,7 +875,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>SME Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -885,7 +885,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Women in Business Soft Loans (Femiprise)</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -895,7 +895,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Asset Finance loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -970,7 +970,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Help-desk Support</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -980,7 +980,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Requests & Enquiries</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -990,7 +990,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Compliments & Complaints</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1075,7 +1075,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1085,7 +1085,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1095,7 +1095,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1180,7 +1180,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1190,7 +1190,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1200,7 +1200,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Private Financing</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 976 7759 619</a>
+                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -1255,40 +1255,36 @@
                     <div class="features-style3-content">
                         <div class="sec-title">
                             <h2>Download Our Mobile App</h2>
-                            {{-- <div class="sub-title">
-                                <p>Desire that they cannot foresee the pain & trouble that are bound too
-                                    ensue equal blame belongs through shrinking.</p>
-                            </div> --}}
+                            <div class="sub-title">
+                                <p>With our app, you can easily access your account
+                                    information, apply for loans, and manage your
+                                    payments on the go, making it easier than ever to
+                                    stay on top of your finances.</p>
+                            </div>
                         </div>
-                        <div class="text-box">
+                        <div class="get-app-box">
                             <ul>
                                 <li>
-                                    <div class="icon">
-                                        <span class="icon-checkbox-mark"></span>
-                                    </div>
-                                    <p>Great explorer to tools</p>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <span class="icon-play-store"></span>
+                                        </div>
+                                        <div class="text">
+                                            <h4>Download</h4>
+                                        </div>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div class="icon">
-                                        <span class="icon-checkbox-mark"></span>
-                                    </div>
-                                    <p>Great explorer of Loans</p>
+                                    <a class="style2" href="#">
+                                        <div class="icon">
+                                            <span class="icon-apple"></span>
+                                        </div>
+                                        <div class="text">
+                                            <h4>Download</h4>
+                                        </div>
+                                    </a>
                                 </li>
                             </ul>
-                            {{-- <div class="apply-credit-card">
-                                <h3>Apply for Credit Card</h3>
-                                <form id="apply-credit-card" name="apply-credit-card" action="#" method="post">
-                                    <div class="input-box">
-                                        <input type="text" name="form_name" value="" placeholder="Name" required="">
-                                    </div>
-                                    <div class="button-box">
-                                        <button class="btn-one" type="submit" data-loading-text="Please wait...">
-                                            <span class="txt">Apply Now</span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div> --}}
-
                         </div>
                     </div>
                 </div>

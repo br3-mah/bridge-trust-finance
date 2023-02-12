@@ -22,7 +22,7 @@
     background-attachment: scroll;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    background-position: center;
     background-blend-mode: luminosity;
     z-index: -1;
 }

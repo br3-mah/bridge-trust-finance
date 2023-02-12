@@ -13,15 +13,14 @@ use Spatie\Permission\Models\Role;
 class UserRolesView extends Component
 {
     use WithPagination;
-    public $user_roles, $permissions, $name, $role, $rolePermissions;
+    public $user_roles, $permissions, $name, $role_name, $role_id, $rolePermissions;
     public $permission = [];
-    public $editModal;
+    public $show, $style;
     public $createModal = false;
     // public $checked = 'checked';
 
     public function render()
     {
-        $this->editModal = '';
         $this->user_roles = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
@@ -58,17 +57,13 @@ class UserRolesView extends Component
 
     public function edit(Role $role)
     {
-        $this->role = $role;
+        $this->role_name = $role->name;
+        $this->role_id = $role->id;
         $this->rolePermissions = $role->permissions->pluck('name')->toArray();
-        $this->editModal = 'show';
-         
+        $this->show = 'true';
     }
 
-    public function updatedEditModal(){
-        $this->editModal = 'show';
-    }
-
-    public function update(Role $role)
+    public function updateUser(Role $role)
     {
         try {
             // $this->validate($request, [
@@ -80,7 +75,7 @@ class UserRolesView extends Component
             Session::flash('attention', "Role updated successfully.");
         } catch (\Throwable $th) {
             Session::flash('error_msg', substr($th->getMessage(),16,110));
-            return redirect()->route('users');
+            return redirect()->route('roles');
         }
         // return redirect()->route('roles.index');
     }
@@ -99,9 +94,12 @@ class UserRolesView extends Component
     }
 
     public function closeModal(){
-        $this->editModal = '';
+        $this->show = false;
+        $this->role_name = '';
+        $this->role_id = '';
+        $this->rolePermissions = [];
+        $this->render();
     }
-
     // ------------------ Clear
     public function clearEditModal(){
         $this->role = '';

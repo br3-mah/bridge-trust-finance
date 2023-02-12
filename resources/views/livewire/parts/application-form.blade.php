@@ -18,10 +18,8 @@
                                     </div>
                                 </div>
                                 <div class="apply-form-box__content">
-
-
                                     <div id="apply-form" name="apply_form" class="default-form2" action="https://st.ourhtmldemo.com/new/finbank-demo/index.php" method="post">
-
+                                        
                                         <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="form-group">
@@ -99,11 +97,9 @@
                                                             <option data-display="Duration">
                                                                 Duration
                                                             </option>
-                                                            <option value="1 Week">1 Week</option>
-                                                            <option value="1 Month">1 Month</option>
-                                                            <option value="2 Month">2 Month</option>
-                                                            <option value="3 Month">3 Months</option>
-
+                                                            <option value="1">1 Month</option>
+                                                            <option value="2">2 Months</option>
+                                                            <option value="3">3 Months</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -140,10 +136,12 @@
                             <h3>Step 2 Title</h3>
                             <section>
                                 <div class="sec-title">
+                                    {{-- {{ $email }} --}}
                                     <h2>Guarantor & Loan Credentials</h2>
                                     <div class="sub-title">
                                         <p>Fill in all the necessary details to started with continue second step.</p>
                                     </div>
+                                    {{ $step }}
                                 </div>
                                 <div class="apply-form-box__content">
 
@@ -338,17 +336,6 @@
                                                 <div class="form-group">
                                                     <div class="input-box">
                                                         <div class="mb-3">
-                                                            <label for="formFile" class="form-label">National ID (NRC)</label>
-                                                            <input name="nrc_file" class="form-control" type="file" id="formFile" />
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <div class="input-box">
-                                                        <div class="mb-3">
                                                             <label for="formFile" class="form-label">Payslip (leave empty if not applicable)</label>
                                                             <input name="payslip_file" class="form-control" type="file"  />
                                                         </div>
@@ -356,12 +343,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        {{-- <div class="sec-title">
-                                            <h5>NRC</h5>
-                                        </div> --}}
-                                        <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
@@ -442,31 +423,3 @@
     }
     
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    }); 
-        function submit_request(){
-            var data = $('form').serialize();
-            console.log(data);
-            
-            $.ajax({
-                type:'POST',
-                url:'{{ route("loan-request") }}',
-                data:data,
-                success:function(data) {    
-                    console.log(data);
-                },
-                
-                error: function (msg) {
-                    console.log(msg);
-                    var errors = msg.responseJSON;
-                }
-            }); 
-        }      
-</script>

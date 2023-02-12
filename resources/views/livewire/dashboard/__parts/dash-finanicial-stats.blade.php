@@ -28,18 +28,46 @@
         <div class="row mt-1">
             @can('view company financial statistics')
             <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">LOANED OUT</p>
+                <p class="mb-1">TOTAL LOANS</p>
+                <h4 class="mb-0 font-w500 text-white">0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">FULLY REGISTERED LOANS</p>
+                <h4 class="mb-0 font-w500 text-white">0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL BORROWERS</p>
+                <h4 class="mb-0 font-w500 text-white">0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL OPEN LOANS</p>
+                <h4 class="mb-0 font-w500 text-white">0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL LOANS </p>
+                <h4 class="mb-0 font-w500 text-white">K 0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL LOANED OUT  </p>
+                <h4 class="mb-0 font-w500 text-white">K 0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">BORROWED AMOUNT</p>
+                <h4 class="mb-0 font-w500 text-white">K 0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">COLLECTED AMOUNT</p>
                 <h4 class="mb-0 font-w500 text-white">K 0</h4>
             </div>
             @endcan
-            <div class="value-data col-xl-3 col-md-4 col-6">
+            {{-- <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">EXPECTED (Profit)</p>
                 <h4 class="mb-0 text-white font-w500">K 0</h4>
             </div>
             <div class="value-data col-xl-4 col-md-4 col-12">
                 <p class="mb-1">EXPECTED (Loss)</p>
                 <h4 class="mb-0 text-white font-w500">K 0</h4>
-            </div>
+            </div> --}}
             <div class="col-xl-2"></div>
 
         </div>
