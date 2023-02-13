@@ -1,7 +1,7 @@
 <!--Start breadcrumb area-->
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg"
-        style="background-image: url('{{ asset("box/images/backgrounds/breadcrumb-area-bg.jpg") }}');"></div>
+    style="background-image: url('{{ asset("public/box/images/careers-1.jpg") }}');"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -31,7 +31,7 @@
             <div class="col-xl-6">
                 <div class="intro-style2-img-box">
                     <div class="inner">
-                        <img src="{{ asset('box/images/resources/intro-style2-1.jpg') }}" alt="">
+                        <img src="{{ asset('public/box/images/careers-team.jpg') }}" alt="">
                         <div class="shape-1">
                             <img src="assets/images/shapes/intro-style2-img-box-shape-1.png" alt="">
                         </div>
@@ -44,31 +44,25 @@
                         <h2>Mountains Move<br> for a Determined Team</h2>
                     </div>
                     <div class="text">
-                        <p>Desire that they cannot foresee the pain & trouble that are bound too
-                            ensue equal blame belongs through shrinking.</p>
-                        <p>To enjoy a pleasure that has no annoying consequences.</p>
+                        <p>Looking for a career where you can grow, learn, and make an impact? 
+                            Our careers page is the place to be. We're always on the lookout for 
+                            talented and passionate individuals to join our team and help us make
+                             a difference in the world. Whether you're just starting out or have 
+                             years of experience, we offer a variety of opportunities to suit your 
+                             skills and interests. From marketing to engineering, finance to customer 
+                             service, we have a diverse range of roles that can help you take your 
+                             career to the next level. And with a dynamic and supportive work culture, 
+                             you'll have the resources you need to thrive. 
+                             So what are you waiting for? Check out our careers page now and 
+                             find your next big opportunity.</p>
                     </div>
-                    <ul>
-                        <li>
-                            <div class="icon-box">
-                                <span class="icon-checkbox-mark"></span>
-                            </div>
-                            <p>Great explorer of the master-builder</p>
-                        </li>
-                        <li>
-                            <div class="icon-box">
-                                <span class="icon-checkbox-mark"></span>
-                            </div>
-                            <p>On the other hand</p>
-                        </li>
-                    </ul>
                     <div class="send-resume-box">
                         <div class="icon">
                             <span class="icon-cv"></span>
                         </div>
                         <div class="title">
                             <h4><a href="#">Send Resume</a></h4>
-                            <h3><a href="mailto:info@templatepath.com">careerpath@bridgetrustfinance.co.zm</a></h3>
+                            <h3><a href="mailto:info@templatepath.com">info@bridgetrustfinance.co.zm</a></h3>
                         </div>
                     </div>
                 </div>

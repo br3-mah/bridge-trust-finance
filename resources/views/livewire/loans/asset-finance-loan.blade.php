@@ -29,44 +29,15 @@
     <section class="applying-process-area">
         <div class="container">
             <div class="sec-title text-center">
-                <h2>Explore and Apply Now</h2>
+                <h4>What is Asset Finance Loan</h4>
                 <div class="sub-title">
-                    <p>Our big advantage is that we don't provide finance from one source, we find the best deal to suit your clients needs.</p>
+                    <p>Asset finance loans are a type of financing that allows businesses to acquire assets, such as equipment or vehicles, by borrowing money from a lender. The assets themselves serve as collateral for the loan, which means that if the borrower is unable to repay the loan, the lender can seize the assets to recover their money.</p>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-xl-12">
-                    <div class="applying-process-step-box-top"></div>
-                </div>
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">01</div>
-                        <h3>Apply Here</h3>
-                        <p>Fill out our simple online form.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">02</div>
-                        <h3>Get Call Back</h3>
-                        <p>Bridge Trust Finance calls client within 2 hours.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">03</div>
-                        <h3>Process Your Request</h3>
-                        <p>Loan is finalised and you get receive funds instantly</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
+            <div class="sec-title text-center">
+                <h3>How to Apply</h3>
             </div>
+            @include('livewire\loans\__parts\how-to-apply')
         </div>
     </section>
     <!--End Applying Process Area-->

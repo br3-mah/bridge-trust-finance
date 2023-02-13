@@ -7,13 +7,13 @@
                 <div class="col-xl-12">
                     <div class="inner-content">
                         <div class="title" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
-                            <h2>SME Loan</h2>
+                            <h2>Agri Business Loan</h2>
                         </div>
                         <div class="breadcrumb-menu" data-aos="fade-left" data-aos-easing="linear"
                             data-aos-duration="500">
                             <ul>
                                 <li><a href="index.php">Home</a></li>
-                                <li class="active">SME Loan</li>
+                                <li class="active">Agri Business Loan</li>
                             </ul>
                         </div>
                     </div>
@@ -29,48 +29,27 @@
     <section class="applying-process-area">
         <div class="container">
             <div class="sec-title text-center">
-                <h2>Explore and Apply Now</h2>
+                <h4>An Agri Business Loan</h4>
                 <div class="sub-title">
                     <p>
-                        A small business loan from Bridge Trust Finance provides rapid funding with one-on-one 
-                        support from our team of loan advisors. Our quick and easy application 
-                        process takes only minutes to complete, and you could receive 
-                        an approval decision just as fast.</p>
+                        Are you ready to take your agricultural business to the next level? 
+                        Our agri business loans are the solution you've been looking for. 
+                        With our fast and easy application process, you can get the funding 
+                        you need to grow your business in no time. Our competitive interest 
+                        rates and flexible repayment terms are designed to fit your unique needs, 
+                        and we work with farmers and agribusinesses of all sizes. Whether you're 
+                        looking to invest in new crops, purchase equipment, or expand your operations, 
+                        we can provide the support you need to achieve your goals. Don't let financial 
+                        barriers hold you back from success. 
+                        Apply for an agri business loan with us today and let's grow together.
+                    </p>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-xl-12">
-                    <div class="applying-process-step-box-top"></div>
-                </div>
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">01</div>
-                        <h3>Apply Here</h3>
-                        <p>Fill out our simple online form.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">02</div>
-                        <h3>Get Call Back</h3>
-                        <p>Bridge Trust Finance calls client within 2 hours.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">03</div>
-                        <h3>Process Your Request</h3>
-                        <p>Loan is finalised and you get receive funds instantly</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
+            <div class="sec-title text-center">
+                <h3>How to Apply</h3>
             </div>
+            
+            @include('livewire\loans\__parts\how-to-apply')
         </div>
     </section>
     <!--End Applying Process Area-->

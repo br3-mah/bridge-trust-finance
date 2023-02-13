@@ -112,7 +112,7 @@
                                         <li><a href="{{ route('view-vehicle-loans') }}">Vehicle financing loans</a></li>
                                         <li><a href="{{ route('view-educational-loans') }}">Education financing loans</a></li>
                                         <li><a href="{{ route('view-home-loans') }}">Home improvement loans</a></li>
-                                        <li><a href="{{ route('view-sme-loans') }}">SME loans</a></li>
+                                        <li><a href="{{ route('view-sme-loans') }}">Agri Business loans</a></li>
                                         <li><a href="{{ route('view-wib-loans')}}">Women in Business (Femiprise) soft loans</a></li>
                                     </ul>
                                         

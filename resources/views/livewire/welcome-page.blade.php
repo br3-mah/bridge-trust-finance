@@ -1270,7 +1270,7 @@
                                             <span class="icon-play-store"></span>
                                         </div>
                                         <div class="text">
-                                            <h4>Download</h4>
+                                            <h4>Google Store</h4>
                                         </div>
                                     </a>
                                 </li>
@@ -1280,7 +1280,7 @@
                                             <span class="icon-apple"></span>
                                         </div>
                                         <div class="text">
-                                            <h4>Download</h4>
+                                            <h4>Apple Store</h4>
                                         </div>
                                     </a>
                                 </li>

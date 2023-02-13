@@ -29,44 +29,25 @@
     <section class="applying-process-area">
         <div class="container">
             <div class="sec-title text-center">
-                <h2>Explore and Apply Now</h2>
+                <h4>What is a Personal Loan?</h4>
                 <div class="sub-title">
-                    <p>Customised soutions for all your Financing needs.</p>
+                    <p>
+                        Personal loans are a convenient and flexible way to get the funds you need. 
+                        With a simple online application and fast approval process, you can get the 
+                        cash you need to cover unexpected expenses, consolidate debt, or pursue your goals. 
+                        Our competitive interest rates and flexible repayment terms make it easy to 
+                        tailor your loan to your specific needs. Plus, with no collateral required, 
+                        our personal loans are a hassle-free way to manage your finances. 
+                        Apply now and take the first step towards a better financial future.
+                    </p>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-xl-12">
-                    <div class="applying-process-step-box-top"></div>
-                </div>
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">01</div>
-                        <h3>Apply Here</h3>
-                        <p>Fill out our simple online form.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">02</div>
-                        <h3>Get Call Back</h3>
-                        <p>Bridge Trust Finance calls client within 2 hours.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">03</div>
-                        <h3>Process Your Request</h3>
-                        <p>Loan is finalised and you get receive funds instantly</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
+            <div class="sec-title text-center">
+                <h3>How to Apply</h3>
             </div>
+            
+            
+            @include('livewire\loans\__parts\how-to-apply')
         </div>
     </section>
     <!--End Applying Process Area-->

@@ -139,7 +139,7 @@
                 <div class="single-choose-style1">
                     <div class="icon">
                         <div class="icon-inner">
-                            <span class="icon-award"></span>
+                            <span class="icon-crowd"></span>
                         </div>
                         <div class="counting">02</div>
                     </div>
@@ -269,6 +269,14 @@
                                     <img src="{{ asset('public/box/images/core.webp') }}" alt="">
                                     <div class="static-content">
                                         <h2>Core Value</h2>
+                                        <small style="color:#fff; padding:5%">
+                                            Integrity,
+                                            Teamwork,
+                                            Quality Service,
+                                            Efficiency,
+                                            Ethical Conduct, and
+                                            Equality
+                                        </small>
                                     </div>
                                     <div class="overlay-content">c</div>
                                 </div>

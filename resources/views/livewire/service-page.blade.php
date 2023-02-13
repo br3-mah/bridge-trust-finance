@@ -188,7 +188,8 @@
                                             </div>
                                             <h3><a href="#">Asset Finanance Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>A form of asset-based finance that uses assets on your balance sheet as security against lending.</p>
+                                            <p>Collateral finance loans can help your business get the funds it needs by using an asset, such as equipment or real estate, as collateral. With this type of financing, you can borrow money against the value of the asset and then pay it back over time. Because the loan is secured by the asset, you may be able to get a lower interest rate than with other types of loans. 
+                                                This can help you manage your cash flow more effectively and invest in your business growth..</p>
                                             <h6><span>*</span> Check today’s Interest Rates</h6>
                                             <div class="btn-box">
                                                 <a href="{{ route('view-asset-loans') }}"><span class="icon-right-arrow"></span></a>

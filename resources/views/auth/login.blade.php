@@ -146,10 +146,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xl-8 col-lg-8 position-relative bg-light login-border" style="background-image: url('{{ asset("public/box/images/about.jpg") }}');">
+							<div class="col-xl-8 col-lg-8 position-relative bg-light login-border" style="background-position:center;background-size:cover; background-image: url('{{ asset("public/box/images/bridge-1.jpg") }}');">
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">
-										<h2 class="text-white mb-0">Welcome To Bridge Trust Finance Center.</h2>
+										<h2 class="text-white mb-0">At Bridge Trust Finance</h2>
 										<p class="text-white">We deliver more than just money</p>
 									</div>
 									<div class="login-media-1">

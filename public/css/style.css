@@ -28405,8 +28405,6 @@ body > * {
   transform: translate(-50%, -50%);
   z-index: 1;
   border-radius: 10px;
-  border: 1px solid #fff;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-top: 30px; }
   @media only screen and (max-width: 35.9375rem) {
     .login-media-1 img {

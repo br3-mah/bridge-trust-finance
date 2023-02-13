@@ -29,46 +29,21 @@
     <section class="applying-process-area">
         <div class="container">
             <div class="sec-title text-center">
-                <h2>Explore and Apply Now</h2>
+                <h4>Women in Business (Fermiprise) Soft Loan?</h4>
                 <div class="sub-title">
                     <p>
-                        Bridge Trust Finance helps women entrepreneurs launch new businesses and compete in the marketplace. 
-                        Connect with the training and funding opportunities specifically for women.</p>
+                        As a woman entrepreneur, you have the drive, determination, and vision to succeed. 
+                        But sometimes you need a little extra support to make your dreams a reality. 
+                        That's where our Women in Business (Fermiprise) Soft Loan comes in. With our competitive interest rates, flexible repayment terms, and fast online application process, we make it easy to get the funding you need to grow your business. Whether you're looking to invest in new equipment, hire staff, or expand your operations, our loans are designed to meet your unique needs. And with our commitment to empowering women in business, you can trust us to be your partner in success. 
+                        Apply now and take the first step towards achieving your entrepreneurial vision.
+                    </p>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-xl-12">
-                    <div class="applying-process-step-box-top"></div>
-                </div>
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">01</div>
-                        <h3>Apply Here</h3>
-                        <p>Fill out our simple online form.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">02</div>
-                        <h3>Get Call Back</h3>
-                        <p>Bridge Trust Finance calls client within 2 hours.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">03</div>
-                        <h3>Process Your Request</h3>
-                        <p>Loan is finalised and you get receive funds instantly</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
+            <div class="sec-title text-center">
+                <h3>How to Apply</h3>
             </div>
+            
+            @include('livewire\loans\__parts\how-to-apply')
         </div>
     </section>
     <!--End Applying Process Area-->

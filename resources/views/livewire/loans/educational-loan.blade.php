@@ -29,52 +29,22 @@
     <section class="applying-process-area">
         <div class="container">
             <div class="sec-title text-center">
-                <h2>Explore and Apply Now</h2>
+                <h4>What is an Education Loan?</h4>
                 <div class="sub-title">
-                    <p>
-                        A good education is what paves the path to success, 
-                        and we believe that everyone has the right to an education that will help them grow and prosper.
-                        That’s why our Education Loans are designed to finance meritorious students who choose to
-                        pursue a higher education, both in Zambia and abroad. 
-                        
-                        With quick approval rates, minimal documentation and high loan amounts based on income 
-                        and repayment capacity, you will never be far away from 
-                        making your dreams come true.</p>
+                    <p>Education loans can help you invest in your future by providing funds to 
+                        cover the cost of education expenses, such as tuition, books, and living expenses. 
+                        With this type of financing, you can pay for your education over time, 
+                        which can help you manage your cash flow more effectively. Plus, you may 
+                        be able to get a lower interest rate than with other types of loans, 
+                        making it more affordable to achieve your educational goals. By investing in your education, 
+                        you can increase your earning potential and set yourself up for long-term financial success.</p>
                 </div>
             </div>
-            <div class="row">
-
-                <div class="col-xl-12">
-                    <div class="applying-process-step-box-top"></div>
-                </div>
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">01</div>
-                        <h3>Apply Here</h3>
-                        <p>Fill out our simple online form.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">02</div>
-                        <h3>Get Call Back</h3>
-                        <p>Bridge Trust Finance calls client within 2 hours.</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
-                <!--Start Single Applying Process box-->
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-applying-process-box">
-                        <div class="applying-process-single-step-box">03</div>
-                        <h3>Process Your Request</h3>
-                        <p>Loan is finalised and you get receive funds instantly</p>
-                    </div>
-                </div>
-                <!--End Single Applying Process box-->
+            <div class="sec-title text-center">
+                <h3>How to Apply</h3>
             </div>
+            
+            @include('livewire\loans\__parts\how-to-apply')
         </div>
     </section>
     <!--End Applying Process Area-->

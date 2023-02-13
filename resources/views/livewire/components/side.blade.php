@@ -9,6 +9,8 @@
                     <span class="nav-text mt-8">Dashboard</span>
                 </a>
             </li>
+            
+            @can('view clientele')
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -24,6 +26,8 @@
 
                 </ul>
             </li>
+            @endcan
+            
             @can('view loans')
             <li>
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
