@@ -50,7 +50,7 @@
 								<div class="card">
 									<div class="card-body">								
 										<div class="d-flex align-items-center justify-content-between mb-4">
-										<a href="index.html">
+										<a href="{{ route('welcome') }}">
                                             <div class="menu-icon">
                                                 <img width="65" src="{{ asset('public/images/logo-full.png') }}" alt="" srcset="">
                                             </div>
