@@ -1,7 +1,8 @@
+<div>
 {{-- <x-app-layout> --}}
     <section class="breadcrumb-area">
         <div class="breadcrumb-area-bg"
-            style="background-image: url('{{asset("public/box/images/workshop.jpg")}}');"></div>
+            style="background-image: url('{{asset("public/box/images/agric.jpg")}}');"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -64,110 +65,20 @@
                             style="background-image: url('assets/images/resources/apply-form-box-bg.jpg');"></div>
                         <div class="apply-form-box__content">
                             <div class="sec-title">
-                                <h2>Send Your Request &<br> Get Call Back</h2>
+                                <h2>Grow your farm business to new heights. Submit your Agri business loan request today and cultivate your success!</h2>
                                 <div class="sub-title">
                                     <p>Fill all the necessary details and Get call from experts.</p>
                                 </div>
+                                <div>
+                                    @if (session()->has('message'))
+                                        <div class="alert alert-success">
+                                            {{ session('message') }}
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
 
-                            <form id="apply-form" name="apply_form" class="default-form2" action="https://st.ourhtmldemo.com/new/finbank-demo/index.php"
-                                method="post">
-
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="form-group">
-                                            <div class="input-box">
-                                                <input type="text" name="form_name" id="formName"
-                                                    placeholder="Your Name" required="">
-                                                <div class="icon">
-                                                    <i class="fas fa-user"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="form-group">
-                                            <div class="input-box">
-                                                <input type="email" name="form_email" id="formEmail"
-                                                    placeholder="Email" required="">
-                                                <div class="icon">
-                                                    <i class="fas fa-envelope-open"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="form-group">
-                                            <div class="input-box">
-                                                <input type="text" name="form_phone" value="" id="formPhone"
-                                                    placeholder="Phone">
-                                                <div class="icon">
-                                                    <i class="fas fa-phone-alt"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="form-group">
-                                            <div class="select-box clearfix">
-                                                <select class="wide">
-                                                    <option data-display="State">
-                                                        State
-                                                    </option>
-                                                    <option value="1">Alaska</option>
-                                                    <option value="2">Florida</option>
-                                                    <option value="3">Georgia</option>
-                                                    <option value="4">Indiana</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="form-group">
-                                            <div class="select-box clearfix">
-                                                <select class="wide">
-                                                    <option data-display="City">
-                                                        City
-                                                    </option>
-                                                    <option value="1">Alaska</option>
-                                                    <option value="2">Florida</option>
-                                                    <option value="3">Georgia</option>
-                                                    <option value="4">Indiana</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="form-group">
-                                            <div class="input-box">
-                                                <input type="text" name="date" placeholder="Date" id="datepicker">
-                                                <div class="icon">
-                                                    <i class="fas fa-calendar"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="button-box">
-                                            <button class="btn-one" type="submit">
-                                                <span class="txt">
-                                                    Send Request
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
+                            @include('livewire\loans\__parts\service-contact-form')
 
                         </div>
                     </div>
@@ -247,3 +158,5 @@
     </section>
 {{-- </x-app-layout> --}}
 
+
+</div>

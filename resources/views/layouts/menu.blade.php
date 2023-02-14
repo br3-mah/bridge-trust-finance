@@ -108,12 +108,12 @@
                                     <a href="{{ route('services') }}">Services</a>
                                     <ul>                                    
                                         <li><a href="{{ route('view-personal-loans') }}">Personal Loan</a></li>
-                                        <li><a href="{{ route('view-asset-loans') }}">Asset Finance Loans</a></li>
-                                        <li><a href="{{ route('view-vehicle-loans') }}">Vehicle financing loans</a></li>
-                                        <li><a href="{{ route('view-educational-loans') }}">Education financing loans</a></li>
-                                        <li><a href="{{ route('view-home-loans') }}">Home improvement loans</a></li>
-                                        <li><a href="{{ route('view-sme-loans') }}">Agri Business loans</a></li>
-                                        <li><a href="{{ route('view-wib-loans')}}">Women in Business (Femiprise) soft loans</a></li>
+                                        <li><a href="{{ route('view-asset-loans') }}">Asset Finance Loan</a></li>
+                                        <li><a href="{{ route('view-vehicle-loans') }}">Vehicle Financing Loan</a></li>
+                                        <li><a href="{{ route('view-educational-loans') }}">Education Loan</a></li>
+                                        <li><a href="{{ route('view-home-loans') }}">Home Improvement Loan</a></li>
+                                        <li><a href="{{ route('view-sme-loans') }}">Agri Business Loan</a></li>
+                                        <li><a href="{{ route('view-wib-loans')}}">Women in Business (Femiprise) Soft Loan</a></li>
                                     </ul>
                                         
                                   

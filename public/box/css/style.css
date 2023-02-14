@@ -9749,7 +9749,7 @@ li.single-benefits-box-colum:nth-child(6) .single-benefits-box .icon {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #646464;
+  /* background-color: #646464; */
   background-blend-mode: luminosity;
   background-attachment: scroll;
   background-repeat: no-repeat;

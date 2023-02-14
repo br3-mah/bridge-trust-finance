@@ -113,19 +113,22 @@
                             <div class="input-box">
                                 <input type="text" wire:model="name" id="formName" placeholder="Fullname"
                                     required="">
+                                @error('name') <span style="color:red" class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
                             <div class="input-box">
                                 <input type="email" wire:model="email" id="formEmail" placeholder="example@mail.com" required>
+                                @error('email') <span style="color:red" class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Phone. Num</label>
                             <div class="input-box">
-                                <input type="text" wire:model="phone" value="" id="formPhone" placeholder="">
+                                <input type="text" wire:model.defer="phone" value="" id="phoneNumb" placeholder="">
+                                @error('phone') <span style="color:red" class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -134,6 +137,7 @@
                             <div class="input-box">
                                 <input type="text" wire:model="subject" value="" id="formSubject"
                                     placeholder="Subject">
+                                    @error('subject') <span style="color:red" class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -143,6 +147,7 @@
                                 <textarea wire:model="message" id="formMessage" placeholder=""required="">
                                     
                                 </textarea>
+                                @error('message') <span style="color:red" class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -152,9 +157,38 @@
                     <div class="button-box">
                         {{-- <input id="form_botcheck" name="botcheck" class="form-control" type="hidden"
                             value=""> --}}
-                        <button class="btn-one" wire:click.prevent="send()" data-loading-text="Please wait...">
+                        <button class="btn-one" wire:click.prevent="send()" wire:loading.attr="disabled" :disabled="isDisabled">
+                            
                             <span class="txt">
-                                send a message
+                                <span>
+                                    <svg
+                                    wire:loading
+                                    wire:target="send()"
+                                    width="20"
+                                    height="20"
+                                    style="color:burgundy"
+                                    class="animate-spin"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    >
+                                        <circle
+                                            class="opacity-25"
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                        ></circle>
+                                        <path
+                                            class="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                        ></path>
+                                    </svg>
+                                </span>
+                                {{-- <span wire:loading wire:target="send()">Loading...</span> --}}
+                                <span wire:loading.remove wire:target="send()">Send Message</span>
                             </span>
                         </button>
                     </div>
@@ -168,10 +202,7 @@
 
 <!--Google Map Start-->
 <section class="google-map">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
-        class="google-map__one" allowfullscreen></iframe>
-
+    <iframe class="google-map__one" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.584425154795!2d28.237393314749035!3d-12.805465259963235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196ce628ce6a7849%3A0x2d5c09397c32e75d!2sThe%20Copperbelt%20University!5e0!3m2!1sen!2szm!4v1676302365652!5m2!1sen!2szm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div class="google-map-content-box">
         <div class="branch-atm-tab">
             <!--Start Branch Atm Tab Buttom-->
@@ -410,3 +441,15 @@
 <!--End Customer Care Numbers Area-->
 
 </div>
+
+<script>
+$(document).ready(function(){
+    const input = document.getElementById('phoneNumb');
+    input.addEventListener('input', () => {
+        input.value = input.value.replace(/[^0-9]/g, '');
+        if (input.value.length > 10) {
+        input.value = input.value.slice(0, 10);
+        }
+    });
+});
+</script>

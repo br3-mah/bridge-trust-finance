@@ -48,7 +48,8 @@ class Application extends Model
         'guest_id',
         'payback_amount',
         'penalty_addition',
-        'due_date'
+        'due_date',
+        'can_change'
     ];
 
     public function user(){

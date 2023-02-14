@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\File;
 use App\Traits\EmailTrait;
@@ -25,9 +26,35 @@ class LoanApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getLoan(Request $req)
     {
-        //
+
+        $email = $req->toArray()['email']; 
+        $application = Application::where('email', $email)
+                                    ->where('status', 0)
+                                    ->where('can_change', 0)->get()->first();
+                      
+                           
+        if($application != null){
+            $data = 1;
+            return response()->json($data, 200);
+        }else{
+            $data = 0;
+            return response()->json($data, 200);
+        }
+    }
+
+    public function updateExistingLoan(Request $req)
+    {
+        $email = $req->toArray()['email']; 
+        try{
+            Application::where('email', $email)->update(['can_change' => 1]);
+            $data = 1;
+            return response()->json($data, 200);
+        } catch (\Throwable $th) {
+            $data = 0;
+            return response()->json($data, 500);
+        }
     }
 
     /**

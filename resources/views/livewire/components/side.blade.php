@@ -22,12 +22,10 @@
                     <li><a href="{{ route('borrowers') }}">View Borrowers </a></li>
                     <li><a href="{{ route('notify-borrowers') }}">Send SMSs to Borrowers </a></li>
                     <li><a href="{{ route('notify-borrowers') }}">Send Emails to Borrowers </a></li>
-                    {{-- <li><a href="{{ route('report.statement') }}">Invite Borrowers </a></li> --}}
-
                 </ul>
             </li>
             @endcan
-            
+
             @can('view loans')
             <li>
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
@@ -41,13 +39,13 @@
                     @endrole
                 </a>
                 <ul aria-expanded="false">
-                    {{-- @can('view loan requests') --}}
+                    @can('view loan requests')
                     <li><a href="{{ route('view-loan-requests') }}">View Loans</a></li>
-                    {{-- @endcan --}}
+                    @endcan
                     @can('view loan rates')
                     {{-- <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li> --}}
                     @endcan
-                    @can('view loan history')
+                    @can('view loan relatives')
                     <li><a href="{{ route('past-maturity-date') }}">Past Maturity Date</a></li>
                     <li><a href="{{ route('guarantors') }}">Guarantors</a></li>
                     <li><a href="{{ route('missed-repayments') }}">Missed Repayments</a></li>
@@ -59,6 +57,7 @@
             </li>
             @endcan
             
+            @can('view employees')
             <li>
                 <a class="{{ route('employees') }}" href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -67,7 +66,9 @@
                     <span class="nav-text">Employees</span>
                 </a>
             </li>
+            @endcan
             
+            @can('view accounting')
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -81,6 +82,8 @@
 
                 </ul>
             </li>
+            @endcan
+
             @can('view kyc')
             {{-- <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
@@ -98,6 +101,8 @@
                 </ul>
             </li> --}}
             @endcan
+
+            @can('view reports')
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -111,6 +116,8 @@
 
                 </ul>
             </li>
+            @endcan
+
             @can('help-desk and support')
             {{-- <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">

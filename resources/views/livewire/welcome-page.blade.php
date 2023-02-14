@@ -1678,5 +1678,11 @@
                 </div>
             </div>
         </div>
+        
+        
     </section>
     <!--End slogan area-->
+
+    <style>
+
+    </style>

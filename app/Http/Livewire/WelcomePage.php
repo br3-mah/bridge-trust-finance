@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\LoanApplication;
+use App\Models\Application;
 use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ class WelcomePage extends Component
     use LoanTrait, EmailTrait, WithFileUploads;
 
     public $class, $style, $step;
+    public $showDiag = 'false';
     public $lname, $fname, $email, $phone, $gender, $type, $repayment_plan, $amount;
     public $glname, $gfname, $gemail, $gphone, $g_gender, $g_relation;
     public $g2lname, $g2fname, $g2email, $g2phone, $g2_gender, $g2_relation;
@@ -21,8 +24,20 @@ class WelcomePage extends Component
 
     public function render()
     {
-        // $this->class = 'show'; $this->style = 'display:block';
         return view('livewire.welcome-page');
+    }
+
+    public function checkApplication(){
+ 
+    }
+
+    public function canChange(){
+        try{
+            Application::where('email', $this->email)->update(['can_change' => 1]);
+            return redirect()->route('welcome');
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     public function updated(){
@@ -131,6 +146,8 @@ class WelcomePage extends Component
             return redirect()->to('/contact-us');
         }
     }
+
+    
 
     public function clearForm(){
         $this->lname=''; $this->fname=''; $this->email=''; $this->phone=''; $this->gender=''; $this->type=''; $this->repayment_plan=''; $this->amount = '';

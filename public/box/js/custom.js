@@ -535,14 +535,14 @@
 
 
   // AOS Animation
-  if ($("[data-aos]").length) {
-    AOS.init({
-      duration: '1000',
-      disable: 'false',
-      easing: 'ease',
-      mirror: true
-    });
-  }
+  // if ($("[data-aos]").length) {
+  //   AOS.init({
+  //     duration: '1000',
+  //     disable: 'false',
+  //     easing: 'ease',
+  //     mirror: true
+  //   });
+  // }
 
 
   //Contact Form Validation

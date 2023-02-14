@@ -21,11 +21,17 @@ class RoleSeeder extends Seeder
         $role2 = Role::create(['name' => 'user']);
         $role3 = Role::create(['name' => 'officer']);
         
+        Permission::create(['name' => 'view clientele', 'description' => 'View clientele'])->syncRoles([$role1]);
+        Permission::create(['name' => 'view employees', 'description' => 'View Employees'])->syncRoles([$role1]);
+        Permission::create(['name' => 'view reports', 'description' => 'View Reports'])->syncRoles([$role1]);
+        Permission::create(['name' => 'view accounting', 'description' => 'View Accounting'])->syncRoles([$role1]);
+        Permission::create(['name' => 'view loan relatives', 'description' => 'view loan Guarantors, Missed Repayments and Past Maturity Date'])->syncRoles([$role1]);
+
         // Dashboard Page
         Permission::create(['name' => 'view dashboard', 'description' => 'See the dashboard'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'view company financial statistics', 'description' => 'View company financial statistics'])->syncRoles([$role1]);
         Permission::create(['name' => 'help-desk and support', 'description' => 'Help-desk and support'])->syncRoles([$role1]);
-        Permission::create(['name' => 'view kyc', 'description' => 'view financial overview'])->syncRoles([$role1, $role2]);
+        // Permission::create(['name' => 'view kyc', 'description' => 'view financial overview'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'company overview dashboard', 'description' => 'View company overview dashboard'])->syncRoles([$role1]);
         Permission::create(['name' => 'view all loan requests', 'description' => 'View all loan requests'])->syncRoles([$role1]);
 

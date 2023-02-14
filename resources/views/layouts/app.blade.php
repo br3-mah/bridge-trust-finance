@@ -48,6 +48,7 @@
         <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="{{ asset('public/box/css/bd-wizard.css') }}">
         <link rel="stylesheet" href="{{ asset('public/box/css/responsive.css') }}" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Styles -->
         {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 
@@ -59,7 +60,7 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
    
-        {{-- @include('livewire\components\preloader') --}}
+        @include('livewire.components.preloader')
     
     
         <div class="page-wrapper">

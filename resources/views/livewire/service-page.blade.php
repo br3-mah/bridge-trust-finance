@@ -22,16 +22,16 @@
 <!--End breadcrumb area-->
 
 <section class="service-style1-area">
-    <div class="service-style1-bg" style="background-image: url('{{ asset("public/box/images/backgrounds/service-style1.jpg") }}');">
+    <div>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="service-style1-title">
                     <div class="sec-title">
-                        <h2>Financing For Your Needs</h2>
+                        <h2 style="color:#000;">Financing For Your Needs</h2>
                         <div class="sub-title">
-                            <p>The Institution that builds better relationships.</p>
+                            <p style="color:brown">The Institution that builds better relationships.</p>
                         </div>
                     </div>
                     <div class="get-assistant-box">
@@ -83,14 +83,14 @@
                                     <!--Start Single Service Box Style1-->
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="single-service-box-style1">
-                                            <div class="icon">
+                                            <div style="color:#000;" class="icon">
                                                 <span class="icon-safebox"></span>
                                             </div>
-                                            <h3><a href="#">Personal Loans</a></h3>
+                                            <h3><a style="color:#000;" href="#">Personal Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>Good credit means a great rate. Got good credit? Get a low-interest, 
+                                            <p style="color:#000;">Good credit means a great rate. Got good credit? Get a low-interest, 
                                                 fixed-rate personal loan</p>
-                                            <h6><span>*</span> Interest rate up to 5% p.a</h6>
+                                            <h6><span>*</span> Interest rate up to 20% p.m</h6>
                                             <div class="btn-box">
                                                 <a href="{{ route('view-personal-loans') }}"><span class="icon-right-arrow"></span></a>
                                             </div>
@@ -100,12 +100,12 @@
                                     <!--Start Single Service Box Style1-->
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="single-service-box-style1">
-                                            <div class="icon">
+                                            <div style="color:#000;" class="icon">
                                                 <span class="icon-loan"></span>
                                             </div>
-                                            <h3><a href="#">Educational Loans</a></h3>
+                                            <h3><a style="color:#000;" href="#">Educational Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>
+                                            <p style="color:#000;">
                                                 An education loan can assist you in gaining admission to the university of your interest. 
                                             </p>
                                             <h6><span>*</span> Check today’s Interest Rates</h6>
@@ -118,12 +118,12 @@
                                     <!--Start Single Service Box Style1-->
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="single-service-box-style1">
-                                            <div class="icon">
+                                            <div style="color:#000;" class="icon">
                                                 <span class="icon-online"></span>
                                             </div>
-                                            <h3><a href="#">Women in Business Loans</a></h3>
+                                            <h3><a style="color:#000;" href="#">Women in Business Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>Bridge Trust Finance helps women entrepreneurs launch new 
+                                            <p style="color:#000;">Bridge Trust Finance helps women entrepreneurs launch new 
                                                 businesses and compete in the marketplace. 
                                                 Connect with the training and funding 
                                                 opportunities specifically for women.
@@ -139,12 +139,12 @@
                                     <!--Start Single Service Box Style1-->
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="single-service-box-style1">
-                                            <div class="icon">
+                                            <div style="color:#000;" class="icon">
                                                 <span class="icon-online"></span>
                                             </div>
-                                            <h3><a href="#">Home Improvement Loans</a></h3>
+                                            <h3><a style="color:#000;" href="#">Home Improvement Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>Turn your dream of owning a home into reality with Mighty Trust Finance Home Loans. Whether you are 
+                                            <p style="color:#000;">Turn your dream of owning a home into reality with Mighty Trust Finance Home Loans. Whether you are 
                                                 buying an apartment, constructing a house or renovating your home, 
                                                 we have the right Home Loan for you.</p>
                                             <br>
@@ -166,12 +166,12 @@
                                     <!--Start Single Service Box Style1-->
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="single-service-box-style1">
-                                            <div class="icon">
+                                            <div style="color:#000;" class="icon">
                                                 <span class="icon-safebox"></span>
                                             </div>
-                                            <h3><a href="#">SMEs Loans</a></h3>
+                                            <h3><a style="color:#000;" href="#">Agri Business Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>Small business loans provide financing to help business owners launch, run and grow their businesses.</p>
+                                            <p style="color:#000;">Small business loans provide financing to help business owners launch, run and grow their businesses.</p>
                                             {{-- <h6><span>*</span> Interest rate up to 5% p.a</h6> --}}
                                             <div class="btn-box">
                                                 <a href="{{ route('view-sme-loans') }}"><span class="icon-right-arrow"></span></a>
@@ -183,12 +183,12 @@
                                     <!--Start Single Service Box Style1-->
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="single-service-box-style1">
-                                            <div class="icon">
+                                            <div style="color:#000;" class="icon">
                                                 <span class="icon-loan"></span>
                                             </div>
-                                            <h3><a href="#">Asset Finanance Loans</a></h3>
+                                            <h3><a style="color:#000;" href="#">Asset Finanance Loans</a></h3>
                                             <div class="border-box"></div>
-                                            <p>Collateral finance loans can help your business get the funds it needs by using an asset, such as equipment or real estate, as collateral. With this type of financing, you can borrow money against the value of the asset and then pay it back over time. Because the loan is secured by the asset, you may be able to get a lower interest rate than with other types of loans. 
+                                            <p style="color:#000;">Collateral finance loans can help your business get the funds it needs by using an asset, such as equipment or real estate, as collateral. With this type of financing, you can borrow money against the value of the asset and then pay it back over time. Because the loan is secured by the asset, you may be able to get a lower interest rate than with other types of loans. 
                                                 This can help you manage your cash flow more effectively and invest in your business growth..</p>
                                             <h6><span>*</span> Check today’s Interest Rates</h6>
                                             <div class="btn-box">
