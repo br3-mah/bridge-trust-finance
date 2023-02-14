@@ -59,7 +59,7 @@
 										</div>
 										<h2>Welcome</h2>
 										<span>Create your account today.</span>
-										<x-jet-validation-errors class="mb-4" />
+										<x-jet-validation-errors class="mb-4" style="color:red" />
 										<form class="mt-4" method="POST" action="{{ route('register') }}">
 											@csrf
 											
@@ -85,11 +85,20 @@
 										  </div>
                                          
 										  <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap"> 
-											  <div class="form-check">
+											{{-- <div class="form-check">
 												<input type="checkbox" class="form-check-input" id="exampleCheck1">
 												<label class="form-check-label font-w400" for="exampleCheck1">keep me signed in</label>
-											  </div>
-											  {{-- <span><a href="javascript:void(0);" class="text-primary font-w500 c-pointer">Forget Password ?</a></span> --}}
+											</div> --}}
+											@if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+											<div class="form-check">
+												<input type="checkbox" name="terms" class="form-check-input" id="termsCheckbox">
+												<label class="form-check-label font-w400" for="termsCheckbox">{!! __('I agree to the :terms_of_service and :privacy_policy', [
+													'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+													'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+												]) !!}</label>
+											</div>
+											@endif
+											  
 										 </div>
                                             <button type="submit" class="btn btn-primary btn-block mb-4">Sign me up</button>
 										</form>

@@ -70,6 +70,7 @@
             </div>
             
             <div wire:poll class="row p-4">
+                @dd($my_loan->complete)
                 @if($my_loan->complete == 1)
                     @if($my_loan->status == 1)
                     <div class="col-xl-6 col-xxl-6 col-lg-6">
