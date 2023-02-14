@@ -32,7 +32,10 @@ class HomeLoan extends Component
         ];
         
         $resp = $this->send_loan_enquiry($data);
-        dd($resp);
-        session()->flash('message', 'Email sent successfully.');
+        if($resp == null){
+            session()->flash('message', 'Email sent successfully.');
+        }else{
+            session()->flash('message', 'There was something wrong. Message Failed');
+        }
     }
 }
