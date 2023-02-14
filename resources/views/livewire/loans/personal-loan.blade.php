@@ -46,9 +46,7 @@
             <div class="sec-title text-center">
                 <h3>How to Apply</h3>
             </div>
-            
-            
-            @include('livewire\loans\__parts\how-to-apply')
+            @include('livewire.loans.__parts.how-to-apply')
         </div>
     </section>
     <!--End Applying Process Area-->
