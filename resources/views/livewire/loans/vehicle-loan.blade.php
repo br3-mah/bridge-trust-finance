@@ -69,7 +69,7 @@
                                 </div>
                             </div>
 
-                            @include('livewire\loans\__parts\service-contact-form')
+                            @include('livewire.loans.__parts.service-contact-form')
 
                         </div>
                     </div>
