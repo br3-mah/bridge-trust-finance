@@ -90,6 +90,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
     Route::get('notifications', NotificationView::class)->name('notifications');
     Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');
+
+    // ------ KYC Profile
+    Route::post('updating-file-uploads', [LoanApplicationController::class, 'updateFiles'])->name('update-file-uploads');
 });
 
 Route::resource('posts', PostController::class);
@@ -102,6 +105,7 @@ Route::get('careers', CareerPage::class)->name('about.careers');
 Route::get('contact-us', ContactPage::class)->name('contact');
 Route::get('services', ServicePage::class)->name('services');
 Route::post('request-for-loan', [LoanApplicationController::class, 'store'])->name('loan-request');
+
 Route::get('get-application', [LoanApplicationController::class, 'getLoan'])->name('get-application');
 Route::get('update-existing-application', [LoanApplicationController::class, 'updateExistingLoan'])->name('update-existing-application');
 

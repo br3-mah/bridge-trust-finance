@@ -113,7 +113,7 @@
             </div>
         </div>
     </div>
-    @include('livewire\dashboard\__parts\loan-application')
+    @include('livewire.dashboard.__parts.loan-application')
     <!-- row -->
     <div class="container-fluid pt-0">
         <div class="row">
@@ -198,14 +198,14 @@
                             </div>
                         </div>
                         <div class="col-xl-8">
-                            @include('livewire\dashboard\__parts\dash-finanicial-stats')
+                            @include('livewire.dashboard.__parts.dash-finanicial-stats')
                         </div>
                     </div>
                     {{-- @endcan --}}
                 </div>
 
                 @role('user')
-                 @include('livewire\dashboard\__parts\dash-loan-reguest')
+                 @include('livewire.dashboard.__parts.dash-loan-reguest')
                 @endrole
 
                 @can('company overview dashboard')

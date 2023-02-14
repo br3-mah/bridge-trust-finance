@@ -364,7 +364,6 @@
                                     <h2>Documents</h2>
                                     <div class="sub-title">
                                         <p>Fill in all the necessary details to started with the first step.</p>
-                                        {{ $email ?? 'No Email'}}
                                     </div>
                                 </div>
                                 <div class="apply-form-box__content">

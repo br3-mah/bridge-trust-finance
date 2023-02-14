@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\File;
 use App\Traits\EmailTrait;
@@ -28,13 +29,10 @@ class LoanApplicationController extends Controller
      */
     public function getLoan(Request $req)
     {
-
         $email = $req->toArray()['email']; 
         $application = Application::where('email', $email)
                                     ->where('status', 0)
-                                    ->where('can_change', 0)->get()->first();
-                      
-                           
+                                    ->where('can_change', 0)->get()->first();             
         if($application != null){
             $data = 1;
             return response()->json($data, 200);
@@ -84,7 +82,6 @@ class LoanApplicationController extends Controller
             'phone'=> $form['phone'],
             'gender'=> $form['gender'],
             'type'=> $form['type'],
-            'complete'=> 1,
             'repayment_plan'=> $form['repayment_plan'],
 
             'glname'=> $form['glname'],
@@ -133,6 +130,45 @@ class LoanApplicationController extends Controller
                 return redirect()->to('/contact-us');
             }
         }
+    }
+
+    public function updateFiles(Request $request)
+    {
+        
+        try {
+            if($request->file('nrc_file') != null){
+                $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public'); 
+                $loan = Application::where('status', 0)->where('complete', 0)
+                            ->orWhere('email', auth()->user()->email)
+                            ->orWhere('user_id', auth()->user()->id)->first();
+                if($loan != null){
+                    $loan->complete = 1;
+                    $loan->save();
+                }
+
+                $user = User::find(auth()->user()->id);
+                $user->nrc = $nrc_file;
+                $user->save();      
+            }
+    
+            if($request->file('tpin_file') != null){               
+                $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');   
+                $user = User::find(auth()->user()->id);
+                $user->tpin_file = $tpin_file;
+                $user->save();           
+            }
+    
+            if($request->file('payslip_file') != null){               
+                $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');  
+                $user = User::find(auth()->user()->id);
+                $user->payslip_file = $payslip_file;
+                $user->save();        
+            }
+            return redirect()->to('/user/profile');
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+
     }
 
     /**

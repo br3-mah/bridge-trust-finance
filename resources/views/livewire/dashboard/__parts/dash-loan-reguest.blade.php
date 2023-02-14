@@ -23,11 +23,13 @@
                 <div class="row">
                     <div class="value-data col-xl-3 col-md-4 col-6">
                         <p class="mb-1">APPLICATION STATUS</p>
+                        
+                    @if($my_loan->complete == 1)
                         <h4 class="mb-0 font-w500 text-white">
                             @if($my_loan->status == 0)
                             <span class="badge badge-sm light badge-danger">
                                 <i class="fa fa-circle text-danger me-1"></i>
-                                Pending
+                                Pending for Approval
                             </span>
                             @elseif($my_loan->status == 1)
                             <span class="badge badge-sm light badge-success">
@@ -46,12 +48,19 @@
                             </span>
                             @endif
                         </h4>
+                    @else 
+                        <span class="badge badge-sm light badge-default">
+                            <i class="fa fa-circle text-warning me-1"></i>
+                            Incomplete KYC Profile
+                        </span>
+                    @endif
                     </div>
+                    
+                    @if($my_loan->status == 1)
                     <div class="value-data col-xl-3 col-md-4 col-6">
                         <p class="mb-1">DURATION</p>
                         <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->repayment_plan }}</h4>
                     </div>
-                    @if($my_loan->status == 1)
                     <div class="value-data col-xl-3 col-md-4 col-6">
                         <p class="mb-1">DUE DATE</p>
                         <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->due_date ?? '' }}</h4>
@@ -60,52 +69,65 @@
                 </div>
             </div>
             
-            <div class="row p-2">
-                <div class="col-xl-6 col-xxl-6 col-lg-6">
-                    <div class="widget-stat card bg-danger ">
-                        <div class="card-body p-4">
-                            <div class="media">
-                                <span class="me-3">
-                                    <i class="la la-money"></i>
-                                </span>
-                                <div class="media-body text-white">
-                                    <p class="mb-1 text-white">{{ $my_loan->type }} Loan Payback Total</p>
-                                    <h3 class="text-white">K {{ App\Models\Application::payback($my_loan->amount, preg_replace('/[^0-9]/','', $my_loan->repayment_plan)) }}</h3>
-                                    {{-- <div class="progress mb-2 bg-secondary">
-                                        <div class="progress-bar progress-animated bg-white" style="width: 30%"></div>
-                                    </div> --}}
-                                    {{-- <small>10% penalty addition after Due</small> --}}
+            <div wire:poll class="row p-4">
+                @if($my_loan->complete == 1)
+                    @if($my_loan->status == 1)
+                    <div class="col-xl-6 col-xxl-6 col-lg-6">
+                        <div class="widget-stat card bg-danger ">
+                            <div class="card-body p-4">
+                                <div class="media">
+                                    <span class="me-3">
+                                        <i class="la la-money"></i>
+                                    </span>
+                                    <div class="media-body text-white">
+                                        <p class="mb-1 text-white">{{ $my_loan->type }} Loan Payback Total</p>
+                                        <h3 class="text-white">K {{ App\Models\Application::payback($my_loan->amount, preg_replace('/[^0-9]/','', $my_loan->repayment_plan)) }}</h3>
+                                        {{-- <div class="progress mb-2 bg-secondary">
+                                            <div class="progress-bar progress-animated bg-white" style="width: 30%"></div>
+                                        </div> --}}
+                                        {{-- <small>10% penalty addition after Due</small> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-6 col-xxl-6 col-lg-6">
-                    <div class="row">
-                        @if($my_loan->complete == 0)
+                    @else
+                    <div class="col-xl-6 col-xxl-6 col-lg-6">
+                        <div class="row">
                             <div class="col-12">
                                 <div class="col-xl-12">
-                                    <div class="alert alert-warning left-icon-big alert-dismissible fade show">
+                                    <div class="alert alert-success left-icon-big alert-dismissible fade show">
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
                                         </button>
                                         <div class="media">
                                             <div class="alert-left-icon-big">
-                                                <span><i class="mdi mdi-help-circle-outline"></i></span>
+                                                <span>
+                                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+                                                </span>
                                             </div>
                                             <div class="media-body">
-                                                <h5 class="mt-1 mb-2">Pending!</h5>
-                                                <p class="mb-0">Your application is incomplete please complete your KYC.</p>
+                                                <h5 class="mt-1 mb-2">Your Loan Application is Pending</h5>
+                                                <p class="mb-0">
+                                                    Congratulations!, your {{$my_loan->type}} loan application is now pending for approval.
+                                                    Waiting for loan approval - one step closer to financial freedom!
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#completeKYCmodal" class="btn btn-primary">Continue Application</button>
-                                <button type="button" class="btn btn-light">Cancel Application</button>
+                                {{-- <a href="{{ route('profile.show') }}" class="btn btn-primary">Complete your (KYC) profile</a> --}}
+                                {{-- <button type="button" data-bs-toggle="modal" data-bs-target="#completeKYCmodal" class="btn btn-primary">Continue Application</button> --}}
+                                {{-- <button type="button" class="btn btn-light">Cancel Application</button> --}}
                             </div>
-                        @else
+                        </div>
+                    </div>
+                    @endif
+                @else
+                <div class="col-xl-6 col-xxl-6 col-lg-6">
+                    <div class="row">
                         <div class="col-12">
                             <div class="col-xl-12">
-                                <div class="alert alert-success left-icon-big alert-dismissible fade show">
+                                <div class="alert alert-warning left-icon-big alert-dismissible fade show">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
                                     </button>
                                     <div class="media">
@@ -113,36 +135,19 @@
                                             <span><i class="mdi mdi-help-circle-outline"></i></span>
                                         </div>
                                         <div class="media-body">
-                                            <h5 class="mt-1 mb-2">  @if($my_loan->status == 0)
-                                                <span class="badge badge-sm light badge-danger">
-                                                    <i class="fa fa-circle text-danger me-1"></i>
-                                                    Pending
-                                                </span>
-                                                @elseif($my_loan->status == 1)
-                                                <span class="badge badge-sm light badge-success">
-                                                    <i class="fa fa-circle text-success me-1"></i>
-                                                    Accepted
-                                                </span>
-                                                @elseif($my_loan->status == 2)
-                                                <span class="badge badge-sm light badge-warning">
-                                                    <i class="fa fa-circle text-warning me-1"></i>
-                                                    Under Review
-                                                </span>
-                                                @else
-                                                <span class="badge badge-sm light badge-default">
-                                                    <i class="fa fa-circle text-warning me-1"></i>
-                                                    Rejected
-                                                </span>
-                                                @endif</h5>
-                                            <p class="mb-0">Your application is currently under review</p>
+                                            <h5 class="mt-1 mb-2">Complete Your Profile Details</h5>
+                                            <p class="mb-0">Your {{$my_loan->type}} loan application is not finished yet, please <a href="{{url('/user/profile')}}">complete your KYC profile</a> to complete the loan request.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <a href="{{ route('profile.show') }}" class="btn btn-primary">Complete your (KYC) profile</a>
+                            {{-- <button type="button" data-bs-toggle="modal" data-bs-target="#completeKYCmodal" class="btn btn-primary">Continue Application</button> --}}
+                            {{-- <button type="button" class="btn btn-light">Cancel Application</button> --}}
                         </div>
-                        @endif
                     </div>
                 </div>
+                @endif
             </div>
     </div>
 </div>
