@@ -80,7 +80,7 @@
 											<input type="password" id="password" name="password" required autocomplete="new-password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 										  </div>
 										  <div class="form-group mb-4">
-											<label for="exampleInputPassword1">Password</label>
+											<label for="exampleInputPassword1">Confirm Password</label>
 											<input type="password" id="password_confirmation" name="password_confirmation" required autocomplete="new-password"" class="form-control" id="exampleInputPassword1" placeholder="Re-type Password">
 										  </div>
                                          

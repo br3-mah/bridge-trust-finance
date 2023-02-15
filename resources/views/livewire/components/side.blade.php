@@ -84,8 +84,8 @@
             </li>
             @endcan
 
-            @can('view kyc')
-            {{-- <li>
+            {{-- @can('view kyc') --}}
+            <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
                         <img width="25" src="{{ asset('public/images/1.svg') }}" alt="">
@@ -94,13 +94,10 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="content.html">Complete </a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="email-template.html">Email Template</a></li>
-                    <li><a href="blog.html">Blog</a></li>
 
                 </ul>
-            </li> --}}
-            @endcan
+            </li>
+            {{-- @endcan --}}
 
             @can('view reports')
             <li>

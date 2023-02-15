@@ -25,6 +25,7 @@ use App\Http\Livewire\Dashboard\Settings\LoanWalletView;
 use App\Http\Livewire\Dashboard\Settings\UserRolesView;
 use App\Http\Livewire\Dashboard\Settings\UserView;
 use App\Http\Livewire\FaqPage;
+use App\Http\Livewire\KYCView;
 use App\Http\Livewire\Loans\AssetFinanceLoan;
 use App\Http\Livewire\Loans\EducationalLoan;
 use App\Http\Livewire\Loans\HomeLoan;
@@ -92,6 +93,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');
 
     // ------ KYC Profile
+    Route::get('kyc-profile', KYCView::class)->name('kyc');
     Route::post('updating-file-uploads', [LoanApplicationController::class, 'updateFiles'])->name('update-file-uploads');
 });
 

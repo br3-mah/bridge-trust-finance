@@ -27,11 +27,19 @@
                         @endif
                         <div class="table-responsive patient">
                             <div class="row py-2">
-                                <div class="col-xl-3center">
-                                    <select multiple class="default-select form-control wide mt-3" aria-placeholder="Types" placeholder="Types">
-                                        <option>Due Loans</option>
+                                <div class="col-xl-3 center">
+                                    <select multiple class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Types">
+                                        <option >Due Loans</option>
                                         <option>Early Settled Loans</option>
                                         <option>Loans in Arrears</option>
+                                    </select>
+                                </div>
+                                <div class="col-xl-3 center">
+                                    <select multiple class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Types">
+                                        <option>Personal Loans</option>
+                                        <option>Home Improvement Loans</option>
+                                        <option>Vehicle Loans</option>
+                                        <option>Education Loans</option>
                                     </select>
                                 </div>
                             </div>
@@ -104,11 +112,10 @@
                                         <td style="text-align: center">{{ $loan->created_at->toFormattedDateString() }}</td>
                                         @can('accept and reject loan requests')
                                         <td class="d-flex">
-                                            <div class="btn sharp btn-info tp-btn ms-auto">
-                                                <a href="{{ route('loan-details') }}">
-                                                    >>
+                                            {{-- <div class="btn sharp btn-info tp-btn ms-auto">
+                                                <a href="{{ route('loan-details') }}">  
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                             <div class="dropdown ms-auto text-end">
                                                 <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">
                                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,9 +124,9 @@
                                                     <path d="M13.5202 10.9997C13.5202 12.393 12.3927 13.5205 10.9994 13.5205C9.60601 13.5205 8.47852 12.393 8.47852 10.9997C8.47852 9.6063 9.60601 8.4788 10.9994 8.4788C12.3927 8.4788 13.5202 9.6063 13.5202 10.9997ZM9.85352 10.9997C9.85352 11.6322 10.3669 12.1455 10.9994 12.1455C11.6319 12.1455 12.1452 11.6322 12.1452 10.9997C12.1452 10.3672 11.6319 9.8538 10.9994 9.8538C10.3669 9.8538 9.85352 10.3672 9.85352 10.9997Z" fill="#2696FD"/>
                                                     </svg>
                                                 </div>
-                                                <div wire:ignore class="dropdown-menu dropdown-menu-start">
-                                                    <a wire:click="stall({{ $loan->id }})" class="dropdown-item" href="#">Stall</a>
+                                                <div wire:ignore class="dropdown-menu dropdown-menu-start" style="z-index:100; position: relative;">
                                                     <a wire:click="accept({{ $loan->id }})" class="dropdown-item" href="#">Accept Request</a>
+                                                    <a wire:click="stall({{ $loan->id }})" class="dropdown-item" href="#">Stall</a>
                                                     <a wire:click="reject({{ $loan->id }})" class="dropdown-item" href="#">Reject Loan Request</a>
                                                     <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a>
                                                 </div>

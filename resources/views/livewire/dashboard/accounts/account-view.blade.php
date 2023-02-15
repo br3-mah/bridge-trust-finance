@@ -320,7 +320,9 @@
         </div>
         @else 
         <div class="col-xl-12">
-            <h1>No Results Found.</h1>
+            <div class="items-center center justify-center">
+                <h1>No Results Found.</h1>
+            </div>
         </div>
         @endif
     </div>
