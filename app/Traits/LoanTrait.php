@@ -12,6 +12,11 @@ trait LoanTrait{
     //     $this->application = $a;
     // }
 
+    public function get_loan_details($id){
+        $data = Application::with('user')->where('id', $id)->first();
+        return $data;
+    }
+
     public function apply_loan($data){
             try {
                 // check if user already created a loan application that is not approved yet and not complete

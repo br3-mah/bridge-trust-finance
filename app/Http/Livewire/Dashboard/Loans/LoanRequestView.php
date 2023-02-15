@@ -43,7 +43,7 @@ class LoanRequestView extends Component
             $this->deposit($x->amount, $x);
             $this->send_loan_feedback_email($mail);
         } catch (\Throwable $th) {
-            dd($th);
+            return $th;
         }
     }
 

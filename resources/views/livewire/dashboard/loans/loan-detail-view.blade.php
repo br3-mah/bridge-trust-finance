@@ -3,110 +3,114 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h4>{{ $loan->type }} Loan | K{{ $loan->amount ?? 0 }}</h4>
+
+                        <div class="d-flex align-items-end flex-wrap">
+                            <div class="shopping-cart mb-2 me-3">
+                                <button class="btn btn-square btn-outline-primary" wire:click='stall({{ $loan->id }})' onclick="if (!confirm('Are you sure you want to hold this loan application for review?')) return false;><i
+                                        class="fa fa-pause me-2"></i>Hold Loan</button>
+                            </div>
+                            <div class="shopping-cart mb-2 me-3">
+                                <a class="btn btn-square btn-primary" wire:click='accept({{ $loan->id }})' href="javascript:void(0);;"><i
+                                        class="fa fa-check me-2"></i>Accept Loan</a>
+                            </div>
+                            <div class="shopping-cart mb-2 me-3">
+                                <a class="btn btn-square btn-danger" wire:click='reject({{ $loan->id }})' href="javascript:void(0);;"><i
+                                        class="fa fa-cancel me-2"></i>Reject Loan</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
-                                
-                                <div class="tab-content" id="myTabContent">
-                                  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                                         <img class="img-fluid rounded  " src="images/product/1.jpg" alt="">
-                                  </div>
-                                  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                                        <img class="img-fluid rounded " src="images/product/2.jpg" alt="">
-                                  </div>
-                                  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                                     <img class="img-fluid rounded" src="images/product/3.jpg" alt="">
-                                  </div>
-                                  <div class="tab-pane fade" id="end-tab-pane" role="tabpanel" aria-labelledby="end-tab" tabindex="0">
-                                     <img class="img-fluid rounded" src="images/product/3.jpg" alt="">
-                                  </div>
-                                  
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
+                                <div class="product-detail-content">
+                                    <div class="new-arrival-content pr">
+                                        <p>Borrower: <span class="item">{{ $loan->fname ?? $loan->user->fname }} {{ $loan->lname ?? $loan->user->lname }}</span> </p>
+                                        <p>Address: <span class="item">{{ $loan->address ?? $loan->user->address }}</span></p>
+                                        <p>Phone No.: <span class="item">{{ $loan->phone ?? $loan->user->phone }}</span></p>
+                                        <p>Sex: <span class="item">{{ $loan->gender ?? $loan->user->gender }}</span></p>
+                                    </div>
                                 </div>
-                               <ul class="nav nav-tabs product-detail" id="myTab" role="tablist">
-                                  <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><img class="img-fluid me-2 rounded" src="images/tab/1.jpg" alt="" width="80"></button>
-                                  </li>
-                                  <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><img class="img-fluid me-2 rounded" src="images/tab/2.jpg" alt="" width="80"></button>
-                                  </li>
-                                  <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><img class="img-fluid me-2 rounded" src="images/tab/3.jpg" alt="" width="80"></button>
-                                  </li>
-                                  <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="end-tab" data-bs-toggle="tab" data-bs-target="#end-tab-pane" type="button" role="tab" aria-controls="end-tab-pane" aria-selected="false"><img class="img-fluid  rounded" src="images/tab/4.jpg" alt="" width="80"></button>
-                                  </li>
-                                 
-                                </ul>
                             </div>
                             <!--Tab slider End-->
-                            <div class="col-xl-9 col-lg-6  col-md-6 col-xxl-7 col-sm-12">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
                                 <div class="product-detail-content">
                                     <!--Product details-->
                                     <div class="new-arrival-content pr">
-                                        <h4>Solid Women's V-neck Dark T-Shirt</h4>
-                                        <div class="comment-review star-rating d-flex">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-
-                                            </ul>
-                                            <span class="review-text ms-3">(34 reviews) / </span><a class="product-review" href="#"  data-bs-toggle="modal" data-bs-target="#reviewModal">Write a review?</a>
+                                        {{-- <div class="d-table mb-2"> --}}
+                                            <p class="price float-start d-block"></p>
                                         </div>
-                                        <div class="d-table mb-2">
-                                            <p class="price float-start d-block">$325.00</p>
-                                        </div>
-                                        <p>Availability: <span class="item"> In stock <i
-                                                    class="fa fa-shopping-basket"></i></span>
+                                        <p>
+                                            Borrowed Amount: 
+                                            <span class="item">
+                                                K{{ $loan->amount ?? 0 }}
+                                            </span>
                                         </p>
-                                        <p>Product code: <span class="item">0405689</span> </p>
-                                        <p>Brand: <span class="item">Lee</span></p>
-                                        <p>Product tags:&nbsp;&nbsp;
-                                            <span class="badge badge-success light">bags</span>
-                                            <span class="badge badge-success light">clothes</span>
-                                            <span class="badge badge-success light">shoes</span>
-                                            <span class="badge badge-success light">dresses</span>
+                                        <p>Duration: <span class="item">{{ $loan->repayment_plan }} Months</span> </p>
+                                        <p>Interest: <span class="item">{{ $loan->interest }}% p.m</span></p>
+
+                                        {{-- Payback details --}}
+                                        @if($loan->status == 1 || preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) == 'admin')
+                                        <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
+                                        <p>Total Interest Rate: <span class="item">{{ $loan->repayment_plan * 20 }}%</span></p>
+                                        @endif
+                                        {{-- Loan Status --}}
+                                        <p>Loan Progress:&nbsp;&nbsp;
+                                            @if ($loan->status == 0)
+                                                @if($loan->complete == 0)
+                                                <span class="badge badge-dark">Incomplete KYC</span>
+                                                @else
+                                                <span class="badge badge-success">Pending</span>
+                                                @endif
+                                            @else
+                                                @if($loan->complete == 0)
+                                                <span class="badge badge-light">Incomplete KYC</span>
+                                                @else
+                                                <span class="badge badge-light">Pending</span>
+                                                @endif
+                                            @endif
+                                            @if ($loan->status == 2)
+                                            <span class="badge badge-success">Under Review</span>
+                                            @else
+                                            <span class="badge badge-light">Under Review</span>
+                                            @endif
+                                            @if ($loan->status == 1)
+                                            <span class="badge badge-success">Accepted</span>
+                                            @else
+                                            <span class="badge badge-light">Accepted</span>
+                                            @endif
+                                            @if ($loan->status == 3)
+                                            <span class="badge badge-success">Rejected</span>
+                                            @else
+                                            <span class="badge badge-light">Rejected</span>
+                                            @endif
+                                            
                                         </p>
-                                        <p class="text-content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-                                            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                                        <div class="d-flex align-items-end flex-wrap mt-4">
-                                            <div class="filtaring-area me-3">
-                                                <div class="size-filter">
-                                                    <h4 class="m-b-15">Select size</h4>
-                                                    <div class="d-flex select-size mb-2" role="group" aria-label="Basic radio toggle button group">
-                                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
-                                                      <label class="btn btn-outline-primary sharp sharp-lg" for="btnradio1">XS</label>
-
-                                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
-                                                      <label class="btn btn-outline-primary sharp sharp-lg" for="btnradio2">SM</label>
-
-                                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
-                                                      <label class="btn btn-outline-primary sharp sharp-lg" for="btnradio3">MD</label>
-                                                      
-                                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio4">
-                                                      <label class="btn btn-outline-primary sharp sharp-lg" for="btnradio4">LG</label>
-                                                      
-                                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio5">
-                                                      <label class="btn btn-outline-primary sharp sharp-lg" for="btnradio5">XL</label>
-                                                    </div>
-                                                    
-                                                </div>
-                                            </div>
-                                            <!--Quantity start-->
-                                            <div class="col-2 px-0  mb-2 me-3">
-                                                <input type="number" name="num" class="form-control input-btn input-number" value="1">
-                                            </div>
-                                            <!--Quanatity End-->
-                                            <div class="shopping-cart  mb-2 me-3">
-                                                <a class="btn btn-primary" href="javascript:void(0);;"><i
-                                                        class="fa fa-shopping-basket me-2"></i>Add
-                                                    to cart</a>
-                                            </div>
-                                        </div>
+                                        <p class="text-content">
+                                            
+                                        </p>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="title-sm">
+                                <h5>Guarantors</h5>
+                            </div>
+                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                <p>1st Garantors Name: <span class="item">{{ $loan->gfname.' '.$loan->glname }}</span></p>
+                                <p>1st Garantors Phone No.: <span class="item">{{ $loan->gphone }}</span></p>
+                                <p>1st Garantors Email: <span class="item">{{ $loan->gemail }}</span></p>
+                                <p>1st Garantors Sex: <span class="item">{{ $loan->g_gender }}</span></p>
+                                <p>1st Garantors Relation: <span class="item">{{ $loan->g_relation }}</span></p>
+                            </div>
+                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                <p>2nd Garantors Name: <span class="item">{{ $loan->g2fname.' '.$loan->g2lname }}</span></p>
+                                <p>2nd Garantors Phone No.: <span class="item">{{ $loan->g2phone }}</span></p>
+                                <p>2nd Garantors Email: <span class="item">{{ $loan->g2email }}</span></p>
+                                <p>2nd Garantors Sex: <span class="item">{{ $loan->g2_gender }}</span></p>
+                                <p>2nd Garantors Relation: <span class="item">{{ $loan->g_2relation }}</span></p>
                             </div>
                         </div>
                         
