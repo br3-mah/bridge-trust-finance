@@ -1,6 +1,7 @@
 <div class="content-body">
     <div class="container-fluid">
-        @if(!empty($data->toArray()))
+        {{-- @dd($data == null) --}}
+        @if($data != null)
         <div class="row">
             <div class="col-xl-12 col-xxl-12 col-lg-12">
                 <div class="profile card card-body px-3 pt-3 pb-0">
