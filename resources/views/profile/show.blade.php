@@ -25,12 +25,12 @@
                                 </div>
                                 <div class="info-list">
                                     <ul>
-                                        <li><a href="#" onclick="displayGeneral()">General Information</a></li>
-                                        <li><a href="#" onclick="displayUploads()">Documents</a></li>
-                                        <li><a href="#" onclick="displaySecurity()">Password</a></li>
+                                        <li><a href="#" onclick="displayGeneral()">General KYC Profile</a></li>
+                                        <li><a href="#" onclick="displayUploads()">Support Documents</a></li>
+                                        <li><a href="#" onclick="displaySecurity()">Security & Password</a></li>
                                         {{-- <li><a href="#" onclick="displayTwoFactor()">2 Factor Authentication</a></li> --}}
-                                        <li><a href="#" onclick="displaySessions()">Sessions</a></li>
-                                        <li><a href="#" onclick="displayCloseAccount()">Close Account</a></li>
+                                        <li><a href="#" onclick="displaySessions()">Other Device Sessions</a></li>
+                                        {{-- <li><a href="#" onclick="displayCloseAccount()">Close Account</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -49,20 +49,11 @@
                     <div id="generalProfileSection">
                         @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                             @livewire('profile.update-profile-information-form')
-                            <x-jet-section-border />
                         @endif
 
                     </div>
 
-                    <div id="logoutDevices">         
-                        @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-                            <div class="mt-10 sm:mt-0">
-                                @livewire('profile.two-factor-authentication-form')
-                            </div>
-            
-                            <x-jet-section-border />
-                        @endif
-            
+                    <div id="logoutDevices">       
                         <div class="mt-10 sm:mt-0">
                             @livewire('profile.logout-other-browser-sessions-form')
                         </div>
@@ -70,8 +61,6 @@
 
                     <div id="diactivateAccount">
                         @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                            <x-jet-section-border />
-            
                             <div class="mt-10 sm:mt-0">
                                 @livewire('profile.delete-user-form')
                             </div>
@@ -83,8 +72,11 @@
                             <div class="mt-10 sm:mt-0">
                                 @livewire('profile.update-password-form')
                             </div>
-            
-                            <x-jet-section-border />
+                        @endif
+                        @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+                            <div class="mt-10 sm:mt-0">
+                                @livewire('profile.two-factor-authentication-form')
+                            </div>
                         @endif
                     </div>
 
@@ -92,15 +84,15 @@
                         <form action="{{ route("update-file-uploads") }}" method="POST" enctype="multipart/form-data">
                             @csrf   
                             <div>
-                                <h2>
+                                <h3>
                                     {{ __('Upload Documents') }}
-                                </h2>
+                                </h3>
                             
-                                <h6>
+                                <p>
                                     {{ __('Upload neccessary documents as required.') }}
-                                </h6>
+                                </p>
                             </div>
-                            <div class="row">
+                            <div class="row pt-4">
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <div class="input-box">

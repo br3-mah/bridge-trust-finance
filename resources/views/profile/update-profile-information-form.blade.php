@@ -1,15 +1,14 @@
-<x-jet-form-section  class="shadowless" submit="updateProfileInformation">
+<x-jet-form-section class="card profile-card card-bx pt-4" submit="updateProfileInformation">
     <div class="card-header">
         <x-slot name="title">
             {{ __('Profile Information') }}
         </x-slot>
-    
         <x-slot name="description">
             {{ __('Update your account\'s profile information and email address.') }}
         </x-slot>
     </div>
 
-    <x-slot name="form" class="shadowless">
+    <x-slot name="form" >
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
@@ -56,51 +55,64 @@
 
         <div class="row">
             <!-- Name -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="fname" value="{{ __('First Name') }}" />
                 <x-jet-input id="fname" type="text" class="form-control" wire:model.defer="state.fname" autocomplete="fname" />
                 <x-jet-input-error for="fname" class="mt-2" />
             </div>
             <!-- Name -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="lname" value="{{ __('Last Name') }}" />
                 <x-jet-input id="lname" type="text" class="form-control" wire:model.defer="state.lname" autocomplete="lname" />
                 <x-jet-input-error for="lname" class="mt-2" />
             </div>
 
             <!-- Email -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" type="email" class="form-control" wire:model.defer="state.email" />
                 <x-jet-input-error for="email" class="mt-2" />
             </div>    
 
             <!-- phone -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="phone" value="{{ __('Phone') }}" />
                 <x-jet-input id="phone" type="text" class="form-control" wire:model.defer="state.phone" />
                 <x-jet-input-error for="phone" class="mt-2" />
             </div>
+            
+            <div class="col-sm-6 mt-3 m-b30">
+                <x-jet-label for="nrc" value="{{ __('NRC Number') }}" />
+                <x-jet-input id="nrc" type="text" class="form-control" wire:model.defer="state.nrc_no" />
+                <x-jet-input-error for="nrc" class="mt-2" />
+            </div> 
+
             <!-- phone -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="occupation" value="{{ __('Occupation') }}" />
                 <x-jet-input id="occupation" type="text" class="form-control" wire:model.defer="state.occupation" />
                 <x-jet-input-error for="occupation" class="mt-2" />
             </div>
             <!-- phone -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
+                <x-jet-label for="basic_pay" value="{{ __('Basic Pay') }}" />
+                <x-jet-input id="basic_pay" type="text" class="form-control" wire:model.defer="state.basic_pay" />
+                <x-jet-input-error for="basic_pay" class="mt-2" />
+            </div>
+            <!-- phone -->
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="address" value="{{ __('Address') }}" />
                 <x-jet-input id="address" type="text" class="form-control" wire:model.defer="state.address" />
                 <x-jet-input-error for="address" class="mt-2" />
             </div>
             <!-- phone -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="dob" value="{{ __('Date of Birth') }}" />
                 <x-jet-input id="dob" type="text" class="form-control" wire:model.defer="state.dob" />
                 <x-jet-input-error for="dob" class="mt-2" />
             </div>
             <!-- phone -->
-            <div class="col-sm-6 m-b30">
+            <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="gender" value="{{ __('Gender') }}" />
                 <select id="gender" type="text" class="form-control" wire:model.defer="state.gender">
                     <option value="">-- Choose --</option>
@@ -109,16 +121,17 @@
                 </select>
                 <x-jet-input-error for="address" class="mt-2" />
             </div>
+            
         </div>
     </x-slot>
 
     <x-slot name="actions">
-        <x-jet-action-messageclass="mr-3" on="saved">
-            {{ __('Saved.') }}
-        </x-jet-action-messageclass=>
+        <x-jet-action-message class="mr-3" on="saved">
+            {{ __('Updating...') }}
+        </x-jet-action-message>
         <br>
         <x-jet-button wire:loading.attr="disabled" type="submit"  class="btn  btn-square btn-primary" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Save Changes') }}
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\Application;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -27,11 +28,23 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'address' => ['nullable'],
             'occupation' => ['nullable'],
             'dob' => ['nullable'],
-            'gender' => ['nullable']
+            'gender' => ['nullable'],
+            'nrc_no' => ['nullable'],
+            'basic_pay' => ['nullable']
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
+        }
+
+        if(isset($input['photo']) && isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
+            $loan = Application::where('status', 0)->where('complete', 0)
+                        ->orWhere('email', auth()->user()->email)
+                        ->orWhere('user_id', auth()->user()->id)->first();
+            if($loan != null){
+                $loan->complete = 1;
+                $loan->save();
+            }
         }
 
         if ($input['email'] !== $user->email &&
@@ -43,6 +56,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'lname' => $input['lname'],
                 'email' => $input['email'],
                 'phone' => $input['phone'],
+                'basic_pay' => $input['basic_pay'],
+                'nrc_no' => $input['nrc_no'],
                 'address' => $input['address'],
                 'occupation' => $input['occupation'],
                 'dob' => $input['dob'],
@@ -64,7 +79,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'fname' => $input['fname'],
             'lname' => $input['lname'],
             'email' => $input['email'],
+            'basic_pay' => $input['basic_pay'],
+            'nrc_no' => $input['nrc_no'],
             'phone' => $input['phone'],
+            'address' => $input['address'],
+            'occupation' => $input['occupation'],
+            'dob' => $input['dob'],
+            'gender' => $input['gender'],
             'email_verified_at' => null,
         ])->save();
 

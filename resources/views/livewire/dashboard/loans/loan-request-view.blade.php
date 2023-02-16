@@ -40,7 +40,6 @@
                                 </div>
                                 <div class="col-xl-3 center">
                                     <select multiple wire:model.lazy="type" class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Loan Types">
-
                                         <option value="Personal">Personal</option>
                                         <option value="Education">Education</option>
                                         <option value="Asset Financing">Asset Financing</option>

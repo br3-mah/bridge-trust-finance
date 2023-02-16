@@ -64,9 +64,6 @@ class LoanApplicationController extends Controller
     public function store(Request $request)
     {
         $form = $request->toArray();
-        // if($request->file('nrc_file') != null){
-        //     $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public');                     
-        // }
         if($request->file('tpin_file') != null){               
             $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
         }
@@ -97,9 +94,11 @@ class LoanApplicationController extends Controller
             'g2phone'=> $form['g2phone'],
             'g2_gender'=> $form['g2_gender'],
             'g2_relation'=> $form['g2_relation'],
-            // 'nrc_file' => $nrc_file,
+
             'tpin_file' => $tpin_file,
-            'payslip_file' => $payslip_file
+            'payslip_file' => $payslip_file,
+
+            'complete' => 0
         ];
         $application = $this->apply_loan($data);
         $mail = [
@@ -138,14 +137,6 @@ class LoanApplicationController extends Controller
         try {
             if($request->file('nrc_file') != null){
                 $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public'); 
-                $loan = Application::where('status', 0)->where('complete', 0)
-                            ->orWhere('email', auth()->user()->email)
-                            ->orWhere('user_id', auth()->user()->id)->first();
-                if($loan != null){
-                    $loan->complete = 1;
-                    $loan->save();
-                }
-
                 $user = User::find(auth()->user()->id);
                 $user->nrc = $nrc_file;
                 $user->save();      

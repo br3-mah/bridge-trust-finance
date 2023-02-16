@@ -33,6 +33,7 @@ class User extends Authenticatable
         'address',
         'occupation',
         'nrc',
+        'nrc_no',
         'dob',
         'gender',
         'loan_status',

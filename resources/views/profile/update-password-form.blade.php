@@ -1,11 +1,13 @@
-<x-jet-form-section submit="updatePassword">
-    <x-slot name="title">
-        {{ __('Update Password') }}
-    </x-slot>
-
-    <x-slot name="description">
-        {{ __('Ensure your account is using a long, random password to stay secure.') }}
-    </x-slot>
+<x-jet-form-section class="card profile-card card-bx pt-4" submit="updatePassword">
+    <div class="card-header">
+        <x-slot name="title">
+            {{ __('Update Password') }}
+        </x-slot>
+    
+        <x-slot name="description">
+            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        </x-slot>
+    </div>
 
     <x-slot name="form">
         <div class="row">

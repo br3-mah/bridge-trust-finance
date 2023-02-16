@@ -8,6 +8,7 @@ class KYCView extends Component
 {
     public function render()
     {
-        return view('livewire.k-y-c-view');
+        return view('livewire.k-y-c-view')
+        ->layout('layouts.dashboard');
     }
 }
