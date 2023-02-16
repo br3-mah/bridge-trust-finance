@@ -1,5 +1,5 @@
 <div class="content-body">
-    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    {{-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="container-fluid mh-auto">
         <div class="row">
             <div class="col-lg-12">
