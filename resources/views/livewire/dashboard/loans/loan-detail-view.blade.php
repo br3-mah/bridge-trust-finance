@@ -1,4 +1,61 @@
 <div class="content-body">
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hold Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">Are you sure you want to hold this loan application under review?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-square primary btn-sm" data-bs-dismiss="modal">No</button>
+                    <button type="button" wire:click="stall({{$loan->id}})" class="btn btn-primary btn-square btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-sm1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Accept Loan Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to approve and accept this loan application?
+                    <br>
+                    <br>
+                    <b>Note:</b> Funds will be transfered immediately to the borrower's wallet account.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-square primary btn-sm" data-bs-dismiss="modal">No</button>
+                    <button type="button" wire:click="accept()" class="btn btn-primary btn-square btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div wire:ignore.self class="modal fade bd-example-modal-sm2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Accept Loan Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to disapprove and reject this loan application?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-square primary btn-sm" data-bs-dismiss="modal">No</button>
+                    <button type="button" wire:click="reject({{$loan->id}})" class="btn btn-primary btn-square btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid mh-auto">
         <div class="row">
             <div class="col-lg-12">
@@ -7,18 +64,39 @@
                         <h4>{{ $loan->type }} Loan | K{{ $loan->amount ?? 0 }}</h4>
 
                         <div class="d-flex align-items-end flex-wrap">
+                            @if($loan->status != 1)
                             <div class="shopping-cart mb-2 me-3">
-                                <button class="btn btn-square btn-outline-primary" wire:click='stall({{ $loan->id }})' onclick="if (!confirm('Are you sure you want to hold this loan application for review?')) return false;><i
-                                        class="fa fa-pause me-2"></i>Hold Loan</button>
+                                <button 
+                                    class="btn btn-square btn-outline-primary" 
+                                    {{-- wire:click.prevent="confirm({{ $loan->id }}, 'stall')"  --}}
+                                    wire:click.prevent="stall({{ $loan->id }})" 
+                                    data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm"
+                                    onclick="if (!confirm('Are you sure you want to hold this loan application for review?')) return false;"
+                                >
+                                <i class="fa fa-pause me-2"></i>Hold Loan
+                                </button>
                             </div>
                             <div class="shopping-cart mb-2 me-3">
-                                <a class="btn btn-square btn-primary" wire:click='accept({{ $loan->id }})' href="javascript:void(0);;"><i
-                                        class="fa fa-check me-2"></i>Accept Loan</a>
+                                <button 
+                                    class="btn btn-square btn-primary" 
+                                    wire:click.prevent="accept({{ $loan->id }})" 
+                                    {{-- data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm1" --}}
+                                    onclick="if (!confirm('Are you sure you want to approve and accept this loan application\nNote: Funds will be transfered immediately to the borrower wallet account.')) return false;"
+                                >
+                                <i class="fa fa-check me-2"></i>Accept Loan
+                                </button>
                             </div>
                             <div class="shopping-cart mb-2 me-3">
-                                <a class="btn btn-square btn-danger" wire:click='reject({{ $loan->id }})' href="javascript:void(0);;"><i
-                                        class="fa fa-cancel me-2"></i>Reject Loan</a>
+                                <button 
+                                    class="btn btn-square btn-outline-danger" 
+                                    wire:click.prevent="reject({{ $loan->id }})" 
+                                    {{-- data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm2" --}}
+                                    onclick="if (!confirm('Are you sure you want to disapprove and reject this loan application?')) return false;"
+                                >
+                                <i class="fa fa-cancel me-2"></i>Reject Loan
+                                </button>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body">
@@ -167,4 +245,7 @@
         </div>
         
     </div>
+
+    
 </div>
+

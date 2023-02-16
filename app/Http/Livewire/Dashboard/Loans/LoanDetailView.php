@@ -11,7 +11,7 @@ use Livewire\Component;
 class LoanDetailView extends Component
 {
     use EmailTrait, LoanTrait;
-    public $loan, $user, $loan_id;
+    public $loan, $user, $loan_id, $msg;
 
     public function mount($id){
         /**
@@ -25,14 +25,24 @@ class LoanDetailView extends Component
     public function render()
     {
         $this->loan = $this->get_loan_details($this->loan_id);
-        // dd($this->loan);
         return view('livewire.dashboard.loans.loan-detail-view')
         ->layout('layouts.dashboard');
     } 
+
+    public function confirm($id, $msg){
+        $this->loan_id = $id;
+        $this->msg = $msg;
+    }
+
+    public function clear(){
+        $this->loan_id = '';
+        $this->msg = '';
+    }
     
-    public function accept($id){
+    public function accept(){
+        dd('ere');
         try {
-            $x = Application::find($id);
+            $x = Application::find($this->loan_id);
             $x->status = 1;
             $x->save();
             $mail = [
@@ -49,6 +59,7 @@ class LoanDetailView extends Component
             ];
             $this->deposit($x->amount, $x);
             $this->send_loan_feedback_email($mail);
+            $this->render();
         } catch (\Throwable $th) {
             return $th;
         }

@@ -27,21 +27,24 @@
                         @endif
                         <div class="table-responsive patient">
                             <div class="row py-2">
+                                {{-- Admin Only --}}
                                 <div class="col-xl-3 center">
-                                    <select multiple class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Types">
-                                        <option >Due Loans</option>
-                                        <option>Early Settled Loans</option>
-                                        <option>Loans in Arrears</option>
+                                    <select multiple wire:model="status" class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Types">
+                                        <option value="0">Pending</option>
+                                        <option value="1">Accepted</option>
+                                        <option value="2">Under Review</option>
+                                        <option value="3">Rejected</option>
                                     </select>
                                 </div>
                                 <div class="col-xl-3 center">
-                                    <select multiple class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Types">
-                                        <option>Personal Loans</option>
-                                        <option>Home Improvement Loans</option>
-                                        <option>Vehicle Loans</option>
-                                        <option>Education Loans</option>
+                                    <select multiple wire:model="type" class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Types">
+                                        <option value="personal">Personal Loans</option>
+                                        <option value="home improvement">Home Improvement Loans</option>
+                                        <option value="vehicle">Vehicle Loans</option>
+                                        <option value="education">Education Loans</option>
                                     </select>
                                 </div>
+                                {{-- End Amin Only --}}
                             </div>
                             <table id="example5" class="display" style="min-width: 845px; position:relative;">
                                 <thead>

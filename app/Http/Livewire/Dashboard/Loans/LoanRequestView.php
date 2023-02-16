@@ -11,9 +11,22 @@ class LoanRequestView extends Component
 {
     use EmailTrait, WalletTrait;
     public $loan_requests, $loan_request;
+    public $type = [];
+    public $status = [];
     public function render()
     {
-        $this->loan_requests = Application::get();
+        $loan_requests = Application::query();
+        // $users = User::query();
+
+        if ($this->type) {
+            $loan_requests->whereIn('type', $this->type);
+        }
+
+        if ($this->status) {
+            $loan_requests->whereIn('status', $this->status);
+        }
+
+        $this->loan_requests = $loan_requests->get();
         // if(auth()->user()->can('view all loan requests')){
         //     $this->loan_requests = Application::get();
         // }else{
