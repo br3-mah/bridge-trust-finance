@@ -71,7 +71,7 @@
                                     {{-- wire:click.prevent="confirm({{ $loan->id }}, 'stall')"  --}}
                                     wire:click.prevent="stall({{ $loan->id }})" 
                                     data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm"
-                                    onclick="if (!confirm('Are you sure you want to hold this loan application for review?')) return false;"
+                                    onclick="confirm('Are you sure you want to hold this loan application for review?') || event.stopImmediatePropagation();"
                                 >
                                 <i class="fa fa-pause me-2"></i>Hold Loan
                                 </button>
@@ -81,7 +81,7 @@
                                     class="btn btn-square btn-primary" 
                                     wire:click.prevent="accept({{ $loan->id }})" 
                                     {{-- data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm1" --}}
-                                    onclick="if (!confirm('Are you sure you want to approve and accept this loan application\nNote: Funds will be transfered immediately to the borrower wallet account.')) return false;"
+                                    onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();"
                                 >
                                 <i class="fa fa-check me-2"></i>Accept Loan
                                 </button>
@@ -91,7 +91,7 @@
                                     class="btn btn-square btn-outline-danger" 
                                     wire:click.prevent="reject({{ $loan->id }})" 
                                     {{-- data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm2" --}}
-                                    onclick="if (!confirm('Are you sure you want to disapprove and reject this loan application?')) return false;"
+                                    onclick="confirm('Are you sure you want to disapprove and reject this loan application?') || event.stopImmediatePropagation();"
                                 >
                                 <i class="fa fa-cancel me-2"></i>Reject Loan
                                 </button>

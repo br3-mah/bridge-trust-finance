@@ -39,8 +39,7 @@ class LoanDetailView extends Component
         $this->msg = '';
     }
     
-    public function accept(){
-        dd('ere');
+    public function accept($id){
         try {
             $x = Application::find($this->loan_id);
             $x->status = 1;
