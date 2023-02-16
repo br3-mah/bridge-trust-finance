@@ -18,20 +18,20 @@ class LoanRequestView extends Component
         $loan_requests = Application::query();
         // $users = User::query();
 
-        if ($this->type) {
-            $loan_requests->whereIn('type', $this->type);
-        }
 
-        if ($this->status) {
-            $loan_requests->whereIn('status', $this->status);
+        if(auth()->user()->can('view all loan requests')){
+            if ($this->type) {
+                $loan_requests->whereIn('type', $this->type);
+            }
+    
+            if ($this->status) {
+                $loan_requests->whereIn('status', $this->status);
+            }
+    
+            $this->loan_requests = $loan_requests->get();
+        }else{
+            $this->loan_requests = Application::where('user_id', auth()->user()->id)->get();
         }
-
-        $this->loan_requests = $loan_requests->get();
-        // if(auth()->user()->can('view all loan requests')){
-        //     $this->loan_requests = Application::get();
-        // }else{
-        //     $this->loan_requests = Application::where('user_id', auth()->user()->id)->get();
-        // }
         return view('livewire.dashboard.loans.loan-request-view')
         ->layout('layouts.dashboard');
     }

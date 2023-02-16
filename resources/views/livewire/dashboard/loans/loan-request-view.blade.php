@@ -28,8 +28,10 @@
                         <div class="table-responsive patient">
                             <div wire:ignore class="row py-2">
                                 {{-- Admin Only --}}
+                                @can('accept and reject loan requests')
                                 <div class="col-xl-3 center">
                                     <select multiple wire:model.lazy="status" class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Status">
+                                        <option value="[0,1,2,3]">Any</option>
                                         <option value="0">Pending</option>
                                         <option value="1">Accepted</option>
                                         <option value="2">Under Review</option>
@@ -47,6 +49,7 @@
                                         <option value="Women in Business (Femiprise) Soft">Women in Business</option>
                                     </select>
                                 </div>
+                                @endcan
                                 {{-- End Amin Only --}}
                             </div>
                             <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
@@ -148,17 +151,13 @@
                                             </div>
                                             @endcan	
                                         </td>	
-                                        
-                                        {{-- @cannot('accept and reject loan requests')
-                                        <td></td>
-                                        @endcan									 --}}
                                     </tr>
                                     @empty
-                                    {{-- <div class="intro-y col-span-12 md:col-span-6">
+                                    <div class="intro-y col-span-12 md:col-span-6">
                                         <div class="box text-center">
-                                            <p>No User Found</p>
+                                            <p>Nothing Found.</p>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     @endforelse
                                     <tr style="height: 15vh">
                                     
