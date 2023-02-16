@@ -69,7 +69,7 @@
                                                             <option value="Education">Education</option>
                                                             <option value="Asset Financing">Asset Financing</option>
                                                             <option value="Home Improvement">Home Improvements</option>
-                                                            <option value="SME Based">SME Based</option>
+                                                            <option value="Agri Business">Agri Business</option>
                                                             <option value="Women in Business (Femiprise) Soft">Women in Business</option>
                                                         </select>
                                                         <small id="validType" style="color:red"></small>
