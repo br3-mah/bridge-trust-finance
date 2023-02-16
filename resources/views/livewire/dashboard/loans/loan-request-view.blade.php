@@ -116,8 +116,8 @@
                                             @endif
                                         </td>
                                         <td style="">{{ $loan->created_at->toFormattedDateString() }}</td>
-                                        @can('accept and reject loan requests')
                                         <td class="d-flex">
+                                            {{-- @can('view loan details') --}}
                                             <div class="btn sharp btn-light tp-btn ms-auto">
                                                 <a href="{{ route('loan-details',['id' => $loan->id]) }}">  
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -126,7 +126,11 @@
                                                     </svg>                                                
                                                 </a>
                                             </div>
+                                            {{-- @endcan	 --}}
+
                                             &nbsp;
+                                            
+                                            @can('accept and reject loan requests')
                                             <div class="dropdown ms-auto text-end">
                                                 <div wire:ignore class="dropdown-menu dropdown-menu-start" style="z-index:10; position: fixed;">
                                                     <a wire:click="accept({{ $loan->id }})" class="dropdown-item" href="#">Accept Request</a>
@@ -142,8 +146,8 @@
                                                     </svg>
                                                 </div>
                                             </div>
-                                        </td>
-                                        @endcan		
+                                            @endcan	
+                                        </td>	
                                         
                                         {{-- @cannot('accept and reject loan requests')
                                         <td></td>

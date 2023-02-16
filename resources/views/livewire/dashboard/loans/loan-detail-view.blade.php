@@ -63,6 +63,7 @@
                     <div class="card-header">
                         <h4>{{ $loan->type }} Loan | K{{ $loan->amount ?? 0 }}</h4>
 
+                        @can('accept and reject loan requests')
                         <div class="d-flex align-items-end flex-wrap">
                             @if($loan->status != 1)
                             <div class="shopping-cart mb-2 me-3">
@@ -98,11 +99,16 @@
                             </div>
                             @endif
                         </div>
+                        @endcan
                     </div>
                     <div class="card-body">
                         <div class="row">
                             
+
                             <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Borrower Information</h5>
+                                </div>
                                 <div class="product-detail-content">
                                     <div class="new-arrival-content pr">
                                         <p>Borrower: <span class="item">{{ $loan->fname ?? $loan->user->fname }} {{ $loan->lname ?? $loan->user->lname }}</span> </p>
@@ -114,10 +120,13 @@
                             </div>
                             <!--Tab slider End-->
                             <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Loans Details & Status</h5>
+                                </div>
                                 <div class="product-detail-content">
                                     <!--Product details-->
                                     <div class="new-arrival-content pr">
-                                        {{-- <div class="d-table mb-2"> --}}
+                                        <div class="d-table mb-2">
                                             <p class="price float-start d-block"></p>
                                         </div>
                                         <p>
@@ -131,6 +140,7 @@
 
                                         {{-- Payback details --}}
                                         @if($loan->status == 1 || preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) == 'admin')
+                                        <p>Last Payment: <span class="item"> No Record</span></p>
                                         <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
                                         <p>Total Interest Rate: <span class="item">{{ $loan->repayment_plan * 20 }}%</span></p>
                                         @endif
@@ -173,10 +183,10 @@
                                 </div>
                             </div>
 
-                            <div class="title-sm">
-                                <h5>Guarantors</h5>
-                            </div>
                             <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>First Guarantors</h5>
+                                </div>
                                 <p>1st Garantors Name: <span class="item">{{ $loan->gfname.' '.$loan->glname }}</span></p>
                                 <p>1st Garantors Phone No.: <span class="item">{{ $loan->gphone }}</span></p>
                                 <p>1st Garantors Email: <span class="item">{{ $loan->gemail }}</span></p>
@@ -184,6 +194,9 @@
                                 <p>1st Garantors Relation: <span class="item">{{ $loan->g_relation }}</span></p>
                             </div>
                             <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Second Guarantors</h5>
+                                </div>
                                 <p>2nd Garantors Name: <span class="item">{{ $loan->g2fname.' '.$loan->g2lname }}</span></p>
                                 <p>2nd Garantors Phone No.: <span class="item">{{ $loan->g2phone }}</span></p>
                                 <p>2nd Garantors Email: <span class="item">{{ $loan->g2email }}</span></p>
