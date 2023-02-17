@@ -93,7 +93,7 @@
                     <span class="nav-text">KYC</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('profile.show') }}">Complete </a></li>
+                    <li><a href="{{ route('profile.show') }}">Complete</a></li>
                 </ul>
             </li>
             {{-- @endcan --}}
