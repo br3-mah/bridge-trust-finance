@@ -50,11 +50,10 @@ class UserController extends Controller
             $u->syncRoles($request->assigned_role);
             // Mail::to($u->email)->send(new SendUserInfoEmail($details));
             Session::flash('attention', "User created successfully.");
-            return redirect()->route('users')
-                ->withSuccess(__('User created successfully.'));
+            return back();
         } catch (\Throwable $th) {
             Session::flash('error_msg', substr($th->getMessage(),16,110));
-            return redirect()->route('users');
+            return back();
         }
 
     }

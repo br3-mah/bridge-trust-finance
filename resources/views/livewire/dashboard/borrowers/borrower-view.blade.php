@@ -11,7 +11,20 @@
 
                     @if(!empty($users->toArray()))
                     <div class="table-responsive">
-
+                        @if (Session::has('attention'))
+                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-check"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button> {{ Session::get('attention') }}
+                        </div>
+                        @elseif (Session::has('error_msg'))
+                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-help"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button>
+                            <strong>Error!</strong> {{ Session::get('error_msg') }}
+                        </div
+                        @endif
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
@@ -30,7 +43,7 @@
                                 
                                 @forelse($users as $user)
                                 <tr>
-                                    <td>
+                                    <td style="text-align:center">
                                         @if($user->profile_photo_path == null)
                                             @if($user->fname != null && $user->lname != null)
                                                 <span>{{ $user->fname[0].' '.$user->lname[0] }}</span>
@@ -41,15 +54,15 @@
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
-                                    <td>{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
-                                    <td>{{ $user->nrc_no ?? 'No ID' }}</td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
-                                    <td>{{ $user->created_at->subDays()->diffForHumans(); }}</td>
-                                    <td>
-                                        <div class="d-flex">
+                                    <td style="text-align:center">{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
+                                    <td style="text-align:center">{{ $user->nrc_no ?? 'No ID' }}</td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
+                                    <td style="text-align:center">{{ $user->created_at->subDays()->diffForHumans(); }}</td>
+                                    <td style="text-align:center">
+                                        <div class="">
                                             <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -69,20 +82,6 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        @if (Session::has('attention'))
-                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-check"></i></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button> {{ Session::get('attention') }}
-                        </div>
-                        @elseif (Session::has('error_msg'))
-                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-help"></i></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button>
-                            <strong>Error!</strong> {{ Session::get('error_msg') }}
-                        </div
-                        @endif
                     </div>
                     @else
                     <div class="container">
@@ -244,9 +243,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <select name="assigned_role" disabled class="default-select wide form-control" id="validationCustom05">
-                                                                <option value="2">Borrower</option>
-                                                            </select>
+                                                            <input type="text" name="assigned_role" readonly class="form-control" id="validationCustom09" value="borrower" placeholder="Borrower" required>                                                            
                                                             <div class="invalid-feedback">
                                                                 Please select a one.
                                                             </div>
@@ -322,7 +319,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create User</h5>
+                    <h5 class="modal-title">Create Borrower</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
@@ -468,7 +465,7 @@
                                                         </label>
                                                         <div class="col-lg-6">
                                                             <select name="assigned_role" class="default-select wide form-control" id="validationCustom05">
-                                                                <option  data-display="Select">Please select</option>
+                                                                <option data-display="Select">Please select</option>
                                                                 @foreach($roles as $role)
                                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                                                                 @endforeach

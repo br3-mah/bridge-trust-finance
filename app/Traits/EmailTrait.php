@@ -8,6 +8,7 @@ use App\Mail\LoanEquiry;
 use App\Models\Application;
 use App\Models\User;
 use App\Notifications\BTFLoanRequest;
+use App\Notifications\LoanRemainder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
@@ -56,5 +57,16 @@ trait EmailTrait{
             return $th;
         }
     } 
+
+    
+    // This email send a contact message from contact us page /////////////
+    public function send_loan_remainder($data, $user){
+        try {
+            Notification::send($user, new LoanRemainder($data));
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
 
 }

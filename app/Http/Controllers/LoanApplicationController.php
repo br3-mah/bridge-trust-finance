@@ -64,10 +64,11 @@ class LoanApplicationController extends Controller
     public function store(Request $request)
     {
         $form = $request->toArray();
-        if($request->file('tpin_file') != null){               
+        
+        if(isset($request->file('tpin_file'))){               
             $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
         }
-        if($request->file('payslip_file') != null){               
+        if(isset($request->file('payslip_file'))){               
             $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
         }
 
@@ -95,8 +96,8 @@ class LoanApplicationController extends Controller
             'g2_gender'=> $form['g2_gender'],
             'g2_relation'=> $form['g2_relation'],
 
-            'tpin_file' => $tpin_file,
-            'payslip_file' => $payslip_file,
+            'tpin_file' => $tpin_file ?? 'no file',
+            'payslip_file' => $payslip_file ?? 'no file',
 
             'complete' => 0
         ];

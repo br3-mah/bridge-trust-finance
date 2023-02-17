@@ -31,7 +31,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'view dashboard', 'description' => 'See the dashboard'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'view company financial statistics', 'description' => 'View company financial statistics'])->syncRoles([$role1]);
         Permission::create(['name' => 'help-desk and support', 'description' => 'Help-desk and support'])->syncRoles([$role1]);
-        // Permission::create(['name' => 'view kyc', 'description' => 'view financial overview'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'view kyc', 'description' => 'view financial overview'])->syncRoles([$role2]);
         Permission::create(['name' => 'company overview dashboard', 'description' => 'View company overview dashboard'])->syncRoles([$role1]);
         Permission::create(['name' => 'view all loan requests', 'description' => 'View all loan requests'])->syncRoles([$role1]);
 

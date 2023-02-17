@@ -94,4 +94,8 @@ class User extends Authenticatable
     public function loans(){
         return $this->hasMany(Application::class);
     }
+
+    public function active_loans(){
+        return $this->hasOne(Application::class)->where('status', 1)->where('complete', 1);
+    }
 }

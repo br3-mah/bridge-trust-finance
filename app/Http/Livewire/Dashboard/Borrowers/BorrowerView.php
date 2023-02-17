@@ -24,7 +24,7 @@ class BorrowerView extends Component
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(7);
+        $users = User::role('user')->latest()->paginate(7);
 
         return view('livewire.dashboard.borrowers.borrower-view',[
             'users' => $users,
@@ -66,7 +66,7 @@ class BorrowerView extends Component
             $u->syncRoles($this->assigned_role);
             // Mail::to($this->email)->send(new SendUserInfoEmail($details));
             // Session::flash('attention', "User created successfully.");
-            return redirect()->route('users.index')
+            return redirect()->route('borrowers')
                 ->withSuccess(__('User created successfully.'));
 
         } catch (\Throwable $th) {

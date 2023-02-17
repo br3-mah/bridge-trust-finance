@@ -23,8 +23,8 @@ class EmployeesView extends Component
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(7);
-        return view('livewire.dashboard.employees.employees-view',[
+        $users = User::role('employee')->latest()->paginate(7);
+        return view('livewire.dashboard.employees.employees-view', [
             'users' => $users,
             'roles' => $roles
         ])->layout('layouts.dashboard');

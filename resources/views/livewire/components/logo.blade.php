@@ -1,5 +1,5 @@
 <div class="nav-header">
-    <a href="index.html" class="brand-logo">
+    <a href="{{ route('dashboard') }}" class="brand-logo">
         <img width="65" src="{{ asset('public/images/logo-full.png') }}" alt="" srcset="">
     </a>
     <div class="nav-control">

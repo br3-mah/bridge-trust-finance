@@ -24,20 +24,21 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'phone' => ['nullable', 'integer',],
-            'address' => ['nullable'],
-            'occupation' => ['nullable'],
-            'dob' => ['nullable'],
-            'gender' => ['nullable'],
-            'nrc_no' => ['nullable'],
-            'basic_pay' => ['nullable']
+            'phone' => ['required'],
+            'address' => ['required'],
+            'occupation' => ['required'],
+            'dob' => ['required'],
+            'gender' => ['required'],
+            'nrc_no' => ['required'],
+            'basic_pay' => ['required']
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
         }
-
-        if(isset($input['photo']) && isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
+        // dd(isset($input['address']));
+        if(isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
+            dd('completing KYC');
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->orWhere('email', auth()->user()->email)
                         ->orWhere('user_id', auth()->user()->id)->first();
@@ -50,19 +51,24 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
             $this->updateVerifiedUser($user, $input);
+
         } else {
-            $user->forceFill([
-                'fname' => $input['fname'],
-                'lname' => $input['lname'],
-                'email' => $input['email'],
-                'phone' => $input['phone'],
-                'basic_pay' => $input['basic_pay'],
-                'nrc_no' => $input['nrc_no'],
-                'address' => $input['address'],
-                'occupation' => $input['occupation'],
-                'dob' => $input['dob'],
-                'gender' => $input['gender'],
-            ])->save();
+            try {
+                $user->forceFill([
+                    'fname' => $input['fname'],
+                    'lname' => $input['lname'],
+                    'email' => $input['email'],
+                    'phone' => $input['phone'],
+                    'basic_pay' => $input['basic_pay'],
+                    'nrc_no' => $input['nrc_no'],
+                    'address' => $input['address'],
+                    'occupation' => $input['occupation'],
+                    'dob' => $input['dob'],
+                    'gender' => $input['gender'],
+                ])->save();
+            } catch (\Throwable $th) {
+                dd($th);
+            }
         }
     }
 

@@ -74,7 +74,10 @@
 	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 	<!--swiper-slider-->
 	<script src="{{ asset('public/vendor/swiper/js/swiper-bundle.min.js') }}"></script>
-
+    <!-- Toastr -->
+    <script src="{{ asset('public/vendor/toastr/js/toastr.min.js') }}"></script>
+    <!-- All init script -->
+    <script src="{{ asset('public/js/plugins-init/toastr-init.js') }}"></script>
 	<!-- Date-picker -->
 	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
 	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
@@ -116,6 +119,7 @@
 			$(".booking-calender .fa.fa-clock-o").addClass('fa-clock');
 		});
 	</script>
+
 </body>
 
 </html>

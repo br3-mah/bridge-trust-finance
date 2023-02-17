@@ -20,7 +20,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('borrowers') }}">View Borrowers </a></li>
-                    <li><a href="{{ route('notify-borrowers') }}">Send SMSs to Borrowers </a></li>
+                    {{-- <li><a href="{{ route('notify-borrowers') }}">Send SMSs to Borrowers </a></li> --}}
                     <li><a href="{{ route('notify-borrowers') }}">Send Emails to Borrowers </a></li>
                 </ul>
             </li>
@@ -84,7 +84,7 @@
             </li>
             @endcan
 
-            {{-- @can('view kyc') --}}
+            @can('view kyc')
             <li>
                 <a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <div class="menu-icon">
@@ -96,7 +96,7 @@
                     <li><a href="{{ route('profile.show') }}">Complete</a></li>
                 </ul>
             </li>
-            {{-- @endcan --}}
+            @endcan
 
             @can('view reports')
             <li>

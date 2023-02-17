@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Employees</h4>                
-                    <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button>
+                    <button data-bs-toggle="modal" data-bs-target="#createEmployeeModeling" class="btn btn-square btn-primary">New Employee</button>
 
                 </div>
 
@@ -12,6 +12,20 @@
 
                     <div class="table-responsive">
 
+                        @if (Session::has('attention'))
+                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-check"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button> {{ Session::get('attention') }}
+                        </div>
+                        @elseif (Session::has('error_msg'))
+                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-help"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button>
+                            <strong>Error!</strong> {{ Session::get('error_msg') }}
+                        </div
+                        @endif
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
@@ -30,7 +44,7 @@
                                 
                                 @forelse($users as $user)
                                 <tr>
-                                    <td>
+                                    <td style="text-align: center">
                                         @if($user->profile_photo_path == null)
                                             @if($user->fname != null && $user->lname != null)
                                                 <span>{{ $user->fname[0].' '.$user->lname[0] }}</span>
@@ -41,20 +55,20 @@
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
-                                    <td>{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
-                                    <td>
+                                    <td style="text-align: center">{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
+                                    <td style="text-align: center">
                                         @forelse($user->roles as $role)
                                             <span class="capitalize">{{ $role->name }}</span>
                                         @empty
                                             <span>Guest</span>
                                         @endforelse
                                     </td>
-                                    <td>{{ $user->gender }}</td>
-                                    <td>{{ $user->nrc_no ?? 'No ID' }}</td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
-                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
-                                    <td>
+                                    <td style="text-align: center">{{ $user->gender }}</td>
+                                    <td style="text-align: center">{{ $user->nrc_no ?? 'No ID' }}</td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
+                                    <td style="text-align: center">{{ $user->created_at->toFormattedDateString() }}</td>
+                                    <td style="text-align: center">
                                         <div class="d-flex">
                                             <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
                                             <a href="#" wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
@@ -70,20 +84,6 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        @if (Session::has('attention'))
-                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-check"></i></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button> {{ Session::get('attention') }}
-                        </div>
-                        @elseif (Session::has('error_msg'))
-                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-help"></i></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button>
-                            <strong>Error!</strong> {{ Session::get('error_msg') }}
-                        </div
-                        @endif
                     </div>
                 </div>
             </div>
@@ -91,11 +91,11 @@
     </div>
 
     @if($createModal)
-    <div class="modal fade bd-example-modal-lg {{ $hold }}" {{ $style }} id="createUserModeling">
+    <div class="modal fade bd-example-modal-lg" id="createEmployeeModeling">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create User</h5>
+                    <h5 class="modal-title">Create Employee</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
@@ -162,17 +162,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="mb-3 row">
+                                                    <div class="mb-3 row">
                                                         <label class="col-lg-4 col-form-label" for="validationCustom03">Password
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="password" class="form-control" id="validationCustom03" placeholder="Choose a safe one.." required>
+                                                            <input type="text" disabled class="form-control" id="validationCustom03" placeholder="peace2u" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter a password.
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3 row">
@@ -240,12 +240,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <select name="assigned_role" class="default-select wide form-control" id="validationCustom05">
-                                                                <option  data-display="Select">Please select</option>
-                                                                @foreach($roles as $role)
-                                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input type="text" name="assigned_role" readonly class="form-control" id="validationCustom09" value="employee" placeholder="Employee" required>                                                            
                                                             <div class="invalid-feedback">
                                                                 Please select a one.
                                                             </div>
