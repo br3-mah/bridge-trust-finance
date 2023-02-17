@@ -389,17 +389,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="mb-3 row">
+                                                    <div class="mb-3 row">
                                                         <label class="col-lg-4 col-form-label" for="validationCustom03">Password
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="password" class="form-control" id="validationCustom03" placeholder="Choose a safe one.." required>
+                                                            <input type="password" disabled class="form-control" id="validationCustom03" placeholder="peace2u">
                                                             <div class="invalid-feedback">
                                                                 Please enter a password.
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3 row">
@@ -434,7 +434,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" name="nrc" id="validationCustom07"  placeholder="999999/99/9" required>
+                                                            <input type="text" class="form-control" name="nrc_no" id="validationCustom07"  placeholder="999999/99/9" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter an NRC.
                                                             </div>

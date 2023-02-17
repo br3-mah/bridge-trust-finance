@@ -32,4 +32,48 @@ class BorrowerView extends Component
         ])
         ->layout('layouts.dashboard');
     }
+
+    public function store(){
+        try {
+            //For demo purposes only. When creating user or inviting a user
+            // you should create a generated random password and email it to the user
+            if($this->profile_photo_path != null){
+                $image_path = $this->profile_photo_path->store('image_path', 'public');
+            }
+
+            $u = User::create([
+                'name' => null,
+                'fname' => $this->fname,
+                'lname' => $this->lname,
+                'phone' => $this->phone,
+                'address' => $this->address,
+                'occupation' => $this->occupation,
+                'nrc' => $this->nrc,
+                // 'dob',
+                'gender' => $this->gender,
+                // 'loan_status => ',
+                'basic_pay' => $this->basic_pay,
+                'email' => $this->email,
+                'password' => bcrypt('peace2u'),
+                'photo_profile_path' => $image_path ?? ''
+            ]);
+
+            $details = [
+                'title' => 'Your account has been created successfully, please visit the site to login',
+                'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
+            ];
+
+            $u->syncRoles($this->assigned_role);
+            // Mail::to($this->email)->send(new SendUserInfoEmail($details));
+            // Session::flash('attention', "User created successfully.");
+            return redirect()->route('users.index')
+                ->withSuccess(__('User created successfully.'));
+
+        } catch (\Throwable $th) {
+            dd($th);
+            // Session::flash('attention', "User created successfully.");
+            // Session::flash('error_msg', "Looks like the email was not sent.");
+            // return redirect()->route('users.index');
+        }
+    }
 }
