@@ -9,6 +9,7 @@
 
                 <div class="card-body pb-0">
 
+                    @if(!empty($users->toArray()))
                     <div class="table-responsive">
 
                         <table id="example3" class="display" style="min-width: 845px">
@@ -49,8 +50,13 @@
                                     <td>{{ $user->created_at->subDays()->diffForHumans(); }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                </svg>
+                                            </a>
+                                            {{-- <button wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a> --}}
                                         </div>												
                                     </td>												
                                 </tr>
@@ -78,6 +84,11 @@
                         </div
                         @endif
                     </div>
+                    @else
+                    <div class="container">
+                        <span>Nothing Found</span>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

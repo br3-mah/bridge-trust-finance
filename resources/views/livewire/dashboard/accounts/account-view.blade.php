@@ -80,15 +80,18 @@
                             <div class="card-header border-0">
                                 <div>
                                     <h2 class="heading mb-1">Owing Balance</h2>
+                                    @if($data->loans->first() != null)
                                     <span>Loaned out on {{ $data->loans->first()->created_at->toFormattedDateString()  }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="card-body pt-0 custome-tooltip pb-xl-3 pb-0">
                                 <div class="row gx-0">
                                     <div class="col-xl-4 col-sm-4">
+                                        @if($data->loans->first() != null)
                                         <div class="mothly-income">
                                             <span>{{ $data->loans->last()->type }} Loan</span>
-                                            <h4>K {{ $data->loans->last()->amount }} <span class="ms-1"> + 15%</span></h4>
+                                            <h4>K {{ $data->loans->last()->amount }} <span class="ms-1"> + 20%</span></h4>
                                         </div>
                                         {{-- <div class="balance_data">
                                             <div class="balance-icon income">
@@ -114,6 +117,12 @@
                                                 <h4>K {{ App\Models\Application::payback($data->loans->last()->amount, preg_replace('/[^0-9]/','', $data->loans->last()->repayment_plan)) }}</h4>
                                             </div>
                                         </div>
+                                        @else
+                                        
+                                        <div class="balance_info">
+                                            <span class="text-danger">No Active Loan</span>
+                                        </div>
+                                        @endif
                                     </div>
                                     <div class="col-xl-8 col-sm-8">
                                         <div id="barChart"></div>
@@ -245,11 +254,19 @@
                                          <div class="d-flex align-items-center justify-content-between">
                                             <div class="prim-info">
                                                 <span>Current</span>
-                                                <h4>K {{ $data->wallet->first()->deposit }}</h4>
+                                                @if($data->wallet->first() == null)
+                                                <h4>K 0.00</h4>
+                                                @else
+                                                <h4>K {{ $data->wallet->first()->deposit ?? 0 }}</h4>
+                                                @endif
                                             </div>
                                             <div class="prim-info">
                                                 <span>Withdrawn</span>
+                                                @if($data->wallet->first() == null)
+                                                <h4>K 0.00</h4>
+                                                @else
                                                 <h4>K {{ $data->wallet->first()->withdraw ?? 0 }}</h4>
+                                                @endif
                                             </div>
                                             <div class="prim-info">
                                             </div>
