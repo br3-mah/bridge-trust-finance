@@ -32,7 +32,7 @@
                                     <td>
                                         @if($user->profile_photo_path == null)
                                             @if($user->fname != null && $user->lname != null)
-                                                <span class="text-white">{{ $user->fname[0].' '.$user->lname[0] }}</span>
+                                                <span>{{ $user->fname[0].' '.$user->lname[0] }}</span>
                                             @else
                                                 <span>{{ $user->name[0] }}</span>
                                             @endif
