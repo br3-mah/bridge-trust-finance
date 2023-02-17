@@ -209,7 +209,7 @@
 
 
     {{-- Modal --}}
-    <div class="modal fade" id="createNewLoanMain" tabindex="-1" aria-hidden="true">
+    <div wire:ignore class="modal fade" id="createNewLoanMain" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content p-4">
     

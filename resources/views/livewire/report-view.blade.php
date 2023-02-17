@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header border-0 pb-0">
-                <h4 class="card-title">Early Settlement </h4>
+                <h4 class="card-title">Loan Reports</h4>
             </div>
             <div class="card-body">
                 <div class="col-xl-12">
@@ -24,9 +24,9 @@
                                     <div wire:ignore class="col-xl-3">
                                         <label>Report Type</label>
                                         <select wire:model="type" class="from-select w-100 mb-xl-0 mb-3" aria-label="Default select example">
-                                            <option selected>Select Status</option>
-                                            <option value="1">Early Settlements</option>
-                                            <option value="2">Late Settlements</option>
+                                            <option selected>Select Report Type</option>
+                                            <option value="1">Early Settlements Report</option>
+                                            <option value="2">Late Settlements Report</option>
                                         </select> 
                                     </div>
                                     <div class="col-xl-3">

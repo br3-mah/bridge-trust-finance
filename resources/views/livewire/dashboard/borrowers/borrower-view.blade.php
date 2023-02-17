@@ -16,7 +16,7 @@
                                 <tr>
                                     <th>Profile</th>
                                     <th>Full Name</th>
-                                    <th>NRC</th>
+                                    <th>ID Number</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
                                     <th>Total Paid</th>
@@ -41,7 +41,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
-                                    <td>{{ $user->nrc ?? 'No ID' }}</td>
+                                    <td>{{ $user->nrc_no ?? 'No ID' }}</td>
                                     <td><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
                                     <td><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
                                     <td><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>

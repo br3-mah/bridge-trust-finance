@@ -19,7 +19,7 @@
                                     <th>Name</th>
                                     <th>Type</th>
                                     <th>Gender</th>
-                                    <th>NRC</th>
+                                    <th>ID Number</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
                                     <th>Joining Date</th>
@@ -50,7 +50,7 @@
                                         @endforelse
                                     </td>
                                     <td>{{ $user->gender }}</td>
-                                    <td>{{ $user->nrc ?? 'No ID' }}</td>
+                                    <td>{{ $user->nrc_no ?? 'No ID' }}</td>
                                     <td><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
                                     <td><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
                                     <td>{{ $user->created_at->toFormattedDateString() }}</td>

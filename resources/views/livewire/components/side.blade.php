@@ -59,7 +59,7 @@
             
             @can('view employees')
             <li>
-                <a class="{{ route('employees') }}" href="javascript:void(0);" aria-expanded="false">
+                <a class="" href="{{ route('employees') }}" aria-expanded="false">
                     <div class="menu-icon">
                         <img width="25" src="{{ asset('public/images/1.svg') }}" alt="">
                     </div>
