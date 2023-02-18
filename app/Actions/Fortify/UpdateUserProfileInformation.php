@@ -39,8 +39,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->updateProfilePhoto($input['photo']);
         }
         // dd(isset($input['address']));
-        if($input['address'] !== '' && $input['phone'] !== '' && $input['occupation'] !== ''  && $input['gender'] !== ''  && $input['nrc_no'] !== '' && $input['dob'] !== '' ){
-            
+        if(isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
+            // dd('completing KYC');
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->orWhere('email', auth()->user()->email)
                         ->orWhere('user_id', auth()->user()->id)->first();
