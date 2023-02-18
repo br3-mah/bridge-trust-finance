@@ -51,26 +51,7 @@
                                 @endcan
                                 {{-- End Amin Only --}}
                             </div>
-                            @if (session()->has('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
-                            @if (session()->has('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            @if (session()->has('info'))
-                                <div class="alert alert-info">
-                                    {{ session('info') }}
-                                </div>
-                            @endif
-                            @if (session()->has('warning'))
-                                <div class="alert alert-warning">
-                                    {{ session('warning') }}
-                                </div>
-                            @endif
+                            @include('livewire.dashboard.__parts.dash-alerts')
                             <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
                                 <thead>
                                     <tr>

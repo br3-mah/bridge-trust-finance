@@ -29,7 +29,7 @@ trait WalletTrait{
 
     public function getWalletBalance($user){
         if($user->hasRole('admin')){
-            return LoanWallet::sum('deposit') ?? 0;
+            return $this->getCompanyWallet() ?? 0;
         }else{
             return Wallet::orWhere('user_id', $user->id)
                         ->orWhere('email', $user->email)->first()->deposit ?? 0;

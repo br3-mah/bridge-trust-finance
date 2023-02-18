@@ -76,4 +76,13 @@ trait LoanTrait{
         return $amount * (1 + ($interest_rate * (int)$duration));
     }
 
+    public function missed_repayments(){
+        return Application::with('user')->where('next_paydate', '<', now())
+        ->get();
+    }
+    public function past_maturity_date(){
+        return Application::with('user')->where('due_date', '<', now())
+        ->get();
+    }
+
 }

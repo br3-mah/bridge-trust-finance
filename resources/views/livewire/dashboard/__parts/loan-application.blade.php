@@ -84,9 +84,9 @@
                                 <div class="mb-3">
                                     <label class="text-label form-label">Duration*</label>
                                     <select type="text" name="repayment_plan" class="form-control">
-                                        <option value="1 Month">1 Month</option>
-                                        <option value="2 Months">2 Month</option>
-                                        <option value="3 Months">3 Months</option>
+                                        <option value="1">1 Month</option>
+                                        <option value="2">2 Month</option>
+                                        <option value="3">3 Months</option>
                                     </select>
                                 </div>
                             </div>

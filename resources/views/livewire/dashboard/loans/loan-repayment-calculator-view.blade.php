@@ -19,7 +19,7 @@
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Interest Rate</label>
                                         <div class="input-group mb-3 input-primary">
-                                            <input type="number" wire:model.defer="rate" wire:change="calculatePaybackAmount" class="form-control" placeholder="0">
+                                            <input disabled type="number" wire:model.defer="rate" wire:change="calculatePaybackAmount" class="form-control" placeholder="0">
                                             <span class="input-group-text border-0">%</span>
                                         </div>
                                     </div>

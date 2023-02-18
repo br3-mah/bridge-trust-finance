@@ -16,7 +16,7 @@ class LoanWalletHistory extends Model
         'loan_wallet_id'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsTo(User::class, 'user_id');
     }
 

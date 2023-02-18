@@ -185,6 +185,7 @@ class LoanApplicationController extends Controller
         }
 
         $data = [
+            'user_id'=> auth()->user()->id,
             'lname'=> $form['lname'],
             'fname'=> $form['fname'],
             'email'=> $form['email'],

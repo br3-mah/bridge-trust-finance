@@ -4,8 +4,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Missed Repayments</h4>                
-                    <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button>
-
+                    {{-- <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button> --}}
                 </div>
 
                 <div class="card-body pb-0">
@@ -17,47 +16,56 @@
                                 <tr>
                                     <th></th>
                                     <th>Name</th>
-                                    <th>Type</th>
+                                    <th>Occupation</th>
                                     <th>Gender</th>
                                     <th>NRC</th>
                                     <th>Mobile</th>
-                                    <th>Email</th>
-                                    <th>Joining Date</th>
+                                    <th>Amount</th>
+                                    <th>Missed Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 
-                                @forelse($users as $user)
+                                @forelse($mssd_repays as $user)
                                 <tr>
-                                    <td>
-                                        @if($user->profile_photo_path == null)
-                                            @if($user->fname != null && $user->lname != null)
-                                                <span class="text-white">{{ $user->fname[0].' '.$user->lname[0] }}</span>
+                                    <td style="text-align: center">
+                                        @if($user->user->profile_photo_path == null)
+                                            @if($user->user->fname != null && $user->user->lname != null)
+                                                <span class="text-primary">{{ $user->user->fname[0].' '.$user->user->lname[0] }}</span>
                                             @else
-                                                <span>{{ $user->name[0] }}</span>
+                                                <span>{{ $user->user->name[0] }}</span>
                                             @endif
                                         @else
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
-                                    <td>{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
-                                    <td>
-                                        @forelse($user->roles as $role)
-                                            <span class="capitalize">{{ $role->name }}</span>
-                                        @empty
-                                            <span>Guest</span>
-                                        @endforelse
+                                    <td style="text-align: center">
+                                        <a target="_blank" href="{{ route('client-account', ['key'=>$user->user->id]) }}">
+                                            {{ $user->user->fname ?? $user->user->name.' '.$user->user->lname ?? '' }} 
+                                        </a>
                                     </td>
-                                    <td>{{ $user->gender }}</td>
-                                    <td>{{ $user->nrc ?? 'No ID' }}</td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
-                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
+                                    <td style="text-align: center">
+                                        {{ $user->user->occupation ?? '--' }}
+                                    </td>
+                                    <td style="text-align: center">{{ $user->gender }}</td>
+                                    <td style="text-align: center">{{ $user->nrc ?? 'No ID' }}</td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ $user->user->phone }}</strong></a></td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ App\Models\Application::payback($user->amount, preg_replace('/[^0-9]/','', $user->repayment_plan)) }}</strong></a></td>
+                                    <td style="text-align: center; color:#f70000" class="text-danger">
+                                        {{ 
+                                             $user->next_paydate
+                                        }}
+                                    </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            <a target="_blank" href="{{ route('client-account', ['key'=>$user->user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                <i class="fas fa-user-alt"></i>
+                                            </a>
+                                            <a target="_blank" href="{{ route('loan-details', ['id'=>$user->id]) }}" class="btn btn-light shadow btn-xs sharp me-1">
+                                                <i class="fas fa-file"></i>
+                                            </a>
+                                            {{-- <a href="#" wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a> --}}
                                         </div>												
                                     </td>												
                                 </tr>

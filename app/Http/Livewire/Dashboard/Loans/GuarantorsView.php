@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Session;
@@ -23,9 +24,11 @@ class GuarantorsView extends Component
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(7);
+        // $users = User::latest()->paginate(7);
+
+        $guarantors = Application::where('status', 1)->where('complete', 1)->get();
         return view('livewire.dashboard.loans.guarantors-view',[
-            'users' => $users,
+            'guarantors' => $guarantors,
             'roles' => $roles
         ])->layout('layouts.dashboard');
     }

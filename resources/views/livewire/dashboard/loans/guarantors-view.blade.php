@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Guarantors</h4>                
-                    <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button>
+                    {{-- <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button> --}}
 
                 </div>
 
@@ -15,51 +15,34 @@
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    {{-- <th></th> --}}
                                     <th>Name</th>
-                                    <th>Type</th>
                                     <th>Gender</th>
-                                    <th>NRC</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
-                                    <th>Joining Date</th>
-                                    <th>Action</th>
+                                    <th>Client</th>
+                                    <th>Relation</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 
-                                @forelse($users as $user)
+                                @forelse($guarantors as $user)
                                 <tr>
-                                    <td>
-                                        @if($user->profile_photo_path == null)
-                                            @if($user->fname != null && $user->lname != null)
-                                                <span class="text-white">{{ $user->fname[0].' '.$user->lname[0] }}</span>
-                                            @else
-                                                <span>{{ $user->name[0] }}</span>
-                                            @endif
-                                        @else
-                                            <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
-                                        @endif
-                                    </td>
-                                    <td>{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
-                                    <td>
-                                        @forelse($user->roles as $role)
-                                            <span class="capitalize">{{ $role->name }}</span>
-                                        @empty
-                                            <span>Guest</span>
-                                        @endforelse
-                                    </td>
-                                    <td>{{ $user->gender }}</td>
-                                    <td>{{ $user->nrc ?? 'No ID' }}</td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
-                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>												
-                                    </td>												
+                                    <td>{{ $user->gfname.' '.$user->glname }} </td>
+                                    <td>{{ $user->g_gender }}</td>
+                                    <td>{{ $user->gphone ?? '--' }}</td>
+                                    <td><a href="javascript:void(0);"><strong>{{ $user->gemail }}</strong></a></td>
+                                    <td><a href="javascript:void(0);"><strong>{{ $user->fname.' '.$user->lname }}</strong></a></td>
+                                    <td>{{ $user->g_relation }}</td>												 
+                                </tr>
+                                <tr>
+                                    <td>{{ $user->g2fname.' '.$user->g2lname }} </td>
+                                    <td>{{ $user->g2_gender }}</td>
+                                    <td>{{ $user->g2phone ?? '--' }}</td>
+                                    <td><a href="javascript:void(0);"><strong>{{ $user->g2email }}</strong></a></td>
+                                    <td><a href="javascript:void(0);"><strong>{{ $user->fname.' '.$user->lname }}</strong></a></td>
+                                    <td>{{ $user->g2_relation }}</td>											 
                                 </tr>
                                 @empty
                                 <div class="intro-y col-span-12 md:col-span-6">
