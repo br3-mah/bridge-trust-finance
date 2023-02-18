@@ -203,7 +203,9 @@
                 </div>
 
                 @role('user')
+                    @if ($my_loan !== null)
                     @include('livewire.dashboard.__parts.dash-loan-reguest')
+                    @endif
                 @endrole
 
                 @can('company overview dashboard')
