@@ -65,10 +65,10 @@ class LoanApplicationController extends Controller
     {
         $form = $request->toArray();
         
-        if(isset($request->file('tpin_file'))){               
+        if($request->file('tpin_file') !== null){               
             $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
         }
-        if(isset($request->file('payslip_file'))){               
+        if($request->file('payslip_file') !== null){               
             $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
         }
 

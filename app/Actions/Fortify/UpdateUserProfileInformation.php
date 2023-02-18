@@ -33,16 +33,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'basic_pay' => ['required']
         ])->validateWithBag('updateProfileInformation');
 
+        
         if (isset($input['photo'])) {
+            dd('there is photo');
             $user->updateProfilePhoto($input['photo']);
         }
         // dd(isset($input['address']));
-        if(isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
-            dd('completing KYC');
+        if($input['address'] !== '' && $input['phone'] !== '' && $input['occupation'] !== ''  && $input['gender'] !== ''  && $input['nrc_no'] !== '' && $input['dob'] !== '' ){
+            
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->orWhere('email', auth()->user()->email)
                         ->orWhere('user_id', auth()->user()->id)->first();
-            if($loan != null){
+            if($loan !== null){
                 $loan->complete = 1;
                 $loan->save();
             }
@@ -53,6 +55,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
 
         } else {
+            // dd($input);
             try {
                 $user->forceFill([
                     'fname' => $input['fname'],
@@ -66,6 +69,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'dob' => $input['dob'],
                     'gender' => $input['gender'],
                 ])->save();
+                dd($user);
             } catch (\Throwable $th) {
                 dd($th);
             }

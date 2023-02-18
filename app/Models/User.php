@@ -71,7 +71,19 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        // 'borrowed_total'
     ];
+
+
+    public function getBorrowTotalAttribute()
+    {
+        // $loans = Application::where('user_id', $this->id)
+        // ->orWhere('email', $this->email)
+        // ->where('complete', 1)
+        // ->where('status', 1)->get();
+
+
+    }
 
     /**
      * > The posts() function returns all the posts that belong to the user

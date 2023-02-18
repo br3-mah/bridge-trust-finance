@@ -82,9 +82,9 @@
             </div>
             
             <div class="col-sm-6 mt-3 m-b30">
-                <x-jet-label for="nrc" value="{{ __('NRC Number') }}" />
-                <x-jet-input id="nrc" type="text" class="form-control" wire:model.defer="state.nrc_no" />
-                <x-jet-input-error for="nrc" class="mt-2" />
+                <x-jet-label for="nrc_no" value="{{ __('NRC Number') }}" />
+                <x-jet-input id="nrc_no" type="text" class="form-control" wire:model.defer="state.nrc_no" />
+                <x-jet-input-error for="nrc_no" class="mt-2" />
             </div> 
 
             <!-- phone -->

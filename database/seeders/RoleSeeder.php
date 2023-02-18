@@ -20,6 +20,7 @@ class RoleSeeder extends Seeder
         $role1 = Role::create(['name' => 'admin']);
         $role2 = Role::create(['name' => 'user']);
         $role3 = Role::create(['name' => 'officer']);
+        $role4 = Role::create(['name' => 'employee']);
         
         Permission::create(['name' => 'view clientele', 'description' => 'View clientele'])->syncRoles([$role1]);
         Permission::create(['name' => 'view employees', 'description' => 'View Employees'])->syncRoles([$role1]);
@@ -28,11 +29,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'view loan relatives', 'description' => 'view loan Guarantors, Missed Repayments and Past Maturity Date'])->syncRoles([$role1]);
 
         // Dashboard Page
-        Permission::create(['name' => 'view dashboard', 'description' => 'See the dashboard'])->syncRoles([$role1, $role2, $role3]);
+        Permission::create(['name' => 'view dashboard', 'description' => 'See the dashboard'])->syncRoles([$role1, $role2, $role3, $role4]);
         Permission::create(['name' => 'view company financial statistics', 'description' => 'View company financial statistics'])->syncRoles([$role1]);
         Permission::create(['name' => 'help-desk and support', 'description' => 'Help-desk and support'])->syncRoles([$role1]);
         Permission::create(['name' => 'view kyc', 'description' => 'view financial overview'])->syncRoles([$role2]);
-        Permission::create(['name' => 'company overview dashboard', 'description' => 'View company overview dashboard'])->syncRoles([$role1]);
+        Permission::create(['name' => 'company overview dashboard', 'description' => 'View company overview dashboard'])->syncRoles([$role1, $role4]);
         Permission::create(['name' => 'view all loan requests', 'description' => 'View all loan requests'])->syncRoles([$role1]);
 
         // User Page
@@ -51,8 +52,8 @@ class RoleSeeder extends Seeder
 
         // Loans Page
         Permission::create(['name' => 'view loans', 'description' => 'View loan management'])->syncRoles([$role1,$role2]);
-        Permission::create(['name' => 'view loan rates', 'description' => 'View loan management'])->syncRoles([$role1]);
-        Permission::create(['name' => 'view loan calculator', 'description' => 'View loan management'])->syncRoles([$role1,$role2]);
+        Permission::create(['name' => 'view loan rates', 'description' => 'View loan management'])->syncRoles([$role1, $role4]);
+        Permission::create(['name' => 'view loan calculator', 'description' => 'View loan management'])->syncRoles([$role1,$role2, $role4]);
         Permission::create(['name' => 'view loan history', 'description' => 'View loan management'])->syncRoles([$role1]);
         Permission::create(['name' => 'view loan requests', 'description' => 'View loan requests'])->syncRoles([$role1,$role2]);
         Permission::create(['name' => 'make payments', 'description' => 'Make payments to repay loans'])->syncRoles([$role2]);

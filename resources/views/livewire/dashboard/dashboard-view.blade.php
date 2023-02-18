@@ -1,6 +1,6 @@
 <div class="content-body">
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-hidden="true">
+    <div wire:ignore class="modal fade" id="exampleModal1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
+    <div wire:ignore class="modal fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header ">
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-hidden="true">
+    <div wire:ignore class="modal fade" id="exampleModal3" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header ">
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-hidden="true">
+    <div wire:ignore class="modal fade" id="exampleModal4" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header ">
@@ -119,8 +119,6 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="payment-bx">
-                    
-                    
                     <div class="d-flex  justify-content-between flex-wrap">
                         <div class="payment-content">
                             <h1 class="font-w500 mb-2">Good morning, {{ auth()->user()->fname ?? auth()->user()->name }} </h1>
@@ -205,7 +203,7 @@
                 </div>
 
                 @role('user')
-                 @include('livewire.dashboard.__parts.dash-loan-reguest')
+                    @include('livewire.dashboard.__parts.dash-loan-reguest')
                 @endrole
 
                 @can('company overview dashboard')
