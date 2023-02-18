@@ -203,9 +203,8 @@
                 </div>
 
                 @role('user')
-                    @dd($my_loan)
                     @if($my_loan !== null)
-                    @include('livewire.dashboard.__parts.dash-loan-reguest')
+                        @include('livewire.dashboard.__parts.dash-loan-reguest')
                     @endif
                 @endrole
 
