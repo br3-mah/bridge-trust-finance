@@ -122,11 +122,11 @@
                     <div class="d-flex  justify-content-between flex-wrap">
                         <div class="payment-content">
                             <h1 class="font-w500 mb-2">Good morning, {{ auth()->user()->fname ?? auth()->user()->name }} </h1>
-                            @isset($my_loan)
+                            @if($my_loan !== null)
                                 @if ($my_loan->complete == 0)
                                 <p class="dz-para">We are glad to see you! Make sure your kyc profile is Complete </p>
                                 @endif
-                            @endisset
+                            @endif
                         </div>
                         <div class="mb-4 mb-xl-0">
                             @can('make payments')
@@ -203,6 +203,7 @@
                 </div>
 
                 @role('user')
+                    @dd($my_loan)
                     @if($my_loan !== null)
                         @include('livewire.dashboard.__parts.dash-loan-reguest')
                     @endif
