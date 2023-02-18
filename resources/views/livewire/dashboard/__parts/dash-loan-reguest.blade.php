@@ -141,7 +141,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h5 class="mt-1 mb-2">Complete Your Profile Details</h5>
-                                            <p class="mb-0">Your {{$my_loan-> ?? ''}} loan application is not finished yet, please <a href="{{url('/user/profile')}}">complete your KYC profile</a> to complete the loan request.</p>
+                                            <p class="mb-0">Your {{$my_loan->type ?? ''}} loan application is not finished yet, please <a href="{{url('/user/profile')}}">complete your KYC profile</a> to complete the loan request.</p>
                                         </div>
                                     </div>
                                 </div>
