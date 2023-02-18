@@ -2,8 +2,10 @@
     <div class="card">
             <div class="card-header border-0 align-items-start pb-0">
                 <div>
-                    <span class="fs-18 d-block mb-2">{{ 'Your '.$my_loan->type ?? 'Your ' }} Loan Request</span>
-                    <h2 class="fs-30 font-w600 ">K {{ $my_loan->amount ?? 0.00 }}</h2>
+                    @if($my_loan !== null)
+                        <span class="fs-18 d-block mb-2">{{ 'Your '.$my_loan->type ?? 'Your ' }} Loan Request</span>
+                        <h2 class="fs-30 font-w600 ">K {{ $my_loan->amount ?? 0.00 }}</h2>
+                    @endif
                 </div>
                 {{-- <div class="dropdown send style-1">
                     <a href="javascript:void(0);" class="btn-link btn sharp tp-btn-light btn-primary pill" data-bs-toggle="dropdown" aria-expanded="false">

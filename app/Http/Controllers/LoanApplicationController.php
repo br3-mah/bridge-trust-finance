@@ -68,6 +68,7 @@ class LoanApplicationController extends Controller
         if($request->file('tpin_file') !== null){               
             $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
         }
+        
         if($request->file('payslip_file') !== null){               
             $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
         }
