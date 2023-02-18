@@ -176,7 +176,7 @@
                                 <div class="card-body py-3 pt-1 d-flex align-items-center justify-content-between flex-wrap pe-3">
                                     <div class="wallet-info">
                                         <span class="fs-14 font-w400 d-block">Wallet Balance</span>
-                                        <h2 class="font-w600 mb-0">ZMW {{ $wallet ?? '0.00' }}</h2>
+                                        <h2 wire:poll class="font-w600 mb-0">ZMW {{ $wallet ?? '0.00' }}</h2>
                                         {{-- <span>0% than last week</span> --}}
                                     </div>
 
@@ -499,7 +499,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body pt-0 pb-0 px-3">
+                            <div wire:ignore class="card-body pt-0 pb-0 px-3">
                                 <div id="columnChart1" class="chartjs"></div>
                             </div>
 

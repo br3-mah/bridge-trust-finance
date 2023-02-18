@@ -1,8 +1,12 @@
 <div class="card dz-wallet">
     <div class="card-header border-0 align-items-start pb-0">
-        <div>
+        <div wire:poll>
             <span class="fs-18 d-block mb-2">Total Customer Borrowed</span>
-            <h2 class="fs-28 font-w600 ">K 0</h2>
+            @role('admin')
+            <h2 class="fs-28 font-w600 ">K {{  App\Models\Application::totalAmountLoanedOut() }}</h2>
+            @else
+            <h2 class="fs-28 font-w600 ">K {{ auth()->user()->borrowed_total }}</h2>
+            @endrole
         </div>
         {{-- <div class="dropdown send style-1">
             <a href="javascript:void(0);" class="btn-link btn sharp tp-btn-light btn-primary pill" data-bs-toggle="dropdown" aria-expanded="false">
@@ -20,40 +24,41 @@
     </div>
     <div class="card-body py-4 pt-md-2">
         <div class="progress default-progress mb-3">
-            <div class="progress-bar bg-vigit progress-animated" style="width: 80%; height:8px;" role="progressbar">
-                <span class="sr-only">5% Complete</span>
-            </div>
+            <hr>
+            {{-- <div class="progress-bar bg-vigit progress-animated" style="width: 80%; height:8px;" role="progressbar">
+                <span class="sr-only">1% Complete</span>
+            </div> --}}
         </div>
         
-        <div class="row mt-1">
+        <div wire:poll class="row mt-1">
             @can('view company financial statistics')
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL LOANS</p>
-                <h4 class="mb-0 font-w500 text-white">0</h4>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalLoans() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">FULLY REGISTERED LOANS</p>
-                <h4 class="mb-0 font-w500 text-white">0</h4>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalRegisteredLoans() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL BORROWERS</p>
-                <h4 class="mb-0 font-w500 text-white">0</h4>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\User::totalBorrowers() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL OPEN LOANS</p>
-                <h4 class="mb-0 font-w500 text-white">0</h4>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalPendingLoans() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL LOANS </p>
-                <h4 class="mb-0 font-w500 text-white">K 0</h4>
+                <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountLoans() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL LOANED OUT  </p>
-                <h4 class="mb-0 font-w500 text-white">K 0</h4>
+                <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountLoanedOut() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">BORROWED AMOUNT</p>
-                <h4 class="mb-0 font-w500 text-white">K 0</h4>
+                <p class="mb-1">PENDING BORROWED AMOUNT</p>
+                <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountPending() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">COLLECTED AMOUNT</p>

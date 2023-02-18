@@ -60,4 +60,30 @@ class Application extends Model
         $interest_rate = 20 / 100;
         return $amount * (1 + ($interest_rate * (int)$duration));
     }
+
+    // COUNTS
+    public static function totalLoans(){
+        return Application::get()->count();
+    }
+    public static function totalRegisteredLoans(){
+        return Application::where('complete', 1 )->get()->count();
+    }
+    public static function totalPendingLoans(){
+        return Application::where('status', 0)->where('complete', 1)->get()->count();
+    }
+
+
+    // FUNDS
+    public static function totalAmountLoans(){
+        //  Total amount for all loans with complete KYC
+        return Application::where('complete', 1)->sum('amount');
+    }
+    public static function totalAmountLoanedOut(){
+        //  Total amount for complete and approved loans 
+        return Application::where('complete', 1)->where('status', 1)->sum('amount');
+    }
+    public static function totalAmountPending(){
+        // Total amount for complete and pending approval
+        return Application::where('complete', 1)->where('status', 0)->sum('amount');
+    }
 }

@@ -16,9 +16,6 @@ class LoanRequestView extends Component
     public function render()
     {
         $loan_requests = Application::query();
-        // $users = User::query();
-
-
         if(auth()->user()->can('view all loan requests')){
             if ($this->type) {
                 $loan_requests->whereIn('type', $this->type)->orderBy('created_at', 'desc');
@@ -27,8 +24,7 @@ class LoanRequestView extends Component
             if ($this->status) {
                 $loan_requests->whereIn('status', $this->status)->orderBy('created_at', 'desc');
             }
-    
-            $this->loan_requests = $loan_requests->get();
+            $this->loan_requests = $loan_requests->where('complete', 1)->get();
         }else{
             $this->loan_requests = Application::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
@@ -38,25 +34,61 @@ class LoanRequestView extends Component
 
     public function accept($id){
         try {
+            
             $x = Application::find($id);
-            $x->status = 1;
-            $x->save();
-            $mail = [
-                'user_id' => '',
-                'application_id' => $x->id,
-                'name' => $x->fname.' '.$x->lname,
-                'loan_type' => $x->type,
-                'phone' => $x->phone,
-                'email' => $x->email,
-                'duration' => $x->repayment_plan,
-                'amount' => $x->amount,
-                'type' => 'loan-application',
-                'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
-            ];
-            $this->deposit($x->amount, $x);
-            $this->send_loan_feedback_email($mail);
+            if($this->isCompanyEnough($x->amount)){
+                $x->status = 1;
+                $x->save();
+                $mail = [
+                    'user_id' => '',
+                    'application_id' => $x->id,
+                    'name' => $x->fname.' '.$x->lname,
+                    'loan_type' => $x->type,
+                    'phone' => $x->phone,
+                    'email' => $x->email,
+                    'duration' => $x->repayment_plan,
+                    'amount' => $x->amount,
+                    'type' => 'loan-application',
+                    'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
+                ];
+                $this->deposit($x->amount, $x);
+                $this->send_loan_feedback_email($mail);
+                session()->flash('success', 'Successfully transfered '.$x->amount.' to '.$x->fname.' '.$x->lname);
+            }else{
+                session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
+            }
+            
         } catch (\Throwable $th) {
-            return $th;
+            session()->flash('error', 'Oops something failed here, please contact the Administrator.'.$th);
+        }
+    }
+    public function acceptOnly($id){
+        try {
+            
+            $x = Application::find($id);
+            if($this->isCompanyEnough($x->amount)){
+                $x->status = 1;
+                $x->save();
+                $mail = [
+                    'user_id' => '',
+                    'application_id' => $x->id,
+                    'name' => $x->fname.' '.$x->lname,
+                    'loan_type' => $x->type,
+                    'phone' => $x->phone,
+                    'email' => $x->email,
+                    'duration' => $x->repayment_plan,
+                    'amount' => $x->amount,
+                    'type' => 'loan-application',
+                    'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
+                ];
+                $this->send_loan_feedback_email($mail);
+                session()->flash('success', 'Successfully approved');
+            }else{
+                session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
+            }
+            
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
 
@@ -81,8 +113,9 @@ class LoanRequestView extends Component
             ];
             $this->send_loan_feedback_email($mail);
             $this->render();
+            session()->flash('info', 'Application is under review.');
         } catch (\Throwable $th) {
-            dd($th);
+            session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
 
@@ -105,13 +138,14 @@ class LoanRequestView extends Component
                 'msg' => 'Your '.$x->type.' loan application request has been rejected'
             ];
             $this->send_loan_feedback_email($mail);
-
+            session()->flash('success', 'Loan has been rejected');
         } catch (\Throwable $th) {
-            dd($th);
+            session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
 
     public function destroy($id){
         Application::where('id', $id)->first()->delete();
+        session()->flash('success', 'Deleted permanently');
     }
 }

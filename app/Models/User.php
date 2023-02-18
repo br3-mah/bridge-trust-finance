@@ -71,18 +71,21 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
-        // 'borrowed_total'
+        'borrowed_total'
     ];
 
 
-    public function getBorrowTotalAttribute()
+    public function getBorrowedTotalAttribute()
     {
-        // $loans = Application::where('user_id', $this->id)
-        // ->orWhere('email', $this->email)
-        // ->where('complete', 1)
-        // ->where('status', 1)->get();
+        $loans = Application::orWhere('user_id', $this->id)
+            ->orWhere('email', $this->email)
+            ->where('complete', 1)
+            ->where('status', 1)->sum('amount');
+        return $loans ?? 0;
+    }
 
-
+    public static function totalBorrowers(){
+        return User::role('user')->count();
     }
 
     /**

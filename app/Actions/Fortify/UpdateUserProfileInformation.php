@@ -69,7 +69,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'dob' => $input['dob'],
                     'gender' => $input['gender'],
                 ])->save();
-                dd($user);
             } catch (\Throwable $th) {
                 dd($th);
             }

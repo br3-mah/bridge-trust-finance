@@ -19,7 +19,7 @@ class DashboardView extends Component
         $this->my_loan = Application::where('email', auth()->user()->email)
                                     ->orWhere('user_id', auth()->user()->id)
                                     ->get()->first();
-        $this->wallet = $this->getWalletBalance(auth()->user()->id);
+        $this->wallet = $this->getWalletBalance(auth()->user());
         return view('livewire.dashboard.dashboard-view')
         ->layout('layouts.dashboard');
     }
