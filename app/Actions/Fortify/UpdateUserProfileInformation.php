@@ -40,7 +40,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         }
         // dd(isset($input['address']));
         if(isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
-            // dd('completing KYC');
+            
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->orWhere('email', auth()->user()->email)
                         ->orWhere('user_id', auth()->user()->id)->first();
