@@ -1,4 +1,4 @@
-<div class="modal fade" id="completeKYCmodal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="applyForLoanNow" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content p-4">
 
@@ -23,37 +23,38 @@
                         </a>
                     </li>
                 </ul>
-                <form id="kyc_form" class="tab-content" action="{{ route("loan-request") }}" method="POST" enctype="multipart/form-data">
+                <form id="kyc_form" class="tab-content" action="{{ route("apply-loan") }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div id="wizard_Service" class="tab-pane" role="tabpanel">
                         <div class="row">
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">First Name*</label>
-                                    <input type="text" value="{{ auth()->user()->fname }}" wire:model="fname" class="form-control" placeholder="{{ auth()->user()->fname ?? 'John' }}" required>
+                                    <input type="text" value="{{ auth()->user()->fname }}" name="fname" class="form-control" placeholder="{{ auth()->user()->fname ?? 'John' }}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Last Name*</label>
-                                    <input type="text" value="{{ auth()->user()->lname }}" wire:model="lname" class="form-control" placeholder="{{ auth()->user()->lname ?? 'Doe' }}" required>
+                                    <input type="text" value="{{ auth()->user()->lname }}" name="lname" class="form-control" placeholder="{{ auth()->user()->lname ?? 'Doe' }}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Email Address*</label>
-                                    <input type="email" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="{{ auth()->user()->email ?? 'example@mail.com' }}" required>
+                                    <input type="email" name="email" value="{{ auth()->user()->email }}" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="{{ auth()->user()->email ?? 'example@mail.com' }}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Phone Number*</label>
-                                    <input type="text" value="{{ auth()->user()->phone }}" wire:model="phone" class="form-control" placeholder="(+260)97-000-999" required>
+                                    <input type="text" value="{{ auth()->user()->phone }}" name="phone" class="form-control" placeholder="(+260)97-000-999" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Gender*</label>
-                                    <select type="text" wire:model="gender" class="form-control">
+                                    <select type="text" name="gender" value="{{ auth()->user()->gender }}" class="form-control">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>                                
@@ -62,22 +63,28 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Purpose for Loan*</label>
-                                    <select type="text" wire:model="type" class="form-control">
-                                        <option value="Personal">Personal Loan</option>
-                                        <option value="Educational">Educational Loan</option>
-                                        <option value="Vehicle">Vehicle Loan</option>
-                                        <option value="Home Improvement">Home Improvement Loan</option>
-                                        <option value="SME">SME Loan</option>
-                                        <option value="Women In Business (Soft)">Women In Business (Soft) Loan</option>
+                                    <select type="text" name="type" class="form-control">
+                                        <option value="Personal">Personal</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Asset Financing">Asset Financing</option>
+                                        <option value="Home Improvement">Home Improvements</option>
+                                        <option value="Agri Business">Agri Business</option>
+                                        <option value="Women in Business (Femiprise) Soft">Women in Business (Femiprise) Soft Loan</option>
                                     </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6 mb-2">
+                                <div class="mb-3">
+                                    <label class="text-label form-label">Amount (ZMW)</label>
+                                    <input type="text" name="amount" class="form-control" placeholder="0.00" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Duration*</label>
-                                    <select type="text" wire:model="duration" class="form-control">
-                                        <option value="1 Week">1 Week</option>
-                                        <option value="1 Month">1 Week</option>
+                                    <select type="text" name="repayment_plan" class="form-control">
+                                        <option value="1 Month">1 Month</option>
                                         <option value="2 Months">2 Month</option>
                                         <option value="3 Months">3 Months</option>
                                     </select>
@@ -86,7 +93,7 @@
                             {{-- <div class="col-lg-12 mb-3">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Your Gender*</label>
-                                    <input type="text" wire:model="place" class="form-control" required>
+                                    <input type="text" name="place" class="form-control" required>
                                 </div>
                             </div> --}}
                         </div>
@@ -96,31 +103,31 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 1's First Name*</label>
-                                    <input type="text" wire:model="gfname" class="form-control" placeholder="Name" required>
+                                    <input type="text" name="gfname" class="form-control" placeholder="Name" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 1's Last Name*</label>
-                                    <input type="text" wire:model="glname" class="form-control" placeholder="Name" required>
+                                    <input type="text" name="glname" class="form-control" placeholder="Name" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 1's Email Address*</label>
-                                    <input type="email" wire:model="gemail" class="form-control" id="emial1" placeholder="example@example.com.com" required>
+                                    <input type="email" name="gemail" class="form-control" id="emial1" placeholder="example@example.com.com" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 1's Phone Number*</label>
-                                    <input type="text" wire:model="gphone" class="form-control" placeholder="(+1)408-657-9007" required>
+                                    <input type="text" name="gphone" class="form-control" placeholder="(+1)408-657-9007" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Relation*</label>
-                                    <select type="text" wire:model="g_relation" class="form-control">
+                                    <select type="text" name="g_relation" class="form-control">
                                         <option value="Work Mate">Work Mate</option>
                                         <option value="Relative">Relative</option>
                                         <option value="Close Friend">Close Friend</option>
@@ -130,7 +137,7 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Gender*</label>
-                                    <select type="text" wire:model="g_gender" class="form-control">
+                                    <select type="text" name="g_gender" class="form-control">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select> 
@@ -142,31 +149,31 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 2's First Name*</label>
-                                    <input type="text" wire:model="g2fname" class="form-control" placeholder="Name" required>
+                                    <input type="text" name="g2fname" class="form-control" placeholder="Name" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 2's Last Name*</label>
-                                    <input type="text" wire:model="g2lname" class="form-control" placeholder="Name" required>
+                                    <input type="text" name="g2lname" class="form-control" placeholder="Name" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 2's Email Address*</label>
-                                    <input type="email" wire:model="g2email" class="form-control" id="emial1" placeholder="example@example.com.com" required>
+                                    <input type="email" name="g2email" class="form-control" id="emial1" placeholder="example@example.com.com" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Guarantor 2's Phone Number*</label>
-                                    <input type="text" wire:model="g2phone" class="form-control" placeholder="(+1)408-657-9007" required>
+                                    <input type="text" name="g2phone" class="form-control" placeholder="(+1)408-657-9007" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Relation*</label>
-                                    <select type="text" wire:model="g2_relation" class="form-control">
+                                    <select type="text" name="g2_relation" class="form-control">
                                         <option value="Work Mate">Work Mate</option>
                                         <option value="Relative">Relative</option>
                                         <option value="Close Friend">Close Friend</option>
@@ -176,7 +183,7 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Gender*</label>
-                                    <select type="text" wire:model="g2_gender" class="form-control">
+                                    <select type="text" name="g2_gender" class="form-control">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select> 

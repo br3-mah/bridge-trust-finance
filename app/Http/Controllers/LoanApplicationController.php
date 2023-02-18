@@ -68,7 +68,7 @@ class LoanApplicationController extends Controller
         if($request->file('tpin_file') !== null){               
             $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
         }
-        
+
         if($request->file('payslip_file') !== null){               
             $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
         }
@@ -130,7 +130,7 @@ class LoanApplicationController extends Controller
             }else{
                 return redirect()->to('/contact-us');
             }
-        }
+        }       
     }
 
     public function updateFiles(Request $request)
@@ -170,9 +170,78 @@ class LoanApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function new_loan(Request $request)
     {
-        //
+
+        // dd('here');
+        $form = $request->toArray();
+        // dd($form);
+        if($request->file('tpin_file') !== null){               
+            $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
+        }
+
+        if($request->file('payslip_file') !== null){               
+            $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
+        }
+
+        $data = [
+            'lname'=> $form['lname'],
+            'fname'=> $form['fname'],
+            'email'=> $form['email'],
+            'amount'=> $form['amount'],
+            'phone'=> $form['phone'],
+            'gender'=> $form['gender'],
+            'type'=> $form['type'],
+            'repayment_plan'=> $form['repayment_plan'],
+
+            'glname'=> $form['glname'],
+            'gfname'=> $form['gfname'],
+            'gemail'=> $form['gemail'],
+            'gphone'=> $form['gphone'],
+            'g_gender'=> $form['g_gender'],
+            'g_relation'=> $form['g_relation'],
+
+            'g2lname'=> $form['g2lname'],
+            'g2fname'=> $form['g2fname'],
+            'g2email'=> $form['g2email'],
+            'g2phone'=> $form['g2phone'],
+            'g2_gender'=> $form['g2_gender'],
+            'g2_relation'=> $form['g2_relation'],
+
+            'tpin_file' => $tpin_file ?? 'no file',
+            'payslip_file' => $payslip_file ?? 'no file',
+
+            'complete' => 0
+        ];
+        $application = $this->apply_loan($data);
+        $mail = [
+            'user_id' => '',
+            'application_id' => $application,
+            'name' => $form['fname'].' '.$form['lname'],
+            'loan_type' => $form['type'],
+            'phone' => $form['phone'],
+            'duration' => $form['repayment_plan'],
+            'amount' => $form['amount'],
+            'type' => 'loan-application',
+            'msg' => 'You have new a '.$form['type'].' loan application request, please visit the site to view more details'
+        ];
+
+        $process = $this->send_loan_email($mail);
+
+        if($request->wantsJson()){
+            return response()->json([
+                "status" => 200, 
+                "success" => true, 
+                "message" => "Your loan has been sent.", 
+                "data" => $application
+            ]);
+        }else{
+            if($process){
+                return back();
+            }else{
+                return back();
+            }
+        }       
     }
 
     /**

@@ -205,6 +205,8 @@
                 @role('user')
                     @if($my_loan !== null)
                         @include('livewire.dashboard.__parts.dash-loan-reguest')
+                    @else
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyForLoanNow" id="applyForLoanNow">Apply For a Loan</button>
                     @endif
                 @endrole
 
