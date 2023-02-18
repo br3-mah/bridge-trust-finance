@@ -24,6 +24,7 @@
                     <div class="value-data col-xl-3 col-md-4 col-6">
                         <p class="mb-1">APPLICATION STATUS</p>
                         
+                @if($my_loan !== null)
                     @if($my_loan->complete == 1)
                         <h4 class="mb-0 font-w500 text-white">
                             @if($my_loan->status == 0)
@@ -66,10 +67,12 @@
                         <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->due_date ?? '' }}</h4>
                     </div>
                     @endif
+                @endif
                 </div>
             </div>
             
             <div wire:poll class="row p-4">
+                @if($my_loan !== null)
                 @if($my_loan->complete == 1)
                     @if($my_loan->status == 1)
                     <div class="col-xl-6 col-xxl-6 col-lg-6">
@@ -80,7 +83,7 @@
                                         <i class="la la-money"></i>
                                     </span>
                                     <div class="media-body text-white">
-                                        <p class="mb-1 text-white">{{ $my_loan->type }} Loan Payback Total</p>
+                                        <p class="mb-1 text-white">{{ $my_loan->type ?? '' }} Loan Payback Total</p>
                                         <h3 class="text-white">K {{ App\Models\Application::payback($my_loan->amount, preg_replace('/[^0-9]/','', $my_loan->repayment_plan)) }}</h3>
                                         {{-- <div class="progress mb-2 bg-secondary">
                                             <div class="progress-bar progress-animated bg-white" style="width: 30%"></div>
@@ -108,7 +111,7 @@
                                             <div class="media-body">
                                                 <h5 class="mt-1 mb-2">Your Loan Application is Pending</h5>
                                                 <p class="mb-0">
-                                                    Congratulations!, your {{$my_loan->type}} loan application is now pending for approval.
+                                                    Congratulations!, your {{$my_loan->type ?? ''}} loan application is now pending for approval.
                                                     Waiting for loan approval - one step closer to financial freedom!
                                                 </p>
                                             </div>
@@ -136,7 +139,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h5 class="mt-1 mb-2">Complete Your Profile Details</h5>
-                                            <p class="mb-0">Your {{$my_loan->type}} loan application is not finished yet, please <a href="{{url('/user/profile')}}">complete your KYC profile</a> to complete the loan request.</p>
+                                            <p class="mb-0">Your {{$my_loan-> ?? ''}} loan application is not finished yet, please <a href="{{url('/user/profile')}}">complete your KYC profile</a> to complete the loan request.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -147,6 +150,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @endif
             </div>
     </div>
