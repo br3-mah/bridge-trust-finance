@@ -24,6 +24,8 @@ use App\Http\Livewire\Dashboard\NotificationView;
 use App\Http\Livewire\Dashboard\Settings\LoanWalletView;
 use App\Http\Livewire\Dashboard\Settings\UserRolesView;
 use App\Http\Livewire\Dashboard\Settings\UserView;
+use App\Http\Livewire\Dashboard\Settings\CareerSettings;
+use App\Http\Livewire\Dashboard\Settings\ContactSettings;
 use App\Http\Livewire\FaqPage;
 use App\Http\Livewire\KYCView;
 use App\Http\Livewire\Loans\AssetFinanceLoan;
@@ -89,6 +91,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // ----- settings
     Route::get('users', UserView::class)->name('users');
+    Route::get('loan-rates', LoanRatesView::class)->name('loan-rates');
+    Route::get('careers-settings', CareerSettings::class)->name('careers-settings');
+    Route::get('contact-settings', ContactSettings::class)->name('contact-settings');
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
     Route::get('notifications', NotificationView::class)->name('notifications');
     Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');

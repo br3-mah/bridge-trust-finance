@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\File;
 use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
+use App\Traits\UserTrait;
 
 class LoanApplicationController extends Controller
 {     
-    use EmailTrait, LoanTrait;
+    use EmailTrait, LoanTrait, UserTrait;
     /**
      * Display a listing of the resource.
      *
@@ -73,6 +74,14 @@ class LoanApplicationController extends Controller
             $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
         }
 
+        $register = [
+            'lname'=> $form['lname'],
+            'fname'=> $form['fname'],
+            'email'=> $form['email'],
+            'password' => 'peace2u',
+            'terms' => 'accepted'
+        ];
+        $user = $this->registerUser($register);
         $data = [
             'lname'=> $form['lname'],
             'fname'=> $form['fname'],
@@ -99,12 +108,15 @@ class LoanApplicationController extends Controller
 
             'tpin_file' => $tpin_file ?? 'no file',
             'payslip_file' => $payslip_file ?? 'no file',
-
+            'user_id' =>  $user->id,
             'complete' => 0
         ];
+
+
         $application = $this->apply_loan($data);
+
         $mail = [
-            'user_id' => '',
+            'user_id' => $user->id,
             'application_id' => $application,
             'name' => $form['fname'].' '.$form['lname'],
             'loan_type' => $form['type'],

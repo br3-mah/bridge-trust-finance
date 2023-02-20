@@ -2,7 +2,9 @@
 
 namespace App\Traits;
 
+use App\Mail\LoanApplication;
 use App\Models\Application;
+use Illuminate\Support\Facades\Mail;
 
 trait LoanTrait{
     use EmailTrait;
@@ -22,36 +24,29 @@ trait LoanTrait{
                 // check if user already created a loan application that is not approved yet and not complete
                 $check = Application::where('email', $data['email'])
                                     ->where('status', 0)->where('complete', 0)->get();
-                // dd($check->toArray());
-                // dd(!empty($check->toArray()));
+                            
+                
+                $mail = [
+                    'name' => $data['fname'].' '.$data['lname'],
+                    'to' => $data['email'],
+                    'from' => 'support@bridgetrustfinance.co.zm',
+                    'phone' => $data['phone'],
+                    'subject' => 'Bridge Trust Finance Loan Application Updated',
+                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].' Your loan request has been sent, please sign up or sign in to see the application status. Your password is Peace2u',
+                ];
+                
                 if(!empty($check->toArray())){
-                    // Update record
-                    $check->where('email', '=', $data['email'])->first()->update($data);
-                    $mail = [
-                        'name' => $data['name'],
-                        'to' => $data['email'],
-                        'from' => 'support@bridgetrustfinance.co.zm',
-                        'phone' => $data['phone'],
-                        'subject' => 'Bridge Trust Finance Loan Application Updated',
-                        'message' => 'Hey '.$data['fname'].' Your Current pending loan application has been updated, please sign up or sign in to see the application status',
-                    ];
-                    $this->send_loan_feedback_email($mail);
-                    return $check->first()->id;
+                    $check->where('user_id', '=', $data['user_id'])->first()->update($data);
+                    $contact_email = new LoanApplication($mail);
+                    Mail::to($data['email'])->send($contact_email);
                 }else{
                     $item = Application::create($data);
-                    $mail = [
-                        'name' => $data['name'],
-                        'to' => $data['email'],
-                        'from' => 'support@bridgetrustfinance.co.zm',
-                        'phone' => $data['phone'],
-                        'subject' => 'Bridge Trust Finance '.$data['type'].' Loan Application',
-                        'message' => 'Hey '.$data['fname'].' Your '.$data['type'].' loan application of K'.$data['amount'].' for '.$data['repayment_plan'].' payback duration, has been successfully sent, please sign up or sign in to see the application status',
-                    ];
-                    $this->send_loan_feedback_email($mail);
-                    return $item->id;
+                    $contact_email = new LoanApplication($mail);
+                    Mail::to($data['email'])->send($contact_email);
                 }
+
             } catch (\Throwable $th) {
-                return false;
+                dd($th);
             }
     }
 

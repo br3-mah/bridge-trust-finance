@@ -235,17 +235,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="mb-3 row">
-                                                        <label class="col-lg-4 col-form-label" for="validationCustom05">User Role
-                                                            <span class="text-danger">*</span>
-                                                        </label>
-                                                        <div class="col-lg-6">
-                                                            <input type="text" name="assigned_role" readonly class="form-control" id="validationCustom09" value="employee" placeholder="Employee" required>                                                            
-                                                            <div class="invalid-feedback">
-                                                                Please select a one.
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                                    <input type="hidden" name="assigned_role" readonly class="form-control invisible" id="validationCustom09" value="employee" placeholder="Employee" required>                                                            
+                                                            
                                                     <div class="mb-3 row">
                                                         <label class="col-lg-4 col-form-label" for="validationCustom04">Address <span
                                                                 class="text-danger">*</span>

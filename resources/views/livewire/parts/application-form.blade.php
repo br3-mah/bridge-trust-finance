@@ -157,11 +157,11 @@
                                     <div wire:ignore class="modal2" style="display:none" id="modal2">
                                         <div class="modal-guts2">
                                             <div class="flex row">
-                                                <div class="col-lg-2">
+                                                <div class="col-lg-12">
                                                     <img width="auto" src="https://cdn-icons-png.flaticon.com/512/4202/4202134.png">
                                                     <h1 style="color:#7b1919">You Already Applied</h1>
                                                 </div>
-                                                <div class="col-lg-9">
+                                                <div class="col-lg-12">
                                                     <p>
                                                         You have already submitted a loan request, please sign in to 
                                                         view your loan status or update the existing loan application 

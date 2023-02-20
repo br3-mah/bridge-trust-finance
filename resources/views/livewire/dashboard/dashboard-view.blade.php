@@ -37,8 +37,8 @@
                         <select class=" w-100 mb-3" aria-label="Default select example">
                             <option selected>Open this select menu</option>
                             <option value="1">Bank Card</option>
-                            <option value="2">Online</option>
-                            <option value="3">Cash On Time</option>
+                            <option value="2">Mobile Money</option>
+                            <option value="3">Cash at Hand</option>
                         </select>
                     </div>
                     <label class="form-label">Amount</label>

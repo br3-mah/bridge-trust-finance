@@ -89,10 +89,10 @@
                                         <td style="">{{ $loan->fname.' '. $loan->lname }}</td>
                                         <td style="">{{ $loan->type }}</td>
                                         <td style="">{{ $loan->amount }}</td>
-                                        <td style="">{{ 20 }}</td>
+                                        <td style="">{{ 20 * $loan->repayment_plan }}</td>
+                                        <td style="">{{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</td>
                                         <td style="">{{ 0.00 }}</td>
-                                        <td style="">{{ 0.00 }}</td>
-                                        <td style="">{{ 0.00}}</td>
+                                        <td style="">{{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan))}}</td>
                                         <td>--</td>
                                         <td>
                                             @if($loan->status == 0)
@@ -103,7 +103,7 @@
                                             @elseif($loan->status == 1)
                                             <span class="badge badge-sm light badge-success">
                                                 <i class="fa fa-circle text-success me-1"></i>
-                                                Accepted
+                                                Not Paid
                                             </span>
                                             @elseif($loan->status == 2)
                                             <span class="badge badge-sm light badge-warning">

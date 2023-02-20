@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LoanRate extends Model
+class CareerSetting extends Model
 {
     use HasFactory;
-     
     protected $fillable = [
-        'value', 'for', 'type', 'status'
+        'dept',
+        'job_role',
+        'location',
+        'last_date',
+        'desc'
     ];
 
-    public function user(){
-        $this->belongsTo(User::class);
-    }
+    
 }

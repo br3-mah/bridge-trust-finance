@@ -151,17 +151,17 @@
                     {{-- @can('manage company wallet funds') --}}
                     <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Loan Settings</a>
                         <ul aria-expanded="false">
-                            <li><a href="email-compose.html">Add Loan Rates</a></li>
-                            <li><a href="email-inbox.html">Add Loan Deals</a></li>
+                            <li><a href="{{ route('loan-rates') }}">Add Loan Rates</a></li>
+                            {{-- <li><a href="{{ route('view-loan-deals') }}">Add Loan Deals</a></li> --}}
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">CMS Manager</a>
                         <ul aria-expanded="false">
-                            <li><a href="email-compose.html">Contact Details</a></li>
-                            <li><a href="email-compose.html">Careers</a></li>
-                            <li><a href="email-inbox.html">Social Media</a></li>
+                            <li><a href="{{ route('contact-settings') }}">Contact Details</a></li> 
+                            <li><a href="{{ route('careers-settings') }}">Careers</a></li> 
+                            {{-- <li><a href="email-inbox.html">Social Media</a></li>
                             <li><a href="email-read.html">Policies</a></li>
-                            <li><a href="email-read.html">Terms & Conditions</a></li>
+                            <li><a href="email-read.html">Terms & Conditions</a></li> --}}
                         </ul>
                     </li>
                     {{-- @endcan --}}

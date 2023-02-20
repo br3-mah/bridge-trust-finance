@@ -88,13 +88,13 @@
     
                     <div class="main-menu-style1-left">
                         <div class="logo-box-style1">
-                            <a href="index.php">
+                            <a href="{{ route('welcome') }}">
                                 <img src="{{ asset('public/box/images/resources/logo-11.png') }}" alt="BTF" title="">
                             </a>
                         </div>
     
                         <div class="main-menu-box">
-                            <a href="/" class="mobile-nav__toggler">
+                            <a href="{{ route('welcome')}}" class="mobile-nav__toggler">
                                 <i class="icon-menu"></i>
                             </a>
     
