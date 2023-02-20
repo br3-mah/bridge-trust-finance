@@ -1,6 +1,5 @@
-<div wire:ignore class="modal fade" id="applyForLoanNow" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content p-4">
+    <div wire:ignore>
+        <div class="p-4">
 
             <div id="smartwizard" class="form-wizard order-create">
                 <ul class="nav nav-wizard">
@@ -304,4 +303,3 @@
 
         </div>
     </div>
-</div>

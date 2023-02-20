@@ -113,7 +113,7 @@
             </div>
         </div>
     </div>
-    @include('livewire.dashboard.__parts.loan-application')
+    {{-- @include('livewire.dashboard.__parts.loan-application') --}}
     <!-- row -->
     <div class="container-fluid pt-0">
         <div class="row">
@@ -177,7 +177,6 @@
                                     <div class="wallet-info">
                                         <span class="fs-14 font-w400 d-block">Wallet Balance</span>
                                         <h2 wire:poll class="font-w600 mb-0">ZMW {{ $wallet ?? '0.00' }}</h2>
-                                        {{-- <span>0% than last week</span> --}}
                                     </div>
 
                                     @can('send payment remainders to customers')
@@ -206,7 +205,11 @@
                     @if($my_loan !== null)
                         @include('livewire.dashboard.__parts.dash-loan-reguest')
                     @else
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyForLoanNow" id="applyForLoanNow">Apply For a Loan</button>
+                        <div class="items-center">
+                            <h4>Apply for a Loan</h4>
+                        </div>
+                    {{-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyForLoanNow" id="applyForLoanNow">Apply For a Loan</button> --}}
+                        @include('livewire.dashboard.__parts.loan-application-standalone')  
                     @endif
                 @endrole
 
