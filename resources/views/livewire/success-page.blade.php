@@ -16,8 +16,8 @@
                                         backdrop-filter: blur(3px);
                                         -webkit-backdrop-filter: blur(3px);
                                         border: 1px solid rgba(255, 255, 255, 0.3);">
-                                            <h1 style="color: #7B1001;" class="mb-0">Your loan request has seen sent<br>please 
-                                                signin to verify your loan application</h1>
+                                            <h1 style="color: #7B1001;" class="mb-0">
+                                                Your loan request has seen sent<br>please check your email</h1>
                                             <br>
                                             <p style="color: rgb(226, 83, 0);">                                                
                                                 <p>Already have an account? <a class="text-primary" href="{{ route('login') }}">Sign in</a></p>
