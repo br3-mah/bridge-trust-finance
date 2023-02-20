@@ -29,10 +29,10 @@ trait LoanTrait{
                 $mail = [
                     'name' => $data['fname'].' '.$data['lname'],
                     'to' => $data['email'],
-                    'from' => 'support@bridgetrustfinance.co.zm',
+                    'from' => 'admin@bridgetrustfinance.co.zm',
                     'phone' => $data['phone'],
-                    'subject' => 'Bridge Trust Finance Loan Application Updated',
-                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].' Your loan request has been sent, please sign up or sign in to see the application status. Your password is Peace2u',
+                    'subject' => 'Bridge Trust Finance Loan Application',
+                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].' Your loan request has been sent, please sign in to see the application status. Your password is 20230101brigde.@2you',
                 ];
                 
                 if(!empty($check->toArray())){

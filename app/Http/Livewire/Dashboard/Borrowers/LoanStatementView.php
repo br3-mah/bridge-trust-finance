@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Accounting;
+namespace App\Http\Livewire\Dashboard\Borrowers;
 
 use App\Models\User;
 use Livewire\Component;
@@ -16,9 +16,10 @@ class LoanStatementView extends Component
         **/  
         $this->user = User::where('id', $id)->with('loans')->first();
     }
+
     public function render()
     {
-        return view('livewire.dashboard.accounting.loan-statement-view')
+        return view('livewire.dashboard.borrowers.loan-statement-view')
         ->layout('layouts.dashboard');
     }
 }

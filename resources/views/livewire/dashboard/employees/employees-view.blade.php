@@ -167,7 +167,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" disabled class="form-control" id="validationCustom03" placeholder="peace2u" required>
+                                                            <input type="text" disabled class="form-control" id="validationCustom03" placeholder="20230101brigde.@2you" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter a password.
                                                             </div>

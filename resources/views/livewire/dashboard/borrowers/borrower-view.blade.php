@@ -15,7 +15,8 @@
                         <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
                             <span><i class="mdi mdi-check"></i></span>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button> {{ Session::get('attention') }}
+                            </button> {{ Session::get('attention') }} 
+                            <a class="text-white" href="{{ route('apply-for', ['id' => session('borrower_id')]) }}"> Continue to loan application</a>
                         </div>
                         @elseif (Session::has('error_msg'))
                         <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
@@ -40,7 +41,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
                                 @forelse($users as $user)
                                 <tr>
                                     <td style="text-align:center">
@@ -54,7 +54,9 @@
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
-                                    <td style="text-align:center">{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
+                                    <td style="text-align:center"> 
+                                        <a href="{{ route('client-account', ['key'=>$user->id]) }}">{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }}</a>
+                                    </td>
                                     <td style="text-align:center">{{ $user->nrc_no ?? 'No ID' }}</td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
@@ -62,14 +64,18 @@
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
                                     <td style="text-align:center">{{ $user->created_at->subDays()->diffForHumans(); }}</td>
                                     <td style="text-align:center">
-                                        <div class="">
-                                            <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
+                                        <div class="d-flex">
+                                            <a target="_blank" title="View Borrower Profile" href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                                     <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                                                 </svg>
                                             </a>
-                                            {{-- <button wire:click="destory($user->id)" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a> --}}
+                                            <a target="_blank" title="View Loan Statement" href="{{ route('borrower-statement', ['id'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ruled" viewBox="0 0 16 16">
+                                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h7v1a1 1 0 0 1-1 1H6zm7-3H6v-2h7v2z"/>
+                                                </svg>
+                                            </a>
                                         </div>												
                                     </td>												
                                 </tr>

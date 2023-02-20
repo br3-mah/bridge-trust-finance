@@ -6,8 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Mail\BTFAccount;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\HtmlString;
 
 class UserController extends Controller
 {
@@ -38,7 +41,7 @@ class UserController extends Controller
             
             // Hash::make($input['password']),
             $u = $user->create(array_merge($request->all(), [
-                'password' => bcrypt('peace2u'),
+                'password' => bcrypt('20230101brigde.@2you'),
                 'active' => 1,
                 'profile_photo_path' => $url ?? ''
             ]));
@@ -50,10 +53,31 @@ class UserController extends Controller
 
             $u->syncRoles($request->assigned_role);
             // Mail::to($u->email)->send(new SendUserInfoEmail($details));
-            Session::flash('attention', "User created successfully.");
+
+            $mail = [
+                'name' => $u->fname.' '.$u->lname,
+                'to' => $u->email,
+                'from' => 'admin@bridgetrustfinance.co.zm',
+                'phone' => $u->phone,
+                'subject' => 'Bridge Trust Finance Loan Application',
+                'message' => 'Hey '.$u->fname.' '.$u->lname.' Your loan request has been sent, please sign in to see the application status. Your password is 20230101brigde.@2you',
+            ];
+
+            // dd($mail);
+            $eMail = new BTFAccount($mail);
+            Mail::to($u->email)->send($eMail);
+            if($request->assigned_role == 'user'){
+                $url = '/apply-for-a-loan/ '.$u->id;
+                // $link = new HtmlString('<a target="_blank" href="' . $url . '">Create a loan for '.$u->fname.' '.$u->lname.'</a>');
+                $msg = '<a target="_blank" href="'.$url.'">Apply for Loan on Behalf</a>';
+                Session::flash('attention', "Borrower created successfully. ");
+                Session::flash('borrower_id', $u->id);
+            }else{
+                Session::flash('attention', "User created successfully.");
+            }
             return back();
         } catch (\Throwable $th) {
-            Session::flash('error_msg', substr($th->getMessage(),16,110));
+            Session::flash('error_msg', $th);
             return back();
         }
 

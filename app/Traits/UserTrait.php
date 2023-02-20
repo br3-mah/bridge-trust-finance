@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 trait UserTrait{
 
     public function registerUser($input){
-        $password = 'peace2u';
+        $password = '20230101brigde.@2you';
         try {
             $user = User::create([
                 'fname' => $input['fname'],

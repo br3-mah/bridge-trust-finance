@@ -9,10 +9,12 @@ use App\Http\Livewire\ContactPage;
 use App\Http\Livewire\Dashboard\Accounting\LoanStatementView;
 use App\Http\Livewire\Dashboard\Accounts\AccountView;
 use App\Http\Livewire\Dashboard\Borrowers\BorrowerView;
+use App\Http\Livewire\Dashboard\Borrowers\LoanStatementView as BorrowersLoanStatementView;
 use App\Http\Livewire\Dashboard\Borrowers\SendBorrowerMessageView;
 use App\Http\Livewire\Dashboard\DashboardView;
 use App\Http\Livewire\Dashboard\Employees\EmployeesView;
 use App\Http\Livewire\Dashboard\Loans\GuarantorsView;
+use App\Http\Livewire\Dashboard\Loans\LoanApplicationStandaloneView;
 use App\Http\Livewire\Dashboard\Loans\LoanDetailView;
 use App\Http\Livewire\Dashboard\Loans\LoanHistoryView;
 use App\Http\Livewire\Dashboard\Loans\LoanRatesView;
@@ -68,9 +70,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // ---- Borrowers
     Route::get('borrowers', BorrowerView::class)->name('borrowers');
+    Route::get('borrower-details/{id}', BorrowersLoanStatementView::class)->name('borrower-statement');
     Route::get('send-messages-to-borrowers', SendBorrowerMessageView::class)->name('notify-borrowers');
 
     // ---- loans
+    Route::get('apply-for-a-loan/{id}', LoanApplicationStandaloneView::class)->name('apply-for');
     Route::get('loan-details/{id}', LoanDetailView::class)->name('loan-details');
     Route::get('past-maturity-date', PastMaturityDateView::class)->name('past-maturity-date');
     Route::get('guarantors', GuarantorsView::class)->name('guarantors');
