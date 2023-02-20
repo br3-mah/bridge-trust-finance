@@ -17,7 +17,7 @@ class LoanWalletView extends Component
         $this->history = LoanWalletHistory::with('users')->orderBy('created_at', 'desc')->get();
         $this->account = LoanWallet::first();
         $this->current_funds = $this->getCompanyWallet();
-        $this->gross_funds = LoanWallet::first()->deposit;
+        $this->gross_funds = LoanWallet::first()->deposit ?? 0;
         return view('livewire.dashboard.settings.loan-wallet-view')
         ->layout('layouts.dashboard');
     }
