@@ -1,19 +1,19 @@
 <div class="content-body">
     <div class="container-fluid">
         <div class="container">
-            <h4>Borrower Loan Statement</h4>
+            <h4 class="text-primary">Borrower Loan Statement</h4>
         <div class="row">
           <div class="col-md-6">
             <h6>Borrower Information</h6>
-            <p>Name: John Doe</p>
-            <p>Address: 123 Main St.</p>
-            <p>Phone: (123) 456-7890</p>
+            <p>Name: {{  $loan->fname.' '.$loan->lname }}</p>
+            <p>Address: {{ $loan->address ?? '' }}</p>
+            <p>Phone: {{ $loan->phone ?? '' }}</p>
           </div>
           <div class="col-md-6">
             <h6>Loan Information</h6>
-            <p>Loan Amount: K10,000.00</p>
-            <p>Interest Rate: 5%</p>
-            <p>Loan Term: 3 years</p>
+            <p>Loan Amount: K{{ $loan->amount }}</p>
+            <p>Interest Rate: {{ 20 * $loan->repayment_plan}}%</p>
+            <p>Loan Term: {{ $loan->repayment_plan}} Months</p>
           </div>
         </div>
         <table  id="example3" class="display table">

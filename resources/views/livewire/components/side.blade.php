@@ -78,7 +78,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('loan-wallet') }}">Manage Funds</a></li>
-                    <li><a href="{{ route('loan-statement') }}">Loan Statements </a></li>
+                    <li><a href="{{ route('loan-statements') }}">Loan Statements </a></li>
 
                 </ul>
             </li>

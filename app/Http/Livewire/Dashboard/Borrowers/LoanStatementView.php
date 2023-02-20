@@ -2,19 +2,20 @@
 
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
+use App\Models\Application;
 use App\Models\User;
 use Livewire\Component;
 
 class LoanStatementView extends Component
 {
-    public $user;
+    public $loan;
     public function mount($id){
         /**
             *loan main details
             *Loan owner
             *Loan status timeline
         **/  
-        $this->user = User::where('id', $id)->with('loans')->first();
+        $this->loan = Application::where('id', $id)->with('user')->first();
     }
 
     public function render()

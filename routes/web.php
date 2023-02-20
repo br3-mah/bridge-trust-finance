@@ -70,7 +70,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // ---- Borrowers
     Route::get('borrowers', BorrowerView::class)->name('borrowers');
-    Route::get('borrower-details/{id}', BorrowersLoanStatementView::class)->name('borrower-statement');
+    Route::get('borrower-details/{id}', BorrowersLoanStatementView::class)->name('loan-statement');
     Route::get('send-messages-to-borrowers', SendBorrowerMessageView::class)->name('notify-borrowers');
 
     // ---- loans
@@ -86,7 +86,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // ---- Accounts
     Route::get('client-account', AccountView::class)->name('client-account');
-    Route::get('loan-statement', LoanStatementView::class)->name('loan-statement');
+    Route::get('loan-statements', LoanStatementView::class)->name('loan-statements');
     Route::get('loan-wallet-account', LoanWalletView::class)->name('loan-wallet');
 
     // ----- Reports
