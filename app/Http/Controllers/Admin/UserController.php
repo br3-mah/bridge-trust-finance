@@ -29,6 +29,7 @@ class UserController extends Controller
     public function store(User $user, Request $request) 
     {
         try {
+            // Role::firstOrCreate(['name' => 'employee']);
             //For demo purposes only. When creating user or inviting a user
             // you should create a generated random password and email it to the user        
             if ($request->file('image_path')) {

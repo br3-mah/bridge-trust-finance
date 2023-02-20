@@ -163,10 +163,11 @@
                         <div class="dropdown header-profile2">
                             <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="header-info2 d-flex align-items-center">
-                                    <div class="d-flex align-items-center sidebar-info">
-                                        <div>
-                                            <h4 class="mb-0">{{ auth()->user()->fname.' '.auth()->user()->lname }}</h4>
-                                            <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                    <div class="align-items-right sidebar-info">
+                                        <div style="display:block; float:right">
+                                            <span style="float:right" class="mb-0 font-lg"><b>{{ auth()->user()->fname.' '.auth()->user()->lname ?? auth()->user()->name }}</b></span>
+                                            <br>
+                                            <span class="mb-0">{{ auth()->user()->email }}</span>
                                             <span class="d-block text-end">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) ?? 'Guest' }}</span>
                                         </div>
                                     </div>                                        
@@ -174,7 +175,7 @@
                                         <div class="p-3 rounded-full">
                                             @if(auth()->user()->fname != null && auth()->user()->lname != null)
                                                 <span class="text-primary">{{ auth()->user()->fname[0].' '.auth()->user()->lname[0] }}</span>
-                                            @else
+                                            @else   
                                                 <span class="text-primary">{{ auth()->user()->name[0] }}</span>
                                             @endif
                                         </div>

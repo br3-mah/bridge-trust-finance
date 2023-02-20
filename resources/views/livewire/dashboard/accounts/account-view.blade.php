@@ -18,13 +18,19 @@
                                         <span>{{ $data->name[0] }}</span>
                                     @endif
                                 @else
-                                    <img class="img-fluid rounded-circle bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
+                                    <img class="img-fluid rounded-full bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
                                 @endif
                             </div>
                             <div class="profile-details">
                                 <div class="profile-name px-3 pt-2">
                                     <h4 class="text-primary mb-0">{{ $data->fname.' '.$data->lname }}</h4>
-                                    <p>{{ $data->occupation  }}</p>
+                                    @foreach ($data->roles as $role)
+                                        @if($role->name == 'user')
+                                        <p>Borrower</p>
+                                        @else
+                                        <p>{{ $role->name }}</p>
+                                        @endif
+                                    @endforeach
                                     <p>{{ $data->phone  }}</p>
                                     <p>{{ $data->gender }}</p>
                                 </div>
@@ -75,6 +81,7 @@
                 <!-- Row -->
                 <div class="row">
                     <!--column-->
+                    @if($data->hasRole('user'))
                     <div class="col-xl-12">
                         <div class="card your_balance">
                             <div class="card-header border-0">
@@ -132,7 +139,7 @@
                         </div>
                     </div>
                     <!--/column-->
-                     <!--column-->
+                    <!--column-->
                     <div class="col-xl-12">
                             <div class="card lastest_trans h-auto">
                             <div class="card-header dz-border flex-wrap pb-3">
@@ -233,7 +240,7 @@
                             </div> --}}
                         </div>
                     </div>
-                        
+                    @endif    
                     <!--/column-->
                 </div>
                 <!-- /Row -->
@@ -244,6 +251,8 @@
             <div class="col-xl-6">
                 <div class="row">
                     <!--column-->
+                    
+                    @if($data->hasRole('user'))
                     <div class="col-md-6 col-xl-6 col-xxl-12">
                         <div class="row">
                              <!--column-->
@@ -331,6 +340,7 @@
                          <!--/column-->
                         </div>
                     </div>
+                    @endif
                  <!--/column-->
                 </div>
             </div>
