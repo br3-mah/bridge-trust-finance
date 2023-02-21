@@ -12,7 +12,7 @@
 
                     <div class="table-responsive">
 
-                        <table id="example3" class="display" style="min-width: 845px">
+                        <table wire:ignore wire:poll id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th></th>
