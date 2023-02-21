@@ -152,26 +152,26 @@ class LoanApplicationController extends Controller
     {
         
         try {
-            if($request->file('nrc_file') != null){
+            if($request->file('nrc_file') !== null){
                 $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public'); 
-                $user = User::find(auth()->user()->id);
-                $user->nrc = $nrc_file;
+                $user = Application::where('user_id',auth()->user()->id)->where('status', 0)->where('complete', 0)->first();
+                $user->nrc_file = $nrc_file;
                 $user->save();      
             }
     
-            // if($request->file('tpin_file') != null){               
-            //     $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');   
-            //     $user = User::find(auth()->user()->id);
-            //     $user->tpin_file = $tpin_file;
-            //     $user->save();           
-            // }
+            if($request->file('tpin_file') !== null){               
+                $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');   
+                $user = Application::where('user_id',auth()->user()->id)->where('status', 0)->where('complete', 0)->first();
+                $user->tpin_file = $tpin_file;
+                $user->save();           
+            }
     
-            // if($request->file('payslip_file') != null){               
-            //     $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');  
-            //     $user = User::find(auth()->user()->id);
-            //     $user->payslip_file = $payslip_file;
-            //     $user->save();        
-            // }
+            if($request->file('payslip_file') !== null){               
+                $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');  
+                $user = Application::where('user_id',auth()->user()->id)->where('status', 0)->where('complete', 0)->first();
+                $user->payslip_file = $payslip_file;
+                $user->save();        
+            }
             return redirect()->to('/user/profile');
         } catch (\Throwable $th) {
             dd($th);
