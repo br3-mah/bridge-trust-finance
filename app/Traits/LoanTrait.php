@@ -24,8 +24,9 @@ trait LoanTrait{
                 // check if user already created a loan application that is not approved yet and not complete
                 $check = Application::where('email', $data['email'])
                                     ->where('status', 0)->where('complete', 0)->get();
-                            
+                      
                 
+               
                 $mail = [
                     'name' => $data['fname'].' '.$data['lname'],
                     'to' => $data['email'],
@@ -36,7 +37,7 @@ trait LoanTrait{
                 ];
                 
                 if(!empty($check->toArray())){
-                    $check->where('user_id', '=', $data['user_id'])->first()->update($data);
+                    $check->first()->update($data);
                     $contact_email = new LoanApplication($mail);
                     Mail::to($data['email'])->send($contact_email);
                 }else{
