@@ -45,7 +45,7 @@ class UserRolesView extends Component
             return redirect()->back();
         } catch (\Throwable $th) {
             Session::flash('error_msg', substr($th->getMessage(),16,110));
-            return redirect()->route('users');
+            return redirect()->route('roles');
         }
     }
 
