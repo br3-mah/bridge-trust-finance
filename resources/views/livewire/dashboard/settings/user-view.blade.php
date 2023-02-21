@@ -56,7 +56,7 @@
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            @if($user->email !== 'admin@bridgetrustfinance.com' || $user->email !== 'admin@bridgetrustfinance.co.zm')
+                                            @if($user->email != 'admin@bridgetrustfinance.com' || $user->email != 'admin@bridgetrustfinance.co.zm')
                                             <a href="#" wire:click="destory({{ $user->id }})" onclick="confirm('Are you sure you want to permanently delete this account.') || event.stopImmediatePropagation();" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                             @endif
                                         </div>												
