@@ -24,7 +24,7 @@ class EmployeesView extends Component
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
         
-        dd(Role::where('name', 'employee')->exists());
+       
         if (Role::where('name', 'employee')->exists()) {
             $users = User::role('employee')->latest()->paginate(7);
         } else {
