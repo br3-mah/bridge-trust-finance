@@ -82,6 +82,9 @@ class LoanApplicationController extends Controller
             'terms' => 'accepted'
         ];
         $user = $this->registerUser($register);
+        if(!$user){
+            return redirect()->to('/already-exists');
+        }
         $data = [
             'lname'=> $form['lname'],
             'fname'=> $form['fname'],

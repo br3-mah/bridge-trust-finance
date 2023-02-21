@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\LoanApplicationController;
 use App\Http\Controllers\PostController;
 use App\Http\Livewire\AboutPage;
+use App\Http\Livewire\AlreadyExistPage;
 use App\Http\Livewire\CareerPage;
 use App\Http\Livewire\ContactPage;
 use App\Http\Livewire\Dashboard\Accounting\LoanStatementView;
@@ -135,3 +136,7 @@ Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 // Alerts and Notifications
 Route::get('successfully-applied-a-loan', SuccessPage::class)->name('success-application');
 Route::get('email-sent-successfully', SuccessEmailPage::class)->name('success-email');
+
+
+// Errors
+Route::get('account-already-exists', AlreadyExistPage::class)->name('already-exists');

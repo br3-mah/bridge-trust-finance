@@ -1,7 +1,7 @@
 <div class="content-body">
     <div class="container-fluid">
         <div class="container">
-            <h4 class="text-primary">Borrower Loan Statement</h4>
+            <h2 class="text-primary">Loan Statement</h2>
         <div class="row">
           <div class="col-md-6">
             <h6>Borrower Information</h6>

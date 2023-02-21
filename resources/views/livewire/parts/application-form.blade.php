@@ -158,20 +158,18 @@
                                         <div class="modal-guts2">
                                             <div class="flex row">
                                                 <div class="col-lg-12">
-                                                    <img width="auto" src="https://cdn-icons-png.flaticon.com/512/4202/4202134.png">
-                                                    <h1 style="color:#7b1919">You Already Applied</h1>
+                                                    <img width="25" src="https://cdn-icons-png.flaticon.com/512/4202/4202134.png">
+                                                    <h1 style="color:#7b1919">Account Aready Exists</h1>
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <p>
-                                                        You have already submitted a loan request, please sign in to 
-                                                        view your loan status or update the existing loan application 
-                                                        request. 
+                                                        Email already exists please sign in to check your account. 
                                                     </p>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="col-lg-12 btn-box" style="padding-right:20px; padding-left:20px;">
-                                                <button id="updateExistingLoan" class="btn btn-sm btn-waring">Update Existing Loan</button>
+                                                {{-- <button id="updateExistingLoan" class="btn btn-sm btn-waring">Update Existing Loan</button> --}}
                                                 <a href="{{ route('login') }}" class="btn btn-sm btn-light">Sign In</a>
                                             </div>
                                         </div>
