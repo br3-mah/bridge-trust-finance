@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
-
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     // public function __construct()
@@ -31,6 +31,7 @@ class UserController extends Controller
 
     public function store(User $user, Request $request) 
     {
+        DB::beginTransaction();
         try {
             // Role::firstOrCreate(['name' => 'employee']);
             //For demo purposes only. When creating user or inviting a user
@@ -75,8 +76,10 @@ class UserController extends Controller
             }else{
                 Session::flash('attention', "User created successfully.");
             }
+            DB::commit();
             return back();
         } catch (\Throwable $th) {
+            DB::rollback();
             Session::flash('error_msg', $th);
             return back();
         }

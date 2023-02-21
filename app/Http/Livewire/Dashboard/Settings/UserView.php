@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
+use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use App\Models\Wallet;
 use Livewire\WithFileUploads;
 
 class UserView extends Component
@@ -114,11 +116,20 @@ class UserView extends Component
         // }
     }
 
-    public function destory(User $user){
-        // $user->delete();
-
-        // return redirect()->route('users.index')
-        //     ->withSuccess(__('User deleted successfully.'));
+    public function destory($id){
+        $user = User::find($id); 
+        if ($user) {
+            try {
+                $user->delete();
+                Application::where('user_id','=',$id)->delete();
+                Wallet::where('user_id','=',$id)->delete();
+                Session::flash('deleted', "User Deleted.");
+            } catch (\Throwable $th) {
+                Session::flash('error_msg', "Oops, something went wrong account can not be deleted.");
+            }
+        } else {
+            return redirect()->route('users');
+        }
     }
 
     // --------------- togggles
