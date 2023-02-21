@@ -193,7 +193,7 @@
 
     {{-- Modal --}}
     {{-- @if($createModal) --}}
-    <div class="modal fade" id="exampleModalLong">
+    <div wire:ignore class="modal fade" id="exampleModalLong">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

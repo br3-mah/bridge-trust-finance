@@ -37,7 +37,10 @@ class UserRolesView extends Component
         //     'permission' => 'required',
         // ]);
         try {
-            $role = Role::create(['name' => $this->name]);
+            $role = Role::create([
+                'name' => $this->name,
+                'guard_name' => 'web'
+            ]);
             $role->syncPermissions($this->permission);
         
             Session::flash('attention', "New role created successfully.");
