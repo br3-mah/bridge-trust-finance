@@ -560,6 +560,7 @@ $(document).ready(function(){
                 email:myemail
             },
             success:function(data) {
+                alert(data);
                 if(data === 1){
                     $("#modal-overlay2").removeAttr('style');
                     $("#modal2").removeAttr('style');

@@ -31,10 +31,11 @@ class LoanApplicationController extends Controller
     public function getLoan(Request $req)
     {
         $email = $req->toArray()['email']; 
-        $application = Application::where('email', $email)
-                                    ->where('status', 0)
-                                    ->where('can_change', 0)->get()->first();             
-        if($application != null){
+        $application = User::where('email', $email)->get()->toArray();  
+        // $application = Application::where('email', $email)
+        //                             ->where('status', 0)
+        //                             ->where('can_change', 0)->get()->first();             
+        if(!empty($application)){
             $data = 1;
             return response()->json($data, 200);
         }else{
