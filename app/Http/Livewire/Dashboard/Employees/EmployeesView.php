@@ -25,9 +25,13 @@ class EmployeesView extends Component
         $roles = Role::orderBy('id','DESC')->paginate(5);
         
        
-        if (Role::where('name', 'employee')->exists()) {
-            $users = User::role('employee')->latest()->paginate(7);
-        } else {
+        try {
+            if (Role::where('name', 'employee')->exists()) {
+                $users = User::role('employee')->latest()->paginate(7);
+            } else {
+                $users = [];
+            }
+        } catch (\Throwable $th) {
             $users = [];
         }
         return view('livewire.dashboard.employees.employees-view', [
