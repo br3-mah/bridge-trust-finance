@@ -84,7 +84,7 @@ class LoanApplicationController extends Controller
         ];
         $user = $this->registerUser($register);
         if(!$user){
-            return redirect()->to('/already-exists');
+            return redirect()->to('/account-already-exists');
         }
         $data = [
             'lname'=> $form['lname'],
