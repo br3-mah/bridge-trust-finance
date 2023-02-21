@@ -18,7 +18,7 @@
                                         <span>{{ $data->name[0] }}</span>
                                     @endif
                                 @else
-                                    <img class="img-fluid rounded-full bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
+                                    <img class="img-fluid rounded-circle bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
                                 @endif
                             </div>
                             <div class="profile-details">
@@ -32,29 +32,67 @@
                                         @endif
                                     @endforeach
                                     <h4 class="text-muted mb-0">Gender</h4>
-                                    <p>{{ $data->gender ?? '' }}</p>
+                                    <p>{{ $data->gender ?? 'Not Set' }}</p>
                                     <h4 class="text-muted mb-0">Phone#</h4>
-                                    <p>{{ $data->phone ?? ''  }}</p>
+                                    <p>{{ $data->phone ?? 'Not Set'  }}</p>
                                 </div>
 
                                 <div class="profile-email px-2 pt-2">
                                     <h4 class="text-muted mb-0">Email</h4>
                                     <p>{{ $data->email }}</p>
                                     <h4 class="text-muted mb-0"> NRC# </h4>
-                                    <p>{{ $data->nrc_no ?? '' }}</p>
+                                    <p>{{ $data->nrc_no ?? 'Not Set' }}</p>
                                     <h4 class="text-muted mb-0"> Occupation</h4>
-                                    <p>{{ $data->occupation ?? '' }}</p>
+                                    <p>{{ $data->occupation ?? 'Not Set' }}</p>
                                 </div>
 
                                 <div class="profile-email px-2 pt-2">
                                     <h4 class="text-muted mb-0">Basic Pay</h4>
                                     <p>K {{ $data->basic_pay }}</p>
                                     <h4 class="text-muted mb-0"> Address </h4>
-                                    <p>{{ $data->address ?? '' }}</p>
+                                    <p>{{ $data->address ?? 'No Address' }}</p>
                                     <h4 class="text-muted mb-0"> Joined</h4>
-                                    <p>{{ $data->created_at->diffForHumans() ?? '' }}</p>
+                                    <p>{{ $data->created_at->diffForHumans() ?? 'Not Set' }}</p>
                                 </div>
-                                
+                                @if($data->hasRole('user') && $data->loans->first() != null )
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">Payslip</h4>
+                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->payslip_file) }}" download="{{ $data->loans->first()->payslip_file }}">
+                                        <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
+                                        <br>
+                                        Payslip File
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">Tpin Certificate</h4>
+                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->tpin_file) }}" download="{{ $data->loans->first()->payslip_file }}">
+                                        <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
+                                        <br>
+                                        TPIN File
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">NRC Copy</h4>
+                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->nrc_file) }}" download="{{ $data->loans->first()->payslip_file }}">
+                                        <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
+                                        <br>
+                                        NRC Copy 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                @endif
+
                                 @if($data->blacklist != null)
                                 <div class="ms-auto">
                                     <div class="alert alert-light solid fade show">

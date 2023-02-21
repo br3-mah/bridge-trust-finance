@@ -92,7 +92,7 @@
     </div>
 
     @if($createModal)
-    <div class="modal fade bd-example-modal-lg {{ $hold }}" {{ $style }} id="createUserModeling">
+    <div wire:ignore class="modal fade bd-example-modal-lg {{ $hold }}" {{ $style }} id="createUserModeling">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
