@@ -38,7 +38,6 @@ trait EmailTrait{
 
     // This email notifies the customer email that their application for a loan has been sumbitted //////
     public function send_loan_feedback_email($data){
-        dd($data);
         try {
             $contact_email = new LoanApplication($data);
             Mail::to($data['to'])->send($contact_email);

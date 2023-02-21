@@ -37,11 +37,7 @@ trait WalletTrait{
     }
 
     public function deposit($amount, $x){
-        
-        
         $due = Carbon::now()->addMonth($x->repayment_plan);
-        // dd($due);
-        // dd($x);
         if($x->user_id == ''){
             Wallet::updateOrCreate([
                 'email' => $x->email,

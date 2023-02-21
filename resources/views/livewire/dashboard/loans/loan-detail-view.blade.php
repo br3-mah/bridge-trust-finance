@@ -65,7 +65,7 @@
 
                         @can('accept and reject loan requests')
                         <div class="d-flex align-items-end flex-wrap">
-                            @if($loan->status != 1)
+                            @if($loan->status !== 1)
                             <div class="shopping-cart mb-2 me-3">
                                 <button 
                                     class="btn btn-square btn-outline-primary" 

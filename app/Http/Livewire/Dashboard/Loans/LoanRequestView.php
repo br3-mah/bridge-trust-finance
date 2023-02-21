@@ -33,8 +33,8 @@ class LoanRequestView extends Component
     }
 
     public function accept($id){
+        
         try {
-            
             $x = Application::find($id);
             if($this->isCompanyEnough($x->amount)){
                 $x->status = 1;
