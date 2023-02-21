@@ -24,11 +24,10 @@ trait UserTrait{
                 $user->assignRole('user');
         
                 // Get my applications
-                Application::where('email', $input['email'])->update(['user_id' => $user->id]);
-                Wallet::where('email', $input['email'])->get()->toArray();
-                if(!empty($wallet)){
-                    Wallet::where('email', $input['email'])->update(['user_id' => $user->id]);
-                }
+                Wallet::create([
+                    'email' => $user->email,
+                    'user_id' => $user->id
+                ]);
                 return $user;
             } catch (\Throwable $th) {
                 return redirect()->to('/already-exists');

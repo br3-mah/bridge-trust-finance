@@ -129,10 +129,7 @@
                                                     </svg>                                                
                                                 </a>
                                             </div>
-                                            {{-- @endcan	 --}}
-
                                             &nbsp;
-                                            
                                             <div class="btn sharp tp-btn ms-auto">
                                                 <a target="_blank" title="View Loan Statement" href="{{ route('loan-statement', ['id'=>$loan->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ruled" viewBox="0 0 16 16">
@@ -142,7 +139,7 @@
                                             </div>
                                             @can('accept and reject loan requests')
                                             <div class="dropdown ms-auto text-end">
-                                                <div wire:poll class="dropdown-menu dropdown-menu-start">
+                                                <div wire:ignore.self wire:poll class="dropdown-menu dropdown-menu-start">
                                                     @if($loan->status !== 1)
                                                     <a wire:click="accept({{ $loan->id }})" onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                                         Accept Request
@@ -178,9 +175,11 @@
                                         </div>
                                     </div>
                                     @endforelse
+                                    @if($loan_requests->count() < 2)
                                     <tr style="height: 15vh">
                                     
                                     </tr>
+                                    @endif
                                     {{-- <tr>
                                         <td>
                                             <div class="form-check custom-checkbox ms-2">

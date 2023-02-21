@@ -150,7 +150,7 @@ class LoanApplicationController extends Controller
 
     public function updateFiles(Request $request)
     {
-        
+        $i = auth()->user();   
         try {
             if($request->file('nrc_file') !== null){
                 $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public'); 
@@ -171,6 +171,20 @@ class LoanApplicationController extends Controller
                 $user = Application::where('user_id',auth()->user()->id)->where('status', 0)->where('complete', 0)->first();
                 $user->payslip_file = $payslip_file;
                 $user->save();        
+            }
+
+            if($i->address !== null && $i->phone !== null && $i->occupation !== null && $i->gender !== null && $i->nrc_no !== null && $i->dob !== null){
+                $loan = Application::where('status', 0)->where('complete', 0)
+                            ->where('user_id', auth()->user()->id)->first();
+                            
+                if($loan !== null){
+                    if($loan->tpin_file !== 'no file' && $loan->payslip_file !== 'no file' && $loan->nrc_file !== null){
+                        $loan->complete = 1;
+                        $loan->save();
+                        
+                        return redirect()->to('/dashboard');
+                    }
+                }
             }
             return redirect()->to('/user/profile');
         } catch (\Throwable $th) {

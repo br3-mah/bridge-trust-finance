@@ -158,19 +158,24 @@
                                         <div class="modal-guts2">
                                             <div class="flex row">
                                                 <div class="col-lg-12">
-                                                    <img width="25" src="https://cdn-icons-png.flaticon.com/512/4202/4202134.png">
-                                                    <h1 style="color:#7b1919">Account Aready Exists</h1>
+                                                    
+                                                    <h1 style="color:#7b1919">
+                                                        <img width="40" src="https://cdn-icons-png.flaticon.com/512/4202/4202134.png">
+                                                        Account Aready Exists
+                                                    </h1>
                                                 </div>
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-12" style="padding-top:3px">
                                                     <p>
-                                                        Email already exists please sign in to check your account. 
+                                                        An account with this email <span style="color:#7b1919" id="emailValidCheck"></span> already exists please sign in to check your account. 
                                                     </p>
                                                 </div>
                                             </div>
                                             <br>
-                                            <div class="col-lg-12 btn-box" style="padding-right:20px; padding-left:20px;">
+                                            <div class="col-lg-12 btn-box" style="padding-right:20px; padding-left:10px;">
                                                 {{-- <button id="updateExistingLoan" class="btn btn-sm btn-waring">Update Existing Loan</button> --}}
-                                                <a href="{{ route('login') }}" class="btn btn-sm btn-light">Sign In</a>
+                                                <a href="{{ route('login') }}"class="btn btn-warning btn-lg " style="background-color:#7b1919; color:white">
+                                                Sign In
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -546,6 +551,8 @@ $(document).ready(function(){
 
     $("#checkforthisapplication").keyup(function() {
         var myemail = $("#loanEmail").val();
+        var emailValidCheck = $('#emailValidCheck');
+        emailValidCheck.text(myemail);
         $.ajax({    
             type:'GET',
             url:'{{ route("get-application") }}',

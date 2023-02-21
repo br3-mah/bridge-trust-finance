@@ -16,7 +16,8 @@
                             <span><i class="mdi mdi-check"></i></span>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
                             </button> {{ Session::get('attention') }} 
-                            <a class="text-white" href="{{ route('apply-for', ['id' => session('borrower_id')]) }}"> Continue to loan application</a>
+                            {{-- @dd(session('borrower_id')) --}}
+                            <a class="text-white" href="{{ route('apply-for', ['id' => session('borrower_id') ?? 0]) }}"> Continue to loan application</a>
                         </div>
                         @elseif (Session::has('error_msg'))
                         <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
@@ -25,8 +26,14 @@
                             </button>
                             <strong>Error!</strong> {{ Session::get('error_msg') }}
                         </div
+                        @elseif (Session::has('deteted'))
+                        <div class="alert alert-success solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-help"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button> {{ Session::get('deteted') }}
+                        </div
                         @endif
-                        <table id="example3" class="display" style="min-width: 845px">
+                        <table wire:ignore.self wire:poll id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th>Profile</th>
@@ -62,13 +69,18 @@
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
-                                    <td style="text-align:center">{{ $user->created_at->subDays()->diffForHumans(); }}</td>
+                                    <td style="text-align:center">{{ $user->created_at->diffForHumans(); }}</td>
                                     <td style="text-align:center">
                                         <div class="d-flex">
                                             <a target="_blank" title="View Borrower Profile" href="{{ route('client-account', ['key'=>$user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                                     <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                </svg>
+                                            </a> 
+                                            <a wire:click="destroy({{ $user->id }})" onclick="confirm('Are you sure you want to permanently delete this account.') || event.stopImmediatePropagation();" title="Delete Account" href="#" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
                                                 </svg>
                                             </a>
                                         </div>												
@@ -80,7 +92,12 @@
                                         <p>No User Found</p>
                                     </div>
                                 </div>
-                                @endforelse
+                                @endforelse                                    
+                                @if($users->count() < 2)
+                                <tr style="height: 15vh">
+                                
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -95,7 +112,7 @@
     </div>
 
     @if($createModal)
-    <div class="modal fade bd-example-modal-lg {{ $hold }}" {{ $style }} id="createUserModeling">
+    <div wire:ignore class="modal fade bd-example-modal-lg {{ $hold }}" {{ $style }} id="createUserModeling">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -211,7 +228,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" name="nrc" id="validationCustom07"  placeholder="999999/99/9" required>
+                                                            <input type="text" class="form-control" name="nrc_no" id="validationCustom07"  placeholder="999999/99/9" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter an NRC.
                                                             </div>

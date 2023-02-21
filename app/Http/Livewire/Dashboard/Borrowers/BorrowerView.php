@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
+use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use App\Models\Wallet;
 use Livewire\WithFileUploads;
 
 class BorrowerView extends Component
@@ -70,10 +72,24 @@ class BorrowerView extends Component
                 ->withSuccess(__('User created successfully.'));
 
         } catch (\Throwable $th) {
-            dd($th);
-            // Session::flash('attention', "User created successfully.");
-            // Session::flash('error_msg', "Looks like the email was not sent.");
-            // return redirect()->route('users.index');
+            // dd($th);
+            return redirect()->route('borrowers');
+        }
+    }
+
+    public function destroy($id){
+        $user = User::find($id); 
+        if ($user) {
+            try {
+                $user->delete();
+                Application::where('user_id','=',$id)->delete();
+                Wallet::where('user_id','=',$id)->delete();
+                Session::flash('deleted', "Borrower Deleted.");
+            } catch (\Throwable $th) {
+                Session::flash('error_msg', "Oops, something went wrong account can not be deleted.");
+            }
+        } else {
+            return redirect()->route('borrowers');
         }
     }
 }
