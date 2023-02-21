@@ -137,6 +137,7 @@ class LoanRequestView extends Component
                 'type' => 'loan-application',
                 'msg' => 'Your '.$x->type.' loan application request has been rejected'
             ];
+            $this->withdraw($x->amount, $x);
             $this->send_loan_feedback_email($mail);
             session()->flash('success', 'Loan has been rejected');
         } catch (\Throwable $th) {

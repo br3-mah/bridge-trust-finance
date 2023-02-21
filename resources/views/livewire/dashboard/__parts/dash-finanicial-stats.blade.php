@@ -1,11 +1,12 @@
 <div class="card dz-wallet">
     <div class="card-header border-0 align-items-start pb-0">
-        <div wire:poll>
+        <div>
             <span class="fs-18 d-block mb-2">Total Customer Borrowed</span>
             @role('admin')
-            <h2 class="fs-28 font-w600 ">K {{  App\Models\Application::totalAmountLoanedOut() }}</h2>
+                <h2 class="fs-28 font-w600 ">K {{  App\Models\Application::totalAmountLoanedOut() }}</h2>
             @else
-            <h2 class="fs-28 font-w600 ">K {{ auth()->user()->borrowed_total }}</h2>
+            {{-- auth()->user()->borrowed_total  --}}
+                <h2 class="fs-28 font-w600 ">K {{ App\Models\User::totalCustomerBorrowed(auth()->user()) }}</h2>
             @endrole
         </div>
         {{-- <div class="dropdown send style-1">

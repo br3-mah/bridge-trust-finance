@@ -142,18 +142,22 @@
                                             </div>
                                             @can('accept and reject loan requests')
                                             <div class="dropdown ms-auto text-end">
-                                                <div wire:ignore class="dropdown-menu dropdown-menu-start" style="z-index:10; position: fixed;">
+                                                <div wire:poll class="dropdown-menu dropdown-menu-start">
                                                     @if($loan->status !== 1)
                                                     <a wire:click="accept({{ $loan->id }})" onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                                         Accept Request
                                                     </a>
+                                                    @endif
+                                                    @if($loan->status !== 2)
                                                     <a wire:click="stall({{ $loan->id }})"onclick="confirm('Are you sure you want to set this loan request on hold') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                                         Stall
                                                     </a>
                                                     @endif
+                                                    @if($loan->status !== 3)
                                                     <a wire:click="reject({{ $loan->id }})"onclick="confirm('Are you sure you want to reject this loan') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                                         Reject Loan Request
                                                     </a>
+                                                    @endif
                                                     {{-- <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a> --}}
                                                 </div>
                                                 <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">

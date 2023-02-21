@@ -36,37 +36,56 @@ trait WalletTrait{
         }
     }
 
-    public function deposit($amount, $x){
-        $due = Carbon::now()->addMonth($x->repayment_plan);
-        if($x->user_id == ''){
-            Wallet::updateOrCreate([
-                'email' => $x->email,
-                'deposit' => $amount
-            ]);            
-            LoanWallet::first()->update([
-                'withraw' => $amount
-            ]);
-            Application::where('email', '=', $x->email)->first()->update([
+    public function deposit($amount, $loan){
+        $due = Carbon::now()->addMonth($loan->repayment_plan);
+        try{
+            // remove from user
+            $userWallet = Wallet::orWhere('user_id', $loan->user_id)->orWhere('email', $loan->email)->first();      
+              
+            $userWallet->deposit = $amount;
+            $userWallet->save();
+            // Deposit back in Main Wallet
+            $mainWallet = LoanWallet::get()->first();        
+            $mainWallet->withraw = $amount;
+            $mainWallet->save();
+
+            // $mainWallet2 = LoanWallet::get()->first();        
+            // $mainWallet2->deposit = $mainWallet2->deposit + $amount;
+            // $mainWallet2->save();
+            
+            Application::where('user_id', '=', $loan->user_id)->first()->update([
                 'due_date' => $due
             ]);
             return true;
+        }catch(\Throwable $th){
+            return false;
         }
-
-        Wallet::updateOrCreate([
-            'user_id' => $x->user_id,
-            'deposit' => $amount
-        ]);         
-        LoanWallet::first()->update([
-            'withraw' => $amount
-        ]);
-        Application::where('user_id', '=', $x->user_id)->first()->update([
-            'due_date' => $due
-        ]);
-        return true;
     }
 
-    public function withdrawal($amount, $user){
+    public function withdraw($amount, $loan){
+        try{
+            // remove from user
+            $userWallet = Wallet::orWhere('user_id', $loan->user_id)->orWhere('email', $loan->email)->first();      
+            if($userWallet->deposit > 0){
+                $userWallet->deposit = $userWallet->deposit - $amount;
+                $userWallet->save();
+                // Deposit back in Main Wallet
+                $mainWallet = LoanWallet::get()->first();        
+                $mainWallet->withraw = $mainWallet->withraw - $amount;
+                $mainWallet->save();
 
+                $mainWallet2 = LoanWallet::get()->first();        
+                $mainWallet2->deposit = $mainWallet2->deposit + $amount;
+                $mainWallet2->save();
+                
+                Application::where('user_id', '=', $loan->user_id)->first()->update([
+                    'due_date' => ''
+                ]);
+            }
+            return true;
+        }catch(\Throwable $th){
+            return false;
+        }
     }
 
     public function updateLoanWalletFunds($amount){

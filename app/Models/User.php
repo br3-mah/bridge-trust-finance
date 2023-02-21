@@ -77,10 +77,16 @@ class User extends Authenticatable
 
     public function getBorrowedTotalAttribute()
     {
-        $loans = Application::orWhere('user_id', $this->id)
-            ->orWhere('email', $this->email)
+        $loans = Application::where('user_id', $this->id)
             ->where('complete', 1)
             ->where('status', 1)->sum('amount');
+        return $loans ?? 0;
+    }
+
+    public static function totalCustomerBorrowed($user){
+        $loans = Application::where('user_id', $user->id)
+        ->where('complete', 1)
+        ->where('status', 1)->sum('amount');
         return $loans ?? 0;
     }
 
