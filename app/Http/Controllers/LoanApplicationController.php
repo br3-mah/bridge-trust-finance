@@ -296,7 +296,7 @@ class LoanApplicationController extends Controller
             'fname'=> $user->fname,
             'email'=> $user->email,
             'amount'=> $form['amount'],
-            'phone'=> '',
+            'phone'=> '5555555',
             'gender'=> $user->gender,
             'type'=> $form['type'],
             'repayment_plan'=> $form['repayment_plan'],
