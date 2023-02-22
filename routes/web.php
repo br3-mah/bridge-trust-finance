@@ -14,6 +14,7 @@ use App\Http\Livewire\Dashboard\Borrowers\LoanStatementView as BorrowersLoanStat
 use App\Http\Livewire\Dashboard\Borrowers\SendBorrowerMessageView;
 use App\Http\Livewire\Dashboard\DashboardView;
 use App\Http\Livewire\Dashboard\Employees\EmployeesView;
+use App\Http\Livewire\Dashboard\Loans\EligibilityScoreView;
 use App\Http\Livewire\Dashboard\Loans\GuarantorsView;
 use App\Http\Livewire\Dashboard\Loans\LoanApplicationStandaloneView;
 use App\Http\Livewire\Dashboard\Loans\LoanDetailView;
@@ -109,6 +110,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 Route::resource('posts', PostController::class);
+Route::get('eligibility-score', EligibilityScoreView::class)->name('score');
 
 // Site Pages
 Route::get('faq', FaqPage::class)->name('faq');

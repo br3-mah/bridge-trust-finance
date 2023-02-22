@@ -5,7 +5,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">View All Loans</h4>
+                        @hasanyrole('admin')
                         <button data-bs-toggle="modal" data-bs-target="#createNewLoanMain" class="btn btn-square btn-primary">New Loan</button>
+                        {{-- @else --}}
+                        {{-- <a class="text-white btn btn-square btn-primary" href="{{ route('apply-for', ['id' => auth()->user()->id]) }}"> New Loan Request</a> --}}
+                        @endhasanyrole
                     </div>
                     <div class="card-body pb-0" style="padding-bottom: 30%">
                         @if (Session::has('attention'))
@@ -25,7 +29,7 @@
                             </button> 
                         </div>
                         @endif
-                        <div class="table-responsive patient">
+                        <div wire:poll class="table-responsive patient">
                             <div wire:ignore class="row py-2">
                                 {{-- Admin Only --}}
                                 @can('accept and reject loan requests')
@@ -50,181 +54,40 @@
                                 </div>
                                 @endcan
                                 <div class="col-xl-3 center">
-                                    <button class="btn btn-primary" title="View Grid">
+                                    <button wire:click="changeView('grid')" class="mt-3 btn {{ $view == 'grid' ? 'btn-primary':'btn-light' }}" title="View Grid">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap" viewBox="0 0 16 16">
                                             <path d="M4 2v2H2V2h2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2v2H7V2h2zm5 0v2h-2V2h2zM4 7v2H2V7h2zm5 0v2H7V7h2zm5 0h-2v2h2V7zM4 12v2H2v-2h2zm5 0v2H7v-2h2zm5 0v2h-2v-2h2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z"/>
+                                        </svg>
+                                    </button>
+                                    <button wire:click="changeView('table')" class="mt-3 btn {{ $view == 'grid' ? 'btn-primary':'btn-light' }}" title="View Grid">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
                                         </svg>
                                     </button>
                                 </div>
                                 {{-- End Amin Only --}}
                             </div>
                             @include('livewire.dashboard.__parts.dash-alerts')
-                            <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
-                                <thead>
-                                    <tr>
-                                        {{-- <th>
-                                            <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="checkAll" required="">
-                                                <label class="form-check-label" for="checkAll"></label>
-                                            </div>
-                                        </th> --}}
-                                        <th>Loan #.</th>
-                                        <th>Borrower</th>
-                                        <th>Loan Type</th>
-                                        <th>Principal</th>
-                                        <th>Interest(%)</th>
-                                        <th>Due</th>
-                                        <th>Paid</th>
-                                        <th>Balance</th>
-                                        <th>Last Payment</th>
-                                        <th>Status</th>
-                                        <th>Date Sent</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody style="top:0; padding-bottom:20px">
-                                    
-                                    @forelse($loan_requests as $loan)
-                                    <tr>
-                                        {{-- <td>
-                                            <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2" required="">
-                                                <label class="form-check-label" for="customCheckBox2"></label>
-                                            </div>
-                                        </td> --}}
-                                        <td style="">L{{ $loan->id }}</td>
-                                        <td style="">{{ $loan->fname.' '. $loan->lname }}</td>
-                                        <td style="">{{ $loan->type }}</td>
-                                        <td style="">{{ $loan->amount }}</td>
-                                        <td style="">{{ 20 }}</td>
-                                        <td style="">{{ 0.00 }}</td>
-                                        <td style="">{{ 0.00 }}</td>
-                                        <td style="">{{ 0.00}}</td>
-                                        <td>{{ $loan->created_at->toFormattedDateString() }}</td>
-                                        <td>
-                                            @if($loan->status == 0)
-                                            <span class="badge badge-sm light badge-danger">
-                                                <i class="fa fa-circle text-danger me-1"></i>
-                                                Pending
-                                            </span>
-                                            @elseif($loan->status == 1)
-                                            <span class="badge badge-sm light badge-success">
-                                                <i class="fa fa-circle text-success me-1"></i>
-                                                Accepted
-                                            </span>
-                                            @elseif($loan->status == 2)
-                                            <span class="badge badge-sm light badge-warning">
-                                                <i class="fa fa-circle text-warning me-1"></i>
-                                                Under Review
-                                            </span>
-                                            @else
-                                            <span class="badge badge-sm light badge-default">
-                                                <i class="fa fa-circle text-warning me-1"></i>
-                                                Rejected
-                                            </span>
-                                            @endif
-                                        </td>
-                                        <td style="">{{ $loan->created_at->toFormattedDateString() }}</td>
-                                        <td class="d-flex">
-                                            {{-- @can('view loan details') --}}
-                                            <div class="btn sharp  tp-btn ms-auto">
-                                                <a href="{{ route('loan-details',['id' => $loan->id]) }}">  
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                                                    </svg>                                                
-                                                </a>
-                                            </div>
-                                            &nbsp;
-                                            <div class="btn sharp tp-btn ms-auto">
-                                                <a target="_blank" title="View Loan Statement" href="{{ route('loan-statement', ['id'=>$loan->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ruled" viewBox="0 0 16 16">
-                                                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h7v1a1 1 0 0 1-1 1H6zm7-3H6v-2h7v2z"/>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            @can('accept and reject loan requests')
-                                            <div class="dropdown ms-auto text-end">
-                                                <div wire:ignore.self wire:poll class="dropdown-menu dropdown-menu-start">
-                                                    @if($loan->status !== 1)
-                                                    <a wire:click="accept({{ $loan->id }})" onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
-                                                        Accept Request
-                                                    </a>
-                                                    @endif
-                                                    @if($loan->status !== 2)
-                                                    <a wire:click="stall({{ $loan->id }})"onclick="confirm('Are you sure you want to set this loan request on hold') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
-                                                        Stall
-                                                    </a>
-                                                    @endif
-                                                    @if($loan->status !== 3)
-                                                    <a wire:click="reject({{ $loan->id }})"onclick="confirm('Are you sure you want to reject this loan') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
-                                                        Reject Loan Request
-                                                    </a>
-                                                    @endif
-                                                    {{-- <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a> --}}
-                                                </div>
-                                                <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">
-                                                    <svg width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M13.5202 17.4167C13.5202 18.81 12.3927 19.9375 10.9994 19.9375C9.60601 19.9375 8.47852 18.81 8.47852 17.4167C8.47852 16.0233 9.60601 14.8958 10.9994 14.8958C12.3927 14.8958 13.5202 16.0233 13.5202 17.4167ZM9.85352 17.4167C9.85352 18.0492 10.3669 18.5625 10.9994 18.5625C11.6319 18.5625 12.1452 18.0492 12.1452 17.4167C12.1452 16.7842 11.6319 16.2708 10.9994 16.2708C10.3669 16.2708 9.85352 16.7842 9.85352 17.4167Z" fill="#2696FD"/>
-                                                    <path d="M13.5202 4.58369C13.5202 5.97699 12.3927 7.10449 10.9994 7.10449C9.60601 7.10449 8.47852 5.97699 8.47852 4.58369C8.47852 3.19029 9.60601 2.06279 10.9994 2.06279C12.3927 2.06279 13.5202 3.19029 13.5202 4.58369ZM9.85352 4.58369C9.85352 5.21619 10.3669 5.72949 10.9994 5.72949C11.6319 5.72949 12.1452 5.21619 12.1452 4.58369C12.1452 3.95119 11.6319 3.43779 10.9994 3.43779C10.3669 3.43779 9.85352 3.95119 9.85352 4.58369Z" fill="#2696FD"/>
-                                                    <path d="M13.5202 10.9997C13.5202 12.393 12.3927 13.5205 10.9994 13.5205C9.60601 13.5205 8.47852 12.393 8.47852 10.9997C8.47852 9.6063 9.60601 8.4788 10.9994 8.4788C12.3927 8.4788 13.5202 9.6063 13.5202 10.9997ZM9.85352 10.9997C9.85352 11.6322 10.3669 12.1455 10.9994 12.1455C11.6319 12.1455 12.1452 11.6322 12.1452 10.9997C12.1452 10.3672 11.6319 9.8538 10.9994 9.8538C10.3669 9.8538 9.85352 10.3672 9.85352 10.9997Z" fill="#2696FD"/>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            @endcan	
-                                        </td>	
-                                    </tr>
-                                    @empty
-                                    <div class="intro-y col-span-12 md:col-span-6">
-                                        <div class="box text-center">
-                                            <p>Nothing Found.</p>
-                                        </div>
-                                    </div>
-                                    @endforelse
-                                    @if($loan_requests->count() < 2)
-                                    <tr style="height: 15vh">
-                                    
-                                    </tr>
-                                    @endif
-                                    {{-- <tr>
-                                        <td>
-                                            <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox4" required="">
-                                                <label class="form-check-label" for="customCheckBox4"></label>
-                                            </div>
-                                        </td>
-                                        <td>#P-00003</td>
-                                        <td>26/02/2020, 12:42 AM</td>
-                                        <td>Ashton Cox</td>
-                                        <td>Dr. Rhona</td>
-                                        <td>Cold & Flu</td>
-                                        <td>
-                                            <span class="badge badge-sm light badge-success">
-                                                <i class="fa fa-circle text-success me-1"></i>
-                                                Recovered
-                                            </span>
-                                        </td>
-                                        <td>AB-003</td>
-                                        <td>
-                                            <div class="dropdown ms-auto text-end">
-                                                <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">
-                                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M13.5202 17.4167C13.5202 18.81 12.3927 19.9375 10.9994 19.9375C9.60601 19.9375 8.47852 18.81 8.47852 17.4167C8.47852 16.0233 9.60601 14.8958 10.9994 14.8958C12.3927 14.8958 13.5202 16.0233 13.5202 17.4167ZM9.85352 17.4167C9.85352 18.0492 10.3669 18.5625 10.9994 18.5625C11.6319 18.5625 12.1452 18.0492 12.1452 17.4167C12.1452 16.7842 11.6319 16.2708 10.9994 16.2708C10.3669 16.2708 9.85352 16.7842 9.85352 17.4167Z" fill="#2696FD"/>
-                                                    <path d="M13.5202 4.58369C13.5202 5.97699 12.3927 7.10449 10.9994 7.10449C9.60601 7.10449 8.47852 5.97699 8.47852 4.58369C8.47852 3.19029 9.60601 2.06279 10.9994 2.06279C12.3927 2.06279 13.5202 3.19029 13.5202 4.58369ZM9.85352 4.58369C9.85352 5.21619 10.3669 5.72949 10.9994 5.72949C11.6319 5.72949 12.1452 5.21619 12.1452 4.58369C12.1452 3.95119 11.6319 3.43779 10.9994 3.43779C10.3669 3.43779 9.85352 3.95119 9.85352 4.58369Z" fill="#2696FD"/>
-                                                    <path d="M13.5202 10.9997C13.5202 12.393 12.3927 13.5205 10.9994 13.5205C9.60601 13.5205 8.47852 12.393 8.47852 10.9997C8.47852 9.6063 9.60601 8.4788 10.9994 8.4788C12.3927 8.4788 13.5202 9.6063 13.5202 10.9997ZM9.85352 10.9997C9.85352 11.6322 10.3669 12.1455 10.9994 12.1455C11.6319 12.1455 12.1452 11.6322 12.1452 10.9997C12.1452 10.3672 11.6319 9.8538 10.9994 9.8538C10.3669 9.8538 9.85352 10.3672 9.85352 10.9997Z" fill="#2696FD"/>
-                                                    </svg>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Accept Patient</a>
-                                                    <a class="dropdown-item" href="#">Reject Order</a>
-                                                    <a class="dropdown-item" href="#">View Details</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr> --}}
-                                    
-                                </tbody>
-                            </table>
+                            
+                            
+                            
+                            {{-- Defualt Table --}}
+                            @if($view === 'table')
+                                @include('livewire.dashboard.loans.__parts.defualt-loan-request-table')
+                            @endif
+                            {{-- End Default Table --}}
+
+                            {{-- Card Grid --}}
+                            @if($view === 'grid')
+                                @include('livewire.dashboard.loans.__parts.grid-loan-requests')
+                            @endif
+                            {{-- End Card Grid --}}
+
+                            {{-- Defualt Assesment Table --}}
+                            @if($view === 'assesment')
+                                @include('livewire.dashboard.loans.__parts.assesment-loan-request-table')
+                            @endif
+                            {{-- End defualt assement table --}}
                         </div>
                     </div>
                 </div>
@@ -259,70 +122,62 @@
                             </a>
                         </li>
                     </ul>
-                    <form id="kyc_form" class="tab-content" action="{{ route("loan-request") }}" method="POST" enctype="multipart/form-data">
+                    <form id="kyc_form" class="tab-content" action="{{ route("apply-loan") }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div id="wizard_Service" class="tab-pane" role="tabpanel">
                             <div class="row">
+                                
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
-                                        <label class="text-label form-label">First Name*</label>
-                                        <input type="text" value="{{ auth()->user()->fname }}" wire:model="fname" class="form-control" placeholder="{{ auth()->user()->fname ?? 'John' }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="mb-3">
-                                        <label class="text-label form-label">Last Name*</label>
-                                        <input type="text" value="{{ auth()->user()->lname }}" wire:model="lname" class="form-control" placeholder="{{ auth()->user()->lname ?? 'Doe' }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="mb-3">
-                                        <label class="text-label form-label">Email Address*</label>
-                                        <input type="email" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="{{ auth()->user()->email ?? 'example@mail.com' }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="mb-3">
-                                        <label class="text-label form-label">Phone Number*</label>
-                                        <input type="text" value="{{ auth()->user()->phone }}" wire:model="phone" class="form-control" placeholder="(+260)97-000-999" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="mb-3">
-                                        <label class="text-label form-label">Gender*</label>
-                                        <select type="text" wire:model="gender" class="form-control">
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                        <label class="text-label form-label">Borrower*</label>
+                                        <select type="text" name="borrower_id" class="form-control">
+                                            @forelse ($users as $user)
+                                                @if(empty($user->loans->toArray()))
+                                                    <option value="{{ $user->id }}">{{ $user->fname.' '.$user->lname}}</option>
+                                                @else
+                                                    <option>No Borrower without Loan Request. <a href="{{ route('borrowers') }}">Add Borrowers</a></option>
+                                                @endif
+                                            @empty
+                                            <option>No Borrowers Available. <a href="{{ route('borrowers') }}">Add Borrowers</a></option>
+                                            @endforelse
                                         </select>                                
                                     </div>
                                 </div>
+                                <input type="hidden" name="proxyloan" value="proxyloan">
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Purpose for Loan*</label>
-                                        <select type="text" wire:model="type" class="form-control">
-                                            <option value="Personal">Personal Loan</option>
-                                            <option value="Educational">Educational Loan</option>
-                                            <option value="Vehicle">Vehicle Loan</option>
-                                            <option value="Home Improvement">Home Improvement Loan</option>
-                                            <option value="SME">SME Loan</option>
-                                            <option value="Women In Business (Soft)">Women In Business (Soft) Loan</option>
+                                        <select type="text" name="type" class="form-control">
+                                            <option value="Personal">Personal</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Asset Financing">Asset Financing</option>
+                                            <option value="Home Improvement">Home Improvements</option>
+                                            <option value="Agri Business">Agri Business</option>
+                                            <option value="Women in Business (Femiprise) Soft">Women in Business (Femiprise) Soft Loan</option>
                                         </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 mb-2">
+                                    <div class="mb-3">
+                                        <label class="text-label form-label">Amount (ZMW)</label>
+                                        <input type="text" name="amount" class="form-control" placeholder="0.00" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Duration*</label>
-                                        <select type="text" wire:model="duration" class="form-control">
-                                            <option value="1 Week">1 Week</option>
-                                            <option value="1 Month">1 Week</option>
-                                            <option value="2 Months">2 Month</option>
-                                            <option value="3 Months">3 Months</option>
+                                        <select type="text" name="repayment_plan" class="form-control">
+                                            <option value="1">1 Month</option>
+                                            <option value="2">2 Month</option>
+                                            <option value="3">3 Months</option>
                                         </select>
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-12 mb-3">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Your Gender*</label>
-                                        <input type="text" wire:model="place" class="form-control" required>
+                                        <input type="text" name="place" class="form-control" required>
                                     </div>
                                 </div> --}}
                             </div>
@@ -332,31 +187,31 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 1's First Name*</label>
-                                        <input type="text" wire:model="gfname" class="form-control" placeholder="Name" required>
+                                        <input type="text" name="gfname" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 1's Last Name*</label>
-                                        <input type="text" wire:model="glname" class="form-control" placeholder="Name" required>
+                                        <input type="text" name="glname" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 1's Email Address*</label>
-                                        <input type="email" wire:model="gemail" class="form-control" id="emial1" placeholder="example@example.com.com" required>
+                                        <input type="email" name="gemail" class="form-control" id="emial1" placeholder="example@example.com.com" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 1's Phone Number*</label>
-                                        <input type="text" wire:model="gphone" class="form-control" placeholder="(+1)408-657-9007" required>
+                                        <input type="text" name="gphone" class="form-control" placeholder="(+1)408-657-9007" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Relation*</label>
-                                        <select type="text" wire:model="g_relation" class="form-control">
+                                        <select type="text" name="g_relation" class="form-control">
                                             <option value="Work Mate">Work Mate</option>
                                             <option value="Relative">Relative</option>
                                             <option value="Close Friend">Close Friend</option>
@@ -366,7 +221,7 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Gender*</label>
-                                        <select type="text" wire:model="g_gender" class="form-control">
+                                        <select type="text" name="g_gender" class="form-control">
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select> 
@@ -378,31 +233,31 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 2's First Name*</label>
-                                        <input type="text" wire:model="g2fname" class="form-control" placeholder="Name" required>
+                                        <input type="text" name="g2fname" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 2's Last Name*</label>
-                                        <input type="text" wire:model="g2lname" class="form-control" placeholder="Name" required>
+                                        <input type="text" name="g2lname" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 2's Email Address*</label>
-                                        <input type="email" wire:model="g2email" class="form-control" id="emial1" placeholder="example@example.com.com" required>
+                                        <input type="email" name="g2email" class="form-control" id="emial1" placeholder="example@example.com.com" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Guarantor 2's Phone Number*</label>
-                                        <input type="text" wire:model="g2phone" class="form-control" placeholder="(+1)408-657-9007" required>
+                                        <input type="text" name="g2phone" class="form-control" placeholder="(+1)408-657-9007" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Relation*</label>
-                                        <select type="text" wire:model="g2_relation" class="form-control">
+                                        <select type="text" name="g2_relation" class="form-control">
                                             <option value="Work Mate">Work Mate</option>
                                             <option value="Relative">Relative</option>
                                             <option value="Close Friend">Close Friend</option>
@@ -412,7 +267,7 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Gender*</label>
-                                        <select type="text" wire:model="g2_gender" class="form-control">
+                                        <select type="text" name="g2_gender" class="form-control">
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select> 

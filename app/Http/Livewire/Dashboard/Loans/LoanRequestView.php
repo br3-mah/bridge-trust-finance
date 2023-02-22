@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Loans;
 
 use App\Models\Application;
+use App\Models\User;
 use App\Traits\EmailTrait;
 use App\Traits\WalletTrait;
 use Livewire\Component;
@@ -13,8 +14,12 @@ class LoanRequestView extends Component
     public $loan_requests, $loan_request;
     public $type = [];
     public $status = [];
+    public $view = 'table';
+    public $users;
+
     public function render()
     {
+        $this->users = User::role('user')->without('applications')->get();
         $loan_requests = Application::query();
         if(auth()->user()->can('view all loan requests')){
             if ($this->type) {
@@ -32,8 +37,11 @@ class LoanRequestView extends Component
         ->layout('layouts.dashboard');
     }
 
+    public function changeView($view){
+        $this->view = $view;
+    }
+
     public function accept($id){
-        
         try {
             $x = Application::find($id);
             if($this->isCompanyEnough($x->amount)){
@@ -62,9 +70,10 @@ class LoanRequestView extends Component
             session()->flash('error', 'Oops something failed here, please contact the Administrator.'.$th);
         }
     }
+
+
     public function acceptOnly($id){
         try {
-            
             $x = Application::find($id);
             if($this->isCompanyEnough($x->amount)){
                 $x->status = 1;
@@ -86,14 +95,13 @@ class LoanRequestView extends Component
             }else{
                 session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
             }
-            
         } catch (\Throwable $th) {
             session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
 
+
     public function stall($id){
-        // set under review
         try {
             $x = Application::find($id);
             $x->status = 2;
@@ -118,6 +126,7 @@ class LoanRequestView extends Component
             session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
+
 
     public function reject($id){
         try {
@@ -144,6 +153,8 @@ class LoanRequestView extends Component
             session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
+
+
 
     public function destroy($id){
         Application::where('id', $id)->first()->delete();

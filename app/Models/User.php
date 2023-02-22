@@ -99,9 +99,12 @@ class User extends Authenticatable
      *
      * @return A collection of Post objects.
      */
-    public function posts()
-    {
+    public function posts(){
         return $this->hasMany(Post::class);
+    }
+    public function loan_scores()
+    {
+        return $this->hasMany(LoanScore::class);
     }
 
     public function blacklist(){
