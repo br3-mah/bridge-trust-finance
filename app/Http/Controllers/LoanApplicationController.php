@@ -296,7 +296,7 @@ class LoanApplicationController extends Controller
             'fname'=> $user->fname,
             'email'=> $user->email,
             'amount'=> $form['amount'],
-            'phone'=> preg_replace("/[^a-zA-Z0-9]/", "", $user->phone),
+            'phone'=> '',
             'gender'=> $user->gender,
             'type'=> $form['type'],
             'repayment_plan'=> $form['repayment_plan'],
