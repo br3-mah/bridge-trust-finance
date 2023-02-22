@@ -304,7 +304,8 @@ class LoanApplicationController extends Controller
             'glname'=> $form['glname'],
             'gfname'=> $form['gfname'],
             'gemail'=> $form['gemail'],
-            'gphone'=> $form['gphone'],
+            'gphone'=> '5555555',
+            // 'gphone'=> $form['gphone'],
             'g_gender'=> $form['g_gender'],
             'g_relation'=> $form['g_relation'],
 
