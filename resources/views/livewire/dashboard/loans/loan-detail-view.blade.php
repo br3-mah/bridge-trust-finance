@@ -111,8 +111,8 @@
                                 </div>
                                 <div class="product-detail-content">
                                     <div class="new-arrival-content pr">
-                                        <p>Borrower: <span class="item">{{ $loan->fname ?? $loan->user->fname }} {{ $loan->lname ?? $loan->user->lname }}</span> </p>
-                                        <p>Address: <span class="item">{{ $loan->address ?? $loan->user->address }}</span></p>
+                                        <p>Borrower: <span class="item">{{  $loan->fname ?? $loan->user->fname  }} {{ $loan->lname ?? $loan->user->lname }}</span> </p>
+                                        <p>Address: <span class="item">{{ $loan->user->address ?? 'None'}}</span></p>
                                         <p>Phone No.: <span class="item">{{ $loan->phone ?? $loan->user->phone }}</span></p>
                                         <p>Sex: <span class="item">{{ $loan->gender ?? $loan->user->gender }}</span></p>
                                     </div>

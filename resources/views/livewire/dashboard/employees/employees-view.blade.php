@@ -13,13 +13,13 @@
                     <div class="table-responsive">
 
                         @if (Session::has('attention'))
-                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
+                        <div wire:ignore class="alert alert-info solid alert-end-icon alert-dismissible fade show">
                             <span><i class="mdi mdi-check"></i></span>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
                             </button> {{ Session::get('attention') }}
                         </div>
                         @elseif (Session::has('error_msg'))
-                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
+                        <div wire:ignore class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
                             <span><i class="mdi mdi-help"></i></span>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
                             </button>

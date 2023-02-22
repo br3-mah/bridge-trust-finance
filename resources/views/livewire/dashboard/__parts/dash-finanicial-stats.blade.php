@@ -1,11 +1,13 @@
 <div class="card dz-wallet">
     <div class="card-header border-0 align-items-start pb-0">
         <div>
-            <span class="fs-18 d-block mb-2">Total Customer Borrowed</span>
             @role('admin')
+                <span class="fs-18 d-block mb-2">Total Disbursed Funds</span>
                 <h2 class="fs-28 font-w600 ">K {{  App\Models\Application::totalAmountLoanedOut() }}</h2>
             @else
-            {{-- auth()->user()->borrowed_total  --}}
+                <span class="fs-18 d-block mb-2">
+                    Total Customer Borrowed
+                </span>
                 <h2 class="fs-28 font-w600 ">K {{ App\Models\User::totalCustomerBorrowed(auth()->user()) }}</h2>
             @endrole
         </div>

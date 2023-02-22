@@ -123,7 +123,7 @@ class UserView extends Component
                 $user->delete();
                 Application::where('user_id','=',$id)->delete();
                 Wallet::where('user_id','=',$id)->delete();
-                Session::flash('deleted', "User Deleted.");
+                return redirect()->route('users');
             } catch (\Throwable $th) {
                 Session::flash('error_msg', "Oops, something went wrong account can not be deleted.");
             }

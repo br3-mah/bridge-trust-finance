@@ -33,7 +33,7 @@ trait LoanTrait{
                     'from' => 'admin@bridgetrustfinance.co.zm',
                     'phone' => $data['phone'],
                     'subject' => 'Bridge Trust Finance Loan Application',
-                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].' Your loan request has been sent, please sign in to see the application status. Your password is 20230101brigde.@2you',
+                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].', Thank you for choosing us as your lender and for your trust in our services. We appreciate your business and are committed to providing you with the best possible experience throughout your loan term Your loan request has been sent, please sign in to see the application status. Your username is '.$data['email'].' and your password is 20230101brigde.@2you',
                 ];
                 
                 if(!empty($check->toArray())){

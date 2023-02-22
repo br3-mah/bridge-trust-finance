@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body pb-0" style="padding-bottom: 30%">
                         @if (Session::has('attention'))
-                        <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+                        <div wire:ignore class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
                             <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
                             {{ Session::get('attention') }}
                             <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -17,7 +17,7 @@
                             </button> 
                         </div>
                         @elseif (Session::has('error_msg'))
-                        <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+                        <div wire:ignore class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
                             <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
                             {{ Session::get('error_msg') }}
                             <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -49,6 +49,13 @@
                                     </select>
                                 </div>
                                 @endcan
+                                <div class="col-xl-3 center">
+                                    <button class="btn btn-primary" title="View Grid">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap" viewBox="0 0 16 16">
+                                            <path d="M4 2v2H2V2h2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2v2H7V2h2zm5 0v2h-2V2h2zM4 7v2H2V7h2zm5 0v2H7V7h2zm5 0h-2v2h2V7zM4 12v2H2v-2h2zm5 0v2H7v-2h2zm5 0v2h-2v-2h2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
                                 {{-- End Amin Only --}}
                             </div>
                             @include('livewire.dashboard.__parts.dash-alerts')
@@ -72,7 +79,6 @@
                                         <th>Last Payment</th>
                                         <th>Status</th>
                                         <th>Date Sent</th>
-                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>

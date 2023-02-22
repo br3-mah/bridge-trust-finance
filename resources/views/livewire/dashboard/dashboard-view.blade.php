@@ -119,15 +119,17 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="payment-bx">
-                    <div class="d-flex  justify-content-between flex-wrap">
+                    <div class="d-flex py-2 justify-content-between flex-wrap">
+                        @role('user')
                         <div class="payment-content">
-                            <h1 class="font-w500 mb-2">Good morning, {{ auth()->user()->fname ?? auth()->user()->name }} </h1>
+                            <h3 class="font-w500 mb-2 text-white">Welcome to Our Loan Management System: Effortlessly Manage Your Loan Today!</h3>
                             @if($my_loan !== null)
                                 @if ($my_loan->complete == 0)
-                                <p class="dz-para">We are glad to see you! Make sure your kyc profile is Complete </p>
+                                <a href="{{ route('profile.show') }}" class="dz-para">We are glad to see you! Make sure your kyc profile is Complete </a>
                                 @endif
                             @endif
                         </div>
+                        @endrole
                         <div class="mb-4 mb-xl-0">
                             @can('make payments')
                             <!-- Button trigger modal -->

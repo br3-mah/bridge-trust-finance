@@ -5,12 +5,33 @@
                 <div class="card-header">
                     <h4 class="card-title">General Users</h4>                
                     <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button>
-
                 </div>
 
                 <div class="card-body pb-0">
 
                     <div class="table-responsive">
+                        @if (Session::has('attention'))
+                        <div wire:ignore class="alert alert-info solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-check"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button> {{ Session::get('attention') }} 
+                            {{-- @dd(session('borrower_id')) --}}
+                            <a class="text-white" href="{{ route('apply-for', ['id' => session('borrower_id') ?? 0]) }}"> Continue to loan application</a>
+                        </div>
+                        @elseif (Session::has('error_msg'))
+                        <div wire:ignore class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-help"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button>
+                            <strong>Error!</strong> {{ Session::get('error_msg') }}
+                        </div
+                        @elseif (Session::has('deteted'))
+                        <div wire:ignore class="alert alert-success solid alert-end-icon alert-dismissible fade show">
+                            <span><i class="mdi mdi-help"></i></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button> {{ Session::get('deteted') }}
+                        </div
+                        @endif
                         <table wire:ignore wire:poll id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
