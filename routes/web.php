@@ -82,7 +82,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('guarantors', GuarantorsView::class)->name('guarantors');
     Route::get('missed-repayments', MissedRepaymentsView::class)->name('missed-repayments');
     Route::post('apply-for-loan', [LoanApplicationController::class, 'new_loan'])->name('apply-loan');
-
+    Route::post('apply-for-loan', [LoanApplicationController::class, 'new_proxy_loan'])->name('proxy-apply-loan');
+    
     // ---- Employees
     Route::get('view-employees', EmployeesView::class)->name('employees');
 
