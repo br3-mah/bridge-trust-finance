@@ -23,7 +23,39 @@
               </li>
             </ul>
             <div class="mt-6">
-              <a href="#" class="btn btn-square btn-sm btn-primary block w-full bg-indigo-600 hover:bg-indigo-700 font-semibold py-2 px-4">Apply Now</a>
+                <div>
+                    <div class="col-xl-6">
+                        <div class="alert alert-success left-icon-big alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
+                            </button>
+                            <div class="media">
+                                <div class="alert-left-icon-big">
+                                    <span><i class="mdi mdi-check-circle-outline"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="mt-1 mb-2">ELIGIBLE!</h5>
+                                    <p class="mb-0">Borrow is eligibilible for Personal Loan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col-xl-6">
+                        <div class="alert alert-danger left-icon-big alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
+                            </button>
+                            <div class="media">
+                                <div class="alert-left-icon-big">
+                                    <span><i class="mdi mdi-alert"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="mt-1 mb-2">NOT ELIGIBLE!</h5>
+                                    <p class="mb-0">Borrow is NOT eligibilible at the moment due to circumstances.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+              {{-- <a href="#" class="btn btn-square btn-sm btn-primary block w-full bg-indigo-600 hover:bg-indigo-700 font-semibold py-2 px-4">Apply Now</a> --}}
             </div>
         </div>
     </div>    
