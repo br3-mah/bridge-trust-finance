@@ -96,6 +96,10 @@ class User extends Authenticatable
         return User::role('user')->count();
     }
 
+    public static function totalIncompleteKYCBorrowers(){
+        return Application::where('complete', 1)->count();
+    }
+
     /**
      * > The posts() function returns all the posts that belong to the user
      *

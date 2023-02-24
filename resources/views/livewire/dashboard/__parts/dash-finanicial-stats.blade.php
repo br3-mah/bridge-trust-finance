@@ -73,7 +73,7 @@
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL INCOMPLETE KYC</p>
-                <h4 class="mb-0 font-w500 text-white">{{ App\Models\User::totalBorrowers() }}</h4>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\User::totalIncompleteKYCBorrowers() }}</h4>
             </div>
             @endcan
             {{-- <div class="value-data col-xl-3 col-md-4 col-6">
