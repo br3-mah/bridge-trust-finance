@@ -178,7 +178,7 @@
                                 <div class="card-body py-3 pt-1 d-flex align-items-center justify-content-between flex-wrap pe-3">
                                     <div class="wallet-info">
                                         <span class="fs-14 font-w400 d-block">Wallet Balance</span>
-                                        <h2 wire:poll class="font-w600 mb-0">ZMW {{ $wallet ?? '0.00' }}</h2>
+                                        <h2 wire:poll class="font-w600 mb-0">K {{ $wallet ?? '0.00' }}</h2>
                                     </div>
 
                                     @can('send payment remainders to customers')

@@ -40,6 +40,8 @@
 
     <body class="dark-mode">
         <div id="main-wrapper" class="wallet-open active show">
+   
+            @include('livewire.components.preloader')
             @include('livewire.components.logo')
             
             @include('livewire.components.chatbox')

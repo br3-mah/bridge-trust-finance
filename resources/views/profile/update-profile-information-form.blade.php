@@ -70,7 +70,7 @@
             <!-- Email -->
             <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" type="email" class="form-control" wire:model.defer="state.email" />
+                <x-jet-input id="email" type="email" disabled class="form-control" wire:model.defer="state.email" />
                 <x-jet-input-error for="email" class="mt-2" />
             </div>    
 
@@ -82,7 +82,17 @@
             </div>
             
             <div class="col-sm-6 mt-3 m-b30">
-                <x-jet-label for="nrc_no" value="{{ __('NRC Number') }}" />
+                <x-jet-label for="id_type" value="{{ __('ID Type') }}" />
+                <select id="id_type" type="text" class="form-control" wire:model.defer="state.id_type">
+                    <option value="">-- Choose --</option>
+                    <option value="NRC">NRC</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Driver Liecense">Driver Liecense</option>
+                </select>
+                <x-jet-input-error for="address" class="mt-2" />
+            </div>           
+            <div class="col-sm-6 mt-3 m-b30">
+                <x-jet-label for="nrc_no" value="{{ __('ID Number') }}" />
                 <x-jet-input id="nrc_no" type="text" class="form-control" wire:model.defer="state.nrc_no" />
                 <x-jet-input-error for="nrc_no" class="mt-2" />
             </div> 
@@ -95,9 +105,14 @@
             </div>
             <!-- phone -->
             <div class="col-sm-6 mt-3 m-b30">
-                <x-jet-label for="basic_pay" value="{{ __('Basic Pay') }}" />
+                <x-jet-label for="basic_pay" value="{{ __('Basic Pay') }} (ZMW)" />
                 <x-jet-input id="basic_pay" type="text" class="form-control" wire:model.defer="state.basic_pay" />
                 <x-jet-input-error for="basic_pay" class="mt-2" />
+            </div>
+            <div class="col-sm-6 mt-3 m-b30">
+                <x-jet-label for="net_pay" value="{{ __('Net Pay') }} (ZMW)" />
+                <x-jet-input id="net_pay" type="text" class="form-control" wire:model.defer="state.net_pay" />
+                <x-jet-input-error for="net_pay" class="mt-2" />
             </div>
             <!-- phone -->
             <div class="col-sm-6 mt-3 m-b30">

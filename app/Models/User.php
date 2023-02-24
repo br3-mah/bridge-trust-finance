@@ -39,6 +39,8 @@ class User extends Authenticatable
         'loan_status',
         'basic_pay',
         'profile_photo_path',
+        'net_pay',
+        'id_type',
         'email',
         'password',
     ];
@@ -121,5 +123,9 @@ class User extends Authenticatable
 
     public function active_loans(){
         return $this->hasOne(Application::class)->where('status', 1)->where('complete', 1);
+    }
+
+    public function next_of_king(){
+        return $this->hasMany(NextOfKing::class);
     }
 }

@@ -30,7 +30,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'dob' => ['required'],
             'gender' => ['required'],
             'nrc_no' => ['required'],
-            'basic_pay' => ['required']
+            'basic_pay' => ['required'],
+            'net_pay' => ['required'],
+            'id_type' => ['required'],
         ])->validateWithBag('updateProfileInformation');
 
         
@@ -39,8 +41,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         }
 
         // dd(isset($input['address']));
-        if(isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
-            
+        if(isset($input['id_type']) && isset($input['net_pay']) && isset($input['basic_pay']) && isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
+
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->where('user_id', auth()->user()->id)->first();
                         
@@ -65,6 +67,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'email' => $input['email'],
                     'phone' => $input['phone'],
                     'basic_pay' => $input['basic_pay'],
+                    'net_pay' => $input['net_pay'],
+                    'id_type' => $input['id_type'],
                     'nrc_no' => $input['nrc_no'],
                     'address' => $input['address'],
                     'occupation' => $input['occupation'],

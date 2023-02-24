@@ -1,4 +1,4 @@
-<table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
+<table wire:ignore wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
     <thead>
         <tr>
             {{-- <th>
@@ -7,20 +7,20 @@
                     <label class="form-check-label" for="checkAll"></label>
                 </div>
             </th> --}}
-            <th>#.</th>
-            <th>Assesed By</th>
+            {{-- <th>#.</th> --}}
+            {{-- <th>Assesed By</th> --}}
+            <th>Credit Score</th>
             <th>DOA</th>
             <th>Borrower</th>
             <th>Basic Pay</th>
             <th>NetPay Before<br>Loan Recovery</th>
             <th>Proposed<br>Loan Amount</th>
             <th>Interest</th>
-            <th>Total Collectable</th>
-            <th>Repayment Period</th>
-            <th>Monthly Payments</th>
+            <th>Total<br>Collectable</th>
+            <th>Repayment<br>Period</th>
+            <th>Monthly<br>Payments</th>
             <th>Maximum<br>Deductable Amount</th>
             <th>NetPay After<br>Loan Recovery</th>
-            <th>Credit Score</th>
             <th>DOP</th>
         </tr>
     </thead>
@@ -28,20 +28,27 @@
         
         @forelse($loan_requests as $loan)
         <tr>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
+            {{-- <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td> --}}
+            {{-- <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['assesed_by'] }}</td> --}}
+            <td style="text-align: center">
+                @if( App\Models\Application::loan_assemenent_table($loan)['credit_score'] === 'Eligible')
+                    <span class="badge badge-primary">{{  App\Models\Application::loan_assemenent_table($loan)['credit_score'] }}</span>
+                @else
+                    <span class="badge badge-danger">{{  App\Models\Application::loan_assemenent_table($loan)['credit_score'] }}</span>
+                @endif
+            </td>
+            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['doa'] }}</td>
+            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['borrower'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_blr'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['principal'] }}</td>
+            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['interest'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['total_collectable'] }}</td>
+            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['payment_period'] }} Month(s)</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['monthly_payment'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['maximum_deductable_amount'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_alr'] }}</td>
+            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['dop'] }}</td>
         </tr>
         @empty
         <div class="intro-y col-span-12 md:col-span-6">

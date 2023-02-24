@@ -12,7 +12,7 @@
                             <h3>Step 1 Title</h3>
                             <section>
                                 <div class="sec-title">
-                                    <h2>{{ $step_1_title }}</h2>
+                                    <h3>{{ $step_1_title }}</h3>
                                     <div class="sub-title">
                                         <p>Fill in all the necessary details to started with the first step.</p>
                                     </div>
@@ -61,7 +61,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="select-box clearfix">
-                                                        <select name="type" class="wide" id="typeLoan">
+                                                        <select wire:model="loan_type" name="type" class="wide" id="typeLoan">
                                                             <option value="" data-display="Purpose of Loan">
                                                                 Purpose of Loan
                                                             </option>
@@ -111,8 +111,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
+                                        
                                         <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="form-group">
@@ -142,16 +141,16 @@
                                 </div>
                             </section>
                             <h3>Step 2 Title</h3>
+                            {{-- @if($loan_type !== 'Personal') --}}
                             <section>
                                 <div class="sec-title">
-                                    {{-- {{ $email }} --}}
-                                    <h2>Guarantor & Loan Credentials</h2>
+                                    <h3 id="guarant">Guarantor & Loan Credentials</h3>
+                                    <h3 id="nok">Next of Kin</h3>
                                     <div class="sub-title">
                                         <p>Fill in all the necessary details to started with continue second step.</p>
                                     </div>
-                                    {{ $step }}
                                 </div>
-                                <div class="apply-form-box__content">
+                                <div id="step2B" class="apply-form-box__content">
                                     {{-- @if($showDiag === true) --}}
                                     <div class="modal-overlay2" style="display:none" id="modal-overlay2"></div>
                                     <div wire:ignore class="modal2" style="display:none" id="modal2">
@@ -360,11 +359,101 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div wire:ignore id="step2P" class="apply-form-box__content">
+                                    <div id="apply-form" name="apply_form" class="default-form2">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="input-box">
+                                                        <input type="text" id="nok_fname" name="nok_fname" placeholder="First Name" required="">
+                                                        <small id="validnok_fname" style="color:red"></small>
+                                                        <div class="icon">
+                                                            <i class="fas fa-user"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="input-box">
+                                                        <input type="text" name="nok_lname" id="nok_lname" placeholder="Last Name" required="">
+                                                        <small id="validnok_lname" style="color:red"></small>
+                                                        <div class="icon">
+                                                            <i class="fas fa-user"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="select-box clearfix">
+                                                        <select name="nok_relation" id="nok_relation" class="wide">
+                                                            <option value="" data-display="Relation">
+                                                                Relation
+                                                            </option>
+                                                            <option value="Brother">Brother</option>
+                                                            <option value="Sister">Sister</option>
+                                                            <option value="Parent">Parent</option>
+                                                            <option value="Relative">Relative</option>
+                                                            <option value="Work Mate">Work Mate</option>
+                                                            <option value="Close Friend">Close Friend</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <small id="validnok_relation" style="color:red"></small>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="select-box clearfix">
+                                                        <select name="nok_gender" id="nok_gender" class="wide">
+                                                            <option value="" data-display="Gender">
+                                                                Gender
+                                                            </option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Male">Male</option>
+                                                        </select>
+                                                    </div>
+                                                    <small id="validnok_gender" style="color:red"></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="input-box">
+                                                        <input type="text" name="nok_phone" value="" id="nok_phone" placeholder="Guarantor 1's Phone">
+                                                        <small id="validnok_phone" style="color:red"></small>
+                                                        <div class="icon">
+                                                            <i class="fas fa-phone-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <div class="input-box">
+                                                        <input type="email" name="nok_email" id="nok_email" placeholder="Guarantor 1's Email" required="">
+                                                        <small id="validnok_email" style="color:red"></small>
+                                                        <div class="icon">
+                                                            <i class="fas fa-envelope-open"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </section>
+                          
+                            {{-- @endif --}}
                             <h3>Step 3 Title</h3>
                             <section>
                                 <div class="sec-title">
-                                    <h2>Documents</h2>
+                                    <h3>Documents</h3>
                                     <div class="sub-title">
                                         <p>Fill in all the necessary details to started with the first step.</p>
                                     </div>
@@ -395,7 +484,7 @@
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">TPIN</label>
                                                             <input name="tpin_file" id="tpinLoan" class="form-control" type="file"  />
-                                                            <small id="validtpinLoan" style="color:red"></small>
+                                                            <small id="validtpin" style="color:red"></small>
                                                         </div>
 
                                                     </div>
@@ -427,167 +516,185 @@
 
         </div>
     </div>
-</div>
 
-
-
-{{-- <button id="open-button" class="open-button">Open Button</button> --}}
-<style>
+    <style>
     
-.modal2 {
-  display: block;
-  width: 600px;
-  max-width: 100%;
-  line-height:25px;
-  padding:6px;
-  height: 50vh;
-  max-height: 100%;
-  position: fixed;
-  z-index: 100;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
-.closed2 {
-  display: none;
-}
-
-.modal-overlay2 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-  background: rgba(0, 0, 0, 0.6);
-}
-.modal-guts2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding: 30px;
-}
-.modal2 .close-button2 {
-  position: absolute;
-  
-  /* don't need to go crazy with z-index here, just sits over .modal-guts */
-  z-index: 1;
-  
-  top: 10px;
-  
-  /* needs to look OK with or without scrollbar */
-  right: 20px;
-  
-  border: 0;
-  background: black;
-  color: white;
-  padding: 5px 10px;
-  font-size: 1.3rem;
-}
-
-.open-button2 {
-  border: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: lightgreen;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 21px;
-}
-    .modal-dialog {
-        max-width: 100%;
-        margin: 0;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        display: flex;
-        position: fixed;
-    }
-
-    .apply-form-box__content {
-        position: relative;
-        display: block;
-        max-width: 100%;
-        width: 100%;
-        /* float: left; */
-        background-color: #f7f1eb;
-        padding: 50px;
-    }
-
-    #closere {
-        position: absolute;
-        top: 9px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        font-size: 20px;
-        line-height: 36px;
-        background: #e3d3d3;
-        text-align: center;
-        cursor: pointer;
-        z-index: 99999999;
-        color: #7b1919;
-    }
-    
-</style>
-<script>
-$(document).ready(function(){
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        .modal2 {
+          display: block;
+          width: 600px;
+          max-width: 100%;
+          line-height:25px;
+          padding:6px;
+          height: 50vh;
+          max-height: 100%;
+          position: fixed;
+          z-index: 100;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background: white;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
-    });
-
-    $("#checkforthisapplication").keyup(function() {
-        var myemail = $("#loanEmail").val();
-        var emailValidCheck = $('#emailValidCheck');
-        emailValidCheck.text(myemail);
-        $.ajax({    
-            type:'GET',
-            url:'{{ route("get-application") }}',
-            data: { 
-                email:myemail
-            },
-            success:function(data) {
-                if(data === 1){
-                    $("#modal-overlay2").removeAttr('style');
-                    $("#modal2").removeAttr('style');
-                    $("#modal-overlay2").css("display", "block");
-                    $("#modal2").css("display", "block");
+        .closed2 {
+          display: none;
+        }
+        
+        .modal-overlay2 {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 50;
+          background: rgba(0, 0, 0, 0.6);
+        }
+        .modal-guts2 {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          padding: 30px;
+        }
+        .modal2 .close-button2 {
+          position: absolute;
+          
+          /* don't need to go crazy with z-index here, just sits over .modal-guts */
+          z-index: 1;
+          
+          top: 10px;
+          
+          /* needs to look OK with or without scrollbar */
+          right: 20px;
+          
+          border: 0;
+          background: black;
+          color: white;
+          padding: 5px 10px;
+          font-size: 1.3rem;
+        }
+        
+        .open-button2 {
+          border: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: lightgreen;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 10px;
+          font-size: 21px;
+        }
+            .modal-dialog {
+                max-width: 100%;
+                margin: 0;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                display: flex;
+                position: fixed;
+            }
+        
+            .apply-form-box__content {
+                position: relative;
+                display: block;
+                max-width: 100%;
+                width: 100%;
+                /* float: left; */
+                background-color: #f7f1eb;
+                padding: 50px;
+            }
+        
+            #closere {
+                position: absolute;
+                top: 9px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                font-size: 20px;
+                line-height: 36px;
+                background: #e3d3d3;
+                text-align: center;
+                cursor: pointer;
+                z-index: 99999999;
+                color: #7b1919;
+            }
+            
+        </style>
+        <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            } 
-        });
-    });
+            });
+            var step2B = $('#step2B');
+            var step2P = $('#step2P');
+            var guarant = $('#guarant');
+            var nok = $('#nok');
+            
+            step2B.show();
+            step2P.hide();
+            guarant.show();
+            nok.hide();
 
-    $("#updateExistingLoan").click(function() {
-        var myemail = $("#loanEmail").val();
-        $.ajax({    
-            type:'GET',
-            url:'{{ route("update-existing-application") }}',
-            data: { 
-                email:myemail
-            },
-            success:function(data) {
-                if(data === 1){
-                    $("#modal-overlay2").removeAttr('style');
-                    $("#modal2").removeAttr('style');
-                    $("#modal-overlay2").css("display", "none");
-                    $("#modal2").css("display", "none");
+            $('#typeLoan').change(function() {
+                
+                // get the selected value
+                var selectedValue = $(this).val();
+                // do something with the selected value, e.g. log it to the console
+                if(selectedValue === 'Personal'){
+                    guarant.hide();
+                    step2B.hide();
+                    nok.show();
+                    step2P.show();
                 }
-            } 
+            });
+            $("#checkforthisapplication").keyup(function() {
+                var myemail = $("#loanEmail").val();
+                var emailValidCheck = $('#emailValidCheck');
+                emailValidCheck.text(myemail);
+                $.ajax({    
+                    type:'GET',
+                    url:'{{ route("get-application") }}',
+                    data: { 
+                        email:myemail
+                    },
+                    success:function(data) {
+                        if(data === 1){
+                            $("#modal-overlay2").removeAttr('style');
+                            $("#modal2").removeAttr('style');
+                            $("#modal-overlay2").css("display", "block");
+                            $("#modal2").css("display", "block");
+                        }
+                    } 
+                });
+            });
+        
+            $("#updateExistingLoan").click(function() {
+                var myemail = $("#loanEmail").val();
+                $.ajax({    
+                    type:'GET',
+                    url:'{{ route("update-existing-application") }}',
+                    data: { 
+                        email:myemail
+                    },
+                    success:function(data) {
+                        if(data === 1){
+                            $("#modal-overlay2").removeAttr('style');
+                            $("#modal2").removeAttr('style');
+                            $("#modal-overlay2").css("display", "none");
+                            $("#modal2").css("display", "none");
+                        }
+                    } 
+                });
+            });
+        
         });
-    });
-
-});
-</script>
+        </script>
+</div>

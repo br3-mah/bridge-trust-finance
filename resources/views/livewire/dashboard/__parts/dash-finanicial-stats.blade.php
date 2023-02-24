@@ -2,7 +2,7 @@
     <div class="card-header border-0 align-items-start pb-0">
         <div>
             @role('admin')
-                <span class="fs-18 d-block mb-2">Total Disbursed Funds</span>
+                <span class="fs-18 d-block mb-2">Total Loans</span>
                 <h2 class="fs-28 font-w600 ">K {{  App\Models\Application::totalAmountLoanedOut() }}</h2>
             @else
                 <span class="fs-18 d-block mb-2">
@@ -35,28 +35,32 @@
         
         <div wire:poll class="row mt-1">
             @can('view company financial statistics')
-            <div class="value-data col-xl-3 col-md-4 col-6">
+            {{-- <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL LOANS</p>
                 <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalLoans() }}</h4>
+            </div> --}}
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">APPROVED LOANS</p>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalApprovedLoans() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">FULLY REGISTERED LOANS</p>
-                <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalRegisteredLoans() }}</h4>
-            </div>
-            <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">TOTAL BORROWERS</p>
-                <h4 class="mb-0 font-w500 text-white">{{ App\Models\User::totalBorrowers() }}</h4>
-            </div>
-            <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">TOTAL OPEN LOANS</p>
+                <p class="mb-1">PENDING APPROVAL</p>
                 <h4 class="mb-0 font-w500 text-white">{{ App\Models\Application::totalPendingLoans() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">TOTAL LOANS </p>
-                <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountLoans() }}</h4>
+                <p class="mb-1">TOTAL REPAYMENTS</p>
+                <h4 class="mb-0 font-w500 text-white">0</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">TOTAL LOANED OUT  </p>
+                <p class="mb-1">TOTAL CUSTOMERS</p>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\User::totalBorrowers() }}</h4>
+            </div>
+            {{-- <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL LOANS </p>
+                <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountLoans() }}</h4>
+            </div> --}}
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL LOANED OUT AMOUNT </p>
                 <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountLoanedOut() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
@@ -64,8 +68,12 @@
                 <h4 class="mb-0 font-w500 text-white">K {{ App\Models\Application::totalAmountPending() }}</h4>
             </div>
             <div class="value-data col-xl-3 col-md-4 col-6">
-                <p class="mb-1">COLLECTED AMOUNT</p>
+                <p class="mb-1">TOTAL COLLECTED AMOUNT</p>
                 <h4 class="mb-0 font-w500 text-white">K 0</h4>
+            </div>
+            <div class="value-data col-xl-3 col-md-4 col-6">
+                <p class="mb-1">TOTAL INCOMPLETE KYC</p>
+                <h4 class="mb-0 font-w500 text-white">{{ App\Models\User::totalBorrowers() }}</h4>
             </div>
             @endcan
             {{-- <div class="value-data col-xl-3 col-md-4 col-6">

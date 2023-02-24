@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use App\Mail\BTFAccount;
+use App\Models\Wallet;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -69,6 +70,10 @@ class UserController extends Controller
             Mail::to($u->email)->send($eMail);
             if($request->assigned_role == 'user'){
                 $url = '/apply-for-a-loan/ '.$u->id;
+                Wallet::create([
+                    'email' => $u->email,
+                    'user_id' => $u->id
+                ]);
                 // $link = new HtmlString('<a target="_blank" href="' . $url . '">Create a loan for '.$u->fname.' '.$u->lname.'</a>');
                 $msg = '<a target="_blank" href="'.$url.'">Apply for Loan on Behalf</a>';
                 Session::flash('attention', "Borrower created successfully. ");

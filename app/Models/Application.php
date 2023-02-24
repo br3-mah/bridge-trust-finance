@@ -67,6 +67,14 @@ class Application extends Model
         return $this->hasMany(LoanScore::class);
     }
 
+    public function approvedLoans(){
+        return $this->hasOne(Loans::class);
+    }
+
+    // public function approvalAction(){
+    //     return $this->hasMany()
+    // }
+
     public static function payback($amount, $duration){
         $interest_rate = 20 / 100;
         return $amount * (1 + ($interest_rate * (int)$duration));
@@ -83,8 +91,8 @@ class Application extends Model
     public static function totalLoans(){
         return Application::get()->count();
     }
-    public static function totalRegisteredLoans(){
-        return Application::where('complete', 1 )->get()->count();
+    public static function totalApprovedLoans(){
+        return Application::where('status', 1 )->get()->count();
     }
     public static function totalPendingLoans(){
         return Application::where('status', 0)->where('complete', 1)->get()->count();
@@ -98,18 +106,16 @@ class Application extends Model
     }
     public static function totalAmountLoanedOut(){
         //  Total amount for complete and approved loans 
-        return Application::where('complete', 1)->where('status', 1)->sum('amount');
+        return Application::where('complete', 1)->where('status', 1)->whereNotNull('due_date')->sum('amount');
     }
     public static function totalAmountPending(){
-        // Total amount for complete and pending approval
-        return Application::where('complete', 1)->where('status', 0)->sum('amount');
+        // Total amount for complete and under review / pending approval
+        return Application::where('complete', 1)->where('status', [0, 2])->sum('amount');
     }
 
 
     // ELIGIBILITY
     public static function isloan_eligible($loan){
-
-        
         $basic_pay = $loan->user->basic_pay; // Clear
         $net_pay_blr = 0; //Unclear //Net Pay Before Loan Recovery
         $principal = $loan->amount; // Clear
@@ -130,22 +136,26 @@ class Application extends Model
             return 0;
         }
     }
+
     public static function loan_assemenent_table($loan){
+        
         $data = [
+            'borrower' => $loan->user->fname.' '.$loan->user->lname,
             'basic_pay' => $loan->user->basic_pay, // Clear
-            'net_pay_blr' => 0, //Unclear //Net Pay Before Loan Recovery
+            'net_pay_blr' => $loan->user->net_pay, //Unclear //Net Pay Before Loan Recovery
             'principal' => $loan->amount, // Clear
             'interest' => $loan->interest, // Clear
             'total_collectable' =>  Application::payback($loan->amount, $loan->repayment_plan), // Clear
             'payment_period' => $loan->repayment_plan, // Clear
-            'monthly_payment' => $monthly_payment = Application::monthly_installment($loan->amount, $loan->repayment_plan), // Clear
-            'maximum_deductable_amount' => $maximum_deductable_amount = $net_pay_blr * 0.75, // Clear
-            'net_pay_alr' => $net_pay_blr - $monthly_payment, //Net Pay After Loan Recovery //Clear
+            'monthly_payment' =>  Application::monthly_installment($loan->amount, $loan->repayment_plan), // Clear
+            'maximum_deductable_amount' => $maximum_deductable_amount = $loan->user->net_pay * 0.75, // Clear
+            'net_pay_alr' => $loan->user->net_pay - Application::monthly_installment($loan->amount, $loan->repayment_plan), //Net Pay After Loan Recovery //Clear
             'dob' => $loan->user->dob,
-            'doa' => $loan->created_at, //Unclear
-            'dop' => $loan->updated_at, //Unclear
-            'credit_score' => $monthly_payment > $maximum_deductable_amount ? 'Eligible' : 'Not Eligible'
+            'doa' => $loan->created_at->toFormattedDateString(), //Date of Application
+            'dop' => '', //Date of Payment
+            'credit_score' => Application::monthly_installment($loan->amount, $loan->repayment_plan) > $maximum_deductable_amount ? 'Eligible' : 'Not Eligible'
         ];
+
         return $data;
     }
 }
