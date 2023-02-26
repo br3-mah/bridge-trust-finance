@@ -6,11 +6,13 @@ use App\Models\Application;
 use App\Models\User;
 use App\Traits\EmailTrait;
 use App\Traits\WalletTrait;
+use App\Traits\LoanTrait;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class LoanRequestView extends Component
 {
-    use EmailTrait, WalletTrait;
+    use EmailTrait, WalletTrait, LoanTrait;
     public $loan_requests, $loan_request;
     public $type = [];
     public $status = [];
@@ -42,6 +44,7 @@ class LoanRequestView extends Component
     }
 
     public function accept($id){
+        DB::beginTransaction();
         try {
             $x = Application::find($id);
             if($this->isCompanyEnough($x->amount)){
@@ -59,14 +62,19 @@ class LoanRequestView extends Component
                     'type' => 'loan-application',
                     'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
                 ];
+                $this->make_loan($x);
                 $this->deposit($x->amount, $x);
                 $this->send_loan_feedback_email($mail);
+                DB::commit();
                 session()->flash('success', 'Successfully transfered '.$x->amount.' to '.$x->fname.' '.$x->lname);
             }else{
                 session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
             }
             
         } catch (\Throwable $th) {
+
+            DB::rollback();
+            dd($th);
             session()->flash('error', 'Oops something failed here, please contact the Administrator.'.$th);
         }
     }

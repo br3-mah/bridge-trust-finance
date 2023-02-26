@@ -4,6 +4,8 @@ namespace App\Traits;
 
 use App\Mail\LoanApplication;
 use App\Models\Application;
+use App\Models\Loans;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 trait LoanTrait{
@@ -25,8 +27,6 @@ trait LoanTrait{
                 $check = Application::where('email', $data['email'])
                                     ->where('status', 0)->where('complete', 0)->get();
                       
-                
-               
                 $mail = [
                     'name' => $data['fname'].' '.$data['lname'],
                     'to' => $data['email'],
@@ -49,6 +49,20 @@ trait LoanTrait{
             } catch (\Throwable $th) {
                 dd($th);
             }
+    }
+
+    public function make_loan($x){
+        $due = Carbon::now()->addMonth($x->repayment_plan);
+        Loans::create([
+            'application_id' => $x->id,
+            'repaid' => 0,
+            'principal' => $x->amount,
+            'payback' => $x->amount * 0.2,
+            'penalty' => 0,
+            'interest' => $x->interest,
+            'final_due_date' => $due,
+            'closed' => 0
+        ]);
     }
 
     public function accept_loan($id){

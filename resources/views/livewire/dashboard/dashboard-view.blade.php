@@ -24,33 +24,45 @@
             </div>
         </div>
     </div>
-    <div wire:ignore class="modal fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="exampleModal2" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header ">
-                    <h5 class="modal-title">Make Payment</h5>
+                <div class="bg-primary modal-header ">
+                    <h5 class="modal-title text-white">Request Withdraw</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label class="form-label">Payment method</label>
                     <div>
-                        <select class=" w-100 mb-3" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">Bank Card</option>
-                            <option value="2">Mobile Money</option>
-                            <option value="3">Cash at Hand</option>
-                        </select>
+                        <label class="form-label">Payment method</label>
+                        <div>
+                            <select wire:ignore.self wire:model="payment_method" id="payment_method" class=" w-100 mb-3" aria-label="Default select example">
+                                <option selected>--Choose--</option>
+                                <option value="Mobile Money">Mobile Money</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Card">Card</option>
+                            </select>
+                        </div>
                     </div>
+                    
                     <label class="form-label">Amount</label>
-                    <input type="email" class="form-control mb-3" id="exampleInputEmail4" placeholder="Rupee">
-                    <label class="form-label">Card Holder Name</label>
-                    <input type="email" class="form-control mb-3" id="exampleInputEmail5" placeholder="Amount">
-                    <label class="form-label">Card Name</label>
-                    <input type="email" class="form-control mb-3" id="exampleInputEmail6" placeholder="Amount">
+                    <input wire:model="withdraw_amount" type="text" class="form-control mb-3" id="amount" placeholder="ZMW">
+                    
+                    @if($payment_method === 'Mobile Money')
+                        <label class="form-label">Mobile Number</label>
+                        <input wire:model="mobile_number" type="text" class="form-control mb-3" id="mobile_num" placeholder="Mobile Money Number">
+                    @endif
+                    @if($payment_method === 'Card')
+                        <label class="form-label">Card Name</label>
+                        <input wire:model="card_name" type="text" class="form-control mb-3" id="card_name" placeholder="">
+                        <label class="form-label">Bank Name</label>
+                        <input wire:model="bank_name" type="text" class="form-control mb-3" id="bank_name" placeholder="">
+                        <label class="form-label">Card Number</label>
+                        <input wire:model="card_number" type="text" class="form-control mb-3" id="card_number" placeholder="">
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button wire:loading.attr="disabled" wire:click="submitWithdrawRequest()" data-bs-dismiss="modal" class="btn btn-primary">Submit Request</button>
                 </div>
             </div>
         </div>
@@ -139,7 +151,7 @@
                             @endcan
                             @can('withdraw funds')
                             <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                                Withdraw
+                                Request Withdraw
                             </button>
                             @endcan
                         </div>

@@ -9746,15 +9746,19 @@ div#preloader {
   position: fixed;
   width: 100%;
   z-index: 999999;
-  background-color: #e6ebee; }
-  #preloader .loader {
+  background-color: #851202; 
+}
+
+#preloader .loader {
     margin: auto;
     width: 2rem;
     height: 2rem;
-    background-image: url("../images/preloader.png");
+    /* background-image: url("../images/preloader.gif"); */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23ffffff' stroke-width='4' fill='none'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: cover;
-    animation: loader 6s infinite ease-in-out; }
+    animation: loader 6s infinite ease-in-out; 
+}
 
 @keyframes loader {
   0% {

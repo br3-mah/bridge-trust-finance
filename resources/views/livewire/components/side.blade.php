@@ -77,6 +77,7 @@
                     <span class="nav-text">Accounting</span>
                 </a>
                 <ul aria-expanded="false">
+                    <li><a href="#">Withdraw Requests</a></li>
                     <li><a href="{{ route('loan-wallet') }}">Manage Funds</a></li>
                     <li><a href="{{ route('loan-statements') }}">Loan Statements </a></li>
 

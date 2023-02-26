@@ -16,6 +16,8 @@ class Loans extends Model
         'payback',
         'penalty',
         'interest',
+        'final_due_date',
+        'grace_due_date',
         'closed'
     ];
 

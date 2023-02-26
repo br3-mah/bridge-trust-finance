@@ -3,15 +3,19 @@
 namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Application;
+use App\Models\Wallet;
+use App\Models\WithdrawRequest;
 use App\Traits\EmailTrait;
 use App\Traits\WalletTrait;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class DashboardView extends Component
 {
 
     use EmailTrait, WalletTrait;
     public $loan_requests, $loan_request, $all_loan_requests, $my_loan, $wallet;
+    public $payment_method, $withdraw_amount, $mobile_number, $card_name, $bank_name, $card_number;
 
     public function render()
     {
@@ -23,6 +27,23 @@ class DashboardView extends Component
         return view('livewire.dashboard.dashboard-view')
         ->layout('layouts.dashboard');
     }
+
+    public function submitWithdrawRequest(){
+        $uuid = Str::orderedUuid();
+        WithdrawRequest::create([
+            'wallet_id' => Wallet::where('user_id', auth()->user()->id)->first()->id,
+            'amount' => $this->withdraw_amount,
+            'ref' => substr($uuid, 0, 4),
+            'withdraw_method' => $this->payment_method,
+            'mobile_number' => $this->mobile_number,
+            'card_name' => $this->card_name,
+            'bank_name' => $this->bank_name,
+            'card_number' => $this->card_number,
+            'user_id' => auth()->user()->id
+        ]);
+        session()->flash('success', 'Your withdraw request has been sent. Request ID: #REF320193S');
+    }
+
     public function approve($id){
         try {
             $x = Application::find($id);

@@ -39,21 +39,18 @@ trait WalletTrait{
     public function deposit($amount, $loan){
         $due = Carbon::now()->addMonth($loan->repayment_plan);
         try{
-            // remove from user
-            $userWallet = Wallet::orWhere('user_id', $loan->user_id)->orWhere('email', $loan->email)->first();      
-              
+            // Add the principal amount
+            $userWallet = Wallet::where('user_id', $loan->user_id)->first();      
             $userWallet->deposit = $amount;
             $userWallet->save();
-            // Deposit back in Main Wallet
+
+            // Withdraw from Main Wallet
             $mainWallet = LoanWallet::get()->first();        
             $mainWallet->withraw = $amount;
             $mainWallet->save();
 
-            // $mainWallet2 = LoanWallet::get()->first();        
-            // $mainWallet2->deposit = $mainWallet2->deposit + $amount;
-            // $mainWallet2->save();
-            
-            Application::where('user_id', '=', $loan->user_id)->first()->update([
+            // Depricated
+            Application::where('user_id', $loan->user_id)->first()->update([
                 'due_date' => $due
             ]);
             return true;
@@ -65,10 +62,11 @@ trait WalletTrait{
     public function withdraw($amount, $loan){
         try{
             // remove from user
-            $userWallet = Wallet::orWhere('user_id', $loan->user_id)->orWhere('email', $loan->email)->first();      
+            $userWallet = Wallet::where('user_id', $loan->user_id)->first();      
             if($userWallet->deposit > 0){
                 $userWallet->deposit = $userWallet->deposit - $amount;
                 $userWallet->save();
+
                 // Deposit back in Main Wallet
                 $mainWallet = LoanWallet::get()->first();        
                 $mainWallet->withraw = $mainWallet->withraw - $amount;
@@ -78,7 +76,7 @@ trait WalletTrait{
                 $mainWallet2->deposit = $mainWallet2->deposit + $amount;
                 $mainWallet2->save();
                 
-                Application::where('user_id', '=', $loan->user_id)->first()->update([
+                Application::where('user_id', $loan->user_id)->first()->update([
                     'due_date' => ''
                 ]);
             }
