@@ -19,6 +19,7 @@ class WithdrawRequest extends Model
         'bank_name',
         'user_id',
         'card_number',
+        'status',
         'processed_by'
     ];
 

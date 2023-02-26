@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Application;
 use App\Models\LoanWallet;
 use App\Models\Wallet;
+use App\Models\WithdrawRequest;
 use Carbon\Carbon;
 
 trait WalletTrait{
@@ -95,5 +96,23 @@ trait WalletTrait{
         } catch (\Throwable $th) {
             dd($th);
         }
+    }
+
+    public function getWithdrawRequests(){
+        try {
+            return WithdrawRequest::with('user')->where('status', 0)->get();
+        } catch (\Throwable $th) {
+            return $th;
+        }
+    }
+
+    public function deductUserWallet($data){
+        $userWallet = Wallet::where('user_id', $data->user_id)->first();      
+        if($userWallet->deposit > 0){
+            $userWallet->deposit = $userWallet->deposit - $data->amount;
+            $userWallet->save();
+            return true;
+        }
+        return false;
     }
 }
