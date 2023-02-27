@@ -17,7 +17,7 @@ class LoanRequestView extends Component
     public $type = [];
     public $status = [];
     public $view = 'table';
-    public $users;
+    public $users, $due_date;
 
     public function render()
     {
@@ -43,6 +43,9 @@ class LoanRequestView extends Component
         $this->view = $view;
     }
 
+    public function openAcceptModal($id){
+        $this->loan_request = Application::find($id);
+    }
     public function accept($id){
         DB::beginTransaction();
         try {
@@ -163,6 +166,9 @@ class LoanRequestView extends Component
     }
 
 
+    public function clear(){
+        $this->due_date = '';
+    }
 
     public function destroy($id){
         Application::where('id', $id)->first()->delete();

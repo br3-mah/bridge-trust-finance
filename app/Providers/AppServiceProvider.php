@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Setting reporting level
+        error_reporting(0);
         Post::observe(PostObserver::class);
     }
 }

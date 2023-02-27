@@ -105,6 +105,9 @@ class User extends Authenticatable
      *
      * @return A collection of Post objects.
      */
+    public function loanpackages(){
+        return $this->hasMany(LoanPackage::class);
+    }
     public function WithdrawRequest(){
         return $this->hasMany(WithdrawRequest::class);
     }

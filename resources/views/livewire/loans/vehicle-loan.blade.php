@@ -13,7 +13,7 @@
                         <div class="breadcrumb-menu" data-aos="fade-left" data-aos-easing="linear"
                             data-aos-duration="500">
                             <ul>
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="{{ route('welcome') }}">Home</a></li>
                                 <li class="active">Vehicle Loan</li>
                             </ul>
                         </div>

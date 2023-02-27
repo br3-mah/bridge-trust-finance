@@ -42,8 +42,15 @@
                                                         
                                                     </div>
                                             </div>
+
                                             <div class="count">
-                                                <span>{{ $rate->status }}</span>
+                                                <div class="toggle">
+                                                    <input type="checkbox" id="toggle_wifi" {{ $rate->status === 1 ? 'checked' : '' }} >
+                                                    <label class="toggle__bar"
+                                                            for="toggle_wifi">
+                                                        <span class="toggle__handle"></span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     @empty
@@ -104,5 +111,65 @@
         </div>
     </div>
 </div>
+<style>
+/* Toggle Style */
+
+.toggle {
+  --toggle-height: 32px;
+  
+  --toggle-bar-color: #707070;
+  --toggle-active-color: #00bf23;
+  --toggle-handle-color: #ffffff;
+}
+
+.toggle > input[type="checkbox"] {
+  display:none;
+}
+
+.toggle__bar {
+  display: flex;
+  align-items: center;
+  
+  height: 12px; /* default */
+  min-height: var(--toggle-height);
+  aspect-ratio: 1.75 / 1;
+  border-radius: 25% / 50%;
+  
+  background-color: var(--toggle-bar-color);
+  
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle__handle {
+  display:block;
+  
+  height: inherit;
+  min-height: var(--toggle-height);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: scale(0.8);
+  
+  background-color: var(--toggle-handle-color);
+  box-shadow: 1px 1px 15px -2px rgba(0,0,0,0.75);
+  
+  transition: all 0.1s ease-in-out;
+}
+
+.toggle > input[type="checkbox"]:checked + .toggle__bar {
+  background-color: 
+    var(--toggle-active-color);
+}
+
+.toggle > input[type="checkbox"]:checked + .toggle__bar > .toggle__handle {
+  box-shadow: 
+    -1px 1px 15px -2px rgba(0,0,0,0.75);
+  
+  transform: translateX(74%) scale(0.8);
+}
+
+/* End Toggle Style */
+</style>
 
 

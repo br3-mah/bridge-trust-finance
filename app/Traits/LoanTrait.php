@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Mail\LoanApplication;
 use App\Models\Application;
+use App\Models\LoanPackage;
 use App\Models\Loans;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -15,6 +16,20 @@ trait LoanTrait{
     // public function __construct(Application $a){
     //     $this->application = $a;
     // }
+
+    public function getLoanPackages(){
+        return LoanPackage::orderBy('created_at', 'desc')->get();
+    }
+
+    public function removeLoanPackage($id){
+        $package = LoanPackage::find($id); 
+        if ($package) {
+            $package->delete();
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function get_loan_details($id){
         $data = Application::with('user')->where('id', $id)->first();

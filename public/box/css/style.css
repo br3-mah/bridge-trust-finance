@@ -2530,7 +2530,7 @@ animation: spinner 1s infinite linear;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top right;
-  background-color: #2e2d2c;
+  /* background-color: #751d06; */
   background-blend-mode: luminosity;
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0 50%);
   z-index: 1;
@@ -3328,7 +3328,7 @@ animation: spinner 1s infinite linear;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: #646464;
+  /* background-color: #646464; */
   background-blend-mode: luminosity;
   z-index: -1;
 }
@@ -3339,7 +3339,7 @@ animation: spinner 1s infinite linear;
   left: 0;
   bottom: 0;
   width: 240px;
-  background-color: #e5ded8;
+  /* background-color: #e5ded8; */
   clip-path: polygon(50% 0, 100% 0, 50% 40%, 100% 100%, 40% 100%, 0 40%);
   z-index: 2;
 }

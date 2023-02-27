@@ -85,30 +85,32 @@
                                     <th>Last Date</th>
                                 </tr>
                             </thead>
-
                             <tbody>
+                                @forelse ($careers as $career)
                                 <tr>
                                     <td class="department">
-                                        <h3>Loan Officer</h3>
+                                        <h3>{{ $career->dept }}</h3>
                                     </td>
                                     <td class="job-role">
-                                        <h3>Field Loan Officer</h3>
+                                        <h3>{{ $career->job_role }}</h3>
                                     </td>
                                     <td class="location">
-                                        <p>Lusaka</p>
+                                        <p>{{ $career->location }}</p>
                                     </td>
                                     <td class="last-date">
-                                        <p>23rd Sep, 2022</p>
+                                        <p>{{ $career->last_date }}</p>
                                     </td>
                                     <td>
                                         <div class="btn-box">
-                                            <a class="btn-one" href="#">
+                                            <a target="_blank" class="btn-one" href="mail.google.com">
                                                 <span class="txt">Apply</span>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-
+                                @empty
+                                    
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

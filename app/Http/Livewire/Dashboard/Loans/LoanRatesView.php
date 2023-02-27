@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class LoanRatesView extends Component
 {
-    public $value, $type, $rates;
+    public $value, $type, $rates, $due_date;
 
     public function render()
     {
@@ -39,6 +39,7 @@ class LoanRatesView extends Component
     public function update($id){
 
     }
+    
 
     public function destroy($id){
         LoanRate::find($id)->destroy();

@@ -13,7 +13,7 @@
                         <div class="breadcrumb-menu" data-aos="fade-left" data-aos-easing="linear"
                             data-aos-duration="500">
                             <ul>
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="{{ route('welcome') }}">Home</a></li>
                                 <li class="active">Home Improvement Loan</li>
                             </ul>
                         </div>
@@ -120,32 +120,7 @@
 
                     <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-1.png" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-2.png" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-3.png" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-4.png" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-5.png" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="assets/images/brand/brand-1-6.png" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/images/brand/cbu.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                 </div>

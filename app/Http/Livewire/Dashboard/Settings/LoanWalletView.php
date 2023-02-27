@@ -33,9 +33,9 @@ class LoanWalletView extends Component
                 'amount' => $this->amount,
                 'user_id' => auth()->user()->id,
                 'loan_wallet_id' => $this->account->id
-            ]);
-            
-            session()->flash('success', 'Successfully updated K'.$this->amount.' into the Account Funds');
+                ]);
+                
+                session()->flash('success', 'Successfully updated K'.$this->amount.' into the Account Funds');
             $this->render();
         }else{
             $data = LoanWallet::create([

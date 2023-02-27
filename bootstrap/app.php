@@ -10,7 +10,7 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
-
+ini_set('display_errors','1');
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );

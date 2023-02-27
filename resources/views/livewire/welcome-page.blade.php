@@ -689,7 +689,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="img-box">
-                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-1.jpg") }}');">
+                                                        <div class="img-box-bg" style="background-image: url('{{ asset("public/box/images/resources/features-style2-banner-1.jpg") }}'); background-color:#000;">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -28,6 +28,22 @@
         <!-- Datatable -->
         <link href="{{ asset('public/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
         <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+    
+
+        <!-- Daterange picker -->
+        <link href="{{ asset('public/vendor/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+        <!-- Clockpicker -->
+        <link href="{{ asset('public/vendor/clockpicker/css/bootstrap-clockpicker.min.css') }}" rel="stylesheet">
+        <!-- asColorpicker -->
+        <link href="{{ asset('public/vendor/jquery-asColorPicker/css/asColorPicker.min.css') }}" rel="stylesheet">
+        <!-- Material color picker -->
+        <link href="{{ asset('public/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
+        
+        <!-- Pick date -->
+        <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.date.css') }}">
+        <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+        
         <!-- Style css -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
@@ -99,6 +115,37 @@
 	<!-- Form Steps -->
 	<script src="{{ asset('public/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js') }}"></script>
     
+    {{-- Momentum --}}
+    <script src="{{ asset('public/vendor/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <!-- clockpicker -->
+    <script src="{{ asset('public/vendor/clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
+    <!-- asColorPicker -->
+    <script src="{{ asset('public/vendor/jquery-asColor/jquery-asColor.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/jquery-asGradient/jquery-asGradient.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js') }}"></script>
+    <!-- Material color picker -->
+    <script src="{{ asset('public/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+    <!-- pickdate -->
+    <script src="{{ asset('public/vendor/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('public/vendor/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('public/vendor/pickadate/picker.date.js') }}"></script>
+
+
+
+    <!-- Daterangepicker -->
+    <script src="{{ asset('public/js/plugins-init/bs-daterange-picker-init.js')}}"></script>
+    <!-- Clockpicker init -->
+    <script src="{{ asset('public/js/plugins-init/clock-picker-init.js')}}"></script>
+    <!-- asColorPicker init -->
+    <script src="{{ asset('public/js/plugins-init/jquery-asColorPicker.init.js')}}"></script>
+    <!-- Material color picker init -->
+    <script src="{{ asset('public/js/plugins-init/material-date-picker-init.js')}}"></script>
+    <!-- Pickdate -->
+    <script src="{{ asset('public/js/plugins-init/pickadate-init.js')}}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>	
+	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+
 	<script src="{{ asset('public/js/deznav-2-init.js') }}"></script>
 	<script src="{{ asset('public/js/custom.min.js') }}"></script>
 	<script src="{{ asset('public/js/demo-2.js') }}"></script>
