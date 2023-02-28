@@ -138,12 +138,17 @@ class UserController extends Controller
                 $url = Storage::put('public/users', $request->file('image_path'));
             }
             
-            $user = User::where('id', $request->user_edit_id)->get()->first();
+            $user = User::find($request->user_edit_id);
             // dd($user);
-            $user->update(array_merge($request->all(), [
+            // $user->update(array_merge($request->all(), [
+            //     'profile_photo_path' => $url ?? ''
+            // ]));
+            $data = array_merge($user->toArray(), $request->all(),[
                 'profile_photo_path' => $url ?? ''
-            ]));
+            ]);
 
+            $user->fill($data);
+            $user->save();
             $user->syncRoles($request->assigned_role);
 
 

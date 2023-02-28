@@ -333,7 +333,7 @@ class LoanApplicationController extends Controller
                 
                 'processed_by'=> auth()->user()->id
             ];
-            
+            // dd($form['bypass']);
             if($form['bypass']){
                 $data['complete'] = 1;
             }else{

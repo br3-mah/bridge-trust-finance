@@ -86,7 +86,16 @@ trait WalletTrait{
             return false;
         }
     }
-
+    public function repayLoanWalletFunds($amount){
+        try {
+            $mainWallet = LoanWallet::get()->first();        
+            $mainWallet->deposit = $mainWallet->deposit + $amount;
+            $mainWallet->save();
+            return true;
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
     public function updateLoanWalletFunds($amount){
         try {
             LoanWallet::create([

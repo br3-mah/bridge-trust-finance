@@ -34,8 +34,8 @@
                 <div class="modal-body">
                     <div>
                         <label class="form-label">Payment method</label>
-                        <div>
-                            <select wire:ignore.self wire:model="payment_method" id="payment_method" class=" w-100 mb-3" aria-label="Default select example">
+                        <div wire:ignore>
+                            <select wire:model="payment_method" id="payment_method" class=" w-100 mb-3" aria-label="Default select example">
                                 <option selected>--Choose--</option>
                                 <option value="Mobile Money">Mobile Money</option>
                                 <option value="Cash">Cash</option>

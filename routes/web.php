@@ -76,7 +76,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // ---- Borrowers
     Route::get('borrowers', BorrowerView::class)->name('borrowers');
-    Route::get('borrower-details/{id}', BorrowersLoanStatementView::class)->name('loan-statement');
+    Route::get('loan-statement/{id}', BorrowersLoanStatementView::class)->name('loan-statement');
     Route::get('send-messages-to-borrowers', SendBorrowerMessageView::class)->name('notify-borrowers');
 
     // ---- loans

@@ -440,7 +440,7 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" value="{{ $userEdit->occupation }}" id=""  placeholder="Ex. Business Administrator" required>
+                                                            <input type="text" class="form-control" name="occupation"  value="{{ $userEdit->occupation }}" id=""  placeholder="Ex. Business Administrator" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter an Occupation.
                                                             </div>
@@ -449,7 +449,7 @@
                                                    
                                                     {{-- Assigned Borrower Role --}}
                                                     <input type="hidden" value="user" name="assigned_role" class="default-select wide form-control" placeholder="Borrower" id="validationCustom05">
-                                                    <input type="hidden" value="{{$userEdit->id}}" name="borrower_id" class="default-select wide form-control" placeholder="Borrower" id="validationCustom05">
+                                                    <input type="hidden" value="{{$userEdit->id}}" name="user_edit_id" class="default-select wide form-control" placeholder="Borrower" id="validationCustom05">
                                                      
                                                     <div class="mb-3 row">
                                                         <label class="col-lg-4 col-form-label" for="validationCustom04">Address<span

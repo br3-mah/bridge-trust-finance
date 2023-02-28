@@ -124,11 +124,11 @@
                             Reject Loan Request
                         </a>
                         @endif
-                        @if($loan->status !== 1)
+                        {{-- @if($loan->status !== 1)
                         <a wire:click="reverse({{ $loan->id }})"onclick="confirm('Are you sure you want to reject this loan') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                             Reverse
                         </a>
-                        @endif
+                        @endif --}}
                         {{-- <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a> --}}
                     </div>
                     @if($loan->status !== 1)
@@ -153,8 +153,8 @@
             </div>
         </div>
         @endforelse
-        @if($loan_requests->count() < 2)
-        <tr style="height: 15vh">
+        @if($loan_requests->count() < 4)
+        <tr style="height: 25vh">
         
         </tr>
         @endif

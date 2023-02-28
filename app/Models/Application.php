@@ -75,6 +75,10 @@ class Application extends Model
         return User::where('id', $this->processed_by)->first();
     }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
+
     public function loan(){
         return $this->hasOne(Loans::class);
     }
