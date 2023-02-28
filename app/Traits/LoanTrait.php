@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Mail\LoanApplication;
 use App\Models\Application;
+use App\Models\LoanInstallment;
 use App\Models\LoanPackage;
 use App\Models\Loans;
 use Carbon\Carbon;
@@ -32,7 +33,7 @@ trait LoanTrait{
     }
 
     public function get_loan_details($id){
-        $data = Application::with('user')->where('id', $id)->first();
+        $data = Application::with('user.nextkin')->where('id', $id)->first();
         return $data;
     }
 
@@ -66,18 +67,38 @@ trait LoanTrait{
             }
     }
 
-    public function make_loan($x){
-        $due = Carbon::now()->addMonth($x->repayment_plan);
-        Loans::create([
-            'application_id' => $x->id,
-            'repaid' => 0,
-            'principal' => $x->amount,
-            'payback' => $x->amount * 0.2,
-            'penalty' => 0,
-            'interest' => $x->interest,
-            'final_due_date' => $due,
-            'closed' => 0
-        ]);
+    public function make_loan($x, $due_date){
+        try {
+            if($due_date !== ''){
+                $due = $due_date.' 00:00:00';
+            }else{
+                $due = Carbon::now()->addMonth($x->repayment_plan);
+            }
+            $loan = Loans::create([
+                'application_id' => $x->id,
+                'repaid' => 0,
+                'principal' => $x->amount,
+                'payback' => $x->amount * 0.2,
+                'penalty' => 0,
+                'interest' => $x->interest,
+                'final_due_date' => $due,
+                'closed' => 0
+            ]);
+    
+            $payback_amount = Application::payback($x->amount, $x->repayment_plan);
+            $installments = $payback_amount / $x->repayment_plan;
+            
+            for ($i=0; $i <= $x->repayment_plan; $i++) { 
+                $next_due = Carbon::now()->addMonth($i);
+                LoanInstallment::create([
+                    'loan_id' => $loan->id, 
+                    'next_dates' => $next_due, 
+                    'amount' => $installments
+                ]);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function accept_loan($id){

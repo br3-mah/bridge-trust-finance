@@ -45,11 +45,14 @@ class LoanRequestView extends Component
 
     public function openAcceptModal($id){
         $this->loan_request = Application::find($id);
+        $this->render();
     }
     public function accept($id){
+        
         DB::beginTransaction();
         try {
             $x = Application::find($id);
+            $this->make_loan($x, $this->due_date);
             if($this->isCompanyEnough($x->amount)){
                 $x->status = 1;
                 $x->save();
@@ -65,7 +68,6 @@ class LoanRequestView extends Component
                     'type' => 'loan-application',
                     'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
                 ];
-                $this->make_loan($x);
                 $this->deposit($x->amount, $x);
                 $this->send_loan_feedback_email($mail);
                 DB::commit();
@@ -73,9 +75,7 @@ class LoanRequestView extends Component
             }else{
                 session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
             }
-            
         } catch (\Throwable $th) {
-
             DB::rollback();
             dd($th);
             session()->flash('error', 'Oops something failed here, please contact the Administrator.'.$th);
@@ -139,7 +139,7 @@ class LoanRequestView extends Component
     }
 
 
-    public function reject($id){
+    public function reverse($id){
         try {
             $x = Application::find($id);
             $x->status = 3;
@@ -165,6 +165,30 @@ class LoanRequestView extends Component
         }
     }
 
+    public function rejectOnly($id){
+        try {
+            $x = Application::find($id);
+            $x->status = 3;
+            $x->save();
+            
+            $mail = [
+                'user_id' => '',
+                'application_id' => $x->id,
+                'name' => $x->fname.' '.$x->lname,
+                'loan_type' => $x->type,
+                'phone' => $x->phone,
+                'email' => $x->email,
+                'duration' => $x->repayment_plan,
+                'amount' => $x->amount,
+                'type' => 'loan-application',
+                'msg' => 'Your '.$x->type.' loan application request has been rejected'
+            ];
+            $this->send_loan_feedback_email($mail);
+            session()->flash('success', 'Loan has been rejected');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Oops something failed here, please contact the Administrator.');
+        }
+    }
 
     public function clear(){
         $this->due_date = '';

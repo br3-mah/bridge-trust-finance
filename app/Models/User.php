@@ -105,6 +105,9 @@ class User extends Authenticatable
      *
      * @return A collection of Post objects.
      */
+    public function nextkin(){
+        return $this->hasMany(NextOfKing::class);
+    }
     public function loanpackages(){
         return $this->hasMany(LoanPackage::class);
     }

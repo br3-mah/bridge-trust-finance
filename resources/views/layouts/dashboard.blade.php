@@ -13,7 +13,7 @@
         <meta property="og:image" content="social-image.png">
         <meta name="format-detection" content="telephone=no">
         <!-- PAGE TITLE HERE -->
-        <title>Bridge Trust Finance - Dashboard</title>
+        <title>Bridgetrust Finance - Dashboard</title>
         <!-- FAVICONS ICON -->
         <link rel="shortcut icon" type="image/png" href="{{ asset('public/images/logo-full.png') }}">
         <link href="{{ asset('public/vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
@@ -85,71 +85,71 @@
 		</div>
 	</div>
 	<!-- Required public/vendors -->
-	<script src="{{ asset('public/vendor/global/global.min.js') }}"></script>
-	<script src="{{ asset('public/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/global/global.min.js') }}" defer></script>
+	<script src="{{ asset('public/vendor/chart.js/Chart.bundle.min.js') }}" defer></script>
+	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}" defer></script>
 	<!-- Apex Chart -->
-	<script src="{{ asset('public/vendor/apexchart/apexchart.js') }}"></script>
+	<script src="{{ asset('public/vendor/apexchart/apexchart.js') }}" defer></script>
 	<!-- Chart piety plugin files -->
-	<script src="{{ asset('public/vendor/peity/jquery.peity.min.js') }}"></script>
-	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/peity/jquery.peity.min.js') }}" defer></script>
+	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}" defer></script>
 	<!--swiper-slider-->
-	<script src="{{ asset('public/vendor/swiper/js/swiper-bundle.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/swiper/js/swiper-bundle.min.js') }}" defer></script>
     <!-- Toastr -->
-    <script src="{{ asset('public/vendor/toastr/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/toastr/js/toastr.min.js') }}" defer></script>
     <!-- All init script -->
-    <script src="{{ asset('public/js/plugins-init/toastr-init.js') }}"></script>
+    <script src="{{ asset('public/js/plugins-init/toastr-init.js') }}" defer></script>
 	<!-- Date-picker -->
-	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
-	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}" defer></script>
+	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}" defer></script>
 	
     <!-- Datatable -->
-    <script src="{{ asset('public/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('public/js/plugins-init/datatables.init.js') }}"></script>
+    <script src="{{ asset('public/vendor/datatables/js/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('public/js/plugins-init/datatables.init.js') }}" defer></script>
 
 	<!-- public/vendorboard 1 -->
 	<script src="{{ asset('public/js/dashboard/dashboard-1.js') }}"></script>
 	<script src="{{ asset('public/vendor/wow-master/dist/wow.min.js') }}"></script>
-	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}"></script>
+	<script src="{{ asset('public/vendor/bootstrap-datetimepicker/js/moment.js') }}" defer></script>
 	<script src="{{ asset('public/vendor/bootstrap-select-country/js/bootstrap-select-country.min.js') }}"></script>
 	<!-- Form Steps -->
 	<script src="{{ asset('public/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js') }}"></script>
     
     {{-- Momentum --}}
-    <script src="{{ asset('public/vendor/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('public/vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('public/vendor/moment/moment.min.js') }}" defer></script>
+    <script src="{{ asset('public/vendor/bootstrap-daterangepicker/daterangepicker.js') }}" defer></script>
     <!-- clockpicker -->
-    <script src="{{ asset('public/vendor/clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/clockpicker/js/bootstrap-clockpicker.min.js') }}" defer></script>
     <!-- asColorPicker -->
-    <script src="{{ asset('public/vendor/jquery-asColor/jquery-asColor.min.js') }}"></script>
-    <script src="{{ asset('public/vendor/jquery-asGradient/jquery-asGradient.min.js') }}"></script>
-    <script src="{{ asset('public/vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/jquery-asColor/jquery-asColor.min.js') }}" defer></script>
+    <script src="{{ asset('public/vendor/jquery-asGradient/jquery-asGradient.min.js') }}" defer></script>
+    <script src="{{ asset('public/vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js') }}" defer></script>
     <!-- Material color picker -->
-    <script src="{{ asset('public/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+    <script src="{{ asset('public/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}" defer></script>
     <!-- pickdate -->
-    <script src="{{ asset('public/vendor/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.time.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('public/vendor/pickadate/picker.js') }}" defer></script>
+    <script src="{{ asset('public/vendor/pickadate/picker.time.js') }}" defer></script>
+    <script src="{{ asset('public/vendor/pickadate/picker.date.js') }}" defer></script>
 
 
 
     <!-- Daterangepicker -->
-    <script src="{{ asset('public/js/plugins-init/bs-daterange-picker-init.js')}}"></script>
+    <script src="{{ asset('public/js/plugins-init/bs-daterange-picker-init.js')}}" defer></script>
     <!-- Clockpicker init -->
-    <script src="{{ asset('public/js/plugins-init/clock-picker-init.js')}}"></script>
+    <script src="{{ asset('public/js/plugins-init/clock-picker-init.js')}}" defer></script>
     <!-- asColorPicker init -->
-    <script src="{{ asset('public/js/plugins-init/jquery-asColorPicker.init.js')}}"></script>
+    <script src="{{ asset('public/js/plugins-init/jquery-asColorPicker.init.js')}}" defer></script>
     <!-- Material color picker init -->
-    <script src="{{ asset('public/js/plugins-init/material-date-picker-init.js')}}"></script>
+    <script src="{{ asset('public/js/plugins-init/material-date-picker-init.js')}}" defer></script>
     <!-- Pickdate -->
-    <script src="{{ asset('public/js/plugins-init/pickadate-init.js')}}"></script>
-	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>	
-	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{ asset('public/js/plugins-init/pickadate-init.js')}}" defer></script>
+	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}" defer></script>	
+	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}" defer></script>
 
-	<script src="{{ asset('public/js/deznav-2-init.js') }}"></script>
-	<script src="{{ asset('public/js/custom.min.js') }}"></script>
-	<script src="{{ asset('public/js/demo-2.js') }}"></script>
-	<script>
+	<script src="{{ asset('public/js/deznav-2-init.js') }}" defer></script>
+	<script src="{{ asset('public/js/custom.min.js') }}" defer></script>
+	<script src="{{ asset('public/js/demo-2.js') }}" defer></script>
+	<script defer>
 		$(function() {
 			$('#datetimepicker').datetimepicker({
 				inline: true,

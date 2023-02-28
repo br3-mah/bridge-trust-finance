@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function store(User $user, Request $request) 
     {
-        DB::beginTransaction();
+        // DB::beginTransaction();
         try {
             // Role::firstOrCreate(['name' => 'employee']);
             //For demo purposes only. When creating user or inviting a user
@@ -48,10 +48,10 @@ class UserController extends Controller
                 'profile_photo_path' => $url ?? ''
             ]));
 
-            $details = [
-                'title' => 'Your account has been created successfully, please visit the site to login',
-                'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
-            ];
+            // $details = [
+            //     'title' => 'Your account has been created successfully, please visit the site to login',
+            //     'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
+            // ];
 
             $u->syncRoles($request->assigned_role);
             // Mail::to($u->email)->send(new SendUserInfoEmail($details));
@@ -66,32 +66,40 @@ class UserController extends Controller
             ];
 
             // dd($mail);
-            $eMail = new BTFAccount($mail);
-            Mail::to($u->email)->send($eMail);
-            if($request->assigned_role == 'user'){
-                $url = '/apply-for-a-loan/ '.$u->id;
-                Wallet::create([
-                    'email' => $u->email,
-                    'user_id' => $u->id
-                ]);
-                // $link = new HtmlString('<a target="_blank" href="' . $url . '">Create a loan for '.$u->fname.' '.$u->lname.'</a>');
-                $msg = '<a target="_blank" href="'.$url.'">Apply for Loan on Behalf</a>';
-                Session::flash('attention', "Borrower created successfully. ");
-                Session::flash('borrower_id', $u->id);
-            }else{
-                Session::flash('attention', "User created successfully.");
+            try {
+                $eMail = new BTFAccount($mail);
+                Mail::to($u->email)->send($eMail);
+                if($request->assigned_role == 'user'){
+                    $url = '/apply-for-a-loan/ '.$u->id;
+                    Wallet::create([
+                        'email' => $u->email,
+                        'user_id' => $u->id
+                    ]);
+                    // $link = new HtmlString('<a target="_blank" href="' . $url . '">Create a loan for '.$u->fname.' '.$u->lname.'</a>');
+                    $msg = '<a target="_blank" href="'.$url.'">Apply for Loan on Behalf</a>';
+                    Session::flash('success', "Borrower created successfully. ");
+                    Session::flash('borrower_id', $u->id);
+                }else{
+                    Session::flash('success', "User created successfully.");
+                }
+
+                DB::commit();
+                return back();
+            } catch (\Throwable $th) {
+                
+                Session::flash('error', "Failed. Check your internet connection and whether the user email is real");
+                DB::rollback();
+                return back();
             }
-            DB::commit();
-            return back();
         } catch (\Throwable $th) {
+            // dd($th);
             DB::rollback();
-            
             if($request->assigned_role == 'user'){
-                Session::flash('error_msg', 'Oops.. There is a borrower account already using this email.');
+                Session::flash('error', 'Oops.. There is a borrower account already using this email.');
             }elseif($request->assigned_role == 'employee'){
-                Session::flash('error_msg', 'Oops. There is an employee account already with this email.');
+                Session::flash('error', 'Oops. There is an employee account already with this email.');
             }else{
-                Session::flash('error_msg', 'Oops.. An with this email already exists. please try again.');
+                Session::flash('error', 'Oops.. An with this email already exists. please try again.');
             }
             return back();
         }
@@ -119,9 +127,50 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(User $user, Request $request) 
     {
-        $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.edit', $user)->with('info', 'The role was successfully assigned.');
+        DB::beginTransaction();
+        try {
+            // Role::firstOrCreate(['name' => 'employee']);
+            //For demo purposes only. When creating user or inviting a user
+            // you should create a generated random password and email it to the user        
+            if ($request->file('image_path')) {
+                $url = Storage::put('public/users', $request->file('image_path'));
+            }
+            
+            $user = User::where('id', $request->user_edit_id)->get()->first();
+            // dd($user);
+            $user->update(array_merge($request->all(), [
+                'profile_photo_path' => $url ?? ''
+            ]));
+
+            $user->syncRoles($request->assigned_role);
+
+
+            if($request->assigned_role == 'user'){
+                $url = '/apply-for-a-loan/ '.$user->id;
+                // $link = new HtmlString('<a target="_blank" href="' . $url . '">Create a loan for '.$u->fname.' '.$u->lname.'</a>');
+                $msg = '<a target="_blank" href="'.$url.'">Apply for Loan on Behalf</a>';
+                Session::flash('attention', "Borrower Updated successfully. ");
+                Session::flash('borrower_id', $user->id);
+            }else{
+                Session::flash('attention', "User Updated successfully.");
+            }
+            DB::commit();
+            return back();
+        } catch (\Throwable $th) {
+            // dd($th);
+            DB::rollback();
+            
+            if($request->assigned_role == 'user'){
+                Session::flash('error_msg', 'Oops.. There is a borrower account already using this email.');
+            }elseif($request->assigned_role == 'employee'){
+                Session::flash('error_msg', 'Oops. There is an employee account already with this email.');
+            }else{
+                Session::flash('error_msg', 'Oops.. An with this email already exists. please try again.');
+            }
+            return back();
+        }
+
     }
 }

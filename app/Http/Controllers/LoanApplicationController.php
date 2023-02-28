@@ -330,8 +330,8 @@ class LoanApplicationController extends Controller
     
                 'tpin_file' => $tpin_file ?? 'no file',
                 'payslip_file' => $payslip_file ?? 'no file',
-    
                 
+                'processed_by'=> auth()->user()->id
             ];
             
             if($form['bypass']){

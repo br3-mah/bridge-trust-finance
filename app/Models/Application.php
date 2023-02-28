@@ -51,6 +51,9 @@ class Application extends Model
         'due_date',
         'can_change',
 
+        'processed_by',
+        'approved_by',
+
         'monthly_payments',
         'maximum_deductable',
         'net_pay_blr', //net before loan recovery
@@ -58,6 +61,23 @@ class Application extends Model
         'service_cost' 
 
     ];
+    protected $appends = [
+        'done_by',
+        'confirmed_by'
+    ];
+
+    public function getDoneByAttribute(){
+        return User::where('id', $this->processed_by)->first();
+    }
+
+    public function getConfirmedByAttribute(){
+        // must change to loan
+        return User::where('id', $this->processed_by)->first();
+    }
+
+    public function loan(){
+        return $this->hasOne(Loans::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
@@ -117,7 +137,7 @@ class Application extends Model
     // ELIGIBILITY
     public static function isloan_eligible($loan){
         $basic_pay = $loan->user->basic_pay; // Clear
-        $net_pay_blr = 0; //Unclear //Net Pay Before Loan Recovery
+        $net_pay_blr = $loan->user->net_pay; //Unclear //Net Pay Before Loan Recovery
         $principal = $loan->amount; // Clear
         $interest = $loan->interest; // Clear
         $total_collectable = Application::payback($loan->amount, $loan->repayment_plan); // Clear
@@ -125,15 +145,12 @@ class Application extends Model
         $monthly_payment = Application::monthly_installment($loan->amount, $loan->repayment_plan); // Clear
         $maximum_deductable_amount = $net_pay_blr * 0.75; // Clear
         $net_pay_alr = $net_pay_blr - $monthly_payment; //Net Pay After Loan Recovery //Clear
-        $DOB = $loan->user->dob;
-        $DOA = $loan->created_at; //Unclear
-        $DOP = $loan->updated_at; //Unclear
         $credit_score = $monthly_payment > $maximum_deductable_amount;
 
         if($credit_score){
-            return 1;
+            return 'Eligible';
         }else{
-            return 0;
+            return 'Not Eligible';
         }
     }
 

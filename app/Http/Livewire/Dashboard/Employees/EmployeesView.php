@@ -19,6 +19,11 @@ class EmployeesView extends Component
     public $name, $fname, $lname, $phone, $address, $occupation, $nrc, $dob, $profile_photo_path, $gender, $loan_status, $basic_pay, $email;
     public $hold = '';
     public $style = '';
+    public $userEdit;
+
+    public function mount(){
+        $this->userEdit = '';
+    }
 
     public function render()
     {
@@ -40,6 +45,16 @@ class EmployeesView extends Component
             'users' => $users,
             'roles' => $roles
         ])->layout('layouts.dashboard');
+    }
+
+    public function editUser($id){
+        // $this->clear();
+        $this->userEdit = User::where('id',$id)->first();
+        // dd($this->userEdit);
+    }
+
+    public function clear(){
+        $this->userEdit = '';
     }
 
     public function destory($id){

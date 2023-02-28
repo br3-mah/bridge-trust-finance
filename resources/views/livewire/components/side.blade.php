@@ -78,6 +78,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li>
+                    <li><a href="{{ route('make-payment') }}">Payment Transactions</a></li>
                     <li><a href="{{ route('loan-wallet') }}">Manage Funds</a></li>
                     <li><a href="{{ route('loan-statements') }}">Loan Statements </a></li>
 

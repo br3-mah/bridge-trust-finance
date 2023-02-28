@@ -20,9 +20,14 @@ class BorrowerView extends Component
     public $name, $fname, $lname, $phone, $address, $occupation, $nrc, $dob, $profile_photo_path, $gender, $loan_status, $basic_pay, $email;
     public $hold = '';
     public $style = '';
+    public $userEdit;
 
+    public function mount(){
+        $this->userEdit = '';
+    }
     public function render()
     {
+
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
@@ -75,6 +80,16 @@ class BorrowerView extends Component
             // dd($th);
             return redirect()->route('borrowers');
         }
+    }
+
+    public function editUser($id){
+        // $this->clear();
+        $this->userEdit = User::where('id',$id)->first();
+        // dd($this->userEdit);
+    }
+
+    public function clear(){
+        $this->userEdit = '';
     }
 
     public function destroy($id){

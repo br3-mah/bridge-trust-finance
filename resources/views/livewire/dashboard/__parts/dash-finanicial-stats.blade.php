@@ -33,7 +33,7 @@
             </div> --}}
         </div>
         
-        <div wire:poll class="row mt-1">
+        <div wire:poll.5000ms class="row mt-1">
             @can('view company financial statistics')
             {{-- <div class="value-data col-xl-3 col-md-4 col-6">
                 <p class="mb-1">TOTAL LOANS</p>

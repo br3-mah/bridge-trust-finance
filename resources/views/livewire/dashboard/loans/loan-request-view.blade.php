@@ -108,26 +108,29 @@
     {{-- Modal --}}
     <div wire:ignore.self class="modal fade" id="updateDueDate" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-md">
+            <div class="modal-header bg-primary text-white">
+                <h3 style="color:#fff">{{ $loan_request->type }} Loan</h3>
+                <h5 style="color:#fff">{{ $loan_request->fname.' '.$loan_request->lname }}</h5>
+            </div>
             <div class="modal-content p-4">
-                <div class="modal-header bg-primary text-white">
-                    <h3 style="color:#fff">{{ $loan_request->type }} Loan</h3>
-                    <h5 style="color:#fff">{{ $loan_request->fname.' '.$loan_request->lname }}</h5>
-                </div>
                 @if ($loan_request !== null)
                 <div class="row mb-3">
                     <div class="col-xl-12">
                         <h5>Amount: {{ $loan_request->amount }}</h5>
                         <h5>Duration: {{ $loan_request->repayment_plan }} Months</h5>
-                        <h6>Applied on {{ $loan_request->created_at->toFormattedDateString() }}</h6>
+                        <h6>Submitted on {{ $loan_request->created_at->toFormattedDateString() }}</h6>
                     </div>
+                    
                 </div>
                 @endif
                 <div class="col-xl-12">
                     <div class="mb-3">
-                        <h5 class="text-label form-label text-warning">Change Due Date (Optional)</h5>
-                        <input name="datepicker" class="datepicker-default form-control" id="datepicker">
+                        <div>
+                            <h5 class="text-label form-label text-warning">Change Due Date (Optional)</h5>
+                            <input placeholder="yyyy-mm-dd" name="datepicker" wire:model.defer="due_date" class=" form-control" id="">
+                        </div>
                         <br>
-                        <button modal="close" wire:click="clear()" class="btn btn-light btn-square">Cancel</button>
+                        <button modal-bs-dismiss="close" wire:click="clear()" class="btn btn-light btn-square">Cancel</button>
                         @if($loan_request !== null)
                         <button wire:click="accept({{ $loan_request->id }})" class="btn btn-primary btn-square">Approve Loan</button>
                         @endif
@@ -446,4 +449,6 @@
             </div>
         </div>
     </div>
+    <!-- pickdate -->
+
 </div>

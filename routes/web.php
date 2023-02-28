@@ -9,6 +9,7 @@ use App\Http\Livewire\CareerPage;
 use App\Http\Livewire\ContactPage;
 use App\Http\Livewire\Dashboard\Accounting\LoanStatementView;
 use App\Http\Livewire\Dashboard\Accounts\AccountView;
+use App\Http\Livewire\Dashboard\Accounts\MakePaymentView;
 use App\Http\Livewire\Dashboard\Borrowers\BorrowerView;
 use App\Http\Livewire\Dashboard\Borrowers\LoanStatementView as BorrowersLoanStatementView;
 use App\Http\Livewire\Dashboard\Borrowers\SendBorrowerMessageView;
@@ -94,6 +95,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('client-account', AccountView::class)->name('client-account');
     Route::get('loan-statements', LoanStatementView::class)->name('loan-statements');
     Route::get('loan-wallet-account', LoanWalletView::class)->name('loan-wallet');
+    Route::get('transactions', MakePaymentView::class)->name('make-payment');
 
     // ----- Reports
     Route::get('reports/loan-report', ReportView::class)->name('loan-report');
@@ -105,6 +107,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('careers-settings', CareerSettings::class)->name('careers-settings');
     Route::get('contact-settings', ContactSettings::class)->name('contact-settings');
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
+    Route::post('/update-user', [UserController::class, 'update'])->name('update-user');
     Route::get('notifications', NotificationView::class)->name('notifications');
     Route::get('user-roles-and-permissions', UserRolesView::class)->name('roles');
 
@@ -114,7 +117,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 Route::resource('posts', PostController::class);
-Route::get('eligibility-score', EligibilityScoreView::class)->name('score');
+Route::get('eligibility-score/{id}', EligibilityScoreView::class)->name('score');
 
 // Site Pages
 Route::get('faq', FaqPage::class)->name('faq');

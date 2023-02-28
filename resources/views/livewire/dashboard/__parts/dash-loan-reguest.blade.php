@@ -73,7 +73,7 @@
                 </div>
             </div>
             
-            <div wire:poll class="row p-4">
+            <div wire:poll.5000ms class="row p-4">
                 @if($my_loan !== null)
                 @if($my_loan->complete == 1)
                     @if($my_loan->status == 1)

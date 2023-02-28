@@ -92,7 +92,7 @@
                             </div>
                             @endif
 
-                            @if($loan->status !== 3)
+                            @if($loan->status !== 3 && $loan->status !== 1)
                             <div class="shopping-cart mb-2 me-3">
                                 <button 
                                     class="btn btn-square btn-outline-danger" 
@@ -117,7 +117,11 @@
                                 </div>
                                 <div class="product-detail-content">
                                     <div class="new-arrival-content pr">
-                                        <p>Borrower: <span class="item">{{  $loan->fname ?? $loan->user->fname  }} {{ $loan->lname ?? $loan->user->lname }}</span> </p>
+                                        <p> Borrower: 
+                                            <a target="_blank" href="{{ route('client-account', ['key'=>$loan->user->id]) }}">
+                                                <span class="item">{{  $loan->fname ?? $loan->user->fname  }} {{ $loan->lname ?? $loan->user->lname }}</span>
+                                            </a> 
+                                        </p>
                                         <p>Address: <span class="item">{{ $loan->user->address ?? 'None'}}</span></p>
                                         <p>Phone No.: <span class="item">{{ $loan->phone ?? $loan->user->phone }}</span></p>
                                         <p>Sex: <span class="item">{{ $loan->gender ?? $loan->user->gender }}</span></p>
@@ -150,6 +154,20 @@
                                         <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
                                         <p>Total Interest Rate: <span class="item">{{ $loan->repayment_plan * 20 }}%</span></p>
                                         @endif
+                                        
+                                        <p>Credit Score: 
+                                            <span class="item">
+                                            @if(App\Models\Application::isloan_eligible($loan) == 1)
+                                            <a target="_blank" href="{{ route('score', ['id' => $loan->id]) }}">
+                                                <span class="badge badge-success">Eligible</span>
+                                            </a>
+                                            @else 
+                                            <a target="_blank" href="{{ route('score', ['id' => $loan->id]) }}">
+                                                <span class="badge badge-danger">Not Eligible</span>
+                                            </a>
+                                            @endif
+                                            </span>
+                                        </p>
                                         {{-- Loan Status --}}
                                         <p>Loan Progress:&nbsp;&nbsp;
                                             @if ($loan->status == 0)
@@ -189,6 +207,26 @@
                                 </div>
                             </div>
 
+                            @if($loan->type === 'Personal' && $loan->user->nextKin !== '')
+
+                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Next Of Kin</h5>
+                                </div>
+                                @forelse ($loan->user->nextKin as $nxtkin)
+                                <p>Firstname: <span class="item">{{ $nxtkin->fname }}</span></p>
+                                <p>Surname: <span class="item">{{ $nxtkin->lname }}</span></p>
+                                <p>Phone No.: <span class="item">{{ $nxtkin->phone }}</span></p>
+                                <p>Email: <span class="item">{{ $nxtkin->email }}</span></p>
+                                <p>Address: <span class="item">{{ $nxtkin->address }}</span></p>
+                                <p>Occupation: <span class="item">{{ $nxtkin->occupation }}</span></p>
+                                <p>Sex: <span class="item">{{ $nxtkin->gender }}</span></p>
+                                @empty
+                                    <p>Data Recorded</p>
+                                @endforelse
+                                {{-- <p>Relation: <span class="item">{{ $loan->user->nextKin->relation }}</span></p> --}}
+                            </div>
+                            @else 
                             <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
                                 <div class="title-sm">
                                     <h5>First Guarantors</h5>
@@ -208,6 +246,64 @@
                                 <p>2nd Garantors Email: <span class="item">{{ $loan->g2email }}</span></p>
                                 <p>2nd Garantors Sex: <span class="item">{{ $loan->g2_gender }}</span></p>
                                 <p>2nd Garantors Relation: <span class="item">{{ $loan->g_2relation }}</span></p>
+                            </div>
+                            @endif
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Staff Information</h5>
+                                </div>
+                                <div class="product-detail-content">
+                                    <div class="new-arrival-content pr">
+                                        <p>Processed By: <span class="item">{{  $loan->done_by ?? 'No Record' }}</span> </p>
+                                        @if($loan->done_by !== '')
+                                        <p>Processed On: <span class="item">{{ $loan->updated_at->toFormattedDateString()}}</span></p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-xxl-12 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Attched Documents</h5>
+                                </div>
+                                <div class="px-2 row">
+                                    <div class="profile-email col-lg-3 px-2 pt-2">
+                                        <p class="text-muted mb-0">Payslip</p>
+                                        <a href="{{ 'public/'.Storage::url($loan->payslip_file) }}" download="{{ $loan->payslip_file }}">
+                                            <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
+                                            <br>
+                                            Payslip File
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="profile-email col-lg-3 px-2 pt-2">
+                                        <p class="text-muted mb-0">Tpin Certificate</p>
+                                        <a href="{{ 'public/'.Storage::url($loan->tpin_file) }}" download="{{ $loan->payslip_file }}">
+                                            <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
+                                            <br>
+                                            TPIN File
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="profile-email col-lg-3 px-2 pt-2">
+                                        <p class="text-muted mb-0">NRC Copy</p>
+                                        <a href="{{ 'public/'.Storage::url($loan->nrc_file) }}" download="{{ $loan->payslip_file }}">
+                                            <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
+                                            <br>
+                                            NRC Copy 
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
