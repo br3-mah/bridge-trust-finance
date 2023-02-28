@@ -56,7 +56,7 @@
             <td style="">{{ 20 }}</td>
             <td style="">
                 @if($loan->status == 1)
-                {{ Application::payback($loan->amount, $loan->repayment_plan)}}
+                {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)}}
                 @else
                 0
                 @endif
