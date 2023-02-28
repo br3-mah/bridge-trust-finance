@@ -140,7 +140,7 @@
                         </svg>
                     </div>
                     @else 
-                    <span class="px-2"></span>
+                    <span class="px-3"></span>
                     @endif
                 </div>
                 @endcan	
