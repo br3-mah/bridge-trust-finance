@@ -56,10 +56,12 @@ trait LoanTrait{
                     $check->first()->update($data);
                     $contact_email = new LoanApplication($mail);
                     Mail::to($data['email'])->send($contact_email);
+                    return $check->id;
                 }else{
                     $item = Application::create($data);
                     $contact_email = new LoanApplication($mail);
                     Mail::to($data['email'])->send($contact_email);
+                    return $item->id;
                 }
 
             } catch (\Throwable $th) {

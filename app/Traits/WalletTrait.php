@@ -109,7 +109,11 @@ trait WalletTrait{
 
     public function getWithdrawRequests(){
         try {
-            return WithdrawRequest::with('user')->where('status', 0)->get();
+            if(Auth::user()->hasRole('user')){
+                return WithdrawRequest::with('user')->where('status', 0)->get();
+            }else{
+                return WithdrawRequest::where('user_id', auth()->user()->id)->with('user')->where('status', 0)->get();
+            }
         } catch (\Throwable $th) {
             return $th;
         }

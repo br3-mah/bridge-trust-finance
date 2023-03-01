@@ -18,12 +18,12 @@
                                         <span>{{ $data->name[0] }}</span>
                                     @endif
                                 @else
-                                    <img class="img-fluid rounded-circle bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
+                                    <img class="w-10 h-10 img-fluid rounded-sm bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
                                 @endif
                             </div>
                             <div class="profile-details">
                                 <div class="profile-name px-3 pt-2">
-                                    <h4 class="text-primary mb-0">{{ $data->fname.' '.$data->lname }}</h4>
+                                    <h4 style="text-transform: camelcase;" class="text-primary mb-0">{{ $data->fname.' '.$data->lname }}</h4sty>
                                     @foreach ($data->roles as $role)
                                         @if($role->name == 'user')
                                         <p>Borrower</p>

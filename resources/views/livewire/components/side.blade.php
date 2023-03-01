@@ -53,6 +53,9 @@
                     @can('view loan calculator')
                     <li><a href="{{ route('view-repayment-calculator') }}">Loan Calculator</a></li>
                     @endcan 
+                    @role('user')
+                    <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li>
+                    @endrole
                 </ul>
             </li>
             @endcan

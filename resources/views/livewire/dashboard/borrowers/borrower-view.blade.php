@@ -41,7 +41,7 @@
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
-                                    <td style="text-align:center"> 
+                                    <td style="text-align:center; text-transform: camelcase;"> 
                                         <a title="Open in new tab" href="{{ route('client-account', ['key'=>$user->id]) }}">{{ $user->fname.' '.$user->lname  }}</a>
                                     </td>
                                     <td style="text-align:center">{{ $user->nrc_no ?? 'No ID' }}</td>

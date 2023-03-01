@@ -38,7 +38,7 @@
                 @endif
             </td>
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['doa'] }}</td>
-            <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['borrower'] }}</td>
+            <td style="text-align: center; text-transform: camelcase;">{{ App\Models\Application::loan_assemenent_table($loan)['borrower'] }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_blr'] }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['principal'] }}</td>

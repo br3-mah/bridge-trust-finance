@@ -339,7 +339,7 @@ class LoanApplicationController extends Controller
             }else{
                 $data['complete'] = 0;
             }
-
+            // dd($data);
             $application = $this->apply_loan($data);
             $mail = [
                 'user_id' => '',
@@ -350,7 +350,7 @@ class LoanApplicationController extends Controller
                 'duration' => $form['repayment_plan'],
                 'amount' => $form['amount'],
                 'type' => 'loan-application',
-                'msg' => 'You have new a '.$form['type'].' loan application reques from '.$user->fname.' '.$user->lname.', please visit the site to view more details'
+                'msg' => 'You have new a '.$form['type'].' loan application request from '.$user->fname.' '.$user->lname.', please visit the site to view more details'
             ];
     
             $process = $this->send_loan_email($mail);

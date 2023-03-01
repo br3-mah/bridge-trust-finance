@@ -53,6 +53,8 @@ class Application extends Model
 
         'processed_by',
         'approved_by',
+        
+        'complete',
 
         'monthly_payments',
         'maximum_deductable',

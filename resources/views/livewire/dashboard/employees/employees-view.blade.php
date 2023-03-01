@@ -42,8 +42,8 @@
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
-                                    <td style="text-align: center">{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
-                                    <td style="text-align: center">
+                                    <td style="text-align: center; text-transform: camelcase;">{{ $user->fname ?? $user->name.' '.$user->lname ?? '' }} </td>
+                                    <td style="text-align: center; text-transform: camelcase;">
                                         @forelse($user->roles as $role)
                                             <span class="capitalize">{{ $role->name }}</span>
                                         @empty

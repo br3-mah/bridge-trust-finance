@@ -50,8 +50,8 @@
                     </span>
                 </a>
             </td>
-            <td style="">{{ $loan->fname.' '. $loan->lname }}</td>
-            <td style="">{{ $loan->type }}</td>
+            <td style="text-transform: camelcase;">{{ $loan->fname.' '. $loan->lname }}</td>
+            <td style="text-transform: camelcase;">{{ $loan->type }} Loan</td>
             <td style="">{{ $loan->amount }}</td>
             <td style="">{{ 20 }}</td>
             <td style="">

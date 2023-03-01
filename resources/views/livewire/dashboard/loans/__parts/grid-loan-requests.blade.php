@@ -12,8 +12,8 @@
                                <img src="images/contacts/1.jpg" class="avtar avtar-xxl me-3" alt="">
                            </div> --}}
                            <div class="user-details">
-                               <h4 class="user-name">{{ $loan->fname.' '. $loan->lname }}</h4>
-                               <span class="number">{{ $loan->type }} Loan</span>
+                               <h4 class="user-name" style="text-transform: camelcase;">{{ $loan->fname.' '. $loan->lname }}</h4>
+                               <span class="number" style="text-transform: camelcase;">{{ $loan->type }} Loan</span>
                                <span class="mail">K{{ $loan->amount }}</span> 
                            </div>
                        </div>

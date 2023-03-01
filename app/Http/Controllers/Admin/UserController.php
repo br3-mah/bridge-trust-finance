@@ -61,8 +61,8 @@ class UserController extends Controller
                 'to' => $u->email,
                 'from' => 'admin@bridgetrustfinance.co.zm',
                 'phone' => $u->phone,
-                'subject' => 'Bridge Trust Finance Loan Application',
-                'message' => 'Hey '.$u->fname.' '.$u->lname.' Your loan request has been sent, please sign in to see the application status. Your password is 20230101brigde.@2you',
+                'subject' => 'Your Brigetrust Finance Account',
+                'message' => 'Hello '.$u->fname.' '.$u->lname.' Your Bridgetrust Finance account is now ready, Click on login to goto your dashboard. Your password is 20230101brigde.@2you  -  feel free to change your password.',
             ];
 
             // dd($mail);
