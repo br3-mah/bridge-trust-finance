@@ -34,7 +34,7 @@
                                         <td style="">{{ $data->application->type }} Loan</td>
                                         <td style="">{{ $data->application->fname.' '.$data->application->lname }}</td>
                                         <td style="">K{{ $data->amount_settled }}</td>
-                                        <td style="">K{{ $data->payback - $data->amount_settled }}</td>
+                                        <td style="">K{{ App\Models\Application::payback($data->application->amount, $data->application->repayment_plan) - $data->amount_settled }}</td>
                                         <td>{{ $data->proccess_by ?? '' }}</td>
                                     </tr>
                                     @empty

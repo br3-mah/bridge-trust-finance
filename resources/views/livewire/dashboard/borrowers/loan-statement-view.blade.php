@@ -7,6 +7,7 @@
             <h6>Borrower Information</h6>
             <p>Name: {{  $loan->fname.' '.$loan->lname }}</p>
             <p>Address: {{ $loan->address ?? '' }}</p>
+            <p>NRC: {{ $loan->nrc_no ?? '' }}</p>
             <p>Phone: {{ $loan->phone ?? '' }}</p>
           </div>
           <div class="col-md-6">
@@ -23,7 +24,7 @@
             <tr>
               <th>Date</th>
               <th>Payment Amount</th>
-              <th>Principal</th>
+              <th>Loan Amount</th>
               <th>Interest</th>
               <th>Balance</th>
             </tr>

@@ -38,7 +38,7 @@
                         <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                     </svg>
                     <span class="mx-2">
-                        @if(App\Models\Application::isloan_eligible($loan) == 1)
+                        @if(App\Models\Application::loan_assemenent_table($loan)['credit_score'] == 'Eligible')
                         <span class="badge badge-primary">
                             Eligible
                         </span>

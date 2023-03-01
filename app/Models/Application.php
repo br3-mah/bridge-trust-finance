@@ -171,12 +171,14 @@ class Application extends Model
             'total_collectable' =>  Application::payback($loan->amount, $loan->repayment_plan), // Clear
             'payment_period' => $loan->repayment_plan, // Clear
             'monthly_payment' =>  Application::monthly_installment($loan->amount, $loan->repayment_plan), // Clear
-            'maximum_deductable_amount' => $maximum_deductable_amount = $loan->user->net_pay * 0.75, // Clear
+            'maximum_deductable_amount' => $loan->user->net_pay * 0.75, // Clear
             'net_pay_alr' => $loan->user->net_pay - Application::monthly_installment($loan->amount, $loan->repayment_plan), //Net Pay After Loan Recovery //Clear
             'dob' => $loan->user->dob,
             'doa' => $loan->created_at->toFormattedDateString(), //Date of Application
             'dop' => '', //Date of Payment
-            'credit_score' => Application::monthly_installment($loan->amount, $loan->repayment_plan) > $maximum_deductable_amount ? 'Eligible' : 'Not Eligible'
+
+            // Monthly installment
+            'credit_score' => Application::monthly_installment($loan->amount, $loan->repayment_plan) > ($loan->user->net_pay * 0.75) ? 'Eligible' : 'Not Eligible'
         ];
 
         return $data;

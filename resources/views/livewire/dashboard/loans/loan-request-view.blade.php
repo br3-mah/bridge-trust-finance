@@ -240,6 +240,18 @@
                                         <input name="datepicker" name="created_at" class="datepicker-default form-control" id="datepicker">
                                     </div>
                                 </div>
+                                {{-- <div class="col-lg-6 mb-3">
+                                    <div class="mb-3">
+                                        <label class="text-label form-label">Basic Pay*</label>
+                                        <input name="basic_pay" class=" form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <div class="mb-3">
+                                        <label class="text-label form-label">Net Pay*</label>
+                                        <input name="net_pay" class="form-control">
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div id="wizard_Time" class="tab-pane" role="tabpanel">
