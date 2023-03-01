@@ -180,7 +180,7 @@
                                             @endif
                                         </div>
                                     @else
-                                    <img src="{{ Storage::url('public/'.auth()->user()->profile_photo_path) }}" alt="">
+                                    <img src="{{ 'public/'.Storage::url(auth()->user()->profile_photo_path) }}" alt="">
                                     @endif
                                 </div>
                             </a>

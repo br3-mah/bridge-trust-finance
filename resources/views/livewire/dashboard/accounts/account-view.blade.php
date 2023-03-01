@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="profile-email px-2 pt-2">
                                     <h4 class="text-muted mb-0">Tpin Certificate</h4>
-                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->tpin_file) }}" download="{{ $data->loans->first()->payslip_file }}">
+                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->tpin_file) }}" download="{{ $data->loans->first()->tpin_file }}">
                                         <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
                                         <br>
                                         TPIN File
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="profile-email px-2 pt-2">
                                     <h4 class="text-muted mb-0">NRC Copy</h4>
-                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->nrc_file) }}" download="{{ $data->loans->first()->payslip_file }}">
+                                    <a href="{{ 'public/'.Storage::url($data->loans->first()->nrc_file) }}" download="{{ $data->loans->first()->nrc_file }}">
                                         <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
                                         <br>
                                         NRC Copy 

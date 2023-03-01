@@ -1,3 +1,4 @@
+<div wire:ignore>
 @if (session()->has('error'))
 <div wire:ignore.self class="alert alert-danger">
     {{ session('error') }}
@@ -18,3 +19,4 @@
     {{ session('warning') }}
 </div>
 @endif
+</div>

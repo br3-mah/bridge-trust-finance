@@ -80,7 +80,7 @@ trait LoanTrait{
                 'principal' => $x->amount,
                 'payback' => $x->amount * 0.2,
                 'penalty' => 0,
-                'interest' => $x->interest,
+                'interest' => $x->interest ?? 20,
                 'final_due_date' => $due,
                 'closed' => 0
             ]);

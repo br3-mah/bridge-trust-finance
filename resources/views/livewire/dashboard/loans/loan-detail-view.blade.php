@@ -281,7 +281,7 @@
                                     </div>
                                     <div class="profile-email col-lg-3 px-2 pt-2">
                                         <p class="text-muted mb-0">Tpin Certificate</p>
-                                        <a href="{{ 'public/'.Storage::url($loan->tpin_file) }}" download="{{ $loan->payslip_file }}">
+                                        <a href="{{ 'public/'.Storage::url($loan->tpin_file) }}" download="{{ $loan->tpin_file }}">
                                             <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
                                             <br>
                                             TPIN File
@@ -293,7 +293,7 @@
                                     </div>
                                     <div class="profile-email col-lg-3 px-2 pt-2">
                                         <p class="text-muted mb-0">NRC Copy</p>
-                                        <a href="{{ 'public/'.Storage::url($loan->nrc_file) }}" download="{{ $loan->payslip_file }}">
+                                        <a href="{{ 'public/'.Storage::url($loan->nrc_file) }}" download="{{ $loan->nrc_file }}">
                                             <img width="90" src="https://img.freepik.com/free-vector/illustration-folder-with-document_53876-37005.jpg?w=740&t=st=1676996943~exp=1676997543~hmac=d03d65c77d403c5ed653a733705504e21b5b3fb42e7cfe3c4340f90aaf55f9d2">
                                             <br>
                                             NRC Copy 

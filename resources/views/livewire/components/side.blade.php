@@ -80,7 +80,7 @@
                     <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li>
                     <li><a href="{{ route('make-payment') }}">Payment Transactions</a></li>
                     <li><a href="{{ route('loan-wallet') }}">Manage Funds</a></li>
-                    <li><a href="{{ route('loan-statements') }}">Loan Statements </a></li>
+                    {{-- <li><a href="{{ route('loan-statements') }}">Loan Statements </a></li> --}}
 
                 </ul>
             </li>
@@ -110,7 +110,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('loan-report') }}">Loan Report </a></li>
-                    <li><a href="{{ route('borrower-report') }}">Borrower Report</a></li>
+                    {{-- <li><a href="{{ route('borrower-report') }}">Borrower Report</a></li> --}}
 
                 </ul>
             </li>

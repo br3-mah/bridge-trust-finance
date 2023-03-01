@@ -13,7 +13,7 @@
                     </div>
                     <div class="card-body pb-0" style="padding-bottom: 30%">
                         @if (Session::has('attention'))
-                        <div wire:ignore class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+                        <div wire:ignore.self class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
                             <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
                             {{ Session::get('attention') }}
                             <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -21,7 +21,7 @@
                             </button> 
                         </div>
                         @elseif (Session::has('error_msg'))
-                        <div wire:ignore class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+                        <div wire:ignore.self class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
                             <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
                             {{ Session::get('error_msg') }}
                             <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -35,7 +35,7 @@
                                 @can('accept and reject loan requests')
                                 <div wire:ignore class="col-xl-3 center">
                                     <select multiple wire:model.lazy="status" class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Status">
-                                        <option value="[0,1,2,3]">Any</option>
+                                        <option value="">Any</option>
                                         <option value="0">Pending</option>
                                         <option value="1">Accepted</option>
                                         <option value="2">Under Review</option>
@@ -44,12 +44,12 @@
                                 </div>
                                 <div wire:ignore class="col-xl-3 center">
                                     <select multiple wire:model.lazy="type" class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Loan Types">
-                                        <option value="Personal">Personal</option>
-                                        <option value="Education">Education</option>
-                                        <option value="Asset Financing">Asset Financing</option>
-                                        <option value="Home Improvement">Home Improvements</option>
-                                        <option value="Agri Business">Agri Business</option>
-                                        <option value="Women in Business (Femiprise) Soft">Women in Business</option>
+                                        <option value="Personal">Personal Loan</option>
+                                        <option value="Education">Education Loan</option>
+                                        <option value="Asset Financing">Asset Financing Loan</option>
+                                        <option value="Home Improvement">Home Improvements Loan</option>
+                                        <option value="Agri Business">Agri Business Loan</option>
+                                        <option value="Women in Business (Femiprise) Soft">Women in Business Loan</option>
                                     </select>
                                 </div>
                                 @endcan

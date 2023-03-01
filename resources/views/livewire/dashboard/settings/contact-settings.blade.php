@@ -48,7 +48,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input type="text" class="form-control" id="validationCustom01" value="{{ $contacts->slogan ?? '' }}" wire:model="slogan"  placeholder="Enter a Slogan.." required>
+                                                                <input type="text" class="form-control" id="validationCustom01" value="{{ $contacts->slogan}}" wire:model="slogan"  placeholder="Enter a Slogan.." required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter a slogan.
                                                                 </div>
@@ -59,7 +59,7 @@
                                                                     class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input type="text" class="form-control" value="{{ $contacts->email ?? '' }}" wire:model="email" id="validationCustom02"  placeholder="Your valid email.." required>
+                                                                <input type="text" class="form-control" value="{{ $contacts->email }}" wire:model="email" id="validationCustom02"  placeholder="Your valid email.." required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter an Email.
                                                                 </div>
@@ -69,7 +69,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <select value="{{ $contacts->legal_structure ?? '' }}" wire:model="legal_structure" class="default-select wide form-control" id="validationCustom05">
+                                                                <select value="{{ $contacts->legal_structure }}" wire:model="legal_structure" class="default-select wide form-control" id="validationCustom05">
                                                                     <option data-display="Select">Please select</option>
                                                                     <option value="">None</option>
                                                                     <option value="PLc">Private</option>
@@ -89,7 +89,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->state ?? '' }}" type="text" class="form-control" wire:model="state" id="validationCustom07"  placeholder="Ex. Copperbelt" required>
+                                                                <input value="{{ $contacts->state }}" type="text" class="form-control" wire:model="state" id="validationCustom07"  placeholder="Ex. Copperbelt" required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter State.
                                                                 </div>
@@ -100,7 +100,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->city ?? '' }}" type="text" class="form-control" wire:model="city" id="validationCustom07"  placeholder="Ex. Ndola" required>
+                                                                <input value="{{ $contacts->city }}" type="text" class="form-control" wire:model="city" id="validationCustom07"  placeholder="Ex. Ndola" required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter a City.
                                                                 </div>
@@ -113,7 +113,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <select value="{{ $contacts->business_type ?? '' }}" wire:model="business_type" class="default-select wide form-control" id="validationCustom05">
+                                                                <select value="{{ $contacts->business_type }}" wire:model="business_type" class="default-select wide form-control" id="validationCustom05">
                                                                     <option  data-display="Select">Please select</option>
                                                                     <option value="">None</option>
                                                                     <option value="Banking">Banking Service</option>
@@ -132,7 +132,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->phone1 ?? '' }}" type="text" class="form-control" wire:model="phone1" id="validationCustom08" placeholder="097-999-8888" required>
+                                                                <input value="{{ $contacts->phone1  }}" type="text" class="form-control" wire:model="phone1" id="validationCustom08" placeholder="097-999-8888" required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter a phone no.
                                                                 </div>
@@ -143,7 +143,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->phone2 ?? '' }}" type="text" class="form-control" wire:model="phone2" id="validationCustom08" placeholder="097-999-8888" required>
+                                                                <input value="{{ $contacts->phone2  }}" type="text" class="form-control" wire:model="phone2" id="validationCustom08" placeholder="097-999-8888" required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter a phone no.
                                                                 </div>
@@ -154,7 +154,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->phone3 ?? '' }}" type="text" class="form-control" wire:model="phone3" id="validationCustom08" placeholder="097-999-8888" required>
+                                                                <input value="{{ $contacts->phone3 }}" type="text" class="form-control" wire:model="phone3" id="validationCustom08" placeholder="097-999-8888" required>
                                                                 <div class="invalid-feedback">
                                                                     Please enter a phone no.
                                                                 </div>
@@ -165,7 +165,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->facebook ?? '' }}" type="text" class="form-control" wire:model="facebook" id="validationCustom08" placeholder="https://link" required>
+                                                                <input value="{{ $contacts->facebook}}" type="text" class="form-control" wire:model="facebook" id="validationCustom08" placeholder="https://link" required>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row">
@@ -173,7 +173,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->instagram ?? '' }}" type="text" class="form-control" wire:model="instagram" id="validationCustom08" placeholder="https://link" required>
+                                                                <input value="{{ $contacts->instagram }}" type="text" class="form-control" wire:model="instagram" id="validationCustom08" placeholder="https://link" required>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row">
@@ -181,7 +181,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->linkedin ?? '' }}" type="text" class="form-control" wire:model="linkedin" id="validationCustom08" placeholder="https://link" required>
+                                                                <input value="{{ $contacts->linkedin }}" type="text" class="form-control" wire:model="linkedin" id="validationCustom08" placeholder="https://link" required>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row">
@@ -189,7 +189,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <input value="{{ $contacts->twitter ?? '' }}" type="text" class="form-control" wire:model="twitter" id="validationCustom08" placeholder="https://link" required>
+                                                                <input value="{{ $contacts->twitter }}" type="text" class="form-control" wire:model="twitter" id="validationCustom08" placeholder="https://link" required>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row">
@@ -197,7 +197,7 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <textarea value="{{ $contacts->address ?? '' }}" wire:model="address" class="form-control" id="validationCustom04"  rows="5" placeholder="Where exactly is the business found?" required></textarea>
+                                                                <textarea value="{{ $contacts->address  }}" wire:model="address" class="form-control" id="validationCustom04"  rows="5" placeholder="Where exactly is the business found?" required></textarea>
                                                                 <div class="invalid-feedback">
                                                                     Please enter an Address.
                                                                 </div>
