@@ -175,7 +175,7 @@
                                         </svg>
                                     </div>
                                     @can('transfer funds to customers')
-                                    <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                                    {{-- <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal3">
                                         <span class="dz-wallet icon-box icon-box-lg m-auto mb-1 d-block">
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path opacity="0.3" d="M15.1667 4.66667C15.1667 4.02233 14.6444 3.5 14 3.5C13.3557 3.5 12.8334 4.02233 12.8334 4.66667V18.6667C12.8334 19.311 13.3557 19.8333 14 19.8333C14.6444 19.8333 15.1667 19.311 15.1667 18.6667V4.66667Z" fill="white" />
@@ -184,7 +184,7 @@
                                             </svg>
                                         </span>
                                         <span>Transfer </span>
-                                    </button>
+                                    </button> --}}
                                     @endcan
                                 </div>
                                 <div class="card-body py-3 pt-1 d-flex align-items-center justify-content-between flex-wrap pe-3">
@@ -194,7 +194,7 @@
                                     </div>
 
                                     @can('send payment remainders to customers')
-                                    <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal4">
+                                    {{-- <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal4">
                                         <span class="dz-wallet icon-box icon-box-lg ms-3 mb-1 d-block">
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path opacity="0.3" d="M6.83329 2.33331H16.0258C16.4396 2.33331 16.84 2.47994 17.1559 2.74718L22.7134 7.44791C23.1066 7.78042 23.3333 8.26917 23.3333 8.78405V23.4305C23.3333 25.5195 23.3094 25.6666 21.1666 25.6666H6.83329C4.69048 25.6666 4.66663 25.5195 4.66663 23.4305V4.56942C4.66663 2.48046 4.69048 2.33331 6.83329 2.33331Z" fill="white" />
@@ -203,7 +203,7 @@
                                             </svg>
                                         </span>
                                         <span>Send<br>Remainders</span>
-                                    </button>
+                                    </button> --}}
                                     @endcan
                                 </div>
                             </div>
