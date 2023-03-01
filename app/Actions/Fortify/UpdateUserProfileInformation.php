@@ -52,7 +52,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     $loan->complete = 1;
                     $loan->save();
                 }
-                dd('nope');
+                // dd('nope');
             }
         }
 
