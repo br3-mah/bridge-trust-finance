@@ -134,7 +134,7 @@
                     <div class="d-flex py-2 justify-content-between flex-wrap">
                         @role('user')
                         <div class="payment-content">
-                            <h3 class="font-w500 mb-2 text-white">Welcome to Our Loan Management System: Effortlessly Manage Your Loan Today!</h3>
+                            <h3 class="font-w500 mb-2 text-white">Welcome to Bridgetrust Finance: Effortlessly Manage Your Loan Today!</h3>
                             @if($my_loan !== null)
                                 @if ($my_loan->complete == 0)
                                 <a href="{{ route('profile.show') }}" class="dz-para">We are glad to see you! Make sure your kyc profile is Complete </a>
@@ -145,9 +145,9 @@
                         <div class="mb-4 mb-xl-0">
                             @can('make payments')
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            {{-- <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                 Make a payment
-                            </button>
+                            </button> --}}
                             @endcan
                             @can('withdraw funds')
                             <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal2">

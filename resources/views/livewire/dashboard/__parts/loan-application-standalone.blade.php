@@ -269,24 +269,24 @@
                     </div> --}}
                     <div id="wizard_Payment" class="tab-pane" role="tabpanel">
                         <div class="row">
-                            <div class="col-lg-6 mb-2">
+                            {{-- <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">NRC Copy*</label>
                                     <input type="file" name="nrc_file" class="form-control" id="nrcFile" required>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Payslip (leave empty if not applicable)</label>
                                     <input type="file" name="payslip_file" class="form-control" id="payslip_file" required>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-2">
+                            {{-- <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">TPIN*</label>
                                     <input type="file" name="tpin_file" class="form-control" id="tpin_file" required>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         {{-- <div class="row">

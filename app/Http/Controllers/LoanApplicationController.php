@@ -182,15 +182,14 @@ class LoanApplicationController extends Controller
                             
                 if($loan !== null){
                     if($loan->tpin_file !== 'no file' && $loan->payslip_file !== 'no file' && $loan->nrc_file !== null){
+                        // dd('here in loan');
                         $loan->complete = 1;
                         $loan->save();
-                        
+                        DB::commit();
                         return redirect()->to('/dashboard');
                     }
                 }
             }
-            
-            DB::commit();
             return redirect()->to('/user/profile');
         } catch (\Throwable $th) {
             DB::rollback();

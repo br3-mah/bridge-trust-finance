@@ -40,17 +40,19 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->updateProfilePhoto($input['photo']);
         }
 
-        // dd(isset($input['address']));
+        // dd(isset($input));
         if(isset($input['id_type']) && isset($input['net_pay']) && isset($input['basic_pay']) && isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
 
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->where('user_id', auth()->user()->id)->first();
-                        
+            dd($loan); 
             if($loan !== null){
                 if($loan->tpin_file !== 'no file' && $loan->payslip_file !== 'no file' && $loan->nrc_file !== null){
+                    // dd('here in profile');
                     $loan->complete = 1;
                     $loan->save();
                 }
+                dd('nope');
             }
         }
 
