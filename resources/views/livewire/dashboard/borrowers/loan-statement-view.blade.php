@@ -35,7 +35,7 @@
               <td>&nbsp;K{{ $data->amount_settled }}</td>
               <td>&nbsp;K{{ $loan->amount }}</td>
               <td>&nbsp;{{ 20 * $loan->repayment_plan}}%</td>
-              <td>&nbsp;K{{ App\Models\Application::payback($loan->amount, $loan->repayment_plan) - $transaction->amount_settled }}</td>
+              <td>&nbsp;K{{ App\Models\Application::payback($loan->amount, $loan->repayment_plan) - $data->amount_settled }}</td>
             </tr>
             @empty
             <div>No Payments Recorded</div>
