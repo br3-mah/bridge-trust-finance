@@ -30,26 +30,27 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'dob' => ['required'],
             'gender' => ['required'],
             'nrc_no' => ['required'],
+            'basic_pay' => ['required'],
             'net_pay' => ['required'],
             'id_type' => ['required'],
-            'basic_pay' => ['required']
         ])->validateWithBag('updateProfileInformation');
 
         
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
         }
-        
-        if(isset($input['id_type']) && isset($input['basic_pay']) && isset($input['net_pay']) && isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
-            
+
+        // Working fine
+        if(isset($input['id_type']) && isset($input['net_pay']) && isset($input['basic_pay']) && isset($input['address']) && isset($input['phone']) && isset($input['occupation']) && isset($input['gender']) && isset($input['nrc_no']) && isset($input['dob'])){
+
             $loan = Application::where('status', 0)->where('complete', 0)
                         ->where('user_id', auth()->user()->id)->first();
-                        
+            
             if($loan !== null){
                 if($loan->tpin_file !== 'no file' && $loan->payslip_file !== 'no file' && $loan->nrc_file !== null){
+                    
                     $loan->complete = 1;
                     $loan->save();
-                }
             }
         }
 
@@ -58,6 +59,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
 
         } else {
+            // dd($input);
             try {
                 $user->forceFill([
                     'fname' => $input['fname'],
@@ -88,15 +90,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * @param  array  $input
      * @return void
      */
-    protected function updateVerifiedUser($user, array $input)
-    {
+    protected function updateVerifiedUser($user, array $input){
         $user->forceFill([
             'fname' => $input['fname'],
             'lname' => $input['lname'],
             'email' => $input['email'],
             'basic_pay' => $input['basic_pay'],
-            'net_pay' => $input['net_pay'],
-            'id_type' => $input['id_type'],
             'nrc_no' => $input['nrc_no'],
             'phone' => $input['phone'],
             'address' => $input['address'],

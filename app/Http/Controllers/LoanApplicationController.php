@@ -250,6 +250,7 @@ class LoanApplicationController extends Controller
     
                 'complete' => 0
             ];
+            // dd($data);
             $application = $this->apply_loan($data);
             $mail = [
                 'user_id' => '',
