@@ -279,6 +279,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         // Previous button event
         this.main.find('.sw-btn-finish').on("click", function () {
           // e.preventDefault();
+          // Submit the loan Form
+          document.getElementById("apply_new_loan").style.display = "none";
+          document.getElementById("loaderdashboard").style.display = "block";
           document.getElementById("kyc_form").submit();
         }); 
         
@@ -365,6 +368,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       key: "_showNext",
       value: function _showNext() {
         var si = this._getNextShowable(this.current_index);
+
+        // Step 1
+        var principal = document.getElementById("principalLoan2").value;
+        // var validatePrincipal = document.getElementById("validprincipal2");
+        
+        if(principal === ''){
+          document.getElementById("validprincipal2").style.display = "block";
+          return false;
+        }
+        // var lname = document.getElementById("lnameLoan2").value;
+        // var validateln = document.getElementById("validlname2");
+        // var gender = document.getElementById("genderLoan2").value;
+        // var validateGender = document.getElementById("validGender");
 
         if (si === false) {
           return false;
@@ -463,7 +479,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       key: "_isDone",
       value: function _isDone(idx) {
         var elm = this.steps.eq(idx);
-
+        
         if (elm.hasClass('done')) {
           return true;
         }
@@ -815,7 +831,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             case 'last':
               this.main.find('.sw-btn-next').addClass("disabled");
-              // this.main.find('.sw-btn-next').hide();
+              this.main.find('.sw-btn-next').hide();
               this.main.find('.sw-btn-finish').show();
               break;
 

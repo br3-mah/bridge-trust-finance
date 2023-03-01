@@ -1,5 +1,5 @@
     <div wire:ignore>
-        <div class="p-4">
+        <div id="apply_new_loan" class="p-4">
 
             <div id="smartwizard" class="form-wizard order-create">
                 <ul class="nav nav-wizard">
@@ -76,7 +76,12 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="mb-3">
                                     <label class="text-label form-label">Amount (ZMW)</label>
-                                    <input type="text" name="amount" class="form-control" placeholder="0.00" required>
+                                    <input type="text" id="principalLoan2" name="amount" class="form-control" placeholder="0.00" required>
+                                    <div id="validprincipal2" class="alert alert-danger alert-dismissible fade show">
+                                        <strong>Enter amount!</strong>  How much do you want to borrow?
+                                    </div>
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-2">
@@ -300,6 +305,19 @@
                     </div>
                 </form>
             </div>
+        </div>
 
+        <div id="loaderdashboard" class="mx-auto">
+            <div class="container-fluid content-center justify-center items-center">
+                <img width="60" src="{{ asset('public/loader/loading.gif') }}">
+                <span>Please wait a minute</span>
+            </div>
         </div>
     </div>
+    <script language = "javascript" type = "text/javascript">
+        document.getElementById("validprincipal2").style.display = "none";
+        document.getElementById("loaderdashboard").style.display = "none";
+        // var principal = document.getElementById("principalLoan2").value;
+        // var validatePrincipal = document.getElementById("validprincipal2");
+        // validatePrincipal.hide();
+    </script>
