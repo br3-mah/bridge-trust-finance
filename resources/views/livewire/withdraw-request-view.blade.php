@@ -18,6 +18,8 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Withdraw Code</th>
+                                    <th>Mobile Money</th>
+                                    <th>Card</th>
                                     <th>Date Sent</th>
                                     <th>Amount</th>
                                     <th>Actions</th>
@@ -28,6 +30,8 @@
                                 <tr>
                                     <th>{{$req->id }}</th>
                                     <td>{{ $req->user->fname.' '.$req->user->lname }}</td>
+                                    <td>{{ $req->mobile_number ?? ''}}</td>
+                                    <td>{{ $req->card_number ?? ''}}</td>
                                     <td><span class="badge badge-primary">{{ $req->ref ?? 'invalid' }}</span>
                                     </td>
                                     <td>{{ $req->created_at->toFormattedDateString() }}</td>
