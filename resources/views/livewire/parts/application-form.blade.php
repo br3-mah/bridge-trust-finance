@@ -510,13 +510,19 @@
                                  </div> 
                             </section>
                         </form>
+
+                        <div id="webloaderdashboard" class="mx-auto">
+                            <div style="margin:auto" class="container-fluid content-center justify-center items-center">
+                                <img width="60" src="{{ asset('public/loader/loading.gif') }}">
+                                <span>Please wait a minute</span>
+                            </div>
+                        </div>
                     </div>
                 </main>
             </div>
 
         </div>
     </div>
-
     <style>
     
         .modal2 {
@@ -633,6 +639,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            document.getElementById("webloaderdashboard").style.display = "none";
             var step2B = $('#step2B');
             var step2P = $('#step2P');
             var guarant = $('#guarant');

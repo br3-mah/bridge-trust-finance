@@ -13,7 +13,8 @@
                     <div class="table-responsive">
 
                         @include('livewire.dashboard.__parts.dash-alerts')
-                        <table wire:ignore.self wire:poll.5000ms id="example3" class="display" style="min-width: 845px">
+                        {{-- No Polling --}}
+                        <table wire:ignore.self id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th>Profile</th>

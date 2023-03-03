@@ -33,15 +33,16 @@ class DashboardView extends Component
         WithdrawRequest::create([
             'wallet_id' => Wallet::where('user_id', auth()->user()->id)->first()->id,
             'amount' => $this->withdraw_amount,
-            'ref' => substr($uuid, 0, 4),
+            'ref' => substr($uuid, 0, 6),
             'withdraw_method' => $this->payment_method,
             'mobile_number' => $this->mobile_number,
             'card_name' => $this->card_name,
             'bank_name' => $this->bank_name,
+            'comments' => 'You have received a new wallet withdraw request',
             'card_number' => $this->card_number,
             'user_id' => auth()->user()->id
         ]);
-        session()->flash('success', 'Your withdraw request has been sent. Request ID: #REF320193S');
+        session()->flash('success', 'Your withdraw request has been sent');
     }
 
     public function approve($id){

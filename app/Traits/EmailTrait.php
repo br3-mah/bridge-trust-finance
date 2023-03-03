@@ -11,13 +11,16 @@ use App\Notifications\BTFLoanRequest;
 use App\Notifications\LoanRemainder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use App\Mail\ContactEmail;
 
 trait EmailTrait{
 
     // This email send a contact message from contact us page /////////////
     public function send_contact_email($details){
         try {
-            dispatch(new SendLoanRequestEmailJob($details));
+            // dispatch(new SendLoanRequestEmailJob($details));
+            $contact_email = new ContactEmail($details);
+            Mail::to($this->emailData['to'])->send($contact_email);
             return true;
         } catch (\Throwable $th) {
             return false;

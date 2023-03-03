@@ -28,8 +28,9 @@
         <!-- Datatable -->
         <link href="{{ asset('public/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
         <link href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
-    
-
+        
+        <!-- Toastr -->
+        <link rel="stylesheet" href="{{ asset('public/vendor/toastr/css/toastr.min.css') }}">   
         <!-- Daterange picker -->
         <link href="{{ asset('public/vendor/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
         <!-- Clockpicker -->

@@ -25,6 +25,17 @@
                         </div>
                         @endif
                         <div class="table-responsive patient">
+                            <div wire:ignore class="col-xl-12">
+                                <div class="alert alert-dark alert-dismissible fade show">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
+                                    </button>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <small class="mb-0">List of loan which have past their final due date.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div wire:ignore class="row py-2">
                                 @can('accept and reject loan requests')
                                 <div class="col-xl-3 center">

@@ -13,6 +13,17 @@
 
                     <div class="card-body pb-0">
                         <div class="table-responsive patient">
+                            <div wire:ignore class="col-xl-12">
+                                <div class="alert alert-dark alert-dismissible fade show">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
+                                    </button>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <small class="mb-0">List of payment and repayment transactions. Record loan repayments</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
                                 <thead>
                                     <tr>

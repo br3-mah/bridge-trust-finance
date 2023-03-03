@@ -45,24 +45,24 @@
                     </div>
                     
                     <label class="form-label">Amount</label>
-                    <input wire:model="withdraw_amount" type="text" class="form-control mb-3" id="amount" placeholder="ZMW">
+                    <input wire:model.defer="withdraw_amount" type="text" class="form-control mb-3" id="amount" placeholder="ZMW">
                     
                     @if($payment_method === 'Mobile Money')
                         <label class="form-label">Mobile Number</label>
-                        <input wire:model="mobile_number" type="text" class="form-control mb-3" id="mobile_num" placeholder="Mobile Money Number">
+                        <input wire:model.defer="mobile_number" type="text" class="form-control mb-3" id="mobile_num" placeholder="Mobile Money Number">
                     @endif
                     @if($payment_method === 'Card')
                         <label class="form-label">Card Name</label>
-                        <input wire:model="card_name" type="text" class="form-control mb-3" id="card_name" placeholder="">
+                        <input wire:model.defer="card_name" type="text" class="form-control mb-3" id="card_name" placeholder="">
                         <label class="form-label">Bank Name</label>
-                        <input wire:model="bank_name" type="text" class="form-control mb-3" id="bank_name" placeholder="">
+                        <input wire:model.defer="bank_name" type="text" class="form-control mb-3" id="bank_name" placeholder="">
                         <label class="form-label">Card Number</label>
-                        <input wire:model="card_number" type="text" class="form-control mb-3" id="card_number" placeholder="">
+                        <input wire:model.defer="card_number" type="text" class="form-control mb-3" id="card_number" placeholder="">
                     @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button wire:loading.attr="disabled" wire:click="submitWithdrawRequest()" data-bs-dismiss="modal" class="btn btn-primary">Submit Request</button>
+                    <button wire:loading.attr="disabled" wire:click="submitWithdrawRequest()" data-bs-dismiss="modal" id="withdraw-request-toastr-success-bottom-left" class="btn btn-primary">Submit Request</button>
                 </div>
             </div>
         </div>
@@ -227,6 +227,7 @@
                     @endif
                 @endrole
 
+                {{-- <button type="button" class="btn btn-dark mb-2  me-2" id="toastr-success-bottom-left">Bottom Left</button> --}}
                 @can('company overview dashboard')
                 <div class="row">
                     <div class="col-xl-8">
@@ -418,7 +419,7 @@
                         @endcan
 
                         @can('see the list of users')
-                        <div class="row">
+                        <div wire:ignore class="row">
                             <div class="col-xl-6">
                                 <div class="card">
                                     <div class="card-body">

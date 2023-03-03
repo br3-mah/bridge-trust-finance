@@ -11,7 +11,17 @@
                 <div class="card-body pb-0">
 
                     <div class="table-responsive">
-
+                        <div wire:ignore class="col-xl-12">
+                            <div class="alert alert-dark alert-dismissible fade show">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
+                                </button>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <small class="mb-0">List of all Guarantors with respective borrowers.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
