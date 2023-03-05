@@ -457,10 +457,18 @@
                         </div>
                     </form>
                 </div>
-    
+                <div id="loaderloanrequest" class="mx-auto">
+                    <div class="container-fluid content-center justify-center items-center">
+                        <img width="60" src="{{ asset('public/loader/loading.gif') }}">
+                        <span>Please wait a minute</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- pickdate -->
 
+    <script language = "javascript" type = "text/javascript">
+        document.getElementById("loaderloanrequest").style.display = "none";
+    </script>
 </div>

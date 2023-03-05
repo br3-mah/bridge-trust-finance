@@ -450,6 +450,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       value: function _isDone(idx) {
         var elm = this.steps.eq(idx);
 
+        // submit
         if (elm.hasClass('done')) {
           return true;
         }

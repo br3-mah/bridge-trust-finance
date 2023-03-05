@@ -118,28 +118,14 @@
                     </div>
                     <!--End Single Partner Logo Box-->
                     <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-2.png') }}" alt="Awesome Image"></a>
+                    <div style="margin-left:20px" class="single-partner-logo-box">
+                        <a href="#"><img src="{{ asset('public/box/partners/cbu2.jpeg') }}" alt="Awesome Image"></a>
                     </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-3.png') }}" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/partners/mulu.jpeg') }}" alt="Awesome Image"></a>
                     </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
                     <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-4.png') }}" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-5.png') }}" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/images/brand/brand-1-6.png') }}" alt="Awesome Image"></a>
+                        <a href="#"><img src="{{ asset('public/box/partners/muku.png') }}" alt="Awesome Image"></a>
                     </div>
                     <!--End Single Partner Logo Box-->
                 </div>

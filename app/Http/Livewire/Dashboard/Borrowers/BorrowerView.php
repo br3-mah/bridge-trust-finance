@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
+
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
@@ -10,6 +12,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\Wallet;
+use App\Classes\Exports\BorrowerExport;
 use Livewire\WithFileUploads;
 
 class BorrowerView extends Component
@@ -31,13 +34,17 @@ class BorrowerView extends Component
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::role('user')->latest()->paginate(7);
+        $users = User::role('user')->orderBy('created_at', 'desc')->paginate(7);
 
         return view('livewire.dashboard.borrowers.borrower-view',[
             'users' => $users,
             'roles' => $roles
         ])
         ->layout('layouts.dashboard');
+    }
+
+    public function borrowerExcelExport(){
+        return Excel::download(new BorrowerExport, 'customers.xlsx');
     }
 
     public function store(){

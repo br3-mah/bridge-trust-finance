@@ -14,6 +14,11 @@
 
                         @include('livewire.dashboard.__parts.dash-alerts')
                         {{-- No Polling --}}
+                        <div class="py-2">
+                            <button wire:click="borrowerExcelExport()" class="btn btn-square btn-success">Export XSL</button>
+                            <button wire:click="render()" class="btn btn-square btn-secondary">Referesh</button>
+                        </div>
+
                         <table wire:ignore.self id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
@@ -22,8 +27,9 @@
                                     <th>ID Number</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
-                                    <th>Total Paid</th>
-                                    <th>Open Loan Balance</th>
+                                    <th>Total<br>Borrowed</th>
+                                    <th>Total<br>Paid</th>
+                                    <th>Open Loan<br>Balance</th>
                                     <th>Since</th>
                                     <th>Action</th>
                                 </tr>
@@ -48,8 +54,9 @@
                                     <td style="text-align:center">{{ $user->nrc_no ?? 'No ID' }}</td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->phone }}</strong></a></td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $user->email }}</strong></a></td>
-                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
-                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>K{{ App\Models\Loans::customer_total_borrowed($user->id) }}</strong></a></td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>K{{ App\Models\Loans::customer_total_paid($user->id) }}</strong></a></td>
+                                    <td style="text-align:center"><a href="javascript:void(0);"><strong>K{{ App\Models\Loans::customer_balance($user->id) }}</strong></a></td>
                                     <td style="text-align:center">{{ $user->created_at->diffForHumans(); }}</td>
                                     <td style="text-align:center">
                                         <div class="d-flex">
@@ -64,7 +71,7 @@
                                                     <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
                                                 </svg>
                                             </a>
-                                            <a href="#"  data-bs-toggle="modal" data-bs-target="#updateBorrowerData" wire:click="editUser({{$user->id}})">
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#updateBorrowerData" wire:click="editUser({{$user->id}})">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -102,8 +109,8 @@
     <div wire:ignore class="modal fade bd-example-modal-lg {{ $hold }}" {{ $style }} id="createUserModeling">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Borrower</h5>
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" style="color:#fff">Create Borrower</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
@@ -112,6 +119,15 @@
                     @csrf
                     <div class="modal-body">
                         <div class="col-lg-12">
+                            <div class="alert alert-dark alert-dismissible fade show">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
+                                </button>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <small class="mb-0">Make sure to enter a real customer email.</small>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-validation">
@@ -278,7 +294,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" id="create-borrower-toastr-success-bottom-left" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                     </div>  
                 </form>
             </div>
@@ -287,8 +303,8 @@
     @endif
 
 
-    {{-- @if($editModal) --}}
-    <div wire:ignore.self wire:poll class="modal fade bd-example-modal-lg" id="updateBorrowerData">
+    @isset($userEdit)
+    <div wire:ignore.self class="modal fade bd-example-modal-lg" id="updateBorrowerData">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -478,7 +494,7 @@
             </div>
         </div>
     </div>
-    {{-- @endif --}}
+    @endisset
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">
