@@ -8,16 +8,14 @@ use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class LoanExport implements FromCollection, WithHeadings
+class PMDExport implements FromCollection, WithHeadings
 {
-    public $status;
-    public function __construct(int $status)
-    {
-        $this->status = $status;
-    }
     public function collection()
     {
-        return Application::all();
+        // Past Maturity Date Report
+        return Application::with(['loan' => function ($query) {
+            $query->where('final_due_date', '<', now());
+        }])->with('user')->where('status', 1)->where('complete', 1)->get();
     }
 
     public function headings(): array
@@ -35,11 +33,6 @@ class LoanExport implements FromCollection, WithHeadings
             'Amount',
             'Interest'
         ];
-    }
-
-    public function query()
-    {
-        return Application::query()->where('status', $this->status);
     }
 
 }

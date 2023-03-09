@@ -51,8 +51,9 @@
     
         @livewireStyles
 
-        <!-- Scripts -->
-        {{-- <script src="{{ mix('js/app.js') }}" ></script> --}}
+        <!-- Scripts -->    
+        <!-- jsPDF library -->
+
     </head>
 
     <body class="dark-mode">

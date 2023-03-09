@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Dashboard\Accounts;
 
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\BlackList;
 use App\Models\User;
 use Illuminate\Http\Client\Request;
 use Livewire\Component;
+use App\Classes\Exports\AccountDetailExportExport;
 
 class AccountView extends Component
 {
@@ -26,6 +28,10 @@ class AccountView extends Component
               ->orWhere('lname', $key)
               ->orWhere('email', $key)
               ->orWhere('nrc', $key)->with('loans')->with('wallet')->with('blacklist')->get()->first();
+    }
+
+    public function exportPDF(){
+        return Excel::download(new AccountDetailExportExport, 'invoices.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 
     public function blockUser(){

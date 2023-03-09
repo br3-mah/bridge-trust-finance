@@ -99,7 +99,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" id="validationCustom01" wire:model="dept" required>
+                                                            <input type="text" class="form-control" id="validationCustom01" wire:model.defer="dept" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter a Department.
                                                             </div>
@@ -110,28 +110,30 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" id="validationCustom01" wire:model="job_role"  placeholder="Ex. Loan Officer" required>
+                                                            <input type="text" class="form-control" id="validationCustom01" wire:model.defer="job_role"  placeholder="Ex. Loan Officer" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter a Job Role.
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <div class="mb-3 row">
                                                         <label class="col-lg-4 col-form-label" for="validationCustom02">Location<span
                                                                 class="text-danger">*</span>
                                                         </label>
-                                                        <select wire:model="location" class="default-select wide form-control" id="validationCustom05">
-                                                            <option  data-display="Select">Please select</option>
-                                                            <option value="Male">Lusaka</option>
-                                                            <option value="Kabwe">Kabwe</option>
-                                                            <option value="Kapiri Mposhi">Kapiri Mposhi</option>
-                                                            <option value="Ndola">Ndola</option>
-                                                            <option value="Kitwe">Kitwe</option>
-                                                            <option value="Kafue">Kafue</option>
-                                                            <option value="Livingstone">Livingstone</option>
-                                                            <option value="Mansa">Mansa</option>
-                                                            <option value="Chipata">Chipata</option>
-                                                        </select>
+                                                        <div class="col-lg-6">
+                                                            <select wire:model.defer="location" class="default-select form-control" id="validationCustom05">
+                                                                <option  data-display="Select">Please select</option>
+                                                                <option value="Male">Lusaka</option>
+                                                                <option value="Kabwe">Kabwe</option>
+                                                                <option value="Kapiri Mposhi">Kapiri Mposhi</option>
+                                                                <option value="Ndola">Ndola</option>
+                                                                <option value="Kitwe">Kitwe</option>
+                                                                <option value="Kafue">Kafue</option>
+                                                                <option value="Livingstone">Livingstone</option>
+                                                                <option value="Mansa">Mansa</option>
+                                                                <option value="Chipata">Chipata</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="invalid-feedback">
                                                             Please select a one.
                                                         </div>
@@ -141,7 +143,7 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control datepicker date" wire:model="last_date" id="validationCustom02"  placeholder="" required>
+                                                            <input type="date" class="form-control datepicker date" wire:model.defer="last_date" id="validationCustom02"  placeholder="" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter a Closing Date
                                                             </div>
@@ -390,34 +392,3 @@
     {{-- @endif --}}
 
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function (e) {
-   $('#prof_image_create').change(function(){
-        let reader = new FileReader();
-        reader.onload = (e) => { 
-            $('#preview-image-before-upload_create').attr('src', e.target.result); 
-        }
-        reader.readAsDataURL(this.files[0]); 
-    });
-
-    // const select = document.getElementById('user_group_select');
-
-    // select.addEventListener('change', function handleChange(event) {
-    //     if(event.target.value == 'patient'){
-    //         $('#professional_details').hide();
-    //         $('#medical_details').show();
-    //     }else{
-    //         $('#professional_details').show();
-    //         $('#medical_details').hide();
-    //     }
-
-    //     // // 👇️ get selected VALUE even outside event handler
-    //     // console.log(select.options[select.selectedIndex].value);
-
-    //     // // 👇️ get selected TEXT in or outside event handler
-    //     // console.log(select.options[select.selectedIndex].text);
-    // });
-});
-
-</script>

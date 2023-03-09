@@ -49,7 +49,7 @@ class CreateNewUser implements CreatesNewUsers
                 ]);
                 return $user;
             } catch (\Throwable $th) {
-                dd($th);
+                // dd($th);
             }
     }
 }

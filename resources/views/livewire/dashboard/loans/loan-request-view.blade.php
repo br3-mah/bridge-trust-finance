@@ -73,6 +73,11 @@
                                               </svg>
                                         </span>
                                     </button>
+                                    <button wire:click="exportLoans()" class="mt-3 btn btn-square btn-success">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z"/>
+                                          </svg>
+                                    </button>
                                 </div>
                                 {{-- End Amin Only --}}
                             </div>
@@ -127,12 +132,12 @@
                     <div class="mb-3">
                         <div>
                             <h5 class="text-label form-label text-warning">Change Due Date (Optional)</h5>
-                            <input placeholder="yyyy-mm-dd" name="datepicker" wire:model.defer="due_date" class=" form-control" id="">
+                            <input type="date" placeholder="Due Date" name="datepicker" wire:model.defer="due_date" class=" form-control" id="">
                         </div>
                         <br>
                         <button modal-bs-dismiss="close" wire:click="clear()" class="btn btn-light btn-square">Cancel</button>
                         @if($loan_request !== null)
-                        <button wire:click="accept({{ $loan_request->id }})" class="btn btn-primary btn-square">Approve Loan</button>
+                            <button wire:click="accept({{ $loan_request->id }})" class="btn btn-primary btn-square">Approve Loan</button>
                         @endif
                     </div>
                 </div>
@@ -203,7 +208,8 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Amount (ZMW)</label>
-                                        <input type="text" name="amount" class="form-control" placeholder="0.00" required>
+                                        <input type="text" id="principalLoan2" name="amount" class="form-control" placeholder="0.00" required>
+                                        <small id="validprincipal2" style="color:red">Amount is required!</small>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
@@ -237,21 +243,24 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Date of Application*</label>
-                                        <input name="datepicker" name="created_at" class="datepicker-default form-control" id="datepicker">
+                                        <input name="datepicker" type="date" name="created_at" class="form-control" id="datepicker">
                                     </div>
                                 </div>
-                                {{-- <div class="col-lg-6 mb-3">
+                                <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Basic Pay*</label>
-                                        <input name="basic_pay" class=" form-control" >
+                                        <input id="basic_pay_field" name="basic_pay" class=" form-control" >
+                                        <small id="validbasicpayl2" style="color:red">Basic Pay is required!</small>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Net Pay*</label>
-                                        <input name="net_pay" class="form-control">
+                                        <input id="net_pay_field" name="net_pay" class="form-control">
+                                        <small id="validnetpayl2" style="color:red">Net Pay is required!</small>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                         <div id="wizard_Time" class="tab-pane" role="tabpanel">
@@ -470,5 +479,8 @@
 
     <script language = "javascript" type = "text/javascript">
         document.getElementById("loaderloanrequest").style.display = "none";
+        document.getElementById("validbasicpayl2").style.display = "none";
+        document.getElementById("validnetpayl2").style.display = "none";
+        document.getElementById("validprincipal2").style.display = "none";
     </script>
 </div>

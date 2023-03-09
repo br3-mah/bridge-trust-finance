@@ -22,14 +22,18 @@ class CareerSettings extends Component
         //     'location' => 'required',
         //     'last_date' => 'required'
         // ]);
-        CareerSetting::create([
-            'dept' => $this->dept, 
-            'job_role' => $this->job_role, 
-            'location' => $this->location, 
-            'last_date' => $this->last_date, 
-            'desc' => $this->desc ?? $this->job_role
-        ]);
-        session()->flash('message', 'Loan rate created successfully.');
+        try {
+            CareerSetting::create([
+                'dept' => $this->dept, 
+                'job_role' => $this->job_role, 
+                'location' => $this->location, 
+                'last_date' => $this->last_date, 
+                'desc' => $this->desc ?? $this->job_role
+            ]);
+            session()->flash('message', 'Loan rate created successfully.');
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Failed to post career.');
+        }
     }
 
     public function edit($id){

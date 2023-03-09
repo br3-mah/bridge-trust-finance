@@ -66,6 +66,16 @@ class Loans extends Model
         return $payback - $amount_paid;
     }
 
+    public static function loan_balance($application_id){
+        return Transaction::where('application_id', $application_id)->sum('amount_settled');
+
+    }
+
+    public static function last_payment($application_id){
+        return Transaction::where('application_id', $application_id)->get()->last();
+
+    }
+
     public function application(){
         return $this->belongsTo(Application::class, 'application_id');
     }

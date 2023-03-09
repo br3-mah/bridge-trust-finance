@@ -65,6 +65,9 @@
 
                         @can('accept and reject loan requests')
                         <div class="d-flex align-items-end flex-wrap">
+                            <div class="shopping-cart mb-2 me-3">
+                                <button onclick="printLoanDetails()" class="btn btn-square btn-warning">Print PDF</button>
+                            </div>
                             @if($loan->status !== 2)
                             <div class="shopping-cart mb-2 me-3">
                                 <button 
@@ -107,7 +110,7 @@
                         </div>
                         @endcan
                     </div>
-                    <div class="card-body">
+                    <div id="loanDetailsToPrint" class="card-body">
                         <div class="row">
                             
 
@@ -367,3 +370,28 @@
     
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<!-- html2canvas library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+<script>
+  function printLoanDetails(){
+    element.hide();
+    // Get the HTML element that you want to convert to PDF
+    const element = document.getElementById('loanDetailsToPrint');
+
+    // Create a new jsPDF instance
+    const doc = new jsPDF();
+    var name = "{{ $loan->fname.' '.$loan->lname }}";
+    // Use the html2canvas library to render the element as a canvas
+    html2canvas(element).then(canvas => {
+      // Convert the canvas to an image data URL
+      const imgData = canvas.toDataURL('image/png');
+
+      // Add the image data URL to the PDF document
+      doc.addImage(imgData, 'PNG', 10, 10);
+
+      // Save the PDF document
+      doc.save(name+' Loan Details.pdf');
+    });
+  }
+</script>

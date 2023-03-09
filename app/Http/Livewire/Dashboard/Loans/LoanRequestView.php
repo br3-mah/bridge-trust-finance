@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use App\Classes\Exports\LoanExport;
 use App\Models\Application;
 use App\Models\User;
 use App\Traits\EmailTrait;
@@ -37,6 +38,10 @@ class LoanRequestView extends Component
         }
         return view('livewire.dashboard.loans.loan-request-view')
         ->layout('layouts.dashboard');
+    }
+
+    public function exportLoans(){
+        return (new LoanExport($this->status))->download('invoices.xlsx');
     }
 
     public function changeView($view){

@@ -121,6 +121,7 @@ class Application extends Model
             return 20 / 100;
         }
     }
+    
 
     public static function monthly_installment($amount, $duration){
         $total_collectable = Application::payback($amount, $duration);

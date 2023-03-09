@@ -16,7 +16,7 @@
                         {{-- No Polling --}}
                         <div class="py-2">
                             <button wire:click="borrowerExcelExport()" class="btn btn-square btn-success">Export XSL</button>
-                            <button wire:click="render()" class="btn btn-square btn-secondary">Referesh</button>
+                            {{-- <button wire:click="render()" class="btn btn-square btn-secondary">Referesh</button> --}}
                         </div>
 
                         <table wire:ignore.self id="example3" class="display" style="min-width: 845px">

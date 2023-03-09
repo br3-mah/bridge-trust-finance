@@ -7,6 +7,7 @@ use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
 use Illuminate\Http\Client\Request;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class LoanDetailView extends Component
 {
@@ -41,8 +42,10 @@ class LoanDetailView extends Component
     
     public function accept($id){
         
+        DB::beginTransaction();
         try {
             $x = Application::find($id);
+            $this->make_loan($x, $this->due_date);
             if($this->isCompanyEnough($x->amount)){
                 $x->status = 1;
                 $x->save();
@@ -60,18 +63,20 @@ class LoanDetailView extends Component
                 ];
                 $this->deposit($x->amount, $x);
                 $this->send_loan_feedback_email($mail);
+                DB::commit();
                 session()->flash('success', 'Successfully transfered '.$x->amount.' to '.$x->fname.' '.$x->lname);
             }else{
                 session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
             }
-            
         } catch (\Throwable $th) {
+            DB::rollback();
+            dd($th);
             session()->flash('error', 'Oops something failed here, please contact the Administrator.'.$th);
         }
     }
+    
     public function acceptOnly($id){
         try {
-            
             $x = Application::find($id);
             if($this->isCompanyEnough($x->amount)){
                 $x->status = 1;
@@ -93,14 +98,13 @@ class LoanDetailView extends Component
             }else{
                 session()->flash('warning', 'Insuficient funds in the company account, please update funds.');
             }
-            
         } catch (\Throwable $th) {
             session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
     }
 
+
     public function stall($id){
-        // set under review
         try {
             $x = Application::find($id);
             $x->status = 2;
@@ -126,7 +130,8 @@ class LoanDetailView extends Component
         }
     }
 
-    public function reject($id){
+
+    public function reverse($id){
         try {
             $x = Application::find($id);
             $x->status = 3;
@@ -145,6 +150,31 @@ class LoanDetailView extends Component
                 'msg' => 'Your '.$x->type.' loan application request has been rejected'
             ];
             $this->withdraw($x->amount, $x);
+            $this->send_loan_feedback_email($mail);
+            session()->flash('success', 'Loan has been rejected');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Oops something failed here, please contact the Administrator.');
+        }
+    }
+
+    public function rejectOnly($id){
+        try {
+            $x = Application::find($id);
+            $x->status = 3;
+            $x->save();
+            
+            $mail = [
+                'user_id' => '',
+                'application_id' => $x->id,
+                'name' => $x->fname.' '.$x->lname,
+                'loan_type' => $x->type,
+                'phone' => $x->phone,
+                'email' => $x->email,
+                'duration' => $x->repayment_plan,
+                'amount' => $x->amount,
+                'type' => 'loan-application',
+                'msg' => 'Your '.$x->type.' loan application request has been rejected'
+            ];
             $this->send_loan_feedback_email($mail);
             session()->flash('success', 'Loan has been rejected');
         } catch (\Throwable $th) {

@@ -71,7 +71,7 @@ trait LoanTrait{
 
     public function make_loan($x, $due_date){
         try {
-            if($due_date !== ''){
+            if($due_date !== '' || $due_date !== null){
                 $due = $due_date.' 00:00:00';
             }else{
                 $due = Carbon::now()->addMonth($x->repayment_plan);
@@ -125,12 +125,15 @@ trait LoanTrait{
     }
 
     public function missed_repayments(){
-        return Application::with('user')->where('next_paydate', '<', now())
-        ->get();
+        return Application::with(['loan.installment' => function ($query) {
+            $query->where('next_dates', '<', now())
+                ->whereNull('paid_at');
+        }]) ->where('status', 1)->where('complete', 1)->get();
     }
     public function past_maturity_date(){
-        return Application::with('user')->where('due_date', '<', now())
-        ->get();
+        return Application::with(['loan' => function ($query) {
+            $query->where('final_due_date', '<', now());
+        }])->with('user')->where('status', 1)->where('complete', 1)->get();
     }
 
 }

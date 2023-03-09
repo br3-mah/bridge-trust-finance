@@ -1,4 +1,4 @@
-<table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
+<table wire:ignore.self id="example5" class="display" style="min-width: 845px; position:relative;">
     <thead>
         <tr>
             {{-- <th>
@@ -11,6 +11,7 @@
             <th>Borrower</th>
             <th>Loan Type</th>
             <th>Principal</th>
+            <th>Duration</th>
             <th>Interest(%)</th>
             <th>Due</th>
             <th>Paid</th>
@@ -50,21 +51,38 @@
                     </span>
                 </a>
             </td>
-            <td style="text-transform: camelcase;">{{ $loan->fname.' '. $loan->lname }}</td>
-            <td style="text-transform: camelcase;">{{ $loan->type }} Loan</td>
-            <td style="">{{ $loan->amount }}</td>
-            <td style="">{{ 20 }}</td>
-            <td style="">
+            <td style="text:align:center; text-transform: camelcase;">{{ $loan->fname.' '. $loan->lname }}</td>
+            <td style="text:align:center; text-transform: camelcase;">{{ $loan->type }} Loan</td>
+            <td style="text:align:center;">{{ $loan->amount }}</td>
+            <td style="text:align:center;">{{ $loan->repayment_plan }} Months</td>
+            <td style="text:align:center;">{{ 20 }}</td>
+            <td style="text:align:center;">
                 @if($loan->status == 1)
                 {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)}}
                 @else
                 0
                 @endif
             </td>
-            <td style="">{{ 0.00 }}</td>
-            <td style="">{{ 0.00}}</td>
-            <td>{{ $loan->created_at->toFormattedDateString() }}</td>
-            <td>
+            <td style="text:align:center;">{{ App\Models\Loans::loan_balance($loan->id) ?? 0 }}</td>
+            <td style="text:align:center;">                
+                @if($loan->status == 1)
+                {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan) - App\Models\Loans::loan_balance($loan->id) }}
+                @else
+                0
+                @endif
+            </td>
+            <td style="text:align:center;">                
+                @if($loan->status == 1)
+                    @if(App\Models\Loans::last_payment($loan->id) !== null)
+                    {{ App\Models\Loans::last_payment($loan->id)->created_at->toFormattedDateString(); }}
+                    @else
+                        Not Paid
+                    @endif
+                @else
+                    Not Active
+                @endif
+            </td>
+            <td style="text:align:center;">
                 @if($loan->status == 0)
                 <span class="badge badge-sm light badge-danger">
                     <i class="fa fa-circle text-danger me-1"></i>
@@ -87,7 +105,7 @@
                 </span>
                 @endif
             </td>
-            <td style="">{{ $loan->created_at->toFormattedDateString() }}</td>
+            <td style="text:align:center;">{{ $loan->created_at->toFormattedDateString() }}</td>
             <td class="d-flex">
                 {{-- @can('view loan details') --}}
                 <div class="btn sharp  tp-btn ms-auto">
@@ -108,7 +126,7 @@
                 </div>
                 @can('accept and reject loan requests')
                 <div class="dropdown ms-auto text-end">
-                    <div wire:ignore.self wire:poll class="dropdown-menu dropdown-menu-start">
+                    <div wire:ignore.self class="dropdown-menu dropdown-menu-start">
                         @if($loan->status !== 1)
                         <button data-bs-toggle="modal" data-bs-target="#updateDueDate" wire:click="openAcceptModal({{ $loan->id }})" onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                             Accept Request

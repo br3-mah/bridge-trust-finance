@@ -22,7 +22,5 @@ class UserSeeder extends Seeder
             // 'email' => 'admin@gmail.com',
             'password' => bcrypt('bridge.@2023'),
         ])->assignRole('admin');
-
-        User::factory(2)->create();
     }
 }

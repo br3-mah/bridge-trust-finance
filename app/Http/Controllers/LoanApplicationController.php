@@ -303,6 +303,10 @@ class LoanApplicationController extends Controller
             }
     
             $user = User::where('id', $form['borrower_id'])->first();
+            $user->basic_pay = $form['basic_pay'];
+            $user->net_pay = $form['net_pay'];
+            $user->save();
+            
             $data = [
                 'user_id'=> $form['borrower_id'],
                 'lname'=> $user->lname,

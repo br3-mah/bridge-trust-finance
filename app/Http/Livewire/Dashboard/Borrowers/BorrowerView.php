@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
 
-// use Maatwebsite\Excel\Facades\Excel;
+    use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\Wallet;
-// use App\Classes\Exports\BorrowerExport;
+use App\Classes\Exports\BorrowerExport;
 use Livewire\WithFileUploads;
 
 class BorrowerView extends Component
@@ -44,7 +44,7 @@ class BorrowerView extends Component
     }
 
     public function borrowerExcelExport(){
-        <!-- return Excel::download(new BorrowerExport, 'customers.xlsx'); -->
+        return Excel::download(new BorrowerExport, 'customers.xlsx');
     }
 
     public function store(){

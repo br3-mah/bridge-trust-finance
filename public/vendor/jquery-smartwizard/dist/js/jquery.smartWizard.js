@@ -371,10 +371,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         // Step 1
         var principal = document.getElementById("principalLoan2").value;
-        // var validatePrincipal = document.getElementById("validprincipal2");
+        var basic_pay_field = document.getElementById("basic_pay_field");
+        var net_pay_field = document.getElementById("net_pay_field");
         
         if(principal === ''){
           document.getElementById("validprincipal2").style.display = "block";
+          return false;
+        }        
+        if(basic_pay_field === ''){
+          document.getElementById("validbasicpayl2").style.display = "block";
+          return false;
+        }      
+        if(net_pay_field === ''){
+          document.getElementById("validnetpayl2").style.display = "block";
           return false;
         }
         // var lname = document.getElementById("lnameLoan2").value;

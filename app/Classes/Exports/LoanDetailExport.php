@@ -5,19 +5,16 @@ namespace App\Classes\Exports;
 use App\Models\Application;
 use App\Models\Loans;
 use App\Models\User;
+use App\Models\Loan;
+use App\Models\LoanInstallment;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class LoanExport implements FromCollection, WithHeadings
+class LoanDetailExport implements FromCollection, WithHeadings
 {
-    public $status;
-    public function __construct(int $status)
-    {
-        $this->status = $status;
-    }
     public function collection()
     {
-        return Application::all();
+
     }
 
     public function headings(): array
@@ -35,11 +32,6 @@ class LoanExport implements FromCollection, WithHeadings
             'Amount',
             'Interest'
         ];
-    }
-
-    public function query()
-    {
-        return Application::query()->where('status', $this->status);
     }
 
 }

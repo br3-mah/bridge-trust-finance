@@ -17,18 +17,19 @@ class BorrowerExport implements FromCollection, WithHeadings
     {
         return [
             '#',
+            'Email',
+            'Created at',
             'Fname',
             'Lname',
             'Phone',
-            'Email',
             'Address',
             'Occupation',
-            'NRC No',
+            'Dob',
             'Gender',
             'Basic Pay',
+            'NRC No',
             'Net Pay',
-            'Created at',
-            'Updated at'
+            'Id Type'
         ];
     }
 
