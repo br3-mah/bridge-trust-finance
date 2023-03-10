@@ -33,7 +33,7 @@
                             <div class="row py-2">
                                 {{-- Admin Only --}}
                                 @can('accept and reject loan requests')
-                                <div wire:ignore class="col-xl-3 center">
+                                <div wire:ignore.self class="col-xl-3 center">
                                     <select multiple wire:model.lazy="status" class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Status">
                                         <option value="">Any</option>
                                         <option value="0">Pending</option>
@@ -42,7 +42,7 @@
                                         <option value="3">Rejected</option>
                                     </select>
                                 </div>
-                                <div wire:ignore class="col-xl-3 center">
+                                <div wire:ignore.self class="col-xl-3 center">
                                     <select multiple wire:model.lazy="type" class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Loan Types">
                                         <option value="Personal">Personal Loan</option>
                                         <option value="Education">Education Loan</option>
