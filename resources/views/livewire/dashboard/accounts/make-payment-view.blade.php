@@ -37,7 +37,7 @@
                                         <th>Amount Paid</th>
                                         <th>Balance</th>
                                         <th>Processed By</th>
-                                        <th></th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
                                 <tbody style="top:0; padding-bottom:20px">
