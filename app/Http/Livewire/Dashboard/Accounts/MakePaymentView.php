@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire\Dashboard\Accounts;
 
+use App\Classes\Exports\TransactionExport;
+use App\Models\LoanInstallment;
 use App\Models\Loans;
 use App\Models\Transaction;
 use App\Traits\WalletTrait;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class MakePaymentView extends Component
 {
@@ -22,7 +26,7 @@ class MakePaymentView extends Component
     }
 
     public function makepayment(){     
-        // DB::beginTransaction();
+        DB::beginTransaction();
         try {
             // Insert in main wallet
             $this->repayLoanWalletFunds($this->amount);
@@ -42,12 +46,20 @@ class MakePaymentView extends Component
                 'charge_amount' => $borrower_loan->payback 
             ]);
 
-            // DB::commit();
+            // Update Installment
+            $installment = LoanInstallment::where('loan_id', $borrower_loan->id)->whereNull('paid_at')->first();
+            $installment->paid_at = Carbon::now();
+            $installment->save();
+
+            DB::commit();
             session()->flash('success', 'Successfully repaid '.$this->amount);
         } catch (\Throwable $th) {
-            // DB::rollback();
-            dd($th);
+            DB::rollback();
             session()->flash('error', 'Oops something failed here, please contact the Administrator.');
         }
+    }
+
+    public function exportTransanctions(){
+            return Excel::download(new TransactionExport, 'Transaction Log.xlsx');
     }
 }
