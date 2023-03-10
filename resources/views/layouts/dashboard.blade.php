@@ -87,13 +87,13 @@
 		</div>
 	</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+	<!-- Apex Chart -->
+	<script src="{{ asset('public/vendor/apexchart/apexchart.js') }}" ></script>
 	<!-- Required public/vendors -->
 	<script src="{{ asset('public/vendor/global/global.min.js') }}" ></script>
 	<script src="{{ asset('public/vendor/chart.js/Chart.bundle.min.js') }}" ></script>
 	<script src="{{ asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}" ></script>
-	<!-- Apex Chart -->
-	<script src="{{ asset('public/vendor/apexchart/apexchart.js') }}" ></script>
+
 	<!-- Chart piety plugin files -->
 	<script src="{{ asset('public/vendor/peity/jquery.peity.min.js') }}" ></script>
 	<script src="{{ asset('public/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}" ></script>
