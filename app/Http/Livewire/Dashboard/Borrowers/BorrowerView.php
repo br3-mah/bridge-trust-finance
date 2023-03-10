@@ -44,7 +44,7 @@ class BorrowerView extends Component
     }
 
     public function borrowerExcelExport(){
-        <!-- return Excel::download(new BorrowerExport, 'customers.xlsx'); -->
+        return Excel::download(new BorrowerExport, 'customers.xlsx'); 
     }
 
     public function store(){
