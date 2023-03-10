@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 trait UserTrait{
 
     public function registerUser($input){
-        $password = '20230101brigde.@2you';
+        $password = '20230101bridge.@2you';
         $check = User::where('email', $input['email'])->first();
         if($check == null){
             try {
