@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Settings;
 
 use App\Models\CareerSetting;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class CareerSettings extends Component
@@ -30,9 +31,9 @@ class CareerSettings extends Component
                 'last_date' => $this->last_date, 
                 'desc' => $this->desc ?? $this->job_role
             ]);
-            session()->flash('message', 'Loan rate created successfully.');
+            Session::flash('success', "Career Created Successfully.");
         } catch (\Throwable $th) {
-            session()->flash('message', 'Failed to post career.');
+            Session::flash('success', "Action Failed.");
         }
     }
 
@@ -45,6 +46,16 @@ class CareerSettings extends Component
     }
 
     public function destroy($id){
-        
+        $career = CareerSetting::find($id); 
+        if ($career) {
+            try {
+                $career->delete();
+                Session::flash('success', "Career Deleted.");
+            } catch (\Throwable $th) {            
+                Session::flash('error', "Action Failed.");
+            }
+        } else {
+            return redirect()->route('borrowers');
+        }
     }
 }

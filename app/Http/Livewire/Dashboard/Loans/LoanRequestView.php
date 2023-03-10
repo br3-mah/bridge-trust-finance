@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use Maatwebsite\Excel\Facades\Excel;
 use App\Classes\Exports\LoanExport;
 use App\Models\Application;
 use App\Models\User;
@@ -34,14 +35,32 @@ class LoanRequestView extends Component
             }
             $this->loan_requests = $loan_requests->where('complete', 1)->get();
         }else{
-            $this->loan_requests = Application::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            $this->loan_requests = Application::with('loan')->where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         }
         return view('livewire.dashboard.loans.loan-request-view')
         ->layout('layouts.dashboard');
     }
 
     public function exportLoans(){
-        return (new LoanExport($this->status))->download('invoices.xlsx');
+        switch ($this->status) {
+            case 0:
+                $name = 'Pending';
+                break;
+            case 1:
+                $name = 'Approved';
+                break;
+            case 2:
+                $name = 'Paused';
+                break;
+            case 3:
+                $name = 'Rejected';
+                break;
+            
+            default:
+                $name = 'All';
+                break;
+        }
+        return Excel::download(new LoanExport($this->status), $name.' Loans.xlsx');
     }
 
     public function changeView($view){

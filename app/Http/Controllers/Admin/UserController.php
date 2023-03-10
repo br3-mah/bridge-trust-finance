@@ -43,7 +43,7 @@ class UserController extends Controller
             
             // Hash::make($input['password']),
             $u = $user->create(array_merge($request->all(), [
-                'password' => bcrypt('20230101brigde.@2you'),
+                'password' => bcrypt('20230101bridge.@2you'),
                 'active' => 1,
                 'profile_photo_path' => $url ?? ''
             ]));

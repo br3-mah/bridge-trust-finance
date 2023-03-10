@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use App\Classes\Exports\GuarantorExport;
 use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GuarantorsView extends Component
 {
@@ -31,5 +33,8 @@ class GuarantorsView extends Component
             'guarantors' => $guarantors,
             'roles' => $roles
         ])->layout('layouts.dashboard');
-    }
+        }    
+        public function exportGuarantors(){
+            return Excel::download(new GuarantorExport, 'Guarantors.xlsx');
+        }
 }

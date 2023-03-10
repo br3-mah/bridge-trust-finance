@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
 
-    use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
@@ -79,7 +79,7 @@ class BorrowerView extends Component
 
             $u->syncRoles($this->assigned_role);
             // Mail::to($this->email)->send(new SendUserInfoEmail($details));
-            // Session::flash('attention', "User created successfully.");
+            Session::flash('attention', "User created successfully.");
             return redirect()->route('borrowers')
                 ->withSuccess(__('User created successfully.'));
 

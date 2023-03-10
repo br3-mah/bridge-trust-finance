@@ -13,7 +13,21 @@ class GuarantorExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Application::where('status', 1)->where('complete', 1)->get();
+        return Application::where('status', 1)->where('complete', 1)->get([
+            'glname',
+            'gfname',
+            'gemail',
+            'gphone',
+            'g_gender',
+            'g_relation',
+    
+            'g2lname',
+            'g2fname',
+            'g2email',
+            'g2phone',
+            'g2_gender',
+            'g2_relation'
+        ]);
     }
 
     public function headings(): array

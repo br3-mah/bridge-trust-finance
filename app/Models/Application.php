@@ -102,23 +102,21 @@ class Application extends Model
     // }
 
     public static function payback($amount, $duration){
-        // Initials
-        $rate1 = 120 / 100;
-        $rate2 = 20 / 100;
-        
+
         if( $duration > 1 ){
-            $interest = (((float)$amount * $rate1) / $duration * $rate1 * $duration) - (float)$amount;
+            $interest = (((float)$amount * 1.2) / $duration * 1.2 * $duration) - (float)$amount;
             return $amount + $interest;
         }else{
-            return ($amount * $rate2) + $amount;
+            return ($amount * 0.2) + $amount;
         }
+
     }
 
     public static function interest_rate($duration){
         if( $duration > 1 ){
-            return 120 / 100;
+            return 1.2;
         }else{
-            return 20 / 100;
+            return 0.2;
         }
     }
     
@@ -156,25 +154,6 @@ class Application extends Model
 
 
     // ELIGIBILITY
-    public static function isloan_eligible($loan){
-        $basic_pay = $loan->user->basic_pay; // Clear
-        $net_pay_blr = $loan->user->net_pay; //Unclear //Net Pay Before Loan Recovery
-        $principal = $loan->amount; // Clear
-        $interest = $loan->interest; // Clear
-        $total_collectable = Application::payback($loan->amount, $loan->repayment_plan); // Clear
-        $payment_period = $loan->repayment_plan; // Clear
-        $monthly_payment = Application::monthly_installment($loan->amount, $loan->repayment_plan); // Clear
-        $maximum_deductable_amount = $net_pay_blr * 0.75; // Clear
-        $net_pay_alr = $net_pay_blr - $monthly_payment; //Net Pay After Loan Recovery //Clear
-        $credit_score = $monthly_payment > $maximum_deductable_amount;
-
-        if($credit_score){
-            return 'Eligible';
-        }else{
-            return 'Not Eligible';
-        }
-    }
-
     public static function loan_assemenent_table($loan){
         $basic_pay = $loan->user->basic_pay; // Clear
         $net_pay = $loan->user->net_pay; //Unclear //Net Pay Before Loan Recovery
@@ -185,7 +164,11 @@ class Application extends Model
         $monthly_payment = Application::monthly_installment($loan->amount, $loan->repayment_plan); // Clear
         $maximum_deductable_amount = $net_pay * 0.75; // Clear
         $net_pay_alr = $net_pay - $monthly_payment; //Net Pay After Loan Recovery //Clear
-        $credit_score = $monthly_payment > $maximum_deductable_amount;
+        if($maximum_deductable_amount > 0){
+            $credit_score = $monthly_payment > $maximum_deductable_amount;
+        }else{
+            $credit_score = false;
+        }
 
         $data = [
             'borrower' => $loan->user->fname.' '.$loan->user->lname,

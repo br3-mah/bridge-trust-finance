@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
-use App\Models\Application;
+use App\Classes\Exports\MissedRepaymentExport;
 use Livewire\Component;
-use Illuminate\Http\Client\Request;
-use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Traits\LoanTrait;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MissedRepaymentsView extends Component
 {
@@ -33,5 +32,9 @@ class MissedRepaymentsView extends Component
             'users' => $users,
             'roles' => $roles
         ])->layout('layouts.dashboard');
+    }    
+    
+    public function exportMRLoans(){
+        return Excel::download(new MissedRepaymentExport, 'Missed Repayment Loans.xlsx');
     }
 }

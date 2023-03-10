@@ -3,8 +3,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Missed Repayments</h4>                
-                    {{-- <button data-bs-toggle="modal" data-bs-target="#createUserModeling" class="btn btn-square btn-primary">New User</button> --}}
+                    <h4 class="card-title">Missed Repayments</h4>
+                    <button wire:click="exportMRLoans()" title="Export to Excel" class="btn btn-square btn-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z"/>
+                          </svg>
+                    </button>                
                 </div>
 
                 <div class="card-body pb-0">
@@ -25,12 +29,12 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Name</th>
-                                    <th>Occupation</th>
-                                    <th>Gender</th>
-                                    <th>NRC</th>
-                                    <th>Mobile</th>
-                                    <th>Amount</th>
+                                    <th>Borrower</th>
+                                    <th>Loan Purpose</th>
+                                    <th>Principal</th>
+                                    <th>Amount<br>Missed</th>
+                                    <th>Installment<br>Missed</th>
+                                    <th>Installment<br>Left</th>
                                     <th>Missed Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -50,21 +54,21 @@
                                             <img class="rounded-circle" width="35" src="{{ 'public/'.Storage::url($user->profile_photo_path) }}" />
                                         @endif
                                     </td>
+
                                     <td style="text-align: center">
                                         <a target="_blank" href="{{ route('client-account', ['key'=>$user->user->id]) }}">
-                                            {{ $user->user->fname ?? $user->user->name.' '.$user->user->lname ?? '' }} 
+                                            {{ $user->user->fname.' '.$user->user->lname }} 
                                         </a>
                                     </td>
-                                    <td style="text-align: center">
-                                        {{ $user->user->occupation ?? '--' }}
-                                    </td>
-                                    <td style="text-align: center">{{ $user->gender }}</td>
-                                    <td style="text-align: center">{{ $user->nrc ?? 'No ID' }}</td>
-                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ $user->user->phone }}</strong></a></td>
-                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ App\Models\Application::payback($user->amount, preg_replace('/[^0-9]/','', $user->repayment_plan)) }}</strong></a></td>
+
+                                    <td style="text-align: center">{{ $user->type }}</td>
+                                    <td style="text-align: center">{{ $user->amount }}</td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
                                     <td style="text-align: center; color:#f70000" class="text-danger">
                                         {{ 
-                                             $user->next_paydate
+                                             0
                                         }}
                                     </td>
                                     <td>

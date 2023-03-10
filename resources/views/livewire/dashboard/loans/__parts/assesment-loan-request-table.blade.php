@@ -31,23 +31,23 @@
             {{-- <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td> --}}
             {{-- <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['assesed_by'] }}</td> --}}
             <td style="text-align: center">
-                @if( App\Models\Application::loan_assemenent_table($loan)['credit_score'] === 'Eligible')
-                    <span class="badge badge-primary">{{  App\Models\Application::loan_assemenent_table($loan)['credit_score'] }}</span>
+                @if( App\Models\Application::loan_assemenent_table($loan)['credit_score'])
+                    <span class="badge badge-primary">Eligible</span>
                 @else
-                    <span class="badge badge-danger">{{  App\Models\Application::loan_assemenent_table($loan)['credit_score'] }}</span>
+                    <span class="badge badge-danger">Not Eligible</span>
                 @endif
             </td>
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['doa'] }}</td>
             <td style="text-align: center; text-transform: camelcase;">{{ App\Models\Application::loan_assemenent_table($loan)['borrower'] }}</td>
-            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] }}</td>
-            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_blr'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] ?? 0 }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_blr'] ?? 0 }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['principal'] }}</td>
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['interest'] }}</td>
-            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['total_collectable'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['total_collectable'] ?? 0 }}</td>
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['payment_period'] }} Month(s)</td>
-            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['monthly_payment'] }}</td>
-            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['maximum_deductable_amount'] }}</td>
-            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_alr'] }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['monthly_payment'] ?? 0 }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['maximum_deductable_amount'] ?? 0 }}</td>
+            <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_alr'] ?? 0 }}</td>
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['dop'] }}</td>
         </tr>
         @empty

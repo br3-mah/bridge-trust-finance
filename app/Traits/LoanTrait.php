@@ -90,7 +90,7 @@ trait LoanTrait{
             $payback_amount = Application::payback($x->amount, $x->repayment_plan);
             $installments = $payback_amount / $x->repayment_plan;
             
-            for ($i=0; $i <= $x->repayment_plan; $i++) { 
+            for ($i=0; $i < $x->repayment_plan; $i++) { 
                 $next_due = Carbon::now()->addMonth($i);
                 LoanInstallment::create([
                     'loan_id' => $loan->id, 
@@ -125,7 +125,7 @@ trait LoanTrait{
     }
 
     public function missed_repayments(){
-        return Application::with(['loan.installment' => function ($query) {
+        return Application::with(['loan.loan_installments' => function ($query) {
             $query->where('next_dates', '<', now())
                 ->whereNull('paid_at');
         }]) ->where('status', 1)->where('complete', 1)->get();

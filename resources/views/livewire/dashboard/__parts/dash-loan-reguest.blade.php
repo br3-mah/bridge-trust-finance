@@ -62,11 +62,42 @@
                     @if($my_loan->status == 1)
                     <div class="value-data col-xl-3 col-md-4 col-6">
                         <p class="mb-1">DURATION</p>
-                        <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->repayment_plan }}</h4>
+                        <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->repayment_plan }} Months</h4>
                     </div>
                     <div class="value-data col-xl-3 col-md-4 col-6">
                         <p class="mb-1">DUE DATE</p>
-                        <h4 class="mb-0 font-w500 text-primary">{{ $my_loan->due_date ?? '' }}</h4>
+                        <h4 class="mb-0 font-w500 text-primary">
+                            @php 
+                                $date_str = $my_loan->loan->final_due_date;
+                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $date_str);
+                                echo $date->format('F j, Y, g:i a');
+                            @endphp   
+
+                            <span style="color:#fff" class="badge badge-primary">
+                                @php
+                                    // Convert the target date/time to a Unix timestamp
+                                    $targetTimestamp = strtotime($date_str);
+
+                                    // Calculate the difference between the target timestamp and the current timestamp
+                                    $diff = $targetTimestamp - time();
+
+                                    // Calculate the number of days remaining
+                                    $daysRemaining = floor($diff / (60 * 60 * 24));
+
+                                    // Calculate the number of hours remaining
+                                    $hoursRemaining = floor(($diff % (60 * 60 * 24)) / (60 * 60));
+
+                                    // Calculate the number of minutes remaining
+                                    $minutesRemaining = floor(($diff % (60 * 60)) / 60);
+
+                                    // Calculate the number of seconds remaining
+                                    $secondsRemaining = $diff % 60;
+
+                                    // Output the remaining time in a human-readable format
+                                    echo "{$daysRemaining} days {$hoursRemaining} hours {$minutesRemaining} minutes {$secondsRemaining} seconds remaining";
+                                @endphp
+                            </span> 
+                        </h4>
                     </div>
                     @endif
                 @endif

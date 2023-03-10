@@ -20,7 +20,7 @@ class DashboardView extends Component
     public function render()
     {
         $this->all_loan_requests = Application::get();
-        $this->my_loan = Application::where('email', auth()->user()->email)
+        $this->my_loan = Application::with('loan')->where('email', auth()->user()->email)
                                     ->orWhere('user_id', auth()->user()->id)
                                     ->get()->first();
         $this->wallet = $this->getWalletBalance(auth()->user());

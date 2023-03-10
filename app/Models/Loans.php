@@ -71,16 +71,18 @@ class Loans extends Model
 
     }
 
+    public static function loan_settled($application_id){
+        return Transaction::where('application_id', $application_id)->get()->sum('amount_settled');
+    }
     public static function last_payment($application_id){
         return Transaction::where('application_id', $application_id)->get()->last();
-
     }
 
     public function application(){
         return $this->belongsTo(Application::class, 'application_id');
     }
     public function loan_installments(){
-        return $this->hasMany(LoanInstallment::class);
+        return $this->hasMany(LoanInstallment::class, 'loan_id');
     }
 
 

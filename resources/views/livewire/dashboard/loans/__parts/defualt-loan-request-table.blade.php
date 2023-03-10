@@ -1,4 +1,4 @@
-<table wire:ignore.self id="example5" class="display" style="min-width: 845px; position:relative;">
+<table wire:ignore.self wire:poll.5000ms id="example5" class="display" style="min-width: 845px; position:relative;">
     <thead>
         <tr>
             {{-- <th>
@@ -16,7 +16,7 @@
             <th>Due</th>
             <th>Paid</th>
             <th>Balance</th>
-            <th>Last Payment</th>
+            <th>Due Date</th>
             <th>Status</th>
             <th>Date Sent</th>
             <th>Action</th>
@@ -39,7 +39,7 @@
                         <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                     </svg>
                     <span class="mx-2">
-                        @if(App\Models\Application::loan_assemenent_table($loan)['credit_score'] == 'Eligible')
+                        @if(App\Models\Application::loan_assemenent_table($loan)['credit_score'])
                         <span class="badge badge-primary">
                             Eligible
                         </span>
@@ -73,13 +73,11 @@
             </td>
             <td style="text:align:center;">                
                 @if($loan->status == 1)
-                    @if(App\Models\Loans::last_payment($loan->id) !== null)
-                    {{ App\Models\Loans::last_payment($loan->id)->created_at->toFormattedDateString(); }}
-                    @else
-                        Not Paid
-                    @endif
-                @else
-                    Not Active
+                    @php 
+                        $date_str = $loan->loan->final_due_date;
+                        $date = DateTime::createFromFormat('Y-m-d H:i:s', $date_str);
+                        echo $date->format('F j, Y, g:i a');
+                    @endphp
                 @endif
             </td>
             <td style="text:align:center;">

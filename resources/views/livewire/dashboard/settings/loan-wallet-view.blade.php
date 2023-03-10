@@ -65,7 +65,7 @@
                                     </div>
                                     @endempty
                                     <div class="p-4">
-                                        <button class="btn btn-primary btn-square" data-bs-toggle="modal" data-bs-target="#loanWalletFundsModal" >Update Loan Wallet Funds</button>
+                                        <button id="update-loan-wallet-toastr-success-bottom-left" class="btn btn-primary btn-square" data-bs-toggle="modal" data-bs-target="#loanWalletFundsModal" >Update Loan Wallet Funds</button>
                                     </div>
                                 </div>
                             </div>

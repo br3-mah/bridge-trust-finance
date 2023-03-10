@@ -5,25 +5,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Past Maturity Date</h4>
+                        <button wire:click="exportPMLoans()" title="Export to Excel" class="btn btn-square btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z"/>
+                              </svg>
+                        </button>
                     </div>
                     <div class="card-body pb-0" style="padding-bottom: 30%">
-                        @if (Session::has('attention'))
-                        <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
-                            {{ Session::get('attention') }}
-                            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
-                                <i data-lucide="x" class="w-4 h-4"></i> 
-                            </button> 
-                        </div>
-                        @elseif (Session::has('error_msg'))
-                        <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
-                            {{ Session::get('error_msg') }}
-                            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
-                                <i data-lucide="x" class="w-4 h-4"></i> 
-                            </button> 
-                        </div>
-                        @endif
                         <div class="table-responsive patient">
                             <div wire:ignore class="col-xl-12">
                                 <div class="alert alert-dark alert-dismissible fade show">
@@ -38,16 +26,7 @@
                             </div>
                             <div wire:ignore class="row py-2">
                                 @can('accept and reject loan requests')
-                                <div class="col-xl-3 center">
-                                    <select multiple wire:model.lazy="status" class="default-select form-control wide mt-3" aria-placeholder="Settlement Type" placeholder="Status">
-                                        <option value="[0,1,2,3]">Any</option>
-                                        <option value="0">Pending</option>
-                                        <option value="1">Accepted</option>
-                                        <option value="2">Under Review</option>
-                                        <option value="3">Rejected</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-3 center">
+                                {{-- <div class="col-xl-3 center">
                                     <select multiple wire:model.lazy="type" class="default-select form-control wide mt-3" aria-placeholder="Loan" placeholder="Loan Types">
                                         <option value="Personal">Personal</option>
                                         <option value="Education">Education</option>
@@ -56,7 +35,7 @@
                                         <option value="Agri Business">Agri Business</option>
                                         <option value="Women in Business (Femiprise) Soft">Women in Business</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 @endcan
                             </div>
                             <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
@@ -66,7 +45,6 @@
                                         <th>Borrower</th>
                                         <th>Loan Type</th>
                                         <th>Principal</th>
-                                        <th>Interest(%)</th>
                                         <th>Due</th>
                                         <th>Paid</th>
                                         <th>Balance</th>
@@ -81,14 +59,17 @@
                                     
                                     @forelse($loan_requests as $loan)
                                     <tr>
-                                        <td style="">L{{ $loan->application->id }}</td>
+                                        <td style="">#{{ $loan->application->id }}</td>
                                         <td style="">{{ $loan->application->fname.' '. $loan->application->lname }}</td>
                                         <td style="">{{ $loan->application->type }}</td>
                                         <td style="">{{ $loan->application->amount }}</td>
-                                        <td style="">{{ 20 * $loan->application->repayment_plan }}</td>
-                                        <td style="">{{ App\Models\Application::payback($loan->application->amount, preg_replace('/[^0-9]/','', $loan->application->repayment_plan)) }}</td>
-                                        <td style="">{{ 0.00 }}</td>
-                                        <td style="">{{ App\Models\Application::payback($loan->application->amount, preg_replace('/[^0-9]/','', $loan->application->repayment_plan))}}</td>
+                                        <td style="">{{ App\Models\Application::payback($loan->application->amount, $loan->application->repayment_plan) }}</td>
+                                        <td style="">{{ App\Models\Loans::loan_settled($loan->application->id) }}</td>
+                                        <td style="">
+                                        {{ 
+                                            App\Models\Application::payback($loan->application->amount, $loan->application->repayment_plan) - App\Models\Loans::loan_balance($loan->application->id)
+                                        }}
+                                        </td>
                                         <td>--</td>
                                         <td>
                                             @if($loan->application->status == 0)

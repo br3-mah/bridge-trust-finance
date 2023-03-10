@@ -375,14 +375,32 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var net_pay_field = document.getElementById("net_pay_field");
         
         if(principal === ''){
-          document.getElementById("validprincipal2").style.display = "block";
-          return false;
+            if(basic_pay_field === ''){
+              document.getElementById("validbasicpayl2").style.display = "block";
+            }      
+            if(net_pay_field === ''){
+              document.getElementById("validnetpayl2").style.display = "block";
+            }
+            document.getElementById("validprincipal2").style.display = "block";
+            return false;
         }        
         if(basic_pay_field === ''){
-          document.getElementById("validbasicpayl2").style.display = "block";
-          return false;
+            if(principal === ''){
+              document.getElementById("validprincipal2").style.display = "block";
+            }      
+            if(net_pay_field === ''){
+              document.getElementById("validnetpayl2").style.display = "block";
+            }
+            document.getElementById("validbasicpayl2").style.display = "block";
+            return false;
         }      
         if(net_pay_field === ''){
+            if(principal === ''){
+              document.getElementById("validprincipal2").style.display = "block";
+            }      
+            if(basic_pay_field === ''){
+              document.getElementById("validbasicpayl2").style.display = "block";
+            }
           document.getElementById("validnetpayl2").style.display = "block";
           return false;
         }

@@ -11,21 +11,8 @@
 
                     @if(!empty($careers->toArray()))
                     <div class="table-responsive">
-                        @if (Session::has('attention'))
-                        <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-check"></i></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button> {{ Session::get('attention') }}
-                        </div>
-                        @elseif (Session::has('error_msg'))
-                        <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-help"></i></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button>
-                            <strong>Error!</strong> {{ Session::get('error_msg') }}
-                        </div
-                        @endif
-                        <table id="example3" class="display" style="min-width: 845px">
+                        @include('livewire.dashboard.__parts.dash-alerts')
+                        <table wire:ignore.self id="example5" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th>Department</th>
@@ -44,7 +31,7 @@
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $career->location }}</strong></a></td>
                                     <td style="text-align:center"><a href="javascript:void(0);"><strong>{{ $career->last_date }}</strong></a></td>
                                     <td style="text-align:center">
-                                        <div class="">
+                                        <div class="d-flex">
                                             <a href="{{ route('client-account', ['key'=>$career->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>

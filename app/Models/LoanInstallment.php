@@ -19,7 +19,7 @@ class LoanInstallment extends Model
     ];
 
     public function loans(){
-        return $this->belongsTo(Loans::class, 'loan_id');
+        return $this->belongsTo(Loans::class);
     }
     public function transactions(){
         return $this->hasMany(Transaction::class);

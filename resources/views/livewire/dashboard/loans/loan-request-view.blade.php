@@ -235,8 +235,8 @@
                                     <div class="mb-3">
                                         <label class="text-label form-label">Borrower KYC*</label>
                                         <select type="text" name="bypass" class="form-control">
-                                            <option value="true">Bypass KYC Update</option>
-                                            <option value="false">Do Not Bypass KYC</option>
+                                            <option value="true">Skip KYC Update</option>
+                                            <option value="false">Borrower will update KYC</option>
                                         </select>
                                     </div>
                                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\LoanWallet;
 use App\Models\LoanWalletHistory;
 use App\Traits\WalletTrait;
@@ -10,10 +11,11 @@ use Livewire\WithPagination;
 
 class LoanWalletView extends Component
 {
-    use WalletTrait, WithPagination;
+    use AuthorizesRequests, WalletTrait, WithPagination;
     public $amount, $current_funds, $gross_funds, $account, $history;
     public function render()
     {
+        $this->authorize('view accounting');
         $this->history = LoanWalletHistory::with('users')->orderBy('created_at', 'desc')->get();
         $this->account = LoanWallet::first();
         $this->current_funds = $this->getCompanyWallet();

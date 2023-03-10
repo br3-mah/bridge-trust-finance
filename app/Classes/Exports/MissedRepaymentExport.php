@@ -18,7 +18,7 @@ class MissedRepaymentExport implements FromCollection, WithHeadings
         return Application::with(['loan.installment' => function ($query) {
             $query->where('next_dates', '<', now())
                 ->whereNull('paid_at');
-        }]) ->where('status', 1)->where('complete', 1)->get();
+        }])->where('status', 1)->where('complete', 1)->get();
     }
 
     public function headings(): array
