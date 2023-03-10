@@ -148,6 +148,7 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="col-xl-8 col-lg-8 position-relative bg-light login-border" style="background-position:center;background-size:cover; background-image: url('{{ asset("public/box/images/bridge-1.jpg") }}');">
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">

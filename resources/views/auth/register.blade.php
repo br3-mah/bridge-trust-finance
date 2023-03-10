@@ -36,7 +36,6 @@
 			background: #7B1001;
 		}
 	</style>
-
 </head>
 
 <body class="body  h-100">

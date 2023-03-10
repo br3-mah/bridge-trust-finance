@@ -71,8 +71,6 @@
                 <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
             </div><!-- /.stricky-header -->
         {{-- <div class="min-h-screen bg-gray-100"> --}}
-           
-
             <!-- Page Content -->
             <main>
                 {{ $slot }}

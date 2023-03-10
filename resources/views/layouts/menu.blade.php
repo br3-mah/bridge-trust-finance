@@ -85,7 +85,6 @@
         <div class="main-menu__wrapper clearfix">
             <div class="container">
                 <div class="main-menu__wrapper-inner">
-    
                     <div class="main-menu-style1-left">
                         <div class="logo-box-style1">
                             <a href="{{ route('welcome') }}" style="padding-top:4px;padding-bottom:4px">
@@ -131,7 +130,6 @@
                                 
                                 <li>
                                 <a href="{{ route('faq') }}">Faq’s</a>
-                                   
                                 </li>
     
                                 <li>
