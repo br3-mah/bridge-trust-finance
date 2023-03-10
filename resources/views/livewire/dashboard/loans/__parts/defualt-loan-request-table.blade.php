@@ -55,7 +55,13 @@
             <td style="text:align:center; text-transform: camelcase;">{{ $loan->type }} Loan</td>
             <td style="text:align:center;">{{ $loan->amount }}</td>
             <td style="text:align:center;">{{ $loan->repayment_plan }} Months</td>
-            <td style="text:align:center;">{{ 20 }}</td>
+            <td style="text:align:center;">
+            @if($loan->repayment_plan > 1)
+            1.2
+            @else
+            0.2
+            @endif
+            </td>
             <td style="text:align:center;">
                 @if($loan->status == 1)
                 {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)}}

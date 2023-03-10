@@ -32,12 +32,12 @@
                                     Accept Request
                                 </a>
                                 @endif
-                                @if($loan->status !== 2)
+                                @if($loan->status !== 2 || $loan->status !== 1)
                                 <a wire:click="stall({{ $loan->id }})"onclick="confirm('Are you sure you want to set this loan request on hold') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                     Stall
                                 </a>
                                 @endif
-                                @if($loan->status !== 3)
+                                @if($loan->status !== 3 || $loan->status !== 1)
                                 <a wire:click="reject({{ $loan->id }})"onclick="confirm('Are you sure you want to reject this loan') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                     Reject Loan Request
                                 </a>

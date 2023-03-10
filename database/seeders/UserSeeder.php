@@ -16,10 +16,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'fname' => 'Brige Trust',
+            'fname' => 'Brigetrust',
             'lname' => 'Finance',
-            'email' => 'admin@bridgetrustfinance.com',
-            // 'email' => 'admin@gmail.com',
+            'email' => 'admin@bridgetrustfinance.co.zm',
             'password' => bcrypt('bridge.@2023'),
         ])->assignRole('admin');
     }

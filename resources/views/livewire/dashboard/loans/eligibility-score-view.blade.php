@@ -20,7 +20,13 @@
                 </li> --}}
               <li class="py-2 flex justify-between items-center">
                 <span class="font-medium text-gray-700">Interest Rate</span>
-                <span class="px-3 py-1 bg-indigo-600 text-primary rounded-md">{{$loan->interest ?? 0}}</span>
+                <span class="px-3 py-1 bg-indigo-600 text-primary rounded-md">
+                    @if($loan->repayment_plan > 1)
+                    1.2
+                    @else
+                    0.2
+                    @endif
+                </span>
               </li>
               <li class="py-2 flex justify-between items-center">
                 <span class="font-medium text-gray-700">Basic Pay</span>
@@ -41,7 +47,7 @@
               <li class="py-2 flex justify-between items-center">
                 <span class="font-medium text-gray-700">Attached Payslip</span>
                 <span class="px-3 py-1 bg-indigo-600 text-primary rounded-md">
-                    <a href="{{ 'public/'.Storage::url($loan->payslip_file) }}" download="{{ $loan->payslip_file }}">
+                    <a href="{{ 'public/'.Storage::url($loan->payslip_file) }}" download="{{ 'public/'.Storage::url($loan->payslip_file) }}">
                         Payslip File
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -54,7 +60,7 @@
             <div class="mt-6">
                 <div>
                     <div class="col-xl-6">
-                        @if(App\Models\Application::isloan_eligible($loan) == 1)
+                        @if(App\Models\Application::loan_assemenent_table($loan))
                         <div class="alert alert-success left-icon-big alert-dismissible fade show">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
                             </button>

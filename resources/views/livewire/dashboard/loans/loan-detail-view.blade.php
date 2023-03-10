@@ -152,18 +152,32 @@
                                             </span>
                                         </p>
                                         <p>Duration: <span class="item">{{ $loan->repayment_plan }} Months</span> </p>
-                                        <p>Interest: <span class="item">{{ $loan->interest }}% p.m</span></p>
+                                        <p>Interest: <span class="item">
+                                            @if($loan->repayment_plan > 1)
+                                            1.2
+                                            @else
+                                            0.2
+                                            @endif
+                                             per month
+                                        </span>
+                                        </p>
 
                                         {{-- Payback details --}}
                                         @if($loan->status == 1 || preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) == 'admin')
-                                        <p>Last Payment: <span class="item"> No Record</span></p>
+                                        <p>Last Payment: <span class="item">  {{ App\Models\Loans::last_payment($loan->id))->created_at->toFormattedDateString() }}</span></p>
                                         <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
-                                        <p>Total Interest Rate: <span class="item">{{ $loan->repayment_plan * 20 }}%</span></p>
+                                        <p>Total Interest Rate: <span class="item">
+                                            @if($loan->repayment_plan > 1)
+                                            {{ $loan->repayment_plan * 1.2 }}
+                                            @else
+                                            {{ $loan->repayment_plan * 0.2 }}
+                                            @endif
+                                            </span></p>
                                         @endif
                                         
                                         <p>Credit Score: 
                                             <span class="item">
-                                            @if(App\Models\Application::isloan_eligible($loan) == 1)
+                                            @if(App\Models\Application::loan_assemenent_table($loan))
                                             <a target="_blank" href="{{ route('score', ['id' => $loan->id]) }}">
                                                 <span class="badge badge-success">Eligible</span>
                                             </a>

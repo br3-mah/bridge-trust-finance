@@ -117,6 +117,12 @@ class LoanApplicationController extends Controller
             'complete' => 0
         ];
 
+        if(){
+            $data['interest'] = '0.2';
+        }else{
+
+        }
+
 
         $application = $this->apply_loan($data);
 
