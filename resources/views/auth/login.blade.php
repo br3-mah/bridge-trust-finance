@@ -15,7 +15,7 @@
 	<meta property="og:image" content="social-image.png" >
 	<meta name="format-detection" content="telephone=no">
         <!-- PAGE TITLE HERE -->
-        <title>Bridge Trust Finance | Login</title>
+        <title>Bridgetrust Finance | Login</title>
         <!-- FAVICONS ICON -->
         <link rel="shortcut icon" type="image/png" href="{{ asset('public/images/logo-full.png') }}">
         <link href="{{ asset('public/vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
@@ -151,7 +151,7 @@
 							<div class="col-xl-8 col-lg-8 position-relative bg-light login-border" style="background-position:center;background-size:cover; background-image: url('{{ asset("public/box/images/bridge-1.jpg") }}');">
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">
-										<h2 class="text-white mb-0">At Bridge Trust Finance</h2>
+										<h2 class="text-white mb-0">At Bridgetrust Finance</h2>
 										<p class="text-white">We deliver more than just money</p>
 									</div>
 									<div class="login-media-1">

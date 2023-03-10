@@ -88,8 +88,8 @@
     
                     <div class="main-menu-style1-left">
                         <div class="logo-box-style1">
-                            <a href="{{ route('welcome') }}">
-                                <img src="{{ asset('public/box/images/resources/logo-11.png') }}" alt="BTF" title="">
+                            <a href="{{ route('welcome') }}" style="padding-top:4px;padding-bottom:4px">
+                                <img width="150" src="{{ asset('public/box/images/resources/logo-11.png') }}" alt="BTF" title="">
                             </a>
                         </div>
     

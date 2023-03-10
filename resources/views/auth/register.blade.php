@@ -15,7 +15,7 @@
 	<meta property="og:image" content="social-image.png" >
 	<meta name="format-detection" content="telephone=no">
 	<!-- PAGE TITLE HERE -->
-	<title>Bridge Trust Finance - Dashboard</title>
+	<title>Bridgetrust Finance - Dashboard</title>
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="{{ asset('public/images/logo-full.png') }}" >
 	<link href="public/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
@@ -169,7 +169,7 @@
 							<div class="col-xl-7 col-lg-7 position-relative bg-secondary login-border" style="background-image: url('{{ asset("public/box/images/about.jpg") }}');">
 								<div class="d-flex flex-column justify-content-between h-100">
 									<div class="content text-center py-4">
-										<h2 class="text-white mb-0">Welcome To Brige Trust Finance.</h2>
+										<h2 class="text-white mb-0">Welcome To Brigetrust Finance.</h2>
 										<p class="text-white">Your number one lending platform</p>
 									</div>
 									<div class="login-media-1">
