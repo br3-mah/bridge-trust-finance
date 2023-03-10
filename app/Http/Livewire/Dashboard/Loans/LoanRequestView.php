@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 class LoanRequestView extends Component
 {
     use EmailTrait, WalletTrait, LoanTrait;
-    public $loan_requests, $loan_request;
+    public $loan_requests, $loan_request, $new_loan_user, $user_basic_pay, $user_net_pay;
     public $type = [];
     public $status = [];
     public $view = 'table';

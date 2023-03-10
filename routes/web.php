@@ -69,7 +69,7 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', DashboardView::class)->name('dashboard');
     // Administrator
-    Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
+    Route::get('client-loan-requests#wizard_Service', LoanRequestView::class)->name('view-loan-requests');
     Route::get('withdraw-requests', WithdrawRequestView::class)->name('withdraw-requests');
     Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
     Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');

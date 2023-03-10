@@ -182,7 +182,7 @@
                                         <select type="text" name="borrower_id" class="form-control">
                                             @forelse ($users as $user)
                                                 @if(empty($user->loans->toArray()))
-                                                    <option value="{{ $user->id }}">{{ $user->fname.' '.$user->lname}}</option>
+                                                    <option wire:model="new_loan_user" value="{{ $user->id }}">{{ $user->fname.' '.$user->lname}}</option>
                                                 @endif
                                             @empty
                                             <option>No Borrowers Available. <a target="_blank" href="{{ route('borrowers') }}">Add Borrowers</a></option>
@@ -249,7 +249,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Basic Pay*</label>
-                                        <input id="basic_pay_field" name="basic_pay" class=" form-control" >
+                                        <input id="basic_pay_field" value="{{ $user_basic_pay }}" name="basic_pay" class=" form-control" >
                                         <small id="validbasicpayl2" style="color:red">Basic Pay is required!</small>
 
                                     </div>
@@ -257,7 +257,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label class="text-label form-label">Net Pay*</label>
-                                        <input id="net_pay_field" name="net_pay" class="form-control">
+                                        <input id="net_pay_field" value="{{ $user_net_pay }}" name="net_pay" class="form-control">
                                         <small id="validnetpayl2" style="color:red">Net Pay is required!</small>
                                     </div>
                                 </div>

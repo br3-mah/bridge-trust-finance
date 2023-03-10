@@ -280,7 +280,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.main.find('.sw-btn-finish').on("click", function () {
           // e.preventDefault();
           // Submit the loan Form
-          document.getElementById("apply_new_loan").style.display = "none";
+          document.getElementById("smartwizard").style.display = "none";
           document.getElementById("loaderdashboard").style.display = "block";
           document.getElementById("kyc_form").submit();
         }); 
