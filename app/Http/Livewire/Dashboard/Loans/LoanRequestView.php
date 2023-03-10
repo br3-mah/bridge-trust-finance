@@ -60,7 +60,7 @@ class LoanRequestView extends Component
                 $name = 'All';
                 break;
         }
-        return Excel::download(new LoanExport($this->status), $name.' Loans.xlsx');
+        return Excel::download(new LoanExport($this->status, $this->type), $name.' Loans.xlsx');
     }
 
     public function changeView($view){

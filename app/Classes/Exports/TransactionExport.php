@@ -3,32 +3,19 @@
 namespace App\Classes\Exports;
 
 use App\Models\Transaction;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class TransactionExport implements FromCollection, WithHeadings
+class TransactionExport implements FromView
 {
-
-    public function collection()
+    public function view(): View
     {
-        return  Transaction::with(['application.user' => function($query){
-            $query->select('fname', 'lname', 'type');
-        }])->orderBy('created_at', 'desc')->get(['ref_no', 'created_at', 'proccess_by']);
-    }
-
-    public function headings(): array
-    {
-        return [
-            '#',
-            'Fname',
-            'Lname',
-            'Type',
-            'Amount Paid',
-            'Ref No',
-            'Created at',
-            'Processed by'
-        ];
+        return view('livewire.dashboard.accounts.make-payment-view', [
+            'transactions' => Transaction::with('application.user')->orderBy('created_at', 'desc')->get()
+        ]);
     }
 
 }

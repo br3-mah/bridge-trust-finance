@@ -8,45 +8,16 @@ use App\Models\Loan;
 use App\Models\LoanInstallment;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class GuarantorExport implements FromCollection, WithHeadings
+class GuarantorExport implements FromView
 {
-    public function collection()
+    public function view(): View
     {
-        return Application::where('status', 1)->where('complete', 1)->get([
-            'glname',
-            'gfname',
-            'gemail',
-            'gphone',
-            'g_gender',
-            'g_relation',
-    
-            'g2lname',
-            'g2fname',
-            'g2email',
-            'g2phone',
-            'g2_gender',
-            'g2_relation'
+        return view('livewire.dashboard.loans.missed-repayments-view', [
+            'guarantors' => Application::where('status', 1)->where('complete', 1)->get()
         ]);
-    }
-
-    public function headings(): array
-    {
-        return [
-            '#',
-            'Glname',
-            'Gfname',
-            'Gemail',
-            'Gphone',
-            'G gender',
-            'G relation',
-            'G2lname',
-            'G2fname',
-            'G2email',
-            'G2phone',
-            'G2 gender',
-            'G2 relation'
-        ];
     }
 
 }

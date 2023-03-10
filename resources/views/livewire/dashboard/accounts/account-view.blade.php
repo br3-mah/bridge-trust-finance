@@ -49,6 +49,8 @@
                                 <div class="profile-email px-2 pt-2">
                                     <h4 class="text-muted mb-0">Basic Pay</h4>
                                     <p>K {{ $data->basic_pay }}</p>
+                                    <h4 class="text-muted mb-0">Net Pay</h4>
+                                    <p>K {{ $data->net_pay }}</p>
                                     <h4 class="text-muted mb-0"> Address </h4>
                                     <p>{{ $data->address ?? 'No Address' }}</p>
                                     <h4 class="text-muted mb-0"> Joined</h4>

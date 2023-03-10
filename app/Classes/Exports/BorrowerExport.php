@@ -10,26 +10,41 @@ class BorrowerExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return User::all();
+        return User::get([
+            'id', 
+            'fname', 
+            'lname', 
+            'phone', 
+            'email', 
+            'address', 
+            'occupation', 
+            'dob', 
+            'gender', 
+            'id_type', 
+            'nrc_no', 
+            'basic_pay', 
+            'net_pay', 
+            'created_at'
+        ]);
     }
 
     public function headings(): array
     {
         return [
             '#',
-            'Email',
-            'Created at',
             'Fname',
             'Lname',
             'Phone',
+            'Email',
             'Address',
             'Occupation',
             'Dob',
             'Gender',
-            'Basic Pay',
+            'Id Type',
             'NRC No',
+            'Basic Pay',
             'Net Pay',
-            'Id Type'
+            'Created at',
         ];
     }
 

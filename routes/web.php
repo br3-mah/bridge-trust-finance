@@ -31,6 +31,7 @@ use App\Http\Livewire\Dashboard\Settings\UserRolesView;
 use App\Http\Livewire\Dashboard\Settings\UserView;
 use App\Http\Livewire\Dashboard\Settings\CareerSettings;
 use App\Http\Livewire\Dashboard\Settings\ContactSettings;
+use App\Http\Livewire\Dashboard\Settings\UserUpdateView;
 use App\Http\Livewire\FaqPage;
 use App\Http\Livewire\KYCView;
 use App\Http\Livewire\Loans\AssetFinanceLoan;
@@ -73,6 +74,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
     Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
     Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');
+    Route::get('edit-user/{id}', UserUpdateView::class)->name('edit-user');
 
     // ---- Borrowers
     Route::get('borrowers', BorrowerView::class)->name('borrowers');

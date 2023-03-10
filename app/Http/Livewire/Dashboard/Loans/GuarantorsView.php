@@ -33,8 +33,8 @@ class GuarantorsView extends Component
             'guarantors' => $guarantors,
             'roles' => $roles
         ])->layout('layouts.dashboard');
-        }    
-        public function exportGuarantors(){
-            return Excel::download(new GuarantorExport, 'Guarantors.xlsx');
-        }
+    }    
+    public function exportGuarantors(){
+        return Excel::download(new GuarantorExport, 'Guarantors.xlsx');
+    }
 }

@@ -5,34 +5,18 @@ namespace App\Classes\Exports;
 use App\Models\Application;
 use App\Models\Loans;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class PMDExport implements FromCollection, WithHeadings
+class PMDExport implements FromView
 {
-    public function collection()
+    public function view(): View
     {
-        // Past Maturity Date Report
-        return Application::with(['loan' => function ($query) {
-            $query->where('final_due_date', '<', now());
-        }])->with('user')->where('status', 1)->where('complete', 1)->get();
+        return view('livewire.dashboard.loans.past-maturity-date-view', [
+            'loan_requests' => Loans::with('application')->where('final_due_date', '<', now())
+            ->orderBy('created_at', 'desc')->get()
+        ]);
     }
-
-    public function headings(): array
-    {
-        return [
-            '#',
-            'Fname',
-            'Lname',
-            'Email',
-            'Phone',
-            'Gender',
-            'Type',
-            'Status',
-            'Created at',
-            'Amount',
-            'Interest'
-        ];
-    }
-
 }

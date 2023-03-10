@@ -1,4 +1,4 @@
-<div wire:ignore.self wire:poll class="col-xl-12">
+<div wire:ignore class="col-xl-12">
     <!-- Row -->
    <div class="row">
        <!--column-->
@@ -26,7 +26,7 @@
                                </svg>
 
                            </a>
-                           <div wire:ignore.self wire:poll class="dropdown-menu dropdown-menu-end">
+                           <div wire:ignore.self class="dropdown-menu dropdown-menu-end">
                                 @if($loan->status !== 1)
                                 <a wire:click="accept({{ $loan->id }})" onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                                     Accept Request

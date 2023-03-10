@@ -1,4 +1,4 @@
-<table wire:ignore wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
+<table wire:ignore.self id="example5" class="display" style="min-width: 845px; position:relative;">
     <thead>
         <tr>
             {{-- <th>
