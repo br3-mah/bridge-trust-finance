@@ -389,7 +389,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 <script>
   function printLoanDetails(){
-    element.hide();
+    // element.hide();
     // Get the HTML element that you want to convert to PDF
     const element = document.getElementById('loanDetailsToPrint');
 

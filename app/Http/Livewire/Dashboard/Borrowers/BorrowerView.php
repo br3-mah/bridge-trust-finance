@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Wallet;
 use App\Classes\Exports\BorrowerExport;
 use Livewire\WithFileUploads;
+use Dompdf\Dompdf;
 
 class BorrowerView extends Component
 {
@@ -45,6 +46,10 @@ class BorrowerView extends Component
 
     public function borrowerExcelExport(){
         return Excel::download(new BorrowerExport, 'customers.xlsx');
+    }
+
+    public function borrowerPDFExport(){
+        return Excel::download(new BorrowerExport, 'customers.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 
     public function store(){

@@ -45,7 +45,7 @@
                            </div>
                        </div>
                    </div>
-                  <div class="contact-icon">
+                  <div  class="actions-btns contact-icon">
                        <div target="_blank" class="icon-box bg-primary-light me-3">
                             <a target="_blank" title="View Loan Statement" href="{{ route('loan-statement', ['id'=>$loan->id]) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ruled" viewBox="0 0 16 16">
