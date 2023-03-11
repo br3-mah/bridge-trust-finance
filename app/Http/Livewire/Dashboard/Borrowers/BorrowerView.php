@@ -45,11 +45,11 @@ class BorrowerView extends Component
     }
 
     public function borrowerExcelExport(){
-        return Excel::download(new BorrowerExport, 'customers.xlsx');
+        return Excel::download(new BorrowerExport, 'Customers.xlsx');
     }
 
     public function borrowerPDFExport(){
-        return Excel::download(new BorrowerExport, 'customers.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+        return Excel::download(new BorrowerExport, 'Customers.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 
     public function store(){

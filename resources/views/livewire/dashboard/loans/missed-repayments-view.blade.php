@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </div>
-                        <table id="example3" class="display" style="min-width: 845px">
+                        <table wire:ignore id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th class="actions-btns"></th>
@@ -155,7 +155,7 @@
             );
 
             // Save the PDF document
-            doc.save('Past Maturity Date.pdf');
+            doc.save('Missed Repayments.pdf');
             
             $('.actions-btns').show();
         });

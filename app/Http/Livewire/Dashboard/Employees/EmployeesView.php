@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Employees;
 
+use App\Classes\Exports\EmployeesExport;
 use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
@@ -10,6 +11,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\Wallet;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeesView extends Component
 {
@@ -45,6 +47,10 @@ class EmployeesView extends Component
             'users' => $users,
             'roles' => $roles
         ])->layout('layouts.dashboard');
+    }
+
+    public function employeesExcelExport(){
+        return Excel::download(new EmployeesExport, 'Employees.xlsx');
     }
 
     public function editUser($id){
