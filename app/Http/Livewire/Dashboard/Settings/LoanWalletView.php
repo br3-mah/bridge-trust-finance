@@ -25,7 +25,7 @@ class LoanWalletView extends Component
     }
 
     public function store(){
-        // dd($this->amount);
+        // New Wallet
         if(!empty(LoanWallet::get()->toArray())){
             $data = LoanWallet::first()->update([
                 'deposit'=> $this->account->deposit + $this->amount
@@ -40,6 +40,7 @@ class LoanWalletView extends Component
                 session()->flash('success', 'Successfully updated K'.$this->amount.' into the Account Funds');
             $this->render();
         }else{
+        // Already Existing Wallet
             $data = LoanWallet::create([
                 'deposit'=>$this->amount
             ]);
@@ -54,4 +55,14 @@ class LoanWalletView extends Component
             $this->render();
         }
     }
+
+
+    public function reverseFunds(){
+        $this->reverseWalletFunds();
+    }
+
+    public function resetWallet(){
+        $this->resetWalletFunds();
+    }
+    
 }

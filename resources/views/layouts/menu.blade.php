@@ -1,6 +1,4 @@
 <header class="main-header main-header-style1">
-
-    <!--Start Main Header Style1 Top-->
     <div class="main-header-style1-top">
         <div class="auto-container">
             <div class="outer-box">
@@ -176,9 +174,7 @@
             </div>
         </div>
     </div>
-    <!--End Main Header Style1 Bottom-->
-    
-    </header>
-    <div class="stricky-header stricked-menu main-menu">
-                <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-            </div>
+</header>
+{{-- <div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div> --}}

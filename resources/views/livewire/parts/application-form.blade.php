@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div wire:ignore class="modal fade {{ $class}}" style="{{ $style }}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+<div wire:ignore class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
     <div wire:ignore class="modal-dialog modal-dialog-scrollable">
         <div wire:ignore class="modal-content">
             <div wire:ignore class="modal-body">

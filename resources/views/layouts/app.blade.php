@@ -68,28 +68,19 @@
             @include('layouts.menu')
     
             <div class="stricky-header stricked-menu main-menu">
-                <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-            </div><!-- /.stricky-header -->
-        {{-- <div class="min-h-screen bg-gray-100"> --}}
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        {{-- </div> --}}
+                <div class="sticky-header__content"></div>
+            </div>
+            
+            {{ $slot }}
+                
+            @stack('modals')
 
-        @stack('modals')
+            @livewireScripts 
 
-        @livewireScripts
-        
-
-            <!--Start footer area -->
             @include('layouts.footer')
-            <!-- End preloader -->
-            <!--End footer area-->
         </div>
         @include('layouts.mobile-nav')
         <!-- End preloader -->
-    
     
         @livewire('components.search')
         <!-- End preloader -->

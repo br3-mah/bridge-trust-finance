@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Application;
 use App\Models\LoanWallet;
+use App\Models\LoanWalletHistory;
 use App\Models\Wallet;
 use App\Models\WithdrawRequest;
 use Carbon\Carbon;
@@ -35,6 +36,21 @@ trait WalletTrait{
             return Wallet::orWhere('user_id', $user->id)
                         ->orWhere('email', $user->email)->first()->deposit ?? 0;
         }
+    }
+
+    public function reverseWalletFunds(){
+        $last = LoanWalletHistory::get()->last();
+        $wallet =  LoanWallet::first();      
+        $wallet->deposit = $wallet->deposit - $last->amount;
+        $wallet->save();
+        $last->delete();
+    }
+
+    public function resetWalletFunds(){
+        LoanWallet::first()->update([
+            'deposit'=> 0
+        ]);
+        LoanWalletHistory::truncate();
     }
 
     public function deposit($amount, $loan){

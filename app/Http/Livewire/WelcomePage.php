@@ -14,7 +14,7 @@ class WelcomePage extends Component
 {
     use LoanTrait, EmailTrait, WithFileUploads;
 
-    public $class, $style, $step;
+    public $step;
     public $showDiag = 'false';
     public $lname, $fname, $email, $phone, $gender, $type, $loan_type, $repayment_plan, $amount;
     public $glname, $gfname, $gemail, $gphone, $g_gender, $g_relation;
