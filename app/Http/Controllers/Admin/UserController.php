@@ -33,28 +33,18 @@ class UserController extends Controller
     public function store(User $user, Request $request) 
     {
         // DB::beginTransaction();
-        try {
-            // Role::firstOrCreate(['name' => 'employee']);
-            //For demo purposes only. When creating user or inviting a user
-            // you should create a generated random password and email it to the user        
+        try {     
             if ($request->file('image_path')) {
                 $url = Storage::put('public/users', $request->file('image_path'));
             }
             
-            // Hash::make($input['password']),
             $u = $user->create(array_merge($request->all(), [
                 'password' => bcrypt('20230101bridge.@2you'),
                 'active' => 1,
                 'profile_photo_path' => $url ?? ''
             ]));
 
-            // $details = [
-            //     'title' => 'Your account has been created successfully, please visit the site to login',
-            //     'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
-            // ];
-
             $u->syncRoles($request->assigned_role);
-            // Mail::to($u->email)->send(new SendUserInfoEmail($details));
 
             $mail = [
                 'name' => $u->fname.' '.$u->lname,
@@ -62,10 +52,9 @@ class UserController extends Controller
                 'from' => 'admin@bridgetrustfinance.co.zm',
                 'phone' => $u->phone,
                 'subject' => 'Your Brigetrust Finance Account',
-                'message' => 'Hello '.$u->fname.' '.$u->lname.' Your Bridgetrust Finance account is now ready, Click on login to goto your dashboard. Your password is 20230101brigde.@2you  -  feel free to change your password.',
+                'message' => 'Hello '.$u->fname.' '.$u->lname.' Your Bridgetrust Finance account is now ready, Click on login to goto your dashboard. Your password is 20230101bridge.@2you  -  feel free to change your password.',
             ];
-
-            // dd($mail);
+            
             try {
                 $eMail = new BTFAccount($mail);
                 Mail::to($u->email)->send($eMail);

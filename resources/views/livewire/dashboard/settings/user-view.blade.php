@@ -252,7 +252,7 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
+                                                            <input name="occupation" type="text" class="form-control" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter an Occupation.
                                                             </div>
@@ -478,7 +478,7 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
+                                                            <input  name="occupation" type="text" class="form-control" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter an Occupation.
                                                             </div>

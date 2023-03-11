@@ -264,7 +264,7 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
+                                                            <input type="text" name="occupation" class="form-control" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter an Occupation.
                                                             </div>
@@ -473,7 +473,9 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <textarea name="address" class="form-control" value="{{ $userEdit->address }}" id="validationCustom04"  rows="5" placeholder="Where does the person stay?" required></textarea>
+                                                            <textarea name="address" class="form-control" value="{{ $userEdit->address }}" id="validationCustom04"  rows="5" placeholder="Where does the person stay?" required>
+                                                                {{ $userEdit->address }}
+                                                            </textarea>
                                                             <div class="invalid-feedback">
                                                                 Please enter an Address.
                                                             </div>

@@ -156,14 +156,17 @@
                                                             Please select a one.
                                                         </div>
                                                     </div>
-                                                </div>                                                <input type="hidden" value="{{$user->id}}" name="user_edit_id" class="default-select wide form-control" placeholder="Borrower" id="validationCustom05">
+                                                </div>                                                
+                                                <input type="hidden" value="{{$user->id}}" name="user_edit_id" class="default-select wide form-control" placeholder="Borrower" id="validationCustom05">
                                                  
                                                 <div class="mb-3 row">
                                                     <label class="col-lg-4 col-form-label" for="validationCustom04">Address<span
                                                             class="text-danger">*</span>
                                                     </label>
                                                     <div class="col-lg-6">
-                                                        <textarea name="address" class="form-control" value="{{ $user->address }}" id="validationCustom04"  rows="5" placeholder="Where does the person stay?" required></textarea>
+                                                        <textarea name="address" class="form-control" value="{{ $user->address }}" id="validationCustom04"  rows="5" placeholder="Where does the person stay?" required>
+                                                            {{ $user->address }}
+                                                        </textarea>
                                                         <div class="invalid-feedback">
                                                             Please enter an Address.
                                                         </div>
