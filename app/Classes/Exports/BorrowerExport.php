@@ -3,49 +3,16 @@
 namespace App\Classes\Exports;
 
 use App\Models\User;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class BorrowerExport implements FromCollection, WithHeadings
+class BorrowerExport implements FromView
 {
-    public function collection()
+    public function view(): View
     {
-        return User::get([
-            'id', 
-            'fname', 
-            'lname', 
-            'phone', 
-            'email', 
-            'address', 
-            'occupation', 
-            'dob', 
-            'gender', 
-            'id_type', 
-            'nrc_no', 
-            'basic_pay', 
-            'net_pay', 
-            'created_at'
+        return view('livewire.dashboard.borrowers.borrower-view', [
+            'users' => User::role('user')->get()
         ]);
-    }
-
-    public function headings(): array
-    {
-        return [
-            '#',
-            'Fname',
-            'Lname',
-            'Phone',
-            'Email',
-            'Address',
-            'Occupation',
-            'Dob',
-            'Gender',
-            'Id Type',
-            'NRC No',
-            'Basic Pay',
-            'Net Pay',
-            'Created at',
-        ];
     }
 
 }

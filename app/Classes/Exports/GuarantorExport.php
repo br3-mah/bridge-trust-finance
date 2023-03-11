@@ -2,12 +2,6 @@
 namespace App\Classes\Exports;
 
 use App\Models\Application;
-use App\Models\Loans;
-use App\Models\User;
-use App\Models\Loan;
-use App\Models\LoanInstallment;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
