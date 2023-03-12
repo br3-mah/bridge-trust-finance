@@ -130,16 +130,17 @@
                 <!--Start single footer widget-->
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="single-footer-widget marbtm50">
-                        <div class="footer-widget-contact-info">
+                        <div class="footer-widget-contact-info">    
                             <ul>
                                 <li>
                                     <h3>
-                                        <a href="tel:2512353256">(+260) 767 759 619</a>
+                                        <!-- 1st Phone -->
+                                        <a href="tel:{{App\Models\ContactSetting::customer_care_line()}}">{{ App\Models\ContactSetting::customer_care_line() }}</a>
                                     </h3>
                                     <p>Customer Care</p>
                                 </li>
                                 <li>
-                                    <h3>Mon - Fri: 8.00am to 5.00pm</h3>
+                                    <h3>{{App\Models\ContactSetting::work_days()}}: {{App\Models\ContactSetting::work_hours()}}</h3>
                                     <p>Working Hours</p>
                                 </li>
                             </ul>
@@ -154,13 +155,13 @@
                         <div class="single-footer-widget-right-colum">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" title="Comming Soon">
                                         Download Forms
                                         <span class="icon-download"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('contact') }}">
                                         Register Your Complaint
                                         <span class="icon-feedback"></span>
                                     </a>

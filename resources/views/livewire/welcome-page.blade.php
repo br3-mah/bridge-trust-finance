@@ -661,7 +661,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Educational Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
+                                                                    <a href="tel:{{App\Models\ContactSetting::customer_care_line()}}">{{App\Models\ContactSetting::customer_care_line()}}</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -671,7 +671,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Personal Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
+                                                                    <a href="tel:{{App\Models\ContactSetting::customer_care_line()}}">{{App\Models\ContactSetting::customer_care_line()}}</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
@@ -681,7 +681,7 @@
                                                                 <h4>Call for</h4>
                                                                 <h3>Asset Financing Loans</h3>
                                                                 <h2>
-                                                                    <a href="tel:2512353256">(+260) 767 759 619</a>
+                                                                    <a href="tel:{{App\Models\ContactSetting::customer_care_line()}}">{{App\Models\ContactSetting::customer_care_line()}}</a>
                                                                 </h2>
                                                             </div>
                                                             <!--End Single Item-->
