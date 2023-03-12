@@ -38,7 +38,7 @@
                                         <input type="date" wire:model="end_date" name="datepicker" class=" form-control mb-xl-0 mb-3">
                                     </div>
                                     <div class="col-xl-3">
-                                        <button class="btn btn-info" wire:click="searchEarlySettlements()" title="Click here to Search" type="button"><i class="fa fa-search me-1"></i>Filter</button>
+                                        <button class="btn btn-info" wire:click="reportReport()" title="Click here to Search" type="button"><i class="fa fa-search me-1"></i>Filter</button>
                                         {{-- <button class="btn btn-light" title="Click here to remove filter" type="button">Remove Filter</button> --}}
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                     
                     @if(!empty($results))
                         
-                        <table id="example5" class="display" style="min-width: 845px; position:relative;">
+                        <table wire:ignore.self id="example5" class="display" style="min-width: 845px; position:relative;">
                             <thead>
                                 <tr>
                                     {{-- <th>

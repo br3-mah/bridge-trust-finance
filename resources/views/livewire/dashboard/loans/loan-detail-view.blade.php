@@ -27,8 +27,8 @@
                             @if($loan->status !== 1)
                             <div class="shopping-cart mb-2 me-3">
                                 <button 
+                                    data-bs-toggle="modal" data-bs-target="#updateDueDateView"
                                     class="btn btn-square btn-primary" 
-                                    wire:click.prevent="accept({{ $loan->id }})" 
                                     onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();"
                                 >
                                 <i class="fa fa-check me-2"></i>Accept Loan
@@ -51,9 +51,11 @@
                         @endcan
                     </div>
                     <div id="loanDetailsToPrint" class="card-body">
-                        <div class="row">
-                            
 
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-xxl-12 col-sm-12">
+                                @include('livewire.dashboard.__parts.dash-alerts')
+                            </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
                                 <div class="title-sm">
                                     <h5>Borrower Information</h5>
@@ -324,8 +326,39 @@
         </div>
         
     </div>
-
-    
+    <div wire:ignore.self class="modal fade" id="updateDueDateView" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-header bg-primary text-white">
+                <h3 style="color:#fff">{{ $loan->type }} Loan</h3>
+                <h5 style="color:#fff">{{ $loan->fname.' '.$loan->lname }}</h5>
+            </div>
+            <div class="modal-content p-4">
+                @if ($loan !== null)
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <h5>Amount: {{ $loan->amount }}</h5>
+                        <h5>Duration: {{ $loan->repayment_plan }} Months</h5>
+                        <h6>Submitted on {{ $loan->created_at->toFormattedDateString() }}</h6>
+                    </div>
+                    
+                </div>
+                @endif
+                <div class="col-xl-12">
+                    <div class="mb-3">
+                        <div>
+                            <h5 class="text-label form-label text-warning">Change Due Date (Optional)</h5>
+                            <input type="date" placeholder="Due Date" name="datepicker" wire:model.defer="due_date" class=" form-control" id="">
+                        </div>
+                        <br>
+                        <button modal-bs-dismiss="close" wire:click="clear()" class="btn btn-light btn-square">Cancel</button>
+                        @if($loan !== null)
+                            <button wire:click="accept({{ $loan->id }})" data-bs-dismiss="modal" class="btn btn-primary btn-square">Approve Loan</button>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>

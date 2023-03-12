@@ -5,14 +5,15 @@ namespace App\Http\Livewire\Dashboard\Loans;
 use App\Models\Application;
 use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
+use App\Traits\WalletTrait;
 use Illuminate\Http\Client\Request;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
 class LoanDetailView extends Component
 {
-    use EmailTrait, LoanTrait;
-    public $loan, $user, $loan_id, $msg;
+    use EmailTrait, WalletTrait, LoanTrait;
+    public $loan, $user, $loan_id, $msg, $due_date;
 
     public function mount($id){
         /**
@@ -58,6 +59,7 @@ class LoanDetailView extends Component
                     'email' => $x->email,
                     'duration' => $x->repayment_plan,
                     'amount' => $x->amount,
+                    'payback' => Application::payback($x->amount, $x->repayment_plan),
                     'type' => 'loan-application',
                     'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
                 ];
@@ -70,7 +72,6 @@ class LoanDetailView extends Component
             }
         } catch (\Throwable $th) {
             DB::rollback();
-            dd($th);
             session()->flash('error', 'Oops something failed here, please contact the Administrator.'.$th);
         }
     }
@@ -90,6 +91,7 @@ class LoanDetailView extends Component
                     'email' => $x->email,
                     'duration' => $x->repayment_plan,
                     'amount' => $x->amount,
+                    'payback' => Application::payback($x->amount, $x->repayment_plan),
                     'type' => 'loan-application',
                     'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
                 ];
@@ -119,6 +121,7 @@ class LoanDetailView extends Component
                 'email' => $x->email,
                 'duration' => $x->repayment_plan,
                 'amount' => $x->amount,
+                'payback' => Application::payback($x->amount, $x->repayment_plan),
                 'type' => 'loan-application',
                 'msg' => 'Your '.$x->type.' loan application is under review'
             ];
@@ -146,6 +149,7 @@ class LoanDetailView extends Component
                 'email' => $x->email,
                 'duration' => $x->repayment_plan,
                 'amount' => $x->amount,
+                'payback' => Application::payback($x->amount, $x->repayment_plan),
                 'type' => 'loan-application',
                 'msg' => 'Your '.$x->type.' loan application request has been rejected'
             ];
@@ -172,6 +176,7 @@ class LoanDetailView extends Component
                 'email' => $x->email,
                 'duration' => $x->repayment_plan,
                 'amount' => $x->amount,
+                'payback' => Application::payback($x->amount, $x->repayment_plan),
                 'type' => 'loan-application',
                 'msg' => 'Your '.$x->type.' loan application request has been rejected'
             ];

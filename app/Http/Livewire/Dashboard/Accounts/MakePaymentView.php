@@ -51,6 +51,13 @@ class MakePaymentView extends Component
             $installment->paid_at = Carbon::now();
             $installment->save();
 
+            // Close loan if the balance is 0
+            if($borrower_loan->payback < 1){
+                $borrower_loan->closed = 1;
+                $borrower_loan->repaid_at = Carbon::now();
+                $borrower_loan->save();
+            }
+
             DB::commit();
             session()->flash('success', 'Successfully repaid '.$this->amount);
         } catch (\Throwable $th) {

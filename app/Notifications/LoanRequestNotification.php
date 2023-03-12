@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class LoanRequestFeedback extends Notification
+class LoanRequestNotification extends Notification
 {
     use Queueable;
     public $data;
@@ -43,12 +43,13 @@ class LoanRequestFeedback extends Notification
         return (new MailMessage)
                     ->subject($this->data['name'].' '.$this->data['loan_type'].' Loan Request')
                     ->line($this->data['msg'])
-                    ->line('Amount: K'.$this->data['amount'])
+                    ->line('Borrowed Amount: K'.$this->data['amount'])
+                    ->line('Payback Amount: K'.$this->data['payback'])
+                    ->line('Due Date: K'.$this->data['due_date'])
                     ->line('Repayment Plan: '.$this->data['duration'].' Months')
-                    ->action('Manage Loan Reguest', url('/'))
-                    ->line('Administrator');
+                    ->action('View Loan Statement', url('/client-loan-requests'))
+                    ->line('Thanks');
     }
-
     /**
      * Get the array representation of the notification.
      *

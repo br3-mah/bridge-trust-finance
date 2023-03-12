@@ -7,8 +7,11 @@ use App\Models\Application;
 use App\Models\LoanInstallment;
 use App\Models\LoanPackage;
 use App\Models\Loans;
+use App\Models\User;
+use App\Notifications\LoanRequestNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 
 trait LoanTrait{
     use EmailTrait;
@@ -70,8 +73,9 @@ trait LoanTrait{
     }
 
     public function make_loan($x, $due_date){
+        // dd($due_date !== null);
         try {
-            if($due_date !== '' || $due_date !== null){
+            if($due_date !== null){
                 $due = $due_date.' 00:00:00';
             }else{
                 $due = Carbon::now()->addMonth($x->repayment_plan);
@@ -103,20 +107,15 @@ trait LoanTrait{
         }
     }
 
-    public function accept_loan($id){
+    public function notify_loan_request($data){
 
-    }
-
-    public function reject_loan($id){
-
-    }
-
-    public function payback_loan($id){
-
-    }
-
-    public function search_loan($id){
-        
+        $admin = User::where('id', $data['user_id']);
+        try {
+            Notification::send($admin, new LoanRequestNotification($data));
+            return true;
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     public function payback_ammount($amount, $duration){

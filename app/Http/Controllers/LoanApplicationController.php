@@ -127,7 +127,7 @@ class LoanApplicationController extends Controller
                 'nok_phone' => $form['nok_phone'],
                 'nok_relation' => $form['nok_relation'],
                 'nok_gender' => $form['nok_gender'],
-                'user_id' => $form['user_id']
+                'user_id' => $user->id
             ];
             $this->createNOK($nok);
         }
@@ -369,7 +369,7 @@ class LoanApplicationController extends Controller
                     'nok_phone' => $form['nok_phone'],
                     'nok_relation' => $form['nok_relation'],
                     'nok_gender' => $form['nok_gender'],
-                    'user_id' => $form['user_id']
+                    'user_id' => $form['borrower_id']
                 ];
                 $this->createNOK($nok);
             }

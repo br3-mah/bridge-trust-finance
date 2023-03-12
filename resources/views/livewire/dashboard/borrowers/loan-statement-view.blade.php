@@ -17,6 +17,7 @@
             <h6>Loan Information</h6>
             <p>Loan Amount: K{{ $loan->amount }}</p>
             <p>Payback Amount: K{{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)  }}</p>
+            <p>Total Balance: K{{ App\Models\Loans::loan_balance($loans->id) }}</p>
             <p>Interest Rate: {{ 20 * $loan->repayment_plan}}%</p>
             <p>Loan Term: {{ $loan->repayment_plan}} Months</p>
           </div>

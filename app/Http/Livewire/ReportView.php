@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Application;
+use App\Models\Loans;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
 use PhpOffice\PhpWord\IOFactory;
@@ -24,31 +25,30 @@ class ReportView extends Component
         ->layout('layouts.dashboard');
     }
 
-    public function searchEarlySettlements(){
-        // $this->results = Application::where('')
+    public function reportReport(){
         try{
+            // Early Settlement Query
             if($this->type == 1){
-                // Early Settlement
                 if(isset($this->start_date) && isset($this->end_date)){
-                    $this->results = Application::where('date_settled', '>' ,'due_date')
+                    $this->results = Loans::with('application')->where('final_due_date', '>', 'repaid_at')
                     ->whereBetween('created_at', [$this->start_date, $this->end_date])
                     ->get();
                 }else{
-                    $this->results = Application::where('date_settled', '>' ,'due_date')->get();
-                    // dd($this->results);
+                    $this->results = Loans::with('application')->where('final_due_date', '>', 'repaid_at')->get();
                 }
             }
             
+            // Late Settlements Query
             if($this->type == 2){
-                // Late Settlements
                 if(isset($this->start_date) && isset($this->end_date)){
-                    $this->results = Application::where('date_settled', '<' ,'due_date')
+                    $this->results = Loans::with('application')->where('final_due_date', '<', 'repaid_at')
                     ->whereBetween('created_at', [$this->start_date, $this->end_date])
                     ->get();
                 }else{
-                    $this->results = Application::where('date_settled', '<' ,'due_date')->get();
+                    $this->results = Loans::with('application')->where('final_due_date', '<', 'repaid_at')->get();
                 }
             }
+
         } catch (\Throwable $th) {
             Session::flash('error_msg', substr($th->getMessage(),16,110));
         }

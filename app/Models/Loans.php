@@ -12,6 +12,7 @@ class Loans extends Model
     protected $fillable = [
         'application_id',
         'repaid',
+        'settle_at',
         'principal',
         'payback',
         'penalty',
@@ -67,7 +68,10 @@ class Loans extends Model
     }
 
     public static function loan_balance($application_id){
-        return Transaction::where('application_id', $application_id)->sum('amount_settled');
+        $loan = Application::where('id', $application_id)->first();
+        $paid = Transaction::where('application_id', $application_id)->sum('amount_settled');
+        $payback = Application::payback($loan->amount, $loan->repayment_plan);
+        return (float)$payback - (float)$paid;
 
     }
 
