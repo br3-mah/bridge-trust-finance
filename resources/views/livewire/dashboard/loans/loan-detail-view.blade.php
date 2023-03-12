@@ -120,7 +120,7 @@
                                         
                                         <p>Credit Score: 
                                             <span class="item">
-                                            @if(App\Models\Application::loan_assemenent_table($loan))
+                                            @if(App\Models\Application::loan_assemenent_table($loan)['credit_score'])
                                             <a target="_blank" href="{{ route('score', ['id' => $loan->id]) }}">
                                                 <span class="badge badge-success">Eligible</span>
                                             </a>
@@ -170,25 +170,7 @@
                                 </div>
                             </div>
 
-                            @if($loan->type === 'Personal' && $loan->user->nextKin != '')
 
-                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
-                                <div class="title-sm">
-                                    <h5>Next Of Kin</h5>
-                                </div>
-                                @forelse ($loan->user->nextKin as $nxtkin)
-                                <p>Firstname: <span class="item">{{ $nxtkin->fname }}</span></p>
-                                <p>Surname: <span class="item">{{ $nxtkin->lname }}</span></p>
-                                <p>Phone No.: <span class="item">{{ $nxtkin->phone }}</span></p>
-                                <p>Email: <span class="item">{{ $nxtkin->email }}</span></p>
-                                <p>Address: <span class="item">{{ $nxtkin->address }}</span></p>
-                                <p>Occupation: <span class="item">{{ $nxtkin->occupation }}</span></p>
-                                <p>Sex: <span class="item">{{ $nxtkin->gender }}</span></p>
-                                @empty
-                                    <p>Data Recorded</p>
-                                @endforelse
-                            </div>
-                            @else 
                             <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
                                 <div class="title-sm">
                                     <h5>First Guarantors</h5>
@@ -209,7 +191,27 @@
                                 <p>2nd Garantors Sex: <span class="item">{{ $loan->g2_gender }}</span></p>
                                 <p>2nd Garantors Relation: <span class="item">{{ $loan->g_2relation }}</span></p>
                             </div>
+
+
+                            @if($loan->type !== 'Asset Financing' && $loan->user->nextKin != '')
+                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                <div class="title-sm">
+                                    <h5>Next Of Kin</h5>
+                                </div>
+                                @forelse ($loan->user->nextKin as $nxtkin)
+                                <p>Firstname: <span class="item">{{ $nxtkin->fname }}</span></p>
+                                <p>Surname: <span class="item">{{ $nxtkin->lname }}</span></p>
+                                <p>Phone No.: <span class="item">{{ $nxtkin->phone }}</span></p>
+                                <p>Email: <span class="item">{{ $nxtkin->email }}</span></p>
+                                <p>Address: <span class="item">{{ $nxtkin->address }}</span></p>
+                                <p>Occupation: <span class="item">{{ $nxtkin->occupation }}</span></p>
+                                <p>Sex: <span class="item">{{ $nxtkin->gender }}</span></p>
+                                @empty
+                                    <p>Data Recorded</p>
+                                @endforelse
+                            </div>
                             @endif
+
                             <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
                                 <div class="title-sm">
                                     <h5>Staff Information</h5>
