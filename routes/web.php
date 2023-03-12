@@ -16,6 +16,7 @@ use App\Http\Livewire\Dashboard\Borrowers\SendBorrowerMessageView;
 use App\Http\Livewire\Dashboard\DashboardView;
 use App\Http\Livewire\Dashboard\Employees\EmployeesView;
 use App\Http\Livewire\Dashboard\Loans\CreateLoanView;
+
 use App\Http\Livewire\Dashboard\Loans\EligibilityScoreView;
 use App\Http\Livewire\Dashboard\Loans\GuarantorsView;
 use App\Http\Livewire\Dashboard\Loans\LoanApplicationStandaloneView;
@@ -80,6 +81,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
     Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');
     Route::get('edit-user/{id}', UserUpdateView::class)->name('edit-user');
+    
     
     // ---- Borrowers
     Route::get('borrowers', BorrowerView::class)->name('borrowers');
