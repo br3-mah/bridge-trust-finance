@@ -1,61 +1,4 @@
 <div class="content-body">
-    {{-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Hold Request</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <div class="modal-body">Are you sure you want to hold this loan application under review?</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline btn-square primary btn-sm" data-bs-dismiss="modal">No</button>
-                    <button type="button" wire:click="stall({{$loan->id}})" class="btn btn-primary btn-square btn-sm">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade bd-example-modal-sm1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Accept Loan Request</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to approve and accept this loan application?
-                    <br>
-                    <br>
-                    <b>Note:</b> Funds will be transfered immediately to the borrower's wallet account.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline btn-square primary btn-sm" data-bs-dismiss="modal">No</button>
-                    <button type="button" wire:click="accept()" class="btn btn-primary btn-square btn-sm">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div wire:ignore.self class="modal fade bd-example-modal-sm2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Accept Loan Request</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to disapprove and reject this loan application?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline btn-square primary btn-sm" data-bs-dismiss="modal">No</button>
-                    <button type="button" wire:click="reject({{$loan->id}})" class="btn btn-primary btn-square btn-sm">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div class="container-fluid mh-auto">
         <div class="row">
             <div class="col-lg-12">
@@ -72,7 +15,6 @@
                             <div class="shopping-cart mb-2 me-3">
                                 <button 
                                     class="btn btn-square btn-outline-primary" 
-                                    {{-- wire:click.prevent="confirm({{ $loan->id }}, 'stall')"  --}}
                                     wire:click.prevent="stall({{ $loan->id }})" 
                                     data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm"
                                     onclick="confirm('Are you sure you want to hold this loan application for review?') || event.stopImmediatePropagation();"
@@ -87,7 +29,6 @@
                                 <button 
                                     class="btn btn-square btn-primary" 
                                     wire:click.prevent="accept({{ $loan->id }})" 
-                                    {{-- data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm1" --}}
                                     onclick="confirm('Are you sure you want to approve and accept this loan application') || event.stopImmediatePropagation();"
                                 >
                                 <i class="fa fa-check me-2"></i>Accept Loan
@@ -100,7 +41,6 @@
                                 <button 
                                     class="btn btn-square btn-outline-danger" 
                                     wire:click.prevent="reject({{ $loan->id }})" 
-                                    {{-- data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm2" --}}
                                     onclick="confirm('Are you sure you want to disapprove and reject this loan application?') || event.stopImmediatePropagation();"
                                 >
                                 <i class="fa fa-cancel me-2"></i>Reject Loan
@@ -161,10 +101,13 @@
                                              per month
                                         </span>
                                         </p>
-
-                                        {{-- Payback details --}}
+                                        
                                         @if($loan->status == 1 || preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) == 'admin')
-                                        <p>Last Payment: <span class="item">  {{ App\Models\Loans::last_payment($loan->id))->created_at->toFormattedDateString() }}</span></p>
+                                        <p>Last Payment: 
+                                            <span class="item">  
+                                            {{ App\Models\Loans::last_payment($loan->id)->created_at != null ? App\Models\Loans::last_payment($loan->id)->created_at->toFormattedDateString() : 'No record'  }}
+                                            </span>
+                                        </p>
                                         <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
                                         <p>Total Interest Rate: <span class="item">
                                             @if($loan->repayment_plan > 1)
@@ -188,7 +131,7 @@
                                             @endif
                                             </span>
                                         </p>
-                                        {{-- Loan Status --}}
+                                        
                                         <p>Loan Progress:&nbsp;&nbsp;
                                             @if ($loan->status == 0)
                                                 @if($loan->complete == 0)
@@ -227,7 +170,7 @@
                                 </div>
                             </div>
 
-                            @if($loan->type === 'Personal' && $loan->user->nextKin !== '')
+                            @if($loan->type === 'Personal' && $loan->user->nextKin != '')
 
                             <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
                                 <div class="title-sm">
@@ -244,7 +187,6 @@
                                 @empty
                                     <p>Data Recorded</p>
                                 @endforelse
-                                {{-- <p>Relation: <span class="item">{{ $loan->user->nextKin->relation }}</span></p> --}}
                             </div>
                             @else 
                             <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
@@ -274,9 +216,9 @@
                                 </div>
                                 <div class="product-detail-content">
                                     <div class="new-arrival-content pr">
-                                        <p>Processed By: <span class="item">{{  $loan->done_by ?? 'No Record' }}</span> </p>
+                                        <p>Processed By: <span class="item">{{  $loan->done_by->fname.' '.$loan->done_by->lname ?? 'No Record' }}</span> </p>
                                         @if($loan->done_by !== '')
-                                        <p>Processed On: <span class="item">{{ $loan->updated_at->toFormattedDateString()}}</span></p>
+                                        <p>Processed On: <span class="item">{{ $loan->updated_at->toFormattedDateString() }}</span></p>
                                         @endif
                                     </div>
                                 </div>

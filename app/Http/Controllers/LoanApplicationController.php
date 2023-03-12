@@ -117,6 +117,20 @@ class LoanApplicationController extends Controller
             'user_id' =>  $user->id,
             'complete' => 0
         ];
+
+        // Enter Next of King if its personal loan
+        if($form['type'] !== 'Asset Financing' ){
+            $nok = [
+                'nok_email' => $form['nok_email'],
+                'nok_fname' => $form['nok_fname'],
+                'nok_lname' => $form['nok_lname'],
+                'nok_phone' => $form['nok_phone'],
+                'nok_relation' => $form['nok_relation'],
+                'nok_gender' => $form['nok_gender'],
+                'user_id' => $form['user_id']
+            ];
+            $this->createNOK($nok);
+        }
         $application = $this->apply_loan($data);
         $mail = [
             'user_id' => $user->id,
@@ -344,7 +358,21 @@ class LoanApplicationController extends Controller
             }else{
                 $data['complete'] = 0;
             }
-            // dd($data);
+
+
+            // Enter Next of King if its personal loan
+            if($form['type'] !== 'Asset Financing'){
+                $nok = [
+                    'nok_email' => $form['nok_email'],
+                    'nok_fname' => $form['nok_fname'],
+                    'nok_lname' => $form['nok_lname'],
+                    'nok_phone' => $form['nok_phone'],
+                    'nok_relation' => $form['nok_relation'],
+                    'nok_gender' => $form['nok_gender'],
+                    'user_id' => $form['user_id']
+                ];
+                $this->createNOK($nok);
+            }
             $application = $this->apply_loan($data);
             $mail = [
                 'user_id' => '',
