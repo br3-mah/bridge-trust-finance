@@ -45,7 +45,8 @@ class ReportView extends Component
                     ->whereBetween('created_at', [$this->start_date, $this->end_date])
                     ->get();
                 }else{
-                    $this->results = Loans::with('application')->where('final_due_date', '<', 'repaid_at')->get();
+                    $this->results = Loans::with('application')->where('final_due_date', '<', 'repaid_at
+                    ')->get();
                 }
             }
 

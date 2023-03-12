@@ -69,10 +69,10 @@
                 0
                 @endif
             </td>
-            <td style="text:align:center;">{{ App\Models\Loans::loan_balance($loan->id) ?? 0 }}</td>
+            <td style="text:align:center;">{{ App\Models\Loans::loan_settled($loan->id) ?? 0 }}</td>
             <td style="text:align:center;">                
                 @if($loan->status == 1)
-                {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan) - App\Models\Loans::loan_balance($loan->id) }}
+                {{ App\Models\Loans::loan_balance($loan->id) }}
                 @else
                 0
                 @endif

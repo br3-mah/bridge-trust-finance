@@ -70,7 +70,6 @@
                                     <th>Interest(%)</th>
                                     <th>Due</th>
                                     <th>Paid</th>
-                                    <th>Balance</th>
                                     <th>Last Payment</th>
                                     <th>Status</th>
                                     <th>Date Sent</th>
@@ -87,27 +86,38 @@
                                             <label class="form-check-label" for="customCheckBox2"></label>
                                         </div>
                                     </td> --}}
-                                    <td style="">L{{ $loan->id }}</td>
-                                    <td style="">{{ $loan->fname.' '. $loan->lname }}</td>
-                                    <td style="">{{ $loan->type }}</td>
-                                    <td style="">{{ $loan->amount }}</td>
-                                    <td style="">{{ 20 }}</td>
-                                    <td style="">{{ 0.00 }}</td>
-                                    <td style="">{{ 0.00 }}</td>
-                                    <td style="">{{ 0.00}}</td>
-                                    <td>{{ $loan->created_at->toFormattedDateString() }}</td>
+                                    <td style="">L{{ $loan->application->id }}</td>
+                                    <td style="">{{ $loan->application->fname.' '. $loan->application->lname }}</td>
+                                    <td style="">{{ $loan->application->type }}</td>
+                                    <td style="">{{ $loan->application->amount }}</td>
+                                    <td style="text:align:center;">
+                                        @if($loan->repayment_plan > 1)
+                                        1.2
+                                        @else
+                                        0.2
+                                        @endif
+                                    </td>
+                                    <td style="text:align:center;">
+                                        @if($loan->application->status == 1)
+                                        {{ App\Models\Loans::loan_balance($loan->application->id)}}
+                                        @else
+                                        0
+                                        @endif
+                                    </td>
+                                    <td style="">{{ App\Models\Loans::loan_settled($loan->application->id)}}</td>
+                                    <td>{{ $loan->application->created_at->toFormattedDateString() }}</td>
                                     <td>
-                                        @if($loan->status == 0)
+                                        @if($loan->application->status == 0)
                                         <span class="badge badge-sm light badge-danger">
                                             <i class="fa fa-circle text-danger me-1"></i>
                                             Pending
                                         </span>
-                                        @elseif($loan->status == 1)
+                                        @elseif($loan->application->status == 1)
                                         <span class="badge badge-sm light badge-success">
                                             <i class="fa fa-circle text-success me-1"></i>
                                             Accepted
                                         </span>
-                                        @elseif($loan->status == 2)
+                                        @elseif($loan->application->status == 2)
                                         <span class="badge badge-sm light badge-warning">
                                             <i class="fa fa-circle text-warning me-1"></i>
                                             Under Review

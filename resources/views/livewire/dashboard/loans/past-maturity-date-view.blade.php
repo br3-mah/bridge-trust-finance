@@ -74,7 +74,7 @@
                                         <td style="">{{ App\Models\Loans::loan_settled($loan->application->id) }}</td>
                                         <td style="">
                                         {{ 
-                                            App\Models\Application::payback($loan->application->amount, $loan->application->repayment_plan) - App\Models\Loans::loan_balance($loan->application->id)
+                                         App\Models\Loans::loan_balance($loan->application->id)
                                         }}
                                         </td>
                                         <td>--</td>

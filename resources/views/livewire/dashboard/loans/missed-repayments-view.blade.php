@@ -39,9 +39,7 @@
                                     <th>Borrower</th>
                                     <th>Loan Purpose</th>
                                     <th>Principal</th>
-                                    <th>Amount<br>Missed</th>
                                     <th>Installment<br>Missed</th>
-                                    <th>Installment<br>Left</th>
                                     <th>Missed Date</th>
                                     <th class="actions-btns">Action</th>
                                 </tr>
@@ -70,12 +68,10 @@
 
                                     <td style="text-align: center">{{ $user->type }}</td>
                                     <td style="text-align: center">{{ $user->amount }}</td>
-                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
-                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
-                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ 0 }}</strong></a></td>
+                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ App\Models\Application::monthly_installment($user->amount, $user->repayment_plan) }}</strong></a></td>
                                     <td style="text-align: center; color:#f70000" class="text-danger">
                                         {{ 
-                                             0
+                                            $user->loan != null ? $user->loan->loan_installment->next_dates : 'No Record'
                                         }}
                                     </td>
                                     <td class="actions-btns">
