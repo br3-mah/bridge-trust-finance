@@ -1,6 +1,6 @@
 <div class="loader-wrap">
     <div class="preloader">
-        <div class="preloader-close">x</div>
+        {{-- <div class="preloader-close">x</div> --}}
         
         <div style="
             background-image: url(assets/images/backgrounds/bg.png);

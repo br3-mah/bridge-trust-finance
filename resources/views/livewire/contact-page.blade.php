@@ -45,7 +45,10 @@
                             </div>
                             <div class="text">
                                 <p>Corporate Office</p>
-                                <h3>Stand B19 CBU, Jambo Drive, Riverside, Kitwe.</h3>
+                                <h3>
+                                    {{App\Models\ContactSetting::address()}}
+                                    {{-- Stand B19 CBU, Jambo Drive, Riverside, Kitwe. --}}
+                                </h3>
                             </div>
                         </li>
                         <li>
@@ -54,7 +57,7 @@
                             </div>
                             <div class="text">
                                 <p>Office Hours</p>
-                                <h3>Mon - Fri: 8.00am to 5.00pm</h3>
+                                <h3>{{App\Models\ContactSetting::work_days()}} : {{App\Models\ContactSetting::work_hours()}}</h3>
                                 <span></span>
                             </div>
                         </li>
@@ -64,8 +67,8 @@
                             </div>
                             <div class="text">
                                 <p>Front Desk</p>
-                                <h3><a href="tel:123456789">+260 976 7759 619</a></h3>
-                                <h3><a href="mailto:yourmail@email.com">admin@bridgetrustfinance.co.zm</a></h3>
+                                <h3><a href="tel:{{App\Models\ContactSetting::customer_care_line()}}">{{App\Models\ContactSetting::customer_care_line()}}</a></h3>
+                                <h3><a href="mailto:yourmail@email.com">{{App\Models\ContactSetting::contact_us_email()}}</a></h3>
                             </div>
                         </li>
                     </ul>
@@ -237,7 +240,7 @@
                 <div class="tab-content-box-item tab-content-box-item-active" id="branch">
                     <div class="branch-atm-tab-content-box-item">
                         <div class="inner-title">
-                            <h3>Bridge Trust Finance,<br> Kitwe</h3>
+                            <h3>{{App\Models\ContactSetting::name() ?? 'Bridgetrust Finance'}},<br> {{App\Models\ContactSetting::place() ?? 'Kitwe'}}</h3>
                         </div>
                         <ul>
                             {{-- <li>
@@ -246,12 +249,13 @@
                             </li> --}}
                             <li>
                                 <h3>Address</h3>
-                                <p>Stand B19 CBU, Jambo Drive, <br>Riverside, Kitwe.</p>
+                                <p>{{App\Models\ContactSetting::address()}}</p>
+                                {{-- <p>Stand B19 CBU, Jambo Drive, <br>Riverside, Kitwe.</p> --}}
                             </li>
                             <li>
                                 <h3>Phone & Email</h3>
-                                <p><a href="tel:+2609767759619">+260 976 775 9619</a></p>
-                                <p><a href="mailto:admin@bridgetrustfinance.co.zm">support@bridgetrustfinance.co.zm</a></p>
+                                <p><a href="tel:+{{App\Models\ContactSetting::contact_us_line()}}">{{App\Models\ContactSetting::contact_us_line()}}</a></p>
+                                <p><a href="mailto:{{App\Models\ContactSetting::contact_us_email()}}">{{App\Models\ContactSetting::contact_us_email()}}</a></p>
                             </li>
                         </ul>
                     </div>
@@ -333,12 +337,12 @@
                                                     <td class="contact-info">
                                                         <ul>
                                                             <li>
-                                                                <a href="tel:2512353256">+260 976 7759 619</a>
+                                                                <a href="tel:{{App\Models\ContactSetting::contact_us_line()}}">{{App\Models\ContactSetting::contact_us_line()}}</a>
                                                                 {{-- <span>(Toll Free)</span> --}}
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
-                                                                    href="mailto:yourmail@email.com">admin@bridgetrustfinance.co.zm</a>
+                                                                    href="mailto:{{App\Models\ContactSetting::contact_us_email()}}">{{App\Models\ContactSetting::contact_us_email()}}</a>
                                                             </li>
                                                         </ul>
                                                     </td>
@@ -350,11 +354,11 @@
                                                     <td class="contact-info">
                                                         <ul>
                                                             <li>
-                                                                <a href="tel:2512353256">+260 976 7759 619</a>
+                                                                <a href="tel:{{App\Models\ContactSetting::contact_us_line()}}">{{App\Models\ContactSetting::contact_us_line()}}</a>
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
-                                                                    href="mailto:yourmail@email.com">admin@bridgetrustfinance.co.zm</a>
+                                                                    href="mailto:{{App\Models\ContactSetting::contact_us_email()}}">{{App\Models\ContactSetting::contact_us_email()}}</a>
                                                             </li>
                                                         </ul>
                                                     </td>
@@ -392,12 +396,12 @@
                                                     <td class="contact-info">
                                                         <ul>
                                                             <li>
-                                                                <a href="tel:2512353256">+844 123 4567 89</a>
+                                                                <a href="tel:{{App\Models\ContactSetting::contact_us_line()}}">{{App\Models\ContactSetting::contact_us_line()}}</a>
                                                                 {{-- <span>(Charges Apply)</span> --}}
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
-                                                                    href="mailto:yourmail@email.com">customercare@bridgetrustfinance.co.zm</a>
+                                                                    href="mailto:{{App\Models\ContactSetting::contact_us_email()}}">{{App\Models\ContactSetting::contact_us_email()}}</a>
                                                             </li>
                                                         </ul>
                                                     </td>
@@ -413,7 +417,7 @@
                                                             </li>
                                                             <li>
                                                                 <a class="color2"
-                                                                    href="mailto:yourmail@email.com">creditcard@bridgetrustfinance.co.zm</a>
+                                                                    href="mailto:{{App\Models\ContactSetting::contact_us_email()}}">{{App\Models\ContactSetting::contact_us_email()}}</a>
                                                             </li>
                                                         </ul>
                                                     </td>
@@ -423,7 +427,7 @@
                                     </div>
 
                                     <div class="bottom-text text-center">
-                                        <h3>To submit your complaint, <a href="#">Click here</a></h3>
+                                        {{-- <h3>To submit your complaint, <a href="#">Click here</a></h3> --}}
                                     </div>
 
                                 </div>

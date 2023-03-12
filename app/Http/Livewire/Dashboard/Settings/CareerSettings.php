@@ -55,7 +55,7 @@ class CareerSettings extends Component
                 Session::flash('error', "Action Failed.");
             }
         } else {
-            return redirect()->route('borrowers');
+            return redirect()->back();
         }
     }
 }

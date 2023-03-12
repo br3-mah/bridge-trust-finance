@@ -29,7 +29,7 @@
 
         <div class="row">
             <div class="col-xl-6">
-                <div class="intro-style2-img-box">
+                <div class="">
                     <div class="inner">
                         <img src="{{ asset('public/box/images/careers-team.jpg') }}" alt="">
                         <div class="shape-1">
@@ -102,14 +102,14 @@
                                     </td>
                                     <td>
                                         <div class="btn-box">
-                                            <a target="_blank" class="btn-one" href="mail.google.com">
+                                            <a class="btn-one" href="mailto:{{App\Models\ContactSetting::contact_us_email()}}">
                                                 <span class="txt">Apply</span>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
                                 @empty
-                                    
+                                    <p>No positions currently available.</p>
                                 @endforelse
                             </tbody>
                         </table>
@@ -120,7 +120,7 @@
         </div>
 
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-12">
                 <div class="subscribe-box-style1 subscribe-box-style1--style2">
                     <div class="icon">
@@ -142,7 +142,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </section>

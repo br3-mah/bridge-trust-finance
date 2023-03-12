@@ -92,7 +92,7 @@
                                         <h3>How long does it take to process the loan application?</h3>
                                     </div>
                                     <div class="acc-content">
-                                        <p>>If you have all the documents in place, 
+                                        <p>If you have all the documents in place, 
                                             we will have your application approved the same day.</p>
                                     </div>
                                 </li>

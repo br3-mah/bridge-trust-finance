@@ -85,11 +85,10 @@
                 <h3>Corporate Partnership With</h3>
             </div>
             <div class="brand-content">
-                <div style="padding-left:20px;"class="items-center owl-carousel owl-theme thm-owl__carousel partner-carousel" 
+                <!-- <div style="padding-left:20px;"class="items-center owl-carousel owl-theme thm-owl__carousel partner-carousel" 
                     data-owl-options='{
                         "loop": false,
                         "autoplay": true,
-                        
                         "nav": false,
                         "dots": false,
                         "smartSpeed": 500,
@@ -110,19 +109,32 @@
                                 }
                             }
                         }'>
-
-                    <!--End Single Partner Logo Box-->
-                    <!--Start Single Partner Logo Box-->
-                    <div style="margin-left:20px" class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/partners/cbu2.jpeg') }}" alt="Awesome Image"></a>
-                    </div>
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/partners/mulu.jpeg') }}" alt="Awesome Image"></a>
-                    </div>
-                    <div class="single-partner-logo-box">
-                        <a href="#"><img src="{{ asset('public/box/partners/muku.png') }}" alt="Awesome Image"></a>
-                    </div>
-                    <!--End Single Partner Logo Box-->
+                        <div class="col-lg-12 row">
+                            <div style="margin-left:20px" class="single-partner-logo-box">
+                                <a href="#"><img src="{{ asset('public/box/partners/cbu2.jpeg') }}" alt="Awesome Image"></a>
+                            </div>
+                            <div class="single-partner-logo-box">
+                                <a href="#"><img src="{{ asset('public/box/partners/mulu.jpeg') }}" alt="Awesome Image"></a>
+                            </div>
+                            <div class="single-partner-logo-box">
+                                <a href="#"><img src="{{ asset('public/box/partners/muku.png') }}" alt="Awesome Image"></a>
+                            </div>
+                        </div>
+                </div> -->
+                <div style="display: flex;
+                justify-content: center;
+                align-items: center;">
+                    <span>
+                        <a href="#"><img width="90" src="{{ asset('public/box/partners/cbu2.jpeg') }}" alt="Awesome Image"></a>
+                    </span>
+                    &nbsp;
+                    <span>
+                        <a href="#"><img width="90" height="10px" src="{{ asset('public/box/partners/mulu.jpeg') }}" alt="Awesome Image"></a>
+                    </span>
+                    &nbsp;
+                    <span>
+                        <a href="#"><img width="90" src="{{ asset('public/box/partners/muku.png') }}" alt="Awesome Image"></a>
+                    </span>
                 </div>
             </div>
         </div>

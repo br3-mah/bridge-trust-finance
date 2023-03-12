@@ -139,11 +139,11 @@
     
                     <div class="main-menu-style1-right">
                         <div class="header-btn-one">
-                            <a href="#">
+                            {{-- <a href="#">
                                 <span class="icon-home-button"></span>Login
-                            </a>
-                            <a class="style2" href="#">
-                                <span class="icon-payment"></span>Open an Account
+                            </a> --}}
+                            <a class="style2" href="{{ route('contact') }}">
+                                <span class="icon-user"></span>Inquiry
                             </a>
                         </div>
                     </div>

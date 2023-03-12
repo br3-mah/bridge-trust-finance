@@ -34,6 +34,14 @@ class ContactSetting extends Model
         'slogan'
     ];
 
+    public static function name(){
+        return ContactSetting::get()->first()->name;
+    }
+
+    public static function place(){
+        return ContactSetting::get()->first()->city;
+    }
+
     public static function customer_care_line(){
         return ContactSetting::get()->first()->phone1;
     }
