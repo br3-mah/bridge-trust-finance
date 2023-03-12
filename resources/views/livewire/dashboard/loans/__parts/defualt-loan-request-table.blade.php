@@ -146,6 +146,11 @@
                             Reject Loan Request
                         </a>
                         @endif
+                        @if($loan->status !== 1)
+                        <a wire:click="destroy({{ $loan->id }})"onclick="confirm('Are you sure you want to permanently delete this loan') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
+                            Delete
+                        </a>
+                        @endif
                         {{-- @if($loan->status !== 1)
                         <a wire:click="reverse({{ $loan->id }})"onclick="confirm('Are you sure you want to reject this loan') || event.stopImmediatePropagation();" class="dropdown-item" href="#">
                             Reverse

@@ -34,7 +34,7 @@ trait EmailTrait{
             Notification::send($admin, new BTFLoanRequest($data));
             return true;
         } catch (\Throwable $th) {
-            return $th;
+            dd($th);
         }
 
     }

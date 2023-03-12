@@ -425,7 +425,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="text" name="nok_phone" value="" id="nok_phone" placeholder="Guarantor 1's Phone">
+                                                        <input type="text" name="nok_phone" value="" id="nok_phone" placeholder="Next of Kin's Phone">
                                                         <small id="validnok_phone" style="color:red"></small>
                                                         <div class="icon">
                                                             <i class="fas fa-phone-alt"></i>
@@ -436,7 +436,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <div class="input-box">
-                                                        <input type="email" name="nok_email" id="nok_email" placeholder="Guarantor 1's Email" required="">
+                                                        <input type="email" name="nok_email" id="nok_email" placeholder="Next of Kin's Email" required="">
                                                         <small id="validnok_email" style="color:red"></small>
                                                         <div class="icon">
                                                             <i class="fas fa-envelope-open"></i>

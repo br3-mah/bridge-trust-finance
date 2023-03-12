@@ -10,6 +10,7 @@ use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
 use App\Traits\UserTrait;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class LoanApplicationController extends Controller
 {     
@@ -80,7 +81,7 @@ class LoanApplicationController extends Controller
             'lname'=> $form['lname'],
             'fname'=> $form['fname'],
             'email'=> $form['email'],
-            'password' => 'peace2u',
+            'password' => '20230101bridge.@2you',
             'terms' => 'accepted'
         ];
         $user = $this->registerUser($register);
@@ -116,16 +117,7 @@ class LoanApplicationController extends Controller
             'user_id' =>  $user->id,
             'complete' => 0
         ];
-
-        if(){
-            $data['interest'] = '0.2';
-        }else{
-
-        }
-
-
         $application = $this->apply_loan($data);
-
         $mail = [
             'user_id' => $user->id,
             'application_id' => $application,
@@ -282,14 +274,17 @@ class LoanApplicationController extends Controller
             }else{
                 if($process){
                     DB::commit();
+                    Session::flash('success', "Loan created successfully. ");
                     return redirect()->back();
                 }else{
                     DB::commit();
+                    Session::flash('success', "Loan created successfully, Email could not be sent to the Borrower. ");
                     return redirect()->back();
                 }
             }  
         } catch (\Throwable $th) {
             DB::rollback();
+            Session::flash('error', "Loan could not be created, check your internet connection and try again. ");
             return redirect()->back();
         }     
     }

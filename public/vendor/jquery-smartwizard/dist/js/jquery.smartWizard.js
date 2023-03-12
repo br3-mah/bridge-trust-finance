@@ -281,7 +281,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           // e.preventDefault();
           // Submit the loan Form
           document.getElementById("smartwizard").style.display = "none";
-          document.getElementById("loaderdashboard").style.display = "block";
+          if (document.getElementById('loaderdashboard') !== null) {
+            document.getElementById("loaderdashboard").style.display = "block";
+          }
+          if (document.getElementById('loaderloancreate2') !== null) {
+            document.getElementById("loaderloancreate2").style.display = "block";
+          }
           document.getElementById("kyc_form").submit();
         }); 
         
@@ -369,50 +374,122 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       value: function _showNext() {
         var si = this._getNextShowable(this.current_index);
 
+
+
         // Step 1
         var principal = document.getElementById("principalLoan2").value;
-        var basic_pay_field = document.getElementById("basic_pay_field");
-        var net_pay_field = document.getElementById("net_pay_field");
-        
-        if(principal === ''){
-            if(basic_pay_field === ''){
-              document.getElementById("validbasicpayl2").style.display = "block";
-            }      
-            if(net_pay_field === ''){
-              document.getElementById("validnetpayl2").style.display = "block";
-            }
+        var basic_pay_field = document.getElementById("basic_pay_field").value;
+        var net_pay_field = document.getElementById("net_pay_field").value;
+        var user_id = document.getElementById("user_field_id").value;  
+        var loan = document.getElementById("loan_type_id1").value;
+       
+        // if(user === ''){  
+        //   if(principal === ''){
+        //       document.getElementById("validprincipal2").style.display = "block";
+        //   }        
+        //   if(basic_pay_field === ''){
+        //       document.getElementById("validbasicpayl2").style.display = "block";
+        //   }      
+        //   if(net_pay_field === ''){
+        //     document.getElementById("validnetpayl2").style.display = "block";
+        //   }
+        //   document.getElementById("validuser_id").style.display = "block";
+        //   return false;
+        // }  
+
+        if(principal === ''){  
             document.getElementById("validprincipal2").style.display = "block";
             return false;
-        }        
-        if(basic_pay_field === ''){
-            if(principal === ''){
-              document.getElementById("validprincipal2").style.display = "block";
-            }      
-            if(net_pay_field === ''){
-              document.getElementById("validnetpayl2").style.display = "block";
-            }
+        }  
+
+        if(basic_pay_field === ''){  
             document.getElementById("validbasicpayl2").style.display = "block";
             return false;
-        }      
-        if(net_pay_field === ''){
-            if(principal === ''){
-              document.getElementById("validprincipal2").style.display = "block";
-            }      
-            if(basic_pay_field === ''){
-              document.getElementById("validbasicpayl2").style.display = "block";
-            }
+        } 
+
+        if(net_pay_field === ''){   
           document.getElementById("validnetpayl2").style.display = "block";
           return false;
         }
-        // var lname = document.getElementById("lnameLoan2").value;
-        // var validateln = document.getElementById("validlname2");
-        // var gender = document.getElementById("genderLoan2").value;
-        // var validateGender = document.getElementById("validGender");
 
         if (si === false) {
           return false;
         }
-
+        
+        // Switch step 2 to Next of Kin
+        if(loan == 'Personal' || loan == 'Education' || loan == 'Home Improvement' || loan == 'Agri Business' || loan == 'Women in Business (Femiprise) Soft'){
+          
+          document.getElementById("guarantorLoanRef").style.display = "none";
+          document.getElementById("nokLoanRef").style.display = "block";
+          if(si == 2){ 
+            // var noK_fname = document.getElementById("noK_fname22").value;
+            // var noK_lname = document.getElementById("noK_lname22").value;
+            // var noK_email = document.getElementById("noK_email22").value;
+            // var noK_phone = document.getElementById("noK_phone22").value;  
+            // var noK_relation = document.getElementById("noK_relation22").value; 
+            // var noK_gender = document.getElementById("noK_gender22").value; 
+            // if(noK_fname === ''){
+            //     document.getElementById("validnoK_fname22").style.display = "block";
+            //     return false;
+            // }        
+            // if(noK_lname === ''){
+            //     document.getElementById("validnoK_lname22").style.display = "block";
+            //     return false;
+            // }  
+            // if(noK_email === ''){
+            //     document.getElementById("validnoK_email22").style.display = "block";
+            //     return false;
+            // }  
+            // if(noK_phone === ''){
+            //     document.getElementById("validnoK_phone22").style.display = "block";
+            //     return false;
+            // }  
+            // if(noK_relation === ''){
+            //     document.getElementById("validnoK_relation22").style.display = "block";
+            //     return false;
+            // } 
+            // if(noK_gender === ''){
+            //     document.getElementById("validnoK_gender22").style.display = "block";
+            //     return false;
+            // } 
+          }
+        }
+        
+        // if(loan == 'Asset Financing'){
+        //   if(si == 2){          
+        //     var gfname22 = document.getElementById("gfname22").value;
+        //     var glname22 = document.getElementById("glname22").value;
+        //     var gemail22 = document.getElementById("gemail22").value;
+        //     var gphone22 = document.getElementById("gphone22").value;  
+        //     var g_relation22 = document.getElementById("g_relation22").value; 
+        //     var g_gender22 = document.getElementById("g_gender22").value; 
+        //     if(gfname22 === ''){
+        //         document.getElementById("validg_fname22").style.display = "block";
+        //         return false;
+        //     }        
+        //     if(glname22 === ''){
+        //       document.getElementById("validg_lname22").style.display = "block";
+        //         return false;
+        //     }  
+        //     if(gemail22 === ''){
+        //       document.getElementById("validg_email22").style.display = "block";
+        //         return false;
+        //     }  
+        //     if(gphone22 === ''){
+        //       document.getElementById("validg_phone22").style.display = "block";
+        //         return false;
+        //     }  
+        //     if(g_relation22 === ''){
+        //       document.getElementById("validg_relation22").style.display = "block";
+        //         return false;
+        //     } 
+        //     if(g_gender22 === ''){
+        //       document.getElementById("validg_gender22").style.display= "block";
+        //         return false;
+        //     } 
+        //   }
+        // }
+        
         this._showStep(si);
       }
     }, {

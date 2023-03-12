@@ -15,6 +15,7 @@ use App\Http\Livewire\Dashboard\Borrowers\LoanStatementView as BorrowersLoanStat
 use App\Http\Livewire\Dashboard\Borrowers\SendBorrowerMessageView;
 use App\Http\Livewire\Dashboard\DashboardView;
 use App\Http\Livewire\Dashboard\Employees\EmployeesView;
+use App\Http\Livewire\Dashboard\Loans\CreateLoanView;
 use App\Http\Livewire\Dashboard\Loans\EligibilityScoreView;
 use App\Http\Livewire\Dashboard\Loans\GuarantorsView;
 use App\Http\Livewire\Dashboard\Loans\LoanApplicationStandaloneView;
@@ -73,12 +74,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/dashboard', DashboardView::class)->name('dashboard');
     // Administrator
     Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
+    Route::get('proxy-loan-create', CreateLoanView::class)->name('proxy-loan-create');
     Route::get('withdraw-requests', WithdrawRequestView::class)->name('withdraw-requests');
     Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
     Route::get('loan-rates', LoanRatesView::class)->name('view-loan-rates');
     Route::get('repayment-calculator', LoanRepaymentCalculatorView::class)->name('view-repayment-calculator');
     Route::get('edit-user/{id}', UserUpdateView::class)->name('edit-user');
-
+    
     // ---- Borrowers
     Route::get('borrowers', BorrowerView::class)->name('borrowers');
     Route::get('loan-statement/{id}', BorrowersLoanStatementView::class)->name('loan-statement');
