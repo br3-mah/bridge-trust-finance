@@ -18,7 +18,7 @@
                                         <span>{{ $data->name[0] }}</span>
                                     @endif
                                 @else
-                                    <img class="w-30 h-40 img-fluid rounded-circle bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
+                                    <img  width="50" class="rounded-circle bg-primary" src="{{ 'public/'.Storage::url($data->profile_photo_path) }}" />
                                 @endif
                             </div>
                             <div class="profile-details">
