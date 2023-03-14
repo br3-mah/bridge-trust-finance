@@ -23,6 +23,7 @@ Route::apiResource('apply-loan', LoanRequestController::class);
 Route::post('register', [UserAuthenticationController::class, 'register']);
 Route::post('login', [UserAuthenticationController::class, 'login']);
 
+// Functions
 Route::get('get-my-loans/{id}', [LoanRequestController::class, 'getMyLoans']);
 Route::get('get-my-wallet/{id}', [LoanRequestController::class, 'getWallets']);
 Route::get('get-my-withdrawal-requests/{id}', [LoanRequestController::class, 'getWithdrawalRequests']);
