@@ -3,56 +3,60 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Application;
+use App\Models\Wallet;
+use App\Models\WithdrawRequest;
+use App\Traits\EmailTrait;
+use App\Traits\WalletTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LoanRequestController extends Controller
 {
-    public function store(Request $request){
+    use EmailTrait, WalletTrait;
 
-        dd($request);
-        $data = [
-            //     'lname'=> $this->lname,
-            //     'fname'=> $this->fname,
-            //     'email'=> $this->email,
-            //     'amount'=> $this->amount,
-            //     'phone'=> $this->phone,
-            //     'gender'=> $this->gender,
-            //     'type'=> $this->type,
-            //     'repayment_plan'=> $this->repayment_plan,
+    public function getMyLoans($id){
+        $data = Application::with('loan')
+        ->where('user_id', $id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return response()->json(['data' => $data]);
+    }
     
-            //     'glname'=> $this->glname,
-            //     'gfname'=> $this->gfname,
-            //     'gemail'=> $this->gemail,
-            //     'gphone'=> $this->gphone,
-            //     'g_gender'=> $this->g_gender,
-            //     'g_relation'=> $this->g_relation,
+    public function makeWithdrawalRequest(Request $request){
+        try {
+            $uuid = Str::orderedUuid();
+            WithdrawRequest::create([
+                'wallet_id' => Wallet::where('user_id', $request['user_id'])->first()->id,
+                'amount' => $request['withdraw_amount'],
+                'ref' => substr($uuid, 0, 6),
+                'withdraw_method' => $request['payment_method'],
+                'mobile_number' => $request['mobile_number'],
+                'card_name' => $request['card_name'],
+                'bank_name' => $request['bank_name'],
+                'comments' => 'You have received a new wallet withdraw request',
+                'card_number' => $request['card_number'],
+                'user_id' =>  $request['user_id']
+            ]);
     
-            //     'g2lname'=> $this->g2lname,
-            //     'g2fname'=> $this->g2fname,
-            //     'g2email'=> $this->g2email,
-            //     'g2phone'=> $this->g2phone,
-            //     'g2_gender'=> $this->g2_gender,
-            //     'g2_relation'=> $this->g2_relation,
-            // ];
-            // $application = $this->apply_loan($data);
-            // $mail = [
-            //     'user_id' => '',
-            //     'application_id' => $application,
-            //     'name' => $this->fname.' '.$this->lname,
-            //     'loan_type' => $this->type,
-            //     'phone' => $this->phone,
-            //     'duration' => $this->repayment_plan,
-            //     'amount' => $this->amount,
-            //     'type' => 'loan-application',
-            //     'msg' => 'You have new a '.$this->type.' loan application request, please visit the site to view more details'
-            // ];
+            return response()->json(['message' => 'Your withdraw request has been sent']);
+        } catch (\Throwable $th) {    
+            return response()->json(['message' => 'Failed']);
+        }
+    }
     
-            // $process = $this->send_loan_email($mail);
-            // if($process){
-            //     return redirect()->to('/successfully-applied-a-loan');
-            // }else{
-            //     return redirect()->to('/contact-us');
-            // }
-        ];
+    public function getWithdrawalRequests($id){
+        $requests = $this->getWithdrawRequests();
+        return response()->json(['data' => $requests]);
+    }
+    
+    public function getWallets($id){
+        $wallet = $this->getUserWallet($id);
+        return response()->json(['amount' => $wallet]);
+    }
+
+    public function createLoan(Request $request){
+
     }
 }

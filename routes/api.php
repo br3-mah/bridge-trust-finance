@@ -21,3 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiResource('apply-loan', LoanRequestController::class);
 Route::post('register', [UserAuthenticationController::class, 'register']);
+Route::post('login', [UserAuthenticationController::class, 'login']);
+
+Route::get('get-my-loans/{id}', [LoanRequestController::class, 'getMyLoans']);
+Route::get('get-my-wallet/{id}', [LoanRequestController::class, 'getWallets']);
+Route::get('get-my-withdrawal-requests/{id}', [LoanRequestController::class, 'getWithdrawalRequests']);
+Route::post('make-withdrawal-request', [LoanRequestController::class, 'makeWithdrawalRequest']);

@@ -7,6 +7,7 @@ use App\Mail\BTFAccount;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -49,5 +50,23 @@ class UserAuthenticationController extends Controller
         $eMail = new BTFAccount($mail);
         Mail::to($user->email)->send($eMail);
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
+    }
+
+    public function login(Request $request){
+        try {
+            $credentials = $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+    
+            if (Auth::attempt($credentials)) {
+                // $request->session()->regenerate();
+                return response()->json(['message' => 'Successful.']);
+            }else{
+                return response()->json(['message' => 'The provided credentials do not match our records.']);
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }
