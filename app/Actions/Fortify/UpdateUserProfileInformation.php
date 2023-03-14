@@ -74,7 +74,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'gender' => $input['gender'],
                 ])->save();
 
-                return redirect()->to('/dashboard');
+                return redirect()->to('/user/profile');
             } catch (\Throwable $th) {
                 dd($th);
             }

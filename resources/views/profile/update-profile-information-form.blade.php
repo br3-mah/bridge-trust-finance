@@ -123,7 +123,7 @@
             <!-- phone -->
             <div class="col-sm-6 mt-3 m-b30">
                 <x-jet-label for="dob" value="{{ __('Date of Birth') }}" />
-                <x-jet-input id="dob" type="text" class="form-control" wire:model.defer="state.dob" />
+                <x-jet-input id="dob" type="text" class="form-control datepicker" wire:model.defer="state.dob" />
                 <x-jet-input-error for="dob" class="mt-2" />
             </div>
             <!-- phone -->
