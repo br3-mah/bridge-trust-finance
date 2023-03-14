@@ -174,6 +174,16 @@
 			$(".booking-calender .fa.fa-clock-o").removeClass(this);
 			$(".booking-calender .fa.fa-clock-o").addClass('fa-clock');
 		});
+        const brokenImages = document.getElementsByTagName('img');
+
+        // loop through all the images
+        for (let i = 0; i < brokenImages.length; i++) {
+        // add an event listener for each image to check if it's broken
+        brokenImages[i].addEventListener('error', function() {
+            // replace the broken image with a default image
+            this.src = 'https://www.svgrepo.com/show/105517/user-icon.svg';
+        });
+        }
 	</script>
 
 </body>
