@@ -40,7 +40,7 @@
                                     <th>Loan Purpose</th>
                                     <th>Principal</th>
                                     <th>Installment<br>Missed</th>
-                                    <th>Missed Date</th>
+                                    {{-- <th>Missed Date</th> --}}
                                     <th class="actions-btns">Action</th>
                                 </tr>
                             </thead>
@@ -69,11 +69,11 @@
                                     <td style="text-align: center">{{ $user->type }}</td>
                                     <td style="text-align: center">{{ $user->amount }}</td>
                                     <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ App\Models\Application::monthly_installment($user->amount, $user->repayment_plan) }}</strong></a></td>
-                                    <td style="text-align: center; color:#f70000" class="text-danger">
+                                    {{-- <td style="text-align: center; color:#f70000" class="text-danger">
                                         {{ 
                                             $user->loan != null ? $user->loan->loan_installment->next_dates : 'No Record'
                                         }}
-                                    </td>
+                                    </td> --}}
                                     <td class="actions-btns">
                                         <div class="d-flex">
                                             <a target="_blank" href="{{ route('client-account', ['key'=>$user->user->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1">

@@ -141,7 +141,7 @@
                             <input type="date" placeholder="Due Date" name="datepicker" wire:model.defer="due_date" class=" form-control" id="">
                         </div>
                         <br>
-                        <button modal-bs-dismiss="close" wire:click="clear()" class="btn btn-light btn-square">Cancel</button>
+                        <button  data-bs-dismiss="modal" wire:click="clear()" class="btn btn-light btn-square">Cancel</button>
                         @if($loan_request !== null)
                             <button wire:click="accept({{ $loan_request->id }})" data-bs-dismiss="modal" class="btn btn-primary btn-square">Approve Loan</button>
                         @endif

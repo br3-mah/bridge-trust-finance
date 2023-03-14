@@ -77,7 +77,7 @@
                                          App\Models\Loans::loan_balance($loan->application->id)
                                         }}
                                         </td>
-                                        <td>--</td>
+                                        <td>{{ App\Models\Loans::last_payment($loan->application_id) ?? 'None' }}</td>
                                         <td>
                                             @if($loan->application->status == 0)
                                             <span class="badge badge-sm light badge-danger">
