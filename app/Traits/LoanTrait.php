@@ -52,10 +52,11 @@ trait LoanTrait{
                     'from' => 'admin@bridgetrustfinance.co.zm',
                     'phone' => $data['phone'],
                     'subject' => 'Bridge Trust Finance Loan Application',
-                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].', Thank you for choosing us as your lender and for your trust in our services. We appreciate your business and are committed to providing you with the best possible experience throughout your loan term Your loan request has been sent, please sign in to see the application status. Your username is '.$data['email'].' and Default Password is 20230101brigde.@2you',
+                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].', Thank you for choosing us as your lender and for your trust in our services. We appreciate your business and are committed to providing you with the best possible experience throughout your loan term Your loan request has been sent, please sign in to see the application status. Your username is '.$data['email'].' and Default Password is 20230101bridge.@2you',
                 ];
                 
                 if(!empty($check->toArray())){
+                    $mail['message'] = 'Your Loan has been Updated';
                     $check->first()->update($data);
                     $contact_email = new LoanApplication($mail);
                     Mail::to($data['email'])->send($contact_email);
@@ -70,6 +71,37 @@ trait LoanTrait{
             } catch (\Throwable $th) {
                 dd($th);
             }
+    }
+
+    public function apply_update_loan($data, $loan_id){
+            try {
+                // check if user already created a loan application that is not approved yet and not complete
+                $check = Application::where('id', $loan_id)->first();
+                $mail = [
+                    'name' => $data['fname'].' '.$data['lname'],
+                    'to' => $data['email'],
+                    'from' => 'admin@bridgetrustfinance.co.zm',
+                    'phone' => $data['phone'],
+                    'subject' => 'Bridge Trust Finance Loan Application',
+                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].', Your loan details have been updated',
+                ];
+                
+                if(!empty($check->toArray())){
+                    $check->update($data);
+                    $contact_email = new LoanApplication($mail);
+                    Mail::to($data['email'])->send($contact_email);
+                    return $check->id;
+                }
+
+            } catch (\Throwable $th) {
+                return 0;
+            }
+    }
+
+    public function remake_loan($loan_id, $new_due_date){
+        $x = Application::where('id', $loan_id)->first();
+        Loans::where('application_id', '=', $loan_id)->delete();
+        $this->make_loan($x, $new_due_date);
     }
 
     public function make_loan($x, $due_date){

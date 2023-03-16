@@ -37,6 +37,21 @@ trait WalletTrait{
         }
     }
 
+    public function updateUserWallet($user_id, $amount, $old_amount){
+        $wallet = Wallet::where('user_id', $user_id)->first();
+        if($amount !== $old_amount){
+            if($amount > $old_amount){
+                $diff = $amount - $old_amount;
+                $wallet->deposit = $wallet->deposit - $diff;
+            }else{
+                $diff = $amount - $old_amount;
+                $wallet->deposit = $wallet->deposit + $diff;
+            }
+            $wallet->save();
+        }
+        return true;
+    }
+
     public function getUserWallet($id){
         return Wallet::where('user_id', $id)->first()->deposit ?? 0;
     }

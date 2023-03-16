@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\ContactSetting;
 use Livewire\Component;
 
 class ContactSettings extends Component
 {
+    use AuthorizesRequests;
     public $name, $slogan, $phone1, $phone2, $phone3, $address, $email, $email2, $city, $state, $province, $business_type, $legal_structure, $contacts;
+    public $start_time, $stop_time, $start_day, $stop_day;
     public $facebook, $instagram, $linkedin, $twitter;
     
     // protected $rules = [
@@ -27,6 +30,7 @@ class ContactSettings extends Component
 
     public function render()
     {
+        $this->authorize('view system settings');
         $this->contacts = ContactSetting::first();
         if($this->contacts != null){
             $this->name = $this->contacts->name; 
@@ -38,6 +42,10 @@ class ContactSettings extends Component
             $this->email= $this->contacts->email; 
             $this->email2 = $this->contacts->email2; 
             $this->city = $this->contacts->city; 
+            $this->start_time = $this->contacts->start_time; 
+            $this->stop_time = $this->contacts->stop_time; 
+            $this->start_day = $this->contacts->start_day; 
+            $this->stop_day = $this->contacts->stop_day; 
             $this->state = $this->contacts->state;
             $this->business_type = $this->contacts->business_type;
             $this->legal_structure = $this->contacts->legal_structure;
@@ -64,6 +72,10 @@ class ContactSettings extends Component
                     'email1'=> $this->email, 
                     'email2' => $this->email2, 
                     'city' => $this->city, 
+                    'start_time' => $this->start_time, 
+                    'stop_time' => $this->stop_time, 
+                    'start_day' => $this->start_day, 
+                    'stop_day' => $this->stop_day, 
                     'province'=> $this->state,
                     'business_type'=> $this->business_type,
                     'legal_structure'=> $this->legal_structure,
@@ -85,6 +97,10 @@ class ContactSettings extends Component
                     'email1'=> $this->email, 
                     'email2' => $this->email2, 
                     'city' => $this->city, 
+                    'start_time' => $this->start_time, 
+                    'stop_time' => $this->stop_time, 
+                    'start_day' => $this->start_day, 
+                    'stop_day' => $this->stop_day, 
                     'province'=> $this->state,
                     'business_type'=> $this->business_type,
                     'legal_structure'=> $this->legal_structure,

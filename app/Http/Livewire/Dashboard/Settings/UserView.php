@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Application;
 use Livewire\Component;
 use Illuminate\Http\Client\Request;
@@ -14,7 +15,7 @@ use Livewire\WithFileUploads;
 
 class UserView extends Component
 {
-    use WithFileUploads;
+    use AuthorizesRequests, WithFileUploads;
 
     public $user_role, $permissions, $assigned_role;
     public $createModal = true;
@@ -25,6 +26,7 @@ class UserView extends Component
 
     public function render()
     {
+        $this->authorize('view system settings');
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

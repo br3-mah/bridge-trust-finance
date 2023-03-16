@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\User;
+use App\Models\WithdrawRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\File;
 use App\Traits\EmailTrait;
 use App\Traits\LoanTrait;
 use App\Traits\UserTrait;
+use App\Traits\WalletTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class LoanApplicationController extends Controller
 {     
-    use EmailTrait, LoanTrait, UserTrait;
+    use EmailTrait, LoanTrait, UserTrait, WalletTrait;
     /**
      * Display a listing of the resource.
      *
@@ -411,35 +413,131 @@ class LoanApplicationController extends Controller
         }      
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function updateLoanDetails(Request $request)
     {
-        //
+        // DB::beginTransaction();
+        try {
+            $form = $request->toArray();
+      
+            // Update files
+            if($request->file('tpin_file') !== null){               
+                $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
+            }
+    
+            if($request->file('payslip_file') !== null){               
+                $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
+            }
+    
+            if($request->file('nrc_file') !== null){               
+                $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public');         
+            }
+    
+            // Update User info
+            $loan_req = Application::where('id', $form['loan_id'])->first();
+            $user = User::where('id', $form['borrower_id'])->first();
+            $user->basic_pay = $form['basic_pay'];
+            $user->net_pay = $form['net_pay'];
+            $user->save();
+            
+            // Update Application Details
+            $data = [
+                'user_id'=> $form['borrower_id'],
+                'lname'=> $user->lname,
+                'fname'=> $user->fname,
+                'email'=> $user->email,
+                'amount'=> $form['amount'],
+                'phone'=> $user->phone,
+                'gender'=> $user->gender,
+                'type'=> $form['type'],
+                'repayment_plan'=> $form['repayment_plan'],
+
+                'glname'=> $form['glname'],
+                'gfname'=> $form['gfname'],
+                'gemail'=> $form['gemail'],
+                'gphone'=> $form['gphone'],
+                'g_gender'=> $form['g_gender'],
+                'g_relation'=> $form['g_relation'],
+    
+                'g2lname'=> $form['g2lname'],
+                'g2fname'=> $form['g2fname'],
+                'g2email'=> $form['g2email'],
+                'g2phone'=> $form['g2phone'],
+                'g2_gender'=> $form['g2_gender'],
+                'g2_relation'=> $form['g2_relation'],
+                'doa' => $form['doa'] ?? $loan_req->doa,
+                'tpin_file' => $form['doa'] ?? $tpin_file,
+                'payslip_file' => $form['doa'] ?? $payslip_file,
+                'nrc_file' => $form['doa'] ?? $nrc_file,
+                'complete' => $form['complete'],
+                'processed_by'=> auth()->user()->id
+            ];
+
+            // Enter Next of King if its personal loan
+            if($form['type'] !== 'Asset Financing'){
+                $nok = [
+                    'nok_email' => $form['nok_email'],
+                    'nok_fname' => $form['nok_fname'],
+                    'nok_lname' => $form['nok_lname'],
+                    'nok_phone' => $form['nok_phone'],
+                    'nok_relation' => $form['nok_relation'],
+                    'nok_gender' => $form['nok_gender'],
+                    'user_id' => $form['borrower_id']
+                ];
+                $this->updateNOK($nok);
+            }
+
+            $application = $this->apply_update_loan($data, $form['loan_id']);
+            if($form['loan_status'] == 1){
+                // Update borrower wallet
+                $this->updateUserWallet($form['borrower_id'], $form['amount'], $form['old_amount']);
+                
+                // Delete Withdrawal requests
+                WithdrawRequest::where('user_id', '=', $form['borrower_id'])->delete();
+
+                // Update due date
+                if($form['new_due_date'] !== null){
+                    $this->remake_loan($form['loan_id'], $form['new_due_date']);
+                }
+            }
+
+            $mail = [
+                'user_id' => '',
+                'application_id' => $application,
+                'name' => $user->fname.' '.$user->lname,
+                'loan_type' => $form['type'],
+                'phone' => $user->phone,
+                'duration' => $form['repayment_plan'],
+                'amount' => $form['amount'],
+                'type' => 'loan-application',
+                'msg' => 'You have new a '.$form['type'].' loan application request from '.$user->fname.' '.$user->lname.' has been updated, please visit the site to view more details'
+            ];
+    
+            // $process = $this->send_loan_email($mail);
+    
+            // if($request->wantsJson()){
+            //     return response()->json([
+            //         "status" => 200, 
+            //         "success" => true, 
+            //         "message" => "Your loan has been sent.", 
+            //         "data" => $application
+            //     ]);
+            // }else{
+            //     if($process){
+            //         // DB::commit();
+            //         return redirect()->back();
+            //     }else{
+            //         // DB::commit();
+            //         return redirect()->back();
+            //     }
+            // } 
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th);
+            // DB::rollback();
+            return redirect()->back();
+        }      
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

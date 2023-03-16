@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Application;
 use App\Models\Loans;
 use Carbon\Carbon;
@@ -15,9 +16,11 @@ use Livewire\Component;
 
 class ReportView extends Component
 {
+    use AuthorizesRequests;
     public $url, $results, $type, $start_date, $end_date, $today, $next;
     public function render()
     {
+        $this->authorize('view reports');
         $this->next = Carbon::now()->addMonth(2);
         $this->today = Carbon::now();
         $this->url = FacadesRoute::currentRouteName();

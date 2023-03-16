@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Classes\Exports\MissedRepaymentExport;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
@@ -12,7 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MissedRepaymentsView extends Component
 {
-    use LoanTrait;
+    use AuthorizesRequests, LoanTrait;
     public $user_role, $permissions, $assigned_role, $mssd_repays;
     public $createModal = true;
     public $editModal = false;
@@ -22,6 +23,7 @@ class MissedRepaymentsView extends Component
 
     public function render()
     {
+        $this->authorize('view loan relatives');
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

@@ -69,9 +69,9 @@
                                         </p>
                                         <p>Address: <span class="item">{{ $loan->user->address ?? 'None'}}</span></p>
                                         <p>Phone No.: <span class="item">{{ $loan->phone ?? $loan->user->phone }}</span></p>
-                                        <p>NRC No.: <span class="item">{{ $loan->nrc_no }}</span></p>
-                                        <p>Basic Pay.: <span class="item">{{ $loan->basic_pay }}</span></p>
-                                        <p>Net Pay.: <span class="item">{{ $loan->net_pay }}</span></p>
+                                        <p>NRC No.: <span class="item">{{ $loan->user->nrc_no }}</span></p>
+                                        <p>Basic Pay.: <span class="item">{{ $loan->user->basic_pay }}</span></p>
+                                        <p>Net Pay.: <span class="item">{{ $loan->user->net_pay }}</span></p>
                                         <p>Sex: <span class="item">{{ $loan->gender ?? $loan->user->gender }}</span></p>
                                     </div>
                                 </div>
@@ -200,17 +200,16 @@
                                 <div class="title-sm">
                                     <h5>Next Of Kin</h5>
                                 </div>
-                                @forelse ($loan->user->nextKin as $nxtkin)
-                                <p>Firstname: <span class="item">{{ $nxtkin->fname }}</span></p>
-                                <p>Surname: <span class="item">{{ $nxtkin->lname }}</span></p>
-                                <p>Phone No.: <span class="item">{{ $nxtkin->phone }}</span></p>
-                                <p>Email: <span class="item">{{ $nxtkin->email }}</span></p>
-                                <p>Address: <span class="item">{{ $nxtkin->address }}</span></p>
-                                <p>Occupation: <span class="item">{{ $nxtkin->occupation }}</span></p>
-                                <p>Sex: <span class="item">{{ $nxtkin->gender }}</span></p>
-                                @empty
-                                    <p>Data Recorded</p>
-                                @endforelse
+                                
+                                <p>Firstname: <span class="item">{{ $loan->user->nextKin->first()->fname }}</span></p>
+                                <p>Surname: <span class="item">{{ $loan->user->nextKin->first()->lname }}</span></p>
+                                <p>Phone No.: <span class="item">{{ $loan->user->nextKin->first()->phone }}</span></p>
+                                <p>Email: <span class="item">{{ $loan->user->nextKin->first()->email }}</span></p>
+                                <p>Relation: <span class="item">{{ $loan->user->nextKin->first()->address }}</span></p>
+                                {{-- <p>Occupation: <span class="item">{{ $loan->user->nextKin->first()->occupation }}</span></p> --}}
+                                <p>Sex: <span class="item">{{ $loan->user->nextKin->first()->gender }}</span></p>
+                        
+                                
                             </div>
                             @endif
 

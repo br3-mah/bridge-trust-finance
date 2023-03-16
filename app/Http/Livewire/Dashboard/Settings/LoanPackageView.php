@@ -2,15 +2,17 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Traits\LoanTrait;
 use Livewire\Component;
 
 class LoanPackageView extends Component
 {
-    use LoanTrait;
+    use AuthorizesRequests, LoanTrait;
     public $packages, $name, $type, $desc, $image, $image2, $phone_num;
     public function render()
     {
+        $this->authorize('view system settings');
         $this->packages = $this->getLoanPackages();
         return view('livewire.dashboard.settings.loan-package-view')
         ->layout('layouts.dashboard');

@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('contact_settings', function (Blueprint $table) {
-            $table->string('start_time')->default('08:00 am');
-            $table->string('stop_time')->default('05:00 pm');
-            $table->string('start_day')->default('Mon');
-            $table->string('stop_day')->default('Fri');
-            $table->text('slogan')->nullable();
+            $table->string('start_time')->nullable()->change();
+            $table->string('stop_time')->nullable()->change();
+            $table->string('start_day')->nullable()->change();
+            $table->string('stop_day')->nullable()->change();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alter_contact_sets');
+        Schema::dropIfExists('alter_contactssettings');
     }
 };

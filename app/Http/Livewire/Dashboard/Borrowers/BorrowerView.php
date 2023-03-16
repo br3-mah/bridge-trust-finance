@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
-
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Application;
 use Livewire\Component;
@@ -18,6 +18,7 @@ use Dompdf\Dompdf;
 
 class BorrowerView extends Component
 {
+    use AuthorizesRequests;
     public $user_role, $permissions, $assigned_role;
     public $createModal = true;
     public $editModal = false;
@@ -31,7 +32,7 @@ class BorrowerView extends Component
     }
     public function render()
     {
-
+        $this->authorize('view clientele');
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

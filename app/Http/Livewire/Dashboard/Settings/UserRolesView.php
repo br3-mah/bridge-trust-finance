@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
-
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Role;
 
 class UserRolesView extends Component
 {
-    use WithPagination;
+    use AuthorizesRequests, WithPagination;
     public $user_roles, $permissions, $name, $role_name, $role_id, $rolePermissions;
     public $permission = [];
     public $show, $style;
@@ -21,6 +21,7 @@ class UserRolesView extends Component
 
     public function render()
     {
+        $this->authorize('view system settings');
         $this->user_roles = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

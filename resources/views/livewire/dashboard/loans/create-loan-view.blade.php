@@ -79,7 +79,7 @@
                                             <div class="col-lg-6 mb-2">
                                                 <div class="mb-3">
                                                     <label class="text-label form-label">Purpose for Loan*</label>
-                                                    <select type="text" id="loan_type_id1" name="type" class="form-control">
+                                                    <select type="text" onchange="changeType()" id="loan_type_id1" name="type" class="form-control">
                                                         <option value="Personal">Personal</option>
                                                         <option value="Education">Education</option>
                                                         <option value="Asset Financing">Asset Financing</option>
@@ -384,31 +384,17 @@
                 reader.readAsDataURL(this.files[0]); 
             });
         });
-        function printLoansTable(){
-            $('.actions-btns').hide();
-            // Get the HTML element that you want to convert to PDF
-            const element = document.getElementById('loans_table_print_view');
-            var pdfWidth = 210; // mm
-            var pdfHeight = 297; // mm
-            // Create a new jsPDF instance
-            const doc = new jsPDF('landscape');
-            // Use the html2canvas library to render the element as a canvas
-            html2canvas(element).then(canvas => {
-                // Convert the canvas to an image data URL
-                const imgData = canvas.toDataURL('image/png');
-                // Add the image data URL to the PDF document
-                doc.addImage(
-                    imgData, 
-                    'PNG', 
-                    2, // x-coordinate
-                    2, // y-coordinate
-                );
 
-                // Save the PDF document
-                doc.save('All Loans.pdf');
-                
-                $('.actions-btns').show();
-            });
+        function changeType(){
+            const dropdown = document.getElementById("loan_type_id1");
+            const selectedValue = dropdown.value;
+            if(selectedValue !== 'Asset Financing'){
+                document.getElementById("nokLoanRef").style.display = "block";
+                document.getElementById("guarantorLoanRef").style.display = "none";
+            }else{
+                document.getElementById("nokLoanRef").style.display = "none";
+                document.getElementById("guarantorLoanRef").style.display = "block";
+            }
         }
     </script>
 </div>

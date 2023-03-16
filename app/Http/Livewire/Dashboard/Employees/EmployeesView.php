@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Employees;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Classes\Exports\EmployeesExport;
 use App\Models\Application;
 use Livewire\Component;
@@ -15,6 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeesView extends Component
 {
+    use AuthorizesRequests;
     public $user_role, $permissions, $assigned_role;
     public $createModal = true;
     public $editModal = false;
@@ -29,6 +31,7 @@ class EmployeesView extends Component
 
     public function render()
     {
+        $this->authorize('view employees');
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

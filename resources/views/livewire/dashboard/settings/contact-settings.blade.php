@@ -120,6 +120,50 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="mb-3 row">
+                                                            <label class="col-lg-4 col-form-label" for="validationCustom07">Start Time
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <div class="col-lg-6">
+                                                                <input value="{{ $contacts->start_time }}" type="text" class="form-control" wire:model.defer="start_time" id="validationCustom07"  placeholder="{{ $contacts->start_time }}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a Start time.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3 row">
+                                                            <label class="col-lg-4 col-form-label" for="validationCustom07">Closing Time
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <div class="col-lg-6">
+                                                                <input value="{{ $contacts->stop_time }}" type="text" class="form-control" wire:model.defer="stop_time" id="validationCustom07"  placeholder="{{ $contacts->stop_time }}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a Stop time.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3 row">
+                                                            <label class="col-lg-4 col-form-label" for="validationCustom07">Start Day
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <div class="col-lg-6">
+                                                                <input value="{{ $contacts->start_day }}" type="text" class="form-control" wire:model.defer="start_day" id="validationCustom07"  placeholder="{{ $contacts->start_day }}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a Start Day.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3 row">
+                                                            <label class="col-lg-4 col-form-label" for="validationCustom07">End Day
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <div class="col-lg-6">
+                                                                <input value="{{ $contacts->stop_day }}" type="text" class="form-control" wire:model.defer="stop_day" id="validationCustom07"  placeholder="{{ $contacts->stop_day }}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a End Day.
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="col-xl-6">
                                                         <div class="mb-3 row">

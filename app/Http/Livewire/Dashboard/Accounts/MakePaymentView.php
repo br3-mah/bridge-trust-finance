@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Accounts;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Classes\Exports\TransactionExport;
 use App\Models\LoanInstallment;
 use App\Models\Loans;
@@ -14,11 +15,12 @@ use Carbon\Carbon;
 
 class MakePaymentView extends Component
 {
-    use WalletTrait;
+    use AuthorizesRequests, WalletTrait;
     public $amount, $loan_id, $loans, $transactions;
 
     public function render()
     {
+        $this->authorize('view accounting');
         $this->loans = Loans::with('application')->get();
         $this->transactions = Transaction::with('application.user')->orderBy('created_at', 'desc')->get();
         return view('livewire.dashboard.accounts.make-payment-view')

@@ -34,8 +34,8 @@
                                         <div class="compose-content">
                                             <form wire:submit.prevent='sendMessage()'>
                                                 <div wire:ignore class="mb-3">
-                                                    <select wire:model.defer="to" wire:ignore multiple class="default-select uppercase form-control wide mb-3" id="exampleInputEmail7" placeholder="Find Customer">
-                                                        <option>To: </option>
+                                                    <select wire:model.defer="to" wire:ignore multiple class="default-select uppercase form-control wide mb-3" id="exampleInputEmail7" placeholder="Find Customer" data-live-search="true">
+                                                        {{-- <option>To: </option> --}}
                                                         @forelse ($users as $user)
                                                         <option value="{{ $user->id }}">
                                                             <span>{{ $user->fname.' '.$user->lname }}</span>
@@ -51,7 +51,7 @@
                                                     <input type="text" wire:model.defer="subject" class="form-control bg-transparent" placeholder=" Subject:">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <textarea id="email-compose-editor" wire:model.defer="message" class="textarea_editor form-control bg-transparent" rows="5" placeholder="Enter text ..."></textarea>
+                                                    <textarea id="email-compose-editor" wire:model.defer="message" class="textarea_editor form-control bg-transparent" rows="5" placeholder="Write a Message"></textarea>
                                                 </div>
                                                 
                                                 <div>

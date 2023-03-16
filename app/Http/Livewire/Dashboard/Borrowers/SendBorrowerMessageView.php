@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Borrowers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Application;
 use App\Models\User;
 use App\Traits\EmailTrait;
@@ -9,13 +10,14 @@ use Livewire\Component;
 
 class SendBorrowerMessageView extends Component
 {
-    use EmailTrait;
+    use AuthorizesRequests, EmailTrait;
     public $subject, $message;
     public $users;
     public $to = [];
 
     public function render()
     {
+        $this->authorize('view clientele');
         $this->users = User::latest()->role('user')->get();
         return view('livewire.dashboard.borrowers.send-borrower-message-view')
         ->layout('layouts.dashboard');

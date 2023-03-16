@@ -2,15 +2,18 @@
 
 namespace App\Http\Livewire\Dashboard\Settings;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\CareerSetting;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class CareerSettings extends Component
 {
+    use AuthorizesRequests;
     public $dept, $job_role, $location, $last_date, $desc, $careers;
     public function render()
     {
+        $this->authorize('view system settings');
         $this->careers = CareerSetting::get();
         return view('livewire.dashboard.settings.career-settings')
         ->layout('layouts.dashboard');

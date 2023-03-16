@@ -50,5 +50,18 @@ trait UserTrait{
             'user_id' => $data['user_id']
         ]);
     }
+
+    public function updateNOK($data){
+        NextOfKing::where('user_id', '=', $data['user_id'])->delete();
+        NextOfKing::create([
+            'email' => $data['nok_email'],
+            'fname' => $data['nok_fname'],
+            'lname' => $data['nok_lname'],
+            'phone' => $data['nok_phone'],
+            'address' => $data['nok_relation'],
+            'gender' => $data['nok_gender'],
+            'user_id' => $data['user_id']
+        ]);
+    }
 }
 

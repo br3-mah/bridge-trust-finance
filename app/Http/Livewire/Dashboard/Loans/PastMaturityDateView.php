@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Classes\Exports\PMDExport;
 use App\Models\Application;
 use App\Models\Loans;
@@ -17,13 +18,14 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PastMaturityDateView extends Component
 {
-    use EmailTrait, WalletTrait;
+    use AuthorizesRequests, EmailTrait, WalletTrait;
     public $loan_requests;
     public $type = [];
 
     public function render()
     {
-        
+
+        $this->authorize('view loan relatives');
         $this->loan_requests = Loans::with('application')->where('final_due_date', '<', now())
         ->orderBy('created_at', 'desc')->get();
 

@@ -27,6 +27,7 @@ use App\Http\Livewire\Dashboard\Loans\LoanRepaymentCalculatorView;
 use App\Http\Livewire\Dashboard\Loans\LoanRequestView;
 use App\Http\Livewire\Dashboard\Loans\MissedRepaymentsView;
 use App\Http\Livewire\Dashboard\Loans\PastMaturityDateView;
+use App\Http\Livewire\Dashboard\Loans\UpdateLoanView;
 use App\Http\Livewire\Dashboard\NotificationView;
 use App\Http\Livewire\Dashboard\Settings\LoanWalletView;
 use App\Http\Livewire\Dashboard\Settings\UserRolesView;
@@ -75,6 +76,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/dashboard', DashboardView::class)->name('dashboard');
     // Administrator
     Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
+    Route::get('edit-loan-details/{id}', UpdateLoanView::class)->name('edit-loan');
     Route::get('proxy-loan-create', CreateLoanView::class)->name('proxy-loan-create');
     Route::get('withdraw-requests', WithdrawRequestView::class)->name('withdraw-requests');
     Route::get('client-loan-history', LoanHistoryView::class)->name('view-loan-history');
@@ -96,6 +98,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('missed-repayments', MissedRepaymentsView::class)->name('missed-repayments');
     Route::post('apply-for-loan', [LoanApplicationController::class, 'new_loan'])->name('apply-loan');
     Route::post('apply-proxy-loan', [LoanApplicationController::class, 'new_proxy_loan'])->name('proxy-apply-loan');
+    Route::post('update-loan', [LoanApplicationController::class, 'updateLoanDetails'])->name('update-loan-details');
     
     // ---- Employees
     Route::get('view-employees', EmployeesView::class)->name('employees');

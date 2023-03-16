@@ -55,6 +55,7 @@ class Application extends Model
         'approved_by',
         
         'complete',
+        'doa',
 
         'monthly_payments',
         'maximum_deductable',
@@ -104,17 +105,26 @@ class Application extends Model
     public static function payback($amount, $duration){
 
         if( $duration > 1 ){
-            $interest = (((float)$amount * 1.2) / $duration * 1.2 * $duration) - (float)$amount;
+            $interest = (((float)$amount * 1.44) / $duration * 1.44 * $duration) - (float)$amount;
             return $amount + $interest;
         }else{
             return ($amount * 0.2) + $amount;
         }
+    }
 
+    public static function interest_amount($amount, $duration){
+
+        if( $duration > 1 ){
+            $interest = (((float)$amount * 1.44) / $duration * 1.44 * $duration) - (float)$amount;
+            return $interest;
+        }else{
+            return ($amount * 0.44);
+        }
     }
 
     public static function interest_rate($duration){
         if( $duration > 1 ){
-            return 1.2;
+            return 1.44;
         }else{
             return 0.2;
         }
@@ -163,12 +173,13 @@ class Application extends Model
         $payment_period = $loan->repayment_plan; // Clear
         $monthly_payment = Application::monthly_installment($loan->amount, $loan->repayment_plan); // Clear
         $maximum_deductable_amount = $net_pay * 0.75; // Clear
-        $net_pay_alr = $net_pay - $monthly_payment; //Net Pay After Loan Recovery //Clear
-        if($maximum_deductable_amount > 0){
-            $credit_score = $monthly_payment > $maximum_deductable_amount;
-        }else{
-            $credit_score = false;
-        }
+        $net_pay_alr = $net_pay * 0.25;; //Net Pay After Loan Recovery //Clear
+        
+        // if($maximum_deductable_amount > 0){
+            $credit_score = $monthly_payment < $maximum_deductable_amount;
+        // }else{
+        //     $credit_score = false;
+        // }
 
         $data = [
             'borrower' => $loan->user->fname.' '.$loan->user->lname,

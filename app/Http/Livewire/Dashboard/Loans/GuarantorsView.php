@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Loans;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Classes\Exports\GuarantorExport;
 use App\Models\Application;
 use Livewire\Component;
@@ -14,6 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class GuarantorsView extends Component
 {
+    use AuthorizesRequests;
     public $user_role, $permissions, $assigned_role;
     public $createModal = true;
     public $editModal = false;
@@ -23,6 +25,7 @@ class GuarantorsView extends Component
 
     public function render()
     {
+        $this->authorize('view loan relatives');
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

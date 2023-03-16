@@ -1,4 +1,4 @@
-<header class="main-header main-header-style1">
+<header class="main-header main-header-style1" style="margin-bottom: -2%">
     <div class="main-header-style1-top">
         <div class="auto-container">
             <div class="outer-box">
