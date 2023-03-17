@@ -173,7 +173,7 @@
                             </div>
 
                             @if($loan->type !== 'Asset Financing')
-                                @if(!empty($loan->user->nextKin->toArray))
+                                @if(!empty($loan->user->nextKin->toArray()))
                                     <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
                                         <div class="title-sm">
                                             <h5>Next Of Kin</h5>
