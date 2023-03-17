@@ -10,12 +10,12 @@
             <th>Loan #.</th>
             <th>Borrower</th>
             <th>Loan Type</th>
-            <th>Principal</th>
+            <th>Principal (K)</th>
             <th>Duration</th>
-            <th>Interest(%)</th>
-            <th>Due</th>
-            <th>Paid</th>
-            <th>Balance</th>
+            <th>Interest (K)</th>
+            <th>Due (K)</th>
+            <th>Paid (K)</th>
+            <th>Balance (K)</th>
             <th>Due Date</th>
             <th>Status</th>
             <th>DOA</th>
