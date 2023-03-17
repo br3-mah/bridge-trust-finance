@@ -172,45 +172,42 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
-                                <div class="title-sm">
-                                    <h5>First Guarantors</h5>
+                            @if($loan->type !== 'Asset Financing')
+                                @if(!empty($loan->user->nextKin->toArray))
+                                    <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                        <div class="title-sm">
+                                            <h5>Next Of Kin</h5>
+                                        </div>
+                                        <p>Firstname: <span class="item">{{ $loan->user->nextKin->first()->fname }}</span></p>
+                                        <p>Surname: <span class="item">{{ $loan->user->nextKin->first()->lname }}</span></p>
+                                        <p>Phone No.: <span class="item">{{ $loan->user->nextKin->first()->phone }}</span></p>
+                                        <p>Email: <span class="item">{{ $loan->user->nextKin->first()->email }}</span></p>
+                                        <p>Relation: <span class="item">{{ $loan->user->nextKin->first()->address }}</span></p>
+                                        {{-- <p>Occupation: <span class="item">{{ $loan->user->nextKin->first()->occupation }}</span></p> --}}
+                                        <p>Sex: <span class="item">{{ $loan->user->nextKin->first()->gender }}</span></p>
+                                    </div>
+                                @endif
+                            @else
+                                <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                    <div class="title-sm">
+                                        <h5>First Guarantors</h5>
+                                    </div>
+                                    <p>1st Garantors Name: <span class="item">{{ $loan->gfname.' '.$loan->glname }}</span></p>
+                                    <p>1st Garantors Phone No.: <span class="item">{{ $loan->gphone }}</span></p>
+                                    <p>1st Garantors Email: <span class="item">{{ $loan->gemail }}</span></p>
+                                    <p>1st Garantors Sex: <span class="item">{{ $loan->g_gender }}</span></p>
+                                    <p>1st Garantors Relation: <span class="item">{{ $loan->g_relation }}</span></p>
                                 </div>
-                                <p>1st Garantors Name: <span class="item">{{ $loan->gfname.' '.$loan->glname }}</span></p>
-                                <p>1st Garantors Phone No.: <span class="item">{{ $loan->gphone }}</span></p>
-                                <p>1st Garantors Email: <span class="item">{{ $loan->gemail }}</span></p>
-                                <p>1st Garantors Sex: <span class="item">{{ $loan->g_gender }}</span></p>
-                                <p>1st Garantors Relation: <span class="item">{{ $loan->g_relation }}</span></p>
-                            </div>
-                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
-                                <div class="title-sm">
-                                    <h5>Second Guarantors</h5>
+                                <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
+                                    <div class="title-sm">
+                                        <h5>Second Guarantors</h5>
+                                    </div>
+                                    <p>2nd Garantors Name: <span class="item">{{ $loan->g2fname.' '.$loan->g2lname }}</span></p>
+                                    <p>2nd Garantors Phone No.: <span class="item">{{ $loan->g2phone }}</span></p>
+                                    <p>2nd Garantors Email: <span class="item">{{ $loan->g2email }}</span></p>
+                                    <p>2nd Garantors Sex: <span class="item">{{ $loan->g2_gender }}</span></p>
+                                    <p>2nd Garantors Relation: <span class="item">{{ $loan->g_2relation }}</span></p>
                                 </div>
-                                <p>2nd Garantors Name: <span class="item">{{ $loan->g2fname.' '.$loan->g2lname }}</span></p>
-                                <p>2nd Garantors Phone No.: <span class="item">{{ $loan->g2phone }}</span></p>
-                                <p>2nd Garantors Email: <span class="item">{{ $loan->g2email }}</span></p>
-                                <p>2nd Garantors Sex: <span class="item">{{ $loan->g2_gender }}</span></p>
-                                <p>2nd Garantors Relation: <span class="item">{{ $loan->g_2relation }}</span></p>
-                            </div>
-
-
-                            @if($loan->type !== 'Asset Financing' && $loan->user->nextKin != '')
-                            <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12">
-                                <div class="title-sm">
-                                    <h5>Next Of Kin</h5>
-                                </div>
-                                
-                                <p>Firstname: <span class="item">{{ $loan->user->nextKin->first()->fname }}</span></p>
-                                <p>Surname: <span class="item">{{ $loan->user->nextKin->first()->lname }}</span></p>
-                                <p>Phone No.: <span class="item">{{ $loan->user->nextKin->first()->phone }}</span></p>
-                                <p>Email: <span class="item">{{ $loan->user->nextKin->first()->email }}</span></p>
-                                <p>Relation: <span class="item">{{ $loan->user->nextKin->first()->address }}</span></p>
-                                {{-- <p>Occupation: <span class="item">{{ $loan->user->nextKin->first()->occupation }}</span></p> --}}
-                                <p>Sex: <span class="item">{{ $loan->user->nextKin->first()->gender }}</span></p>
-                        
-                                
-                            </div>
                             @endif
 
                             <div class="col-xl-6 col-lg-6 col-md-6 col-xxl-6 col-sm-12">
