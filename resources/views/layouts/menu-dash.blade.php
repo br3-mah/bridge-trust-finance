@@ -9,7 +9,7 @@
                 </div>
                 <ul class="navbar-nav header-right">
                     <li class="nav-item">
-                        <form method="get" action="{{ route('client-account') }}" class="input-group search-area me-3">
+                        <form method="get" action="{{ route('search') }}" class="input-group search-area me-3">
                             @csrf
                             <input type="text" name="key" class="form-control" @role('user') placeholder="LOAN NO." @else placeholder="NRC" @endrole>
                             <span class="input-group-text"><a href="javascript:void(0)">

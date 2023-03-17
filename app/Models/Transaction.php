@@ -27,4 +27,8 @@ class Transaction extends Model
     public function application(){
         return $this->belongsTo(Application::class, 'application_id');
     }
+
+    public static function hasTransaction($application_id){
+        return Transaction::where('application_id', $application_id)->exists();
+    }
 }

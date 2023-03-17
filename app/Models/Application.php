@@ -102,24 +102,39 @@ class Application extends Model
     //     return $this->hasMany()
     // }
 
-    public static function payback($amount, $duration){
+    public static function payback($principal, $duration){
+        // 1 month
+        if( $duration < 2){
+            return ($principal * 0.2) + $principal;
+        }
 
-        if( $duration > 1 ){
-            $interest = (((float)$amount * 1.44) / $duration * 1.44 * $duration) - (float)$amount;
-            return $amount + $interest;
-        }else{
-            return ($amount * 0.2) + $amount;
+        // 2 to 3 months
+        if( $duration > 1 && $duration < 4 ){
+            return ($principal * 0.44) + $principal;
+        } 
+        
+        // 3 months and above
+        if( $duration > 3){
+            return ($principal * 1.44) + $principal;
         }
     }
 
-    public static function interest_amount($amount, $duration){
-
-        if( $duration > 1 ){
-            $interest = (((float)$amount * 1.44) / $duration * 1.44 * $duration) - (float)$amount;
-            return $interest;
-        }else{
-            return ($amount * 0.44);
+    public static function interest_amount($principal, $duration){
+        // 1 month
+        if( $duration < 2){
+            return ($principal * 0.2);
         }
+
+        // 2 to 3 months
+        if( $duration > 1 && $duration < 4 ){
+            return ($principal * 0.44);
+        } 
+        
+        // 3 months and above
+        if( $duration > 3){
+            return ($principal * 1.44);
+        }
+
     }
 
     public static function interest_rate($duration){

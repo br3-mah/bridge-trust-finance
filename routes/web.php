@@ -29,6 +29,7 @@ use App\Http\Livewire\Dashboard\Loans\MissedRepaymentsView;
 use App\Http\Livewire\Dashboard\Loans\PastMaturityDateView;
 use App\Http\Livewire\Dashboard\Loans\UpdateLoanView;
 use App\Http\Livewire\Dashboard\NotificationView;
+use App\Http\Livewire\Dashboard\SearchEngineView;
 use App\Http\Livewire\Dashboard\Settings\LoanWalletView;
 use App\Http\Livewire\Dashboard\Settings\UserRolesView;
 use App\Http\Livewire\Dashboard\Settings\UserView;
@@ -73,7 +74,9 @@ Route::get('/', WelcomePage::class)->name('welcome');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    
     Route::get('/dashboard', DashboardView::class)->name('dashboard');
+    Route::get('/search', SearchEngineView::class)->name('search');
     // Administrator
     Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
     Route::get('edit-loan-details/{id}', UpdateLoanView::class)->name('edit-loan');

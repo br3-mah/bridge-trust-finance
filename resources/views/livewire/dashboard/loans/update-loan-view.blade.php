@@ -1,6 +1,7 @@
 <div class="content-body">
     <div class="container-fluid">
         <div class="container">
+            @if(!$can_edit)
             <form id="updateloandetails" action="{{ route("update-loan-details") }}" method="POST" style="min-height:60vh" enctype="multipart/form-data">
                 @csrf
                 <div class="card p-4">
@@ -45,7 +46,7 @@
                                 <select type="text" value="{{ $loan->repayment_plan }}" name="repayment_plan" class="form-control">
                                     <option data-display="Select">{{ $loan->repayment_plan }}</option>
                                     <option value="1">1 Month</option>
-                                    <option value="2">2 Month</option>
+                                    <option value="2">2 Months</option>
                                     <option value="3">3 Months</option>
                                     <option value="4">4 Months</option>
                                     <option value="5">5 Months</option>
@@ -56,6 +57,9 @@
                                     <option value="10">10 Months</option>
                                     <option value="11">11 Months</option>
                                     <option value="12">12 Months</option>
+                                    <option value="18">1 Year 6 Months</option>
+                                    <option value="24">2 Years</option>
+                                    <option value="30">2 Year 6 Months</option>
                                 </select>
                             </div>
                         </div>
@@ -307,6 +311,27 @@
                     <span>Please wait a minute</span>
                 </div>
             </div>
+            @else
+            <div id="transactionExists" class="mx-auto">
+                <div class="col-xl-12">
+                    <div class="alert alert-primary left-icon-big alert-dismissible fade show">
+                        <div class="media">
+                            <div class="alert-left-icon-big">
+                                <span>
+                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+                                </span>
+                            </div>
+                            <div class="media-body">
+                                <h2 class="mt-1 mb-2">Not Applicable!</h2>
+                                <p class="mb-0">
+                                    Can not edit loan details, transactions are currently in progress, view <a  href="{{ route('loan-statement', ['id'=>$loan->id]) }}">Loan Statement</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>  
 </div>
