@@ -11,7 +11,7 @@
                             <div class="shopping-cart mb-2 me-3">
                                 <button onclick="printLoanDetails()" class="btn btn-square btn-warning">Print PDF</button>
                             </div>
-                            @if($loan->status !== 2)
+                            @if($loan->status !== 2 && $loan->status !== 1)
                             <div class="shopping-cart mb-2 me-3">
                                 <button 
                                     class="btn btn-square btn-outline-primary" 
