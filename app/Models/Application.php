@@ -108,15 +108,15 @@ class Application extends Model
             return ($principal * 0.2) + $principal;
         }
 
-        // 2 to 3 months
-        if( $duration > 1 && $duration < 4 ){
+        // 2 to 6 months
+        if( $duration > 1 && $duration < 7 ){
             return ($principal * 0.44) + $principal;
         } 
         
         // 3 months and above
-        if( $duration > 3){
-            return ($principal * 1.44) + $principal;
-        }
+        // if( $duration > 3){
+        //     return ($principal * 1.44) + $principal;
+        // }
     }
 
     public static function interest_amount($principal, $duration){
@@ -125,15 +125,15 @@ class Application extends Model
             return ($principal * 0.2);
         }
 
-        // 2 to 3 months
-        if( $duration > 1 && $duration < 4 ){
+        // 2 to 6 months
+        if( $duration > 1 && $duration < 7 ){
             return ($principal * 0.44);
         } 
         
-        // 3 months and above
-        if( $duration > 3){
-            return ($principal * 1.44);
-        }
+        // // 3 months and above
+        // if( $duration > 3){
+        //     return ($principal * 1.44);
+        // }
 
     }
 

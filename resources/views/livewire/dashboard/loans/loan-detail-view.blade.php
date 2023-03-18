@@ -96,24 +96,24 @@
                                         <p>Duration: <span class="item">{{ $loan->repayment_plan }} Months</span> </p>
                                         <p>Interest: <span class="item">
                                             @if($loan->repayment_plan > 1)
-                                            1.2
+                                            44%
                                             @else
-                                            0.2
+                                            20%
                                             @endif
-                                             per month
+                                            per month
                                         </span>
                                         </p>
                                         
                                         @if($loan->status == 1 || preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name')) == 'admin')
-                                        <p>Last Payment: 
-                                            <span class="item">  
-                                            {{ App\Models\Loans::last_payment($loan->id)->created_at != null ? App\Models\Loans::last_payment($loan->id)->created_at->toFormattedDateString() : 'No record'  }}
-                                            </span>
-                                        </p>
-                                        <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
-                                        <p>Total Interest Rate: <span class="item">
+                                            <p>Last Payment: 
+                                                <span class="item">  
+                                                {{ App\Models\Loans::last_payment($loan->id)->created_at != null ? App\Models\Loans::last_payment($loan->id)->created_at->toFormattedDateString() : 'No record'  }}
+                                                </span>
+                                            </p>
+                                            <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
+                                            <p>Total Interest Rate: <span class="item">
                                             @if($loan->repayment_plan > 1)
-                                            {{ $loan->repayment_plan * 1.2 }}
+                                            {{ $loan->repayment_plan * 0.44 }}
                                             @else
                                             {{ $loan->repayment_plan * 0.2 }}
                                             @endif

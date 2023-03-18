@@ -23,7 +23,7 @@
                             </div>
                             <div class="profile-details">
                                 <div class="profile-name px-3 pt-2">
-                                    <h4 style="text-transform: camelcase;" class="text-primary mb-0">{{ $data->fname.' '.$data->lname }}</h4sty>
+                                    <h4 style="text-transform: camelcase;" class="text-primary mb-0">{{ $data->fname.' '.$data->lname }}</h4>
                                     @foreach ($data->roles as $role)
                                         @if($role->name == 'user')
                                         <p>Borrower</p>
@@ -156,7 +156,7 @@
                                             @if($data->loans->first()->status == 1)
                                             <div class="mothly-income">
                                                 <span>{{ $data->loans->first()->type }} Loan</span>
-                                                <h4>K {{ $data->loans->first()->amount }} <span class="ms-1"> + 20%</span></h4>
+                                                <h4>K {{ $data->loans->first()->amount }} <span class="ms-1"></span></h4>
                                             </div>
                                             <div class="balance_data">
                                                 <div class="balance-icon outcome">
