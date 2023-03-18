@@ -88,6 +88,9 @@
                                             <option value="1">1 Month</option>
                                             <option value="2">2 Month</option>
                                             <option value="3">3 Months</option>
+                                            <option value="4">4 Months</option>
+                                            <option value="5">5 Months</option>
+                                            <option value="6">6 Months</option>
                                         </select>
                                     </div>
                                 </div>
