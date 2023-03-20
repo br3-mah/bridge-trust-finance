@@ -39,6 +39,7 @@ class UserAuthenticationController extends Controller
             'user_id' => $user->id
         ]);
         $user->save();
+        $user->syncRoles('user');
         $mail = [
             'name' => $user->fname.' '.$user->lname,
             'to' => $user->email,
