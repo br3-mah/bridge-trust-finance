@@ -100,7 +100,7 @@
                                             @else
                                             20%
                                             @endif
-                                            per month
+                                            {{-- per month --}}
                                         </span>
                                         </p>
                                         
@@ -110,14 +110,15 @@
                                                 {{ App\Models\Loans::last_payment($loan->id)->created_at != null ? App\Models\Loans::last_payment($loan->id)->created_at->toFormattedDateString() : 'No record'  }}
                                                 </span>
                                             </p>
-                                            <p>Payback Amount: <span class="item">K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</span></p>
-                                            <p>Total Interest Rate: <span class="item">
+                                            <p>Payback Amount: <span class="item"><b>K {{ App\Models\Application::payback($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</b></span></p>
+                                            <p>Monthly Installments: <span class="item"><b>K {{ App\Models\Application::monthly_installment($loan->amount, preg_replace('/[^0-9]/','', $loan->repayment_plan)) }}</b></span></p>
+                                            {{-- <p>Total Interest Rate: <span class="item">
                                             @if($loan->repayment_plan > 1)
                                             {{ $loan->repayment_plan * 0.44 }}
                                             @else
                                             {{ $loan->repayment_plan * 0.2 }}
                                             @endif
-                                            </span></p>
+                                            </span></p> --}}
                                         @endif
                                         
                                         <p>Credit Score: 

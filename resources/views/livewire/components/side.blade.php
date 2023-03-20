@@ -45,9 +45,10 @@
                     @can('view loan requests')
                     <li><a href="{{ route('view-loan-requests') }}">View Loans</a></li>
                     @endcan
-                    @can('view loan rates')
+                    @hasanyrole(['admin', 'employee'])
+                    <li><a href="{{ route('closed-loans') }}">Closed Loans</a></li>
                     {{-- <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li> --}}
-                    @endcan
+                    @endhasanyrole
                     @can('view loan relatives')
                     <li><a href="{{ route('past-maturity-date') }}">Past Maturity Date</a></li>
                     <li><a href="{{ route('guarantors') }}">Guarantors</a></li>
@@ -83,7 +84,7 @@
                     <span class="nav-text">Accounting</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li>
+                    {{-- <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li> --}}
                     <li><a href="{{ route('make-payment') }}">Payment Transactions</a></li>
                     <li><a href="{{ route('loan-wallet') }}">Manage Funds</a></li>
                     {{-- <li><a href="{{ route('loan-statements') }}">Loan Statements </a></li> --}}
@@ -151,18 +152,18 @@
                 </a>
                 <ul aria-expanded="false">
                     {{-- @can('view all users') --}}
-                    <li><a href="{{ route('users') }}">Users Settings</a></li>
+                    {{-- <li><a href="{{ route('users') }}">Users Settings</a></li> --}}
                     {{-- @endcan --}}
                     @can('view user roles')
-                    <li><a href="{{ route('roles') }}">Roles & Permissions</a></li>
+                    {{-- <li><a href="{{ route('roles') }}">Roles & Permissions</a></li> --}}
                     @endcan
                     {{-- @can('manage company wallet funds') --}}
-                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Loan Settings</a>
+                    {{-- <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Loan Settings</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('loan-rates') }}">Add Loan Rates</a></li>
-                            {{-- <li><a href="{{ route('view-loan-deals') }}">Add Loan Deals</a></li> --}}
+                            <li><a href="{{ route('view-loan-deals') }}">Add Loan Deals</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">CMS Manager</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('contact-settings') }}">Contact Details</a></li> 

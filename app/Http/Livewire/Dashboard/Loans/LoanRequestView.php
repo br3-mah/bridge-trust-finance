@@ -29,15 +29,15 @@ class LoanRequestView extends Component
         $loan_requests = Application::query();
         if(auth()->user()->can('view all loan requests')){
             if ($this->type) {
-                $loan_requests->whereIn('type', $this->type)->orderBy('created_at', 'desc');
+                $loan_requests->whereIn('type', $this->type)->orderBy('id', 'desc');
             }
     
             if ($this->status) {
-                $loan_requests->whereIn('status', $this->status)->orderBy('created_at', 'desc');
+                $loan_requests->whereIn('status', $this->status)->orderBy('id', 'desc');
             }
             $this->loan_requests = $loan_requests->where('complete', 1)->get();
         }else{
-            $this->loan_requests = Application::with('loan')->where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+            $this->loan_requests = Application::with('loan')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
         }
         return view('livewire.dashboard.loans.loan-request-view')
         ->layout('layouts.dashboard');

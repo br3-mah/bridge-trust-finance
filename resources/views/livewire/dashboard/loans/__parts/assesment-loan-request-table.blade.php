@@ -41,13 +41,7 @@
             <td style="text-align: center; text-transform: camelcase;">{{ App\Models\Application::loan_assemenent_table($loan)['borrower'] }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['basic_pay'] ?? 0 }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['net_pay_blr'] ?? 0 }}</td>
-            <td style="text-align: center">
-                @if($loan->repayment_plan > 1)
-                1.2
-                @else
-                0.2
-                @endif
-            </td>
+            <td style="text-align: center">K{{ $loan->amount }}</td> 
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['interest'] }}</td>
             <td style="text-align: center">K{{ App\Models\Application::loan_assemenent_table($loan)['total_collectable'] ?? 0 }}</td>
             <td style="text-align: center">{{ App\Models\Application::loan_assemenent_table($loan)['payment_period'] }} Month(s)</td>

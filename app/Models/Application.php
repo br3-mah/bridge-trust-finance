@@ -201,7 +201,7 @@ class Application extends Model
             'basic_pay' => $basic_pay, // Clear
             'net_pay_blr' => $net_pay, //Unclear //Net Pay Before Loan Recovery
             'principal' => $principal, // Clear
-            'interest' => $interest, // Clear
+            'interest' => $payment_period < 2 ? '20%':'44%', // Clear
             'total_collectable' =>  $total_collectable, // Clear
             'payment_period' => $payment_period, // Clear
             'monthly_payment' =>  $monthly_payment, // Clear

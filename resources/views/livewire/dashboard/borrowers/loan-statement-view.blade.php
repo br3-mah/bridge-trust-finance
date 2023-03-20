@@ -2,23 +2,33 @@
   <div class="container-fluid">
     <button onclick="printStatement()" class="btn btn-square btn-warning">Print PDF</button>
     <button wire:click='exportLoanStatement()' class="btn btn-square btn-success">Export to Excel</button>
-    <div id="statementtoPrint" class="container">
+    <div id="statementtoPrint" class="bg-white container" style="
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding:2%;
+    border-top: 2px solid 
+    ">
       
       <h2 class="text-primary">Loan Statement</h2>
         <div class="row">
           <div class="col-md-6">
             <h6>Borrower Information</h6>
             <p>Name: {{  $loan->fname.' '.$loan->lname }}</p>
-            <p>Address: {{ $loan->address ?? '' }}</p>
-            <p>NRC: {{ $loan->nrc_no ?? '' }}</p>
-            <p>Phone: {{ $loan->phone ?? '' }}</p>
+            <p>Address: {{ $loan->address ?? $loan->user->address }}</p>
+            <p>NRC: {{ $loan->nrc_no ?? $loan->user->nrc_no }}</p>
+            <p>Phone: {{ $loan->phone ?? $loan->user->phone }}</p>
           </div>
           <div class="col-md-6">
             <h6>Loan Information</h6>
             <p>Loan Amount: K{{ $loan->amount }}</p>
             <p>Payback Amount: K{{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)  }}</p>
             <p>Total Balance: K{{ App\Models\Loans::loan_balance($loans->id) }}</p>
-            <p>Interest Rate: {{ 20 * $loan->repayment_plan}}%</p>
+            <p>Interest Rate: 
+              @if($loan->repayment_plan > 1)
+              44%
+              @else
+              20%
+              @endif
+            </p>
             <p>Loan Term: {{ $loan->repayment_plan}} Months</p>
           </div>
         </div>

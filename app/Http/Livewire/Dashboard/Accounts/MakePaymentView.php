@@ -21,7 +21,9 @@ class MakePaymentView extends Component
     public function render()
     {
         $this->authorize('view accounting');
-        $this->loans = Loans::with('application')->get();
+        $this->loans = Loans::with('application')
+                        ->where('closed', 0)
+                        ->get();
         $this->transactions = Transaction::with('application.user')->orderBy('created_at', 'desc')->get();
         return view('livewire.dashboard.accounts.make-payment-view')
         ->layout('layouts.dashboard');
@@ -30,14 +32,20 @@ class MakePaymentView extends Component
     public function makepayment(){     
         DB::beginTransaction();
         try {
-            // Insert in main wallet
-            $this->repayLoanWalletFunds($this->amount);
+
 
             // Update Borrower Balance
             $borrower_loan = Loans::where('id', $this->loan_id)->with('application')->first();
-            $borrower_loan->payback = $borrower_loan->payback - $this->amount;
-            $borrower_loan->save();
+            if($this->amount > $borrower_loan->payback ){
+                $borrower_loan->payback = $borrower_loan->payback - $this->amount;
+                $borrower_loan->save();
+            }else{
+                session()->flash('amount_invalid', 'The amount you enter is more than the payback amount');
+                return redirect()->back();
+            }
 
+            // Insert in main wallet
+            $this->repayLoanWalletFunds($this->amount);
             // Transactio history
             Transaction::create([
                 'application_id' => $borrower_loan->application->id,

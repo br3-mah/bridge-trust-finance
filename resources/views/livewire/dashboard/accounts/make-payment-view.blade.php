@@ -26,6 +26,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (session()->has('amount_invalid'))
+                                <div wire:ignore.self class="alert alert-danger">
+                                    {{ session('amount_invalid') }}
+                                </div>
+                                @endif
                             </div>
                             <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
                                 <thead>
@@ -49,9 +54,10 @@
                                         <td style="text-align:center;">{{ $data->ref_no ?? $data->application_id }}</td>
                                         <td style="text-align:center;">{{ $data->application->type }} Loan</td>
                                         <td style="text-align:center;">{{ $data->application->fname.' '.$data->application->lname }}</td>
-                                        <td style="text-align:center;">K{{ $data->amount_settled }}</td>
+                                        
                                         <td style="text-align:center;">K{{ App\Models\Application::payback($data->application->amount, $data->application->repayment_plan) }}</td>
-                                        <td style="text-align:center;">K{{ App\Models\Application::payback($data->application->amount, $data->application->repayment_plan) - $data->amount_settled }}</td>
+                                        <td style="text-align:center;">K{{ $data->amount_settled }}</td>
+                                        <td style="text-align:center;">K{{ App\Models\Loans::loan_balance( $data->application->id) }}</td>
                                         <td style="text-align:center;">{{ $data->proccess_by ?? '' }}</td>
                                         <td class="d-flex">
                                             <div class="btn sharp tp-btn ms-auto" title="View More Details">

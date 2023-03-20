@@ -150,9 +150,9 @@
                             </button> --}}
                             @endcan
                             @can('withdraw funds')
-                            <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            {{-- <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                 Request Withdraw
-                            </button>
+                            </button> --}}
                             @endcan
                         </div>
                     </div>

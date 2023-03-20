@@ -46,22 +46,24 @@
                             <tbody>
                                 
                                 @forelse($guarantors as $user)
-                                <tr>
-                                    <td>{{ $user->gfname.' '.$user->glname }} </td>
-                                    <td>{{ $user->g_gender }}</td>
-                                    <td>{{ $user->gphone ?? '--' }}</td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->gemail }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->fname.' '.$user->lname }}</strong></a></td>
-                                    <td>{{ $user->g_relation }}</td>												 
-                                </tr>
-                                <tr>
-                                    <td>{{ $user->g2fname.' '.$user->g2lname }} </td>
-                                    <td>{{ $user->g2_gender }}</td>
-                                    <td>{{ $user->g2phone ?? '--' }}</td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->g2email }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $user->fname.' '.$user->lname }}</strong></a></td>
-                                    <td>{{ $user->g2_relation }}</td>											 
-                                </tr>
+                                    @if ($user->gfname != null && $user->g2fname != null)
+                                        <tr>
+                                            <td>{{ $user->gfname.' '.$user->glname }} </td>
+                                            <td>{{ $user->g_gender }}</td>
+                                            <td>{{ $user->gphone ?? '--' }}</td>
+                                            <td><a href="javascript:void(0);"><strong>{{ $user->gemail }}</strong></a></td>
+                                            <td><a href="javascript:void(0);"><strong>{{ $user->fname.' '.$user->lname }}</strong></a></td>
+                                            <td>{{ $user->g_relation }}</td>												 
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $user->g2fname.' '.$user->g2lname }} </td>
+                                            <td>{{ $user->g2_gender }}</td>
+                                            <td>{{ $user->g2phone ?? '--' }}</td>
+                                            <td><a href="javascript:void(0);"><strong>{{ $user->g2email }}</strong></a></td>
+                                            <td><a href="javascript:void(0);"><strong>{{ $user->fname.' '.$user->lname }}</strong></a></td>
+                                            <td>{{ $user->g2_relation }}</td>											 
+                                        </tr>
+                                    @endif
                                 @empty
                                 <div class="intro-y col-span-12 md:col-span-6">
                                     <div class="box text-center">

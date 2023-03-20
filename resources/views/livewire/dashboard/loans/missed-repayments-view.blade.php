@@ -39,7 +39,8 @@
                                     <th>Borrower</th>
                                     <th>Loan Purpose</th>
                                     <th>Principal</th>
-                                    <th>Installment<br>Missed</th>
+                                    <th>Total Collectable</th>
+                                    <th>Installment<br>Amount</th>
                                     {{-- <th>Missed Date</th> --}}
                                     <th class="actions-btns">Action</th>
                                 </tr>
@@ -60,15 +61,16 @@
                                         @endif
                                     </td>
 
-                                    <td style="text-align: center">
+                                    <td style="text-align: center;">
                                         <a target="_blank" href="{{ route('client-account', ['key'=>$user->user->id]) }}">
                                             {{ $user->user->fname.' '.$user->user->lname }} 
                                         </a>
                                     </td>
 
-                                    <td style="text-align: center">{{ $user->type }}</td>
-                                    <td style="text-align: center">{{ $user->amount }}</td>
-                                    <td style="text-align: center"><a href="javascript:void(0);"><strong>{{ App\Models\Application::monthly_installment($user->amount, $user->repayment_plan) }}</strong></a></td>
+                                    <td style="text-align: center;">{{ $user->type }} Loan</td>
+                                    <td style="text-align: center;">K{{ $user->amount }}</td>
+                                    <td style="text-align: center;">K{{ App\Models\Loans::loan_balance($user->id) }}</td>
+                                    <td style="text-align: center;"><a href="javascript:void(0);"><strong>K{{ App\Models\Application::monthly_installment($user->amount, $user->repayment_plan) }}</strong></a></td>
                                     {{-- <td style="text-align: center; color:#f70000" class="text-danger">
                                         {{ 
                                             $user->loan != null ? $user->loan->loan_installment->next_dates : 'No Record'
