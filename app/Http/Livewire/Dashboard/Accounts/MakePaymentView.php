@@ -36,7 +36,7 @@ class MakePaymentView extends Component
 
             // Update Borrower Balance
             $borrower_loan = Loans::where('id', $this->loan_id)->with('application')->first();
-            if($this->amount > $borrower_loan->payback ){
+            if($this->amount < $borrower_loan->payback ){
                 $borrower_loan->payback = $borrower_loan->payback - $this->amount;
                 $borrower_loan->save();
             }else{

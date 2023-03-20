@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\LoanRequestController;
-use App\Http\Controllers\API\UserAuthenticationController;
+use App\Http\Controllers\Api\UserAuthenticationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
