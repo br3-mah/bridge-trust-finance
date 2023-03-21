@@ -46,6 +46,7 @@
                     <li><a href="{{ route('view-loan-requests') }}">View Loans</a></li>
                     @endcan
                     @hasanyrole(['admin', 'employee'])
+                    <li><a href="{{ route('repayments') }}">Pending Repayments</a></li>
                     <li><a href="{{ route('closed-loans') }}">Closed Loans</a></li>
                     {{-- <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li> --}}
                     @endhasanyrole

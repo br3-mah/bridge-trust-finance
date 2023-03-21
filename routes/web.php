@@ -25,7 +25,9 @@ use App\Http\Livewire\Dashboard\Loans\LoanDetailView;
 use App\Http\Livewire\Dashboard\Loans\LoanHistoryView;
 use App\Http\Livewire\Dashboard\Loans\LoanRatesView;
 use App\Http\Livewire\Dashboard\Loans\LoanRepaymentCalculatorView;
+use App\Http\Livewire\Dashboard\Loans\LoanRepaymentView;
 use App\Http\Livewire\Dashboard\Loans\LoanRequestView;
+use App\Http\Livewire\Dashboard\Loans\LoanTrackingView;
 use App\Http\Livewire\Dashboard\Loans\MissedRepaymentsView;
 use App\Http\Livewire\Dashboard\Loans\PastMaturityDateView;
 use App\Http\Livewire\Dashboard\Loans\UpdateLoanView;
@@ -80,6 +82,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/search', SearchEngineView::class)->name('search');
     // Administrator
     Route::get('client-loan-requests', LoanRequestView::class)->name('view-loan-requests');
+    Route::get('active-repayments', LoanRepaymentView::class)->name('repayments');
+    Route::get('track-repayments/{id}', LoanTrackingView::class)->name('track-repayments');
     Route::get('closed-loans', ClosedLoanView::class)->name('closed-loans');
     Route::get('edit-loan-details/{id}', UpdateLoanView::class)->name('edit-loan');
     Route::get('proxy-loan-create', CreateLoanView::class)->name('proxy-loan-create');
