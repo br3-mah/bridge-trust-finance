@@ -129,7 +129,18 @@
                     <div class="col-xl-12">
                         <h5>Amount: {{ $loan_request->amount }}</h5>
                         <h5>Duration: {{ $loan_request->repayment_plan }} Months</h5>
-                        <h6>Submitted on {{ $loan_request->created_at->toFormattedDateString() }}</h6>
+                        <h6>Date of Application:
+                            @if ($loan_request->doa !== null)
+                                @php 
+                                    $date_str = $loan_request->doa;
+                                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $date_str);
+                                    echo $date->format('F j, Y, g:i a');
+                                @endphp
+                            @else
+                            {{ $loan_request->created_at->toFormattedDateString() }}
+                            @endif
+                            
+                        </h6>
                     </div>
                     
                 </div>

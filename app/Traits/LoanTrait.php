@@ -10,6 +10,8 @@ use App\Models\Loans;
 use App\Models\User;
 use App\Notifications\LoanRequestNotification;
 use Carbon\Carbon;
+use DateInterval;
+use DateTime;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
@@ -117,7 +119,6 @@ trait LoanTrait{
     }
 
     public function make_loan($x, $due_date){
-        // dd($due_date !== null);
         try {
             if($due_date !== null){
                 $due = $due_date.' 00:00:00';
@@ -139,7 +140,17 @@ trait LoanTrait{
             $installments = $payback_amount / $x->repayment_plan;
             
             for ($i=0; $i < $x->repayment_plan; $i++) { 
-                $next_due = Carbon::now()->addMonth($i);
+                if($x->doa !== null){
+                    $date_str = $x->doa;
+                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $date_str);
+                    $moths = 'P'. $i+1 .'M';
+                    $next_due = $date->add(new DateInterval($moths));
+                    
+                }else{
+                    $due = Carbon::now()->addMonth($x->repayment_plan);
+                    $next_due = Carbon::now()->addMonth($i+1);
+                }
+                
                 LoanInstallment::create([
                     'loan_id' => $loan->id, 
                     'next_dates' => $next_due, 
