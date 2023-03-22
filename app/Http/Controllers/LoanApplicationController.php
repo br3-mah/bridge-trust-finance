@@ -413,12 +413,13 @@ class LoanApplicationController extends Controller
             }else{
                 if($process){
                     DB::commit();
-                    return redirect()->back();
+                    return redirect()->route('view-loan-requests');
                 }else{
                     DB::commit();
                     return redirect()->back();
                 }
             } 
+            DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();
             return redirect()->back();
@@ -427,7 +428,7 @@ class LoanApplicationController extends Controller
 
     public function updateLoanDetails(Request $request)
     {
-        // DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $form = $request->toArray();
       
@@ -538,17 +539,19 @@ class LoanApplicationController extends Controller
                 ]);
             }else{
                 if($process){
-                    // DB::commit();
+                    DB::commit();
                     return redirect()->back();
                 }else{
-                    // DB::commit();
+                    DB::commit();
                     return redirect()->back();
                 }
             } 
+            
+            DB::commit();
             return redirect()->route('view-loan-requests');
         } catch (\Throwable $th) {
-            dd($th);
-            // DB::rollback();
+            // dd($th);
+            DB::rollback();
             return redirect()->back();
         }      
     }

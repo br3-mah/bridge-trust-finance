@@ -187,10 +187,10 @@
                                                                 class="text-danger">*</span>
                                                         </label>
                                                         <div class="col-lg-6">
-                                                            <input type="text" class="form-control" name="email" id="validationCustom02"  placeholder="Your valid email.." required>
-                                                            <div class="invalid-feedback">
+                                                            <input type="text" class="form-control" name="email" id="validationCustom02"  placeholder="Your valid email..">
+                                                            {{-- <div class="invalid-feedback">
                                                                 Please enter an Email.
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                     </div>
                                                     {{-- <div class="mb-3 row">
@@ -301,7 +301,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" id="create-borrower-toastr-success-bottom-left" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+                        <button type="submit" id="create-borrower-toastr-success-bottom-left" class="btn btn-primary" >Save changes</button>
                     </div>  
                 </form>
             </div>

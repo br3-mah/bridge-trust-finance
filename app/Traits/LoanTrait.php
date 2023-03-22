@@ -60,16 +60,16 @@ trait LoanTrait{
                     ];
                 }
                 if(!empty($check->toArray())){
+                    $check->first()->update($data);
                     if($data['email'] != ''){
-                        $check->first()->update($data);
                         $contact_email = new LoanApplication($mail);
                         $mail['message'] = 'Your Loan has been Updated';
                         Mail::to($data['email'])->send($contact_email);
                     }
                     return $check->id;
                 }else{
+                    $item = Application::create($data);
                     if($data['email'] != ''){
-                        $item = Application::create($data);
                         $contact_email = new LoanApplication($mail);
                         Mail::to($data['email'])->send($contact_email);
                     }

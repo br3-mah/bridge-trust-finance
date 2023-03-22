@@ -72,6 +72,7 @@ trait WalletTrait{
     }
 
     public function deposit($amount, $loan){
+        // Deprecated line
         $due = Carbon::now()->addMonth($loan->repayment_plan);
         try{
             // Add the principal amount
@@ -84,7 +85,7 @@ trait WalletTrait{
             $mainWallet->withraw = $amount;
             $mainWallet->save();
 
-            // Depricated
+            // Depricated query
             Application::where('user_id', $loan->user_id)->first()->update([
                 'due_date' => $due
             ]);

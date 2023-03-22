@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function store(User $user, Request $request) 
     {
-        // DB::beginTransaction();
+        DB::beginTransaction();
         try {     
             if ($request->file('image_path')) {
                 $url = Storage::put('public/users', $request->file('image_path'));
@@ -43,7 +43,6 @@ class UserController extends Controller
                 'active' => 1,
                 'profile_photo_path' => $url ?? ''
             ]));
-
             $u->syncRoles($request->assigned_role);
 
             // Onyl users with Emails
@@ -80,13 +79,11 @@ class UserController extends Controller
                 DB::commit();
                 return back();
             } catch (\Throwable $th) {
-                
                 Session::flash('error', "Failed. Check your internet connection and try again.");
                 DB::rollback();
                 return back();
             }
         } catch (\Throwable $th) {
-            // dd($th);
             DB::rollback();
             if($request->assigned_role == 'user'){
                 Session::flash('error', 'Oops.. There is a borrower account already using this email.');

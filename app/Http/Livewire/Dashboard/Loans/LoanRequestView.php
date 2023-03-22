@@ -82,21 +82,23 @@ class LoanRequestView extends Component
             if($this->isCompanyEnough($x->amount)){
                 $x->status = 1;
                 $x->save();
-                $mail = [
-                    'user_id' => '',
-                    'application_id' => $x->id,
-                    'name' => $x->fname.' '.$x->lname,
-                    'loan_type' => $x->type,
-                    'phone' => $x->phone,
-                    'email' => $x->email,
-                    'duration' => $x->repayment_plan,
-                    'amount' => $x->amount,
-                    'payback' => Application::payback($x->amount, $x->repayment_plan),
-                    'type' => 'loan-application',
-                    'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
-                ];
+                if($x->email != null){
+                    $mail = [
+                        'user_id' => '',
+                        'application_id' => $x->id,
+                        'name' => $x->fname.' '.$x->lname,
+                        'loan_type' => $x->type,
+                        'phone' => $x->phone,
+                        'email' => $x->email,
+                        'duration' => $x->repayment_plan,
+                        'amount' => $x->amount,
+                        'payback' => Application::payback($x->amount, $x->repayment_plan),
+                        'type' => 'loan-application',
+                        'msg' => 'Your '.$x->type.' loan application request has been successfully accepted'
+                    ];
+                    $this->send_loan_feedback_email($mail);
+                }
                 $this->deposit($x->amount, $x);
-                $this->send_loan_feedback_email($mail);
                 DB::commit();
                 session()->flash('success', 'Successfully transfered '.$x->amount.' to '.$x->fname.' '.$x->lname);
             }else{
