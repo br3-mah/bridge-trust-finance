@@ -46,22 +46,27 @@ class UserController extends Controller
 
             $u->syncRoles($request->assigned_role);
 
-            $mail = [
-                'name' => $u->fname.' '.$u->lname,
-                'to' => $u->email,
-                'from' => 'admin@bridgetrustfinance.co.zm',
-                'phone' => $u->phone,
-                'subject' => 'Your Brigetrust Finance Account',
-                'message' => 'Hello '.$u->fname.' '.$u->lname.' Your Bridgetrust Finance account is now ready, Click on login to goto your dashboard. Your password is 20230101bridge.@2you  -  feel free to change your password.',
-            ];
+            // Onyl users with Emails
+            if($u->email != null){ 
+                $mail = [
+                    'name' => $u->fname.' '.$u->lname,
+                    'to' => $u->email,
+                    'from' => 'admin@bridgetrustfinance.co.zm',
+                    'phone' => $u->phone,
+                    'subject' => 'Your Brigetrust Finance Account',
+                    'message' => 'Hello '.$u->fname.' '.$u->lname.' Your Bridgetrust Finance account is now ready, Click on login to goto your dashboard. Your password is 20230101bridge.@2you  -  feel free to change your password.',
+                ];
+            }
             
             try {
-                $eMail = new BTFAccount($mail);
-                Mail::to($u->email)->send($eMail);
+                // Send Email to User with Email only about their New Account Created
+                if($u->email != null){
+                    $eMail = new BTFAccount($mail);
+                    Mail::to($u->email)->send($eMail);
+                }
                 if($request->assigned_role == 'user'){
                     $url = '/apply-for-a-loan/ '.$u->id;
                     Wallet::create([
-                        'email' => $u->email,
                         'user_id' => $u->id
                     ]);
                     // $link = new HtmlString('<a target="_blank" href="' . $url . '">Create a loan for '.$u->fname.' '.$u->lname.'</a>');
@@ -76,7 +81,7 @@ class UserController extends Controller
                 return back();
             } catch (\Throwable $th) {
                 
-                Session::flash('error', "Failed. Check your internet connection and whether the user email is real");
+                Session::flash('error', "Failed. Check your internet connection and try again.");
                 DB::rollback();
                 return back();
             }

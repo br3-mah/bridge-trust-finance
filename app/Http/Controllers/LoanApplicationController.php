@@ -334,7 +334,7 @@ class LoanApplicationController extends Controller
                 'user_id'=> $form['borrower_id'],
                 'lname'=> $user->lname,
                 'fname'=> $user->fname,
-                'email'=> $user->email,
+                'email'=> $user->email ?? '',
                 'amount'=> $form['amount'],
                 'phone'=> $user->phone,
                 'gender'=> $user->gender,
@@ -400,6 +400,7 @@ class LoanApplicationController extends Controller
                 'msg' => 'You have new a '.$form['type'].' loan application request from '.$user->fname.' '.$user->lname.', please visit the site to view more details'
             ];
     
+            // Email going to the Administrator
             $process = $this->send_loan_email($mail);
     
             if($request->wantsJson()){
@@ -455,7 +456,7 @@ class LoanApplicationController extends Controller
                 'user_id'=> $form['borrower_id'],
                 'lname'=> $user->lname,
                 'fname'=> $user->fname,
-                'email'=> $user->email,
+                'email'=> $user->email ?? '',
                 'amount'=> $form['amount'],
                 'phone'=> $user->phone,
                 'gender'=> $user->gender,
@@ -525,24 +526,25 @@ class LoanApplicationController extends Controller
                 'msg' => 'You have new a '.$form['type'].' loan application request from '.$user->fname.' '.$user->lname.' has been updated, please visit the site to view more details'
             ];
     
-            // $process = $this->send_loan_email($mail);
+            // Email going to the Administrator
+            $process = $this->send_loan_email($mail);
     
-            // if($request->wantsJson()){
-            //     return response()->json([
-            //         "status" => 200, 
-            //         "success" => true, 
-            //         "message" => "Your loan has been sent.", 
-            //         "data" => $application
-            //     ]);
-            // }else{
-            //     if($process){
-            //         // DB::commit();
-            //         return redirect()->back();
-            //     }else{
-            //         // DB::commit();
-            //         return redirect()->back();
-            //     }
-            // } 
+            if($request->wantsJson()){
+                return response()->json([
+                    "status" => 200, 
+                    "success" => true, 
+                    "message" => "Your loan has been sent.", 
+                    "data" => $application
+                ]);
+            }else{
+                if($process){
+                    // DB::commit();
+                    return redirect()->back();
+                }else{
+                    // DB::commit();
+                    return redirect()->back();
+                }
+            } 
             return redirect()->route('view-loan-requests');
         } catch (\Throwable $th) {
             dd($th);
