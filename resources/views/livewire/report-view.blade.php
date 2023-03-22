@@ -3,6 +3,13 @@
         <div class="card">
             <div class="card-header border-0 pb-0">
                 <h4 class="card-title">Loan Reports</h4>
+                <div>
+                    <button wire:click="exportReportExcel()" title="Export Report to Excel" class="btn btn-square btn-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z"/>
+                          </svg>
+                    </button>
+                </div>
             </div>
             <div class="card-body">
                 <div class="col-xl-12">
@@ -17,8 +24,8 @@
                                         <label>Report Type</label>
                                         <select wire:model="type" class="from-select w-100 mb-xl-0 mb-3" aria-label="Default select example">
                                             <option selected>Select Report Type</option>
-                                            <option value="1">Early Settlements Report</option>
-                                            <option value="2">Late Settlements Report</option>
+                                            <option value="1">Early Settlements Report (Closed)</option>
+                                            <option value="2">Late Settlements Report (Closed)</option>
                                         </select> 
                                     </div>
                                     <div class="col-xl-3">
@@ -61,7 +68,7 @@
                                 <th>Paid</th>
                                 <th>Last Payment</th>
                                 <th>Status</th>
-                                <th>Date Sent</th>
+                                <th>Due Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -75,10 +82,10 @@
                                         <label class="form-check-label" for="customCheckBox2"></label>
                                     </div>
                                 </td> --}}
-                                <td style="">L{{ $loan->application->id }}</td>
-                                <td style="">{{ $loan->application->fname.' '. $loan->application->lname }}</td>
-                                <td style="">{{ $loan->application->type }} Loan</td>
-                                <td style="">{{ $loan->application->amount }}</td>
+                                <td style="text-align:center;">L{{ $loan->application->id }}</td>
+                                <td style="text-align:center;">{{ $loan->application->fname.' '. $loan->application->lname }}</td>
+                                <td style="text-align:center;">{{ $loan->application->type }} Loan</td>
+                                <td style="text-align:center;">{{ $loan->application->amount }}</td>
                                 <td style="text:align:center;">
                                     @if($loan->repayment_plan > 1)
                                     44%
@@ -94,29 +101,18 @@
                                     @endif
                                 </td>
                                 <td style="">{{ App\Models\Loans::loan_settled($loan->application->id)}}</td>
-                                <td>{{ $loan->application->created_at->toFormattedDateString() }}</td>
                                 <td>
-                                    @if($loan->application->status == 0)
-                                    <span class="badge badge-sm light badge-danger">
-                                        <i class="fa fa-circle text-danger me-1"></i>
-                                        Pending
-                                    </span>
-                                    @elseif($loan->application->status == 1)
+                                    @php 
+                                        $date_str = $loan->final_due_date;
+                                        $date = DateTime::createFromFormat('Y-m-d H:i:s', $date_str);
+                                        echo $date->format('F j, Y, g:i a');
+                                    @endphp  
+                                </td>
+                                <td>
                                     <span class="badge badge-sm light badge-success">
                                         <i class="fa fa-circle text-success me-1"></i>
-                                        Accepted
+                                        Closed
                                     </span>
-                                    @elseif($loan->application->status == 2)
-                                    <span class="badge badge-sm light badge-warning">
-                                        <i class="fa fa-circle text-warning me-1"></i>
-                                        Under Review
-                                    </span>
-                                    @else
-                                    <span class="badge badge-sm light badge-default">
-                                        <i class="fa fa-circle text-warning me-1"></i>
-                                        Rejected
-                                    </span>
-                                    @endif
                                 </td>
                                 <td style="">{{ $loan->created_at->toFormattedDateString() }}</td>
                                 <td class="d-flex">
@@ -132,22 +128,9 @@
                                     {{-- @endcan	 --}}
 
                                     &nbsp;
-                                    {{-- <div class="dropdown ms-auto text-end">
-                                        <div class="dropdown-menu dropdown-menu-start" style="z-index:10; position: fixed;">
-                                            <a class="dropdown-item" href="#">Downloand</a>
-                                            <a @disabled(true) disabled class="dropdown-item" href="#">View More Details</a>
-                                        </div>
-                                        <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">
-                                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.5202 17.4167C13.5202 18.81 12.3927 19.9375 10.9994 19.9375C9.60601 19.9375 8.47852 18.81 8.47852 17.4167C8.47852 16.0233 9.60601 14.8958 10.9994 14.8958C12.3927 14.8958 13.5202 16.0233 13.5202 17.4167ZM9.85352 17.4167C9.85352 18.0492 10.3669 18.5625 10.9994 18.5625C11.6319 18.5625 12.1452 18.0492 12.1452 17.4167C12.1452 16.7842 11.6319 16.2708 10.9994 16.2708C10.3669 16.2708 9.85352 16.7842 9.85352 17.4167Z" fill="#2696FD"/>
-                                            <path d="M13.5202 4.58369C13.5202 5.97699 12.3927 7.10449 10.9994 7.10449C9.60601 7.10449 8.47852 5.97699 8.47852 4.58369C8.47852 3.19029 9.60601 2.06279 10.9994 2.06279C12.3927 2.06279 13.5202 3.19029 13.5202 4.58369ZM9.85352 4.58369C9.85352 5.21619 10.3669 5.72949 10.9994 5.72949C11.6319 5.72949 12.1452 5.21619 12.1452 4.58369C12.1452 3.95119 11.6319 3.43779 10.9994 3.43779C10.3669 3.43779 9.85352 3.95119 9.85352 4.58369Z" fill="#2696FD"/>
-                                            <path d="M13.5202 10.9997C13.5202 12.393 12.3927 13.5205 10.9994 13.5205C9.60601 13.5205 8.47852 12.393 8.47852 10.9997C8.47852 9.6063 9.60601 8.4788 10.9994 8.4788C12.3927 8.4788 13.5202 9.6063 13.5202 10.9997ZM9.85352 10.9997C9.85352 11.6322 10.3669 12.1455 10.9994 12.1455C11.6319 12.1455 12.1452 11.6322 12.1452 10.9997C12.1452 10.3672 11.6319 9.8538 10.9994 9.8538C10.3669 9.8538 9.85352 10.3672 9.85352 10.9997Z" fill="#2696FD"/>
-                                            </svg>
-                                        </div>
-                                    </div> --}}
                                 </td>	
                             </tr>
-                            <button wire:click="downloadSectionAsWord()" class="btn btn-primary">PDF</button>
+                            
                             @empty
                             <div class="intro-y col-span-12 md:col-span-6">
                                 <div class="box text-center">
@@ -158,42 +141,7 @@
                             <tr style="height: 15vh">
                             
                             </tr>
-                            {{-- <tr>
-                                <td>
-                                    <div class="form-check custom-checkbox ms-2">
-                                        <input type="checkbox" class="form-check-input" id="customCheckBox4" required="">
-                                        <label class="form-check-label" for="customCheckBox4"></label>
-                                    </div>
-                                </td>
-                                <td>#P-00003</td>
-                                <td>26/02/2020, 12:42 AM</td>
-                                <td>Ashton Cox</td>
-                                <td>Dr. Rhona</td>
-                                <td>Cold & Flu</td>
-                                <td>
-                                    <span class="badge badge-sm light badge-success">
-                                        <i class="fa fa-circle text-success me-1"></i>
-                                        Recovered
-                                    </span>
-                                </td>
-                                <td>AB-003</td>
-                                <td>
-                                    <div class="dropdown ms-auto text-end">
-                                        <div class="btn sharp btn-primary tp-btn ms-auto" data-bs-toggle="dropdown">
-                                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.5202 17.4167C13.5202 18.81 12.3927 19.9375 10.9994 19.9375C9.60601 19.9375 8.47852 18.81 8.47852 17.4167C8.47852 16.0233 9.60601 14.8958 10.9994 14.8958C12.3927 14.8958 13.5202 16.0233 13.5202 17.4167ZM9.85352 17.4167C9.85352 18.0492 10.3669 18.5625 10.9994 18.5625C11.6319 18.5625 12.1452 18.0492 12.1452 17.4167C12.1452 16.7842 11.6319 16.2708 10.9994 16.2708C10.3669 16.2708 9.85352 16.7842 9.85352 17.4167Z" fill="#2696FD"/>
-                                            <path d="M13.5202 4.58369C13.5202 5.97699 12.3927 7.10449 10.9994 7.10449C9.60601 7.10449 8.47852 5.97699 8.47852 4.58369C8.47852 3.19029 9.60601 2.06279 10.9994 2.06279C12.3927 2.06279 13.5202 3.19029 13.5202 4.58369ZM9.85352 4.58369C9.85352 5.21619 10.3669 5.72949 10.9994 5.72949C11.6319 5.72949 12.1452 5.21619 12.1452 4.58369C12.1452 3.95119 11.6319 3.43779 10.9994 3.43779C10.3669 3.43779 9.85352 3.95119 9.85352 4.58369Z" fill="#2696FD"/>
-                                            <path d="M13.5202 10.9997C13.5202 12.393 12.3927 13.5205 10.9994 13.5205C9.60601 13.5205 8.47852 12.393 8.47852 10.9997C8.47852 9.6063 9.60601 8.4788 10.9994 8.4788C12.3927 8.4788 13.5202 9.6063 13.5202 10.9997ZM9.85352 10.9997C9.85352 11.6322 10.3669 12.1455 10.9994 12.1455C11.6319 12.1455 12.1452 11.6322 12.1452 10.9997C12.1452 10.3672 11.6319 9.8538 10.9994 9.8538C10.3669 9.8538 9.85352 10.3672 9.85352 10.9997Z" fill="#2696FD"/>
-                                            </svg>
-                                        </div>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Accept Patient</a>
-                                            <a class="dropdown-item" href="#">Reject Order</a>
-                                            <a class="dropdown-item" href="#">View Details</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr> --}}
+                            
                             
                         </tbody>
                     </table>

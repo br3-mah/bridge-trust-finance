@@ -311,19 +311,25 @@ class LoanApplicationController extends Controller
         DB::beginTransaction();
         try {
             $form = $request->toArray();
+            // dd($form);
+            // Add Payslip and TPIN file if they are uploaded
             if($request->file('tpin_file') !== null){               
                 $tpin_file = $request->file('tpin_file')->store('tpin_file', 'public');                
             }
-    
             if($request->file('payslip_file') !== null){               
                 $payslip_file = $request->file('payslip_file')->store('payslip_file', 'public');         
             }
+            if($request->file('nrc_file') !== null){               
+                $nrc_file = $request->file('nrc_file')->store('nrc_file', 'public');         
+            }
     
+            // Update the User's Basic & Net Pay (Automatically placed in the input field)
             $user = User::where('id', $form['borrower_id'])->first();
             $user->basic_pay = $form['basic_pay'];
             $user->net_pay = $form['net_pay'];
             $user->save();
             
+            // Collect the loan application data
             $data = [
                 'user_id'=> $form['borrower_id'],
                 'lname'=> $user->lname,
@@ -351,10 +357,12 @@ class LoanApplicationController extends Controller
     
                 'tpin_file' => $tpin_file ?? 'no file',
                 'payslip_file' => $payslip_file ?? 'no file',
+                'nrc_file' => $nrc_file ?? 'no file',
                 
+                'doa' => $form['datepicker'],
                 'processed_by'=> auth()->user()->id
             ];
-            // dd($form['bypass']);
+            // Skip the updating of KYC
             if($form['bypass']){
                 $data['complete'] = 1;
             }else{
@@ -375,7 +383,11 @@ class LoanApplicationController extends Controller
                 ];
                 $this->createNOK($nok);
             }
+
+            // Create a loan request application and send email to borrower
             $application = $this->apply_loan($data);
+
+            // Send Email to Admin about this new loan
             $mail = [
                 'user_id' => '',
                 'application_id' => $application,
@@ -407,7 +419,6 @@ class LoanApplicationController extends Controller
                 }
             } 
         } catch (\Throwable $th) {
-            // dd($th);
             DB::rollback();
             return redirect()->back();
         }      
@@ -464,10 +475,12 @@ class LoanApplicationController extends Controller
                 'g2phone'=> $form['g2phone'],
                 'g2_gender'=> $form['g2_gender'],
                 'g2_relation'=> $form['g2_relation'],
+
                 'doa' => $form['doa'] ?? $loan_req->doa,
-                'tpin_file' => $form['doa'] ?? $tpin_file,
-                'payslip_file' => $form['doa'] ?? $payslip_file,
-                'nrc_file' => $form['doa'] ?? $nrc_file,
+
+                'tpin_file' => $form['tpin_file'] ?? $tpin_file,
+                'payslip_file' => $form['payslip_file'] ?? $payslip_file,
+                'nrc_file' => $form['nrc_file'] ?? $nrc_file,
                 'complete' => $form['complete'],
                 'processed_by'=> auth()->user()->id
             ];
@@ -530,7 +543,7 @@ class LoanApplicationController extends Controller
             //         return redirect()->back();
             //     }
             // } 
-            return redirect()->back();
+            return redirect()->route('view-loan-requests');
         } catch (\Throwable $th) {
             dd($th);
             // DB::rollback();

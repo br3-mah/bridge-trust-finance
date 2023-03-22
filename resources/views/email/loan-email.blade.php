@@ -123,7 +123,7 @@
                 </h1>
                 <p style="margin:0;">Hello, {{ $data['name'] }}</p>
                 <p style="text-align: left;">
-                    {{  $data['message']  }}. Your Payback Amount is {{  $data['payback']  }}
+                    {{  $data['message']  }}. 
                 </p>
                 <a target="_blank" href="https://bridgetrustfinance.co.zm/client-loan-requests" class="-btn -bg -txt">
                     Sign In

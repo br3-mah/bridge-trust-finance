@@ -16,7 +16,7 @@
 
                     <div class="card-body pb-0">
                         <div class="table-responsive patient">
-                            <div wire:ignore class="col-xl-12">
+                            <div class="col-xl-12">
                                 <div class="alert alert-dark alert-dismissible fade show">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i class="fa-solid fa-xmark"></i></span>
                                     </button>
@@ -27,22 +27,23 @@
                                     </div>
                                 </div>
                                 @if (session()->has('amount_invalid'))
-                                <div wire:ignore.self class="alert alert-danger">
-                                    {{ session('amount_invalid') }}
-                                </div>
+                                    <div class="alert alert-danger">
+                                        {{ session('amount_invalid') }}
+                                    </div>
                                 @endif
                             </div>
-                            <table wire:ignore.self wire:poll id="example5" class="display" style="min-width: 845px; position:relative;">
+                            <table wire:ignore.self id="example5" class="display" style="min-width: 845px; position:relative;">
                                 <thead>
                                     <tr>
                                         {{-- <th>ID.</th> --}}
                                         <th>Ref</th>
                                         <th>Loan</th>
                                         <th>Borrower</th>
-                                        <th>Collectable</th>
+                                        <th>Total Collectable</th>
                                         <th>Amount Paid</th>
                                         <th>Balance</th>
                                         <th>Processed By</th>
+                                        <th>Created On</th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -59,6 +60,7 @@
                                         <td style="text-align:center;">K{{ $data->amount_settled }}</td>
                                         <td style="text-align:center;">K{{ App\Models\Loans::loan_balance( $data->application->id) }}</td>
                                         <td style="text-align:center;">{{ $data->proccess_by ?? '' }}</td>
+                                        <td style="text-align:center;">{{ $data->created_at->toFormattedDateString() }}</td>
                                         <td class="d-flex">
                                             <div class="btn sharp tp-btn ms-auto" title="View More Details">
                                                 <a target="_blank" href="{{ route('loan-details',['id' => $data->application_id]) }}">  
@@ -85,7 +87,7 @@
             </div>
         </div>
 
-        <div wire:ignore class="modal fade" id="makeLoanRepayment" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="makeLoanRepayment" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <form wire:submit.prevent="makepayment()" class="modal-content">
                     <div class="modal-header ">
@@ -96,7 +98,7 @@
                         <label class="form-label">Loan Application</label>
                         <select wire:model.defer="loan_id" class="default-select uppercase form-control wide mb-3" id="exampleInputEmail7" placeholder="Find Customer" data-live-search="true">
                             @forelse ($loans as $item)
-                            <option value="{{ $item->id }}">{{ $item->application->fname.' '.$item->application->lname.' | K'.App\Models\Application::payback($item->application->amount, $item->application->repayment_plan).' - '.$item->application->type.' Loan'.' | Duration '.$item->application->repayment_plan}}</option>
+                            <option value="{{ $item->id }}">{{ $item->application->fname.' '.$item->application->lname.' | K'.App\Models\Loans::loan_balance($item->application->id).' - '.$item->application->type.' Loan'.' | Duration '.$item->application->repayment_plan}}</option>
                             @empty
                             <option>No Customers Yet</option>
                             @endforelse

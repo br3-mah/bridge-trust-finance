@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Classes\Exports\ReportExport;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Application;
 use App\Models\Loans;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route as FacadesRoute;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportView extends Component
 {
@@ -34,10 +36,13 @@ class ReportView extends Component
             if($this->type == 1){
                 if(isset($this->start_date) && isset($this->end_date)){
                     $this->results = Loans::with('application')->where('final_due_date', '>', 'repaid_at')
+                    ->where('closed', 1)
                     ->whereBetween('created_at', [$this->start_date, $this->end_date])
                     ->get();
                 }else{
-                    $this->results = Loans::with('application')->where('final_due_date', '>', 'repaid_at')->get();
+                    $this->results = Loans::with('application')
+                    ->where('closed', 1)
+                    ->where('final_due_date', '>', 'repaid_at')->get();
                 }
             }
             
@@ -45,10 +50,13 @@ class ReportView extends Component
             if($this->type == 2){
                 if(isset($this->start_date) && isset($this->end_date)){
                     $this->results = Loans::with('application')->where('final_due_date', '<', 'repaid_at')
+                    ->where('closed', 1)
                     ->whereBetween('created_at', [$this->start_date, $this->end_date])
                     ->get();
                 }else{
-                    $this->results = Loans::with('application')->where('final_due_date', '<', 'repaid_at
+                    $this->results = Loans::with('application')
+                    ->where('closed', 1)
+                    ->where('final_due_date', '<', 'repaid_at
                     ')->get();
                 }
             }
@@ -56,6 +64,11 @@ class ReportView extends Component
         } catch (\Throwable $th) {
             Session::flash('error_msg', substr($th->getMessage(),16,110));
         }
+    }
+
+    
+    public function exportReportExcel(){
+        return Excel::download(new ReportExport($this->start_date, $this->end_date, $this->type),  'Loan Report.xlsx');
     }
 
     public function downloadSectionAsWord($id){

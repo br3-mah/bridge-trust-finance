@@ -31,4 +31,8 @@ class Transaction extends Model
     public static function hasTransaction($application_id){
         return Transaction::where('application_id', $application_id)->exists();
     }
+
+    public static function total_collected(){
+        return Transaction::whereNotNull('application_id')->sum('amount_settled');
+    }
 }

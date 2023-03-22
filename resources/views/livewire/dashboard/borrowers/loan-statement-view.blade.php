@@ -36,21 +36,21 @@
         <table  id="example3" class="display table">
           <thead class="bg-primary">
             <tr>
-              <th>Date</th>
-              <th>Payment Amount</th>
-              <th>Loan Amount</th>
-              <th>Interest</th>
+              <th>Payment Date</th>
+              <th>Borrowed Amount</th>
+              <th>Total Collectable Amount</th>
+              <th>Amount Paid</th>
               <th>Balance</th>
             </tr>
           </thead>
           <tbody>
             @forelse($transactions as $data)
             <tr>
-              <td>&nbsp;{{ $data->created_at->toFormattedDateString() }}</td>
-              <td>&nbsp;K{{ $data->amount_settled }}</td>
-              <td>&nbsp;K{{ $loan->amount }}</td>
-              <td>&nbsp;{{ 20 * $loan->repayment_plan}}%</td>
-              <td>&nbsp;K{{ App\Models\Application::payback($loan->amount, $loan->repayment_plan) - $data->amount_settled }}</td>
+              <td style="text-align: center;">{{ $data->created_at->toFormattedDateString() }}</td>
+              <td style="text-align: center;">K{{ $loan->amount }}</td>
+              <td style="text-align: center;">K{{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)  }}</td>
+              <td style="text-align: center;">K{{ $data->amount_settled }}</td>
+              <td style="text-align: center;">K{{ App\Models\Loans::loan_balance($loan->id) }}</td>
             </tr>
             @empty
             <div>No Payments Recorded</div>

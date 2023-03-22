@@ -42,7 +42,8 @@ trait LoanTrait{
 
     public function apply_loan($data){
             try {
-                // check if user already created a loan application that is not approved yet and not complete
+                // check if user already created a loan application 
+                // that is not approved yet and not complete
                 $check = Application::where('email', $data['email'])
                                     ->where('status', 0)->where('complete', 0)->get();
                       
@@ -51,8 +52,9 @@ trait LoanTrait{
                     'to' => $data['email'],
                     'from' => 'admin@bridgetrustfinance.co.zm',
                     'phone' => $data['phone'],
+                    'payback' => Application::payback($data['amount'], $data['repayment_plan']),
                     'subject' => 'Bridge Trust Finance Loan Application',
-                    'message' => 'Hey '.$data['fname'].' '.$data['lname'].', Thank you for choosing us as your lender and for your trust in our services. We appreciate your business and are committed to providing you with the best possible experience throughout your loan term Your loan request has been sent, please sign in to see the application status. Your username is '.$data['email'].' and Default Password is 20230101bridge.@2you',
+                    'message' => 'Hi '.$data['fname'].' '.$data['lname'].', Thank you for choosing us as your lender and for your trust in our services. We appreciate your business and are committed to providing you with the best possible experience throughout your loan term Your loan request has been sent, please sign in to see the application status. Your username is '.$data['email'].' and Default Password is 20230101bridge.@2you',
                 ];
                 
                 if(!empty($check->toArray())){
@@ -157,9 +159,8 @@ trait LoanTrait{
 
     public function missed_repayments(){
         return Application::with(['loan.loan_installments' => function ($query) {
-            $query->where('next_dates', '<', now())
-                ->whereNull('paid_at');
-        }]) ->where('status', 1)->where('complete', 1)->get();
+            $query->where('next_dates', '<', now());
+        }])->where('status', 1)->where('complete', 1)->get();
     }
     public function past_maturity_date(){
         return Application::with(['loan' => function ($query) {

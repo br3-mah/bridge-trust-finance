@@ -1,10 +1,10 @@
 <div class="content-body">
     <div class="container-fluid">
-        <div class="bg-primary p-3" style="border-radius: 16px;
+        <div class="bg-white p-3" style="border-radius: 16px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
-            <h1 style="color:aliceblue">Loan Repayment Tracker</h1>
-            <h3 style="color:aliceblue">{{ $loan->application->type}} Loan</h3>
-            <h5 style="color:white">{{ $loan->application->fname.' '.$loan->application->lname}}
+            <h1>Loan Repayment Tracker</h1>
+            <h3>{{ $loan->application->type}} Loan</h3>
+            <p>{{ $loan->application->fname.' '.$loan->application->lname}}
             | Total Collectable K {{ App\Models\Application::payback($loan->application->amount, $loan->application->repayment_plan)}}
                 
                 @if($loan->closed == 1)
@@ -16,19 +16,15 @@
                         Pending Repayments
                     </span>
                 @endif
-            </h5>
-            <h5 style="color:rgb(229, 242, 245)">Outstanding Balance  K{{ App\Models\Loans::loan_balance($loan->application->id) }} </h5>
+            </p>
+            <p>Outstanding Balance  K{{ App\Models\Loans::loan_balance($loan->application->id) }} </p>
+            <p>Repayment Duration {{ $loan->application->repayment_plan }} Month{{ $loan->application->repayment_plan > 1 ? 's' : '' }}</p>
         </div>
         <div style="
-        /* From https://css.glass */
-        background: rgba(223, 203, 203, 0.69);
-        border-radius: 16px;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        " class="mt-2 col-xl-12 col-lg-12 col-sm-12 col-xs-12">
-            <div class="history-tl-container">
+            border-radius: 16px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            " class=" bg-white mt-2 col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="history-tl-container bg-white">
               <ul class="tl">
                 @forelse ($loan->loan_installments as $key => $installment)
                     <li class="tl-item" ng-repeat="item in retailer_history">
@@ -139,7 +135,7 @@ ul.tl li .timestamp{
     color: #681212;
     position: absolute;
     width:100px;
-    left: -100%;
+    left: -110%;
     text-align: right;
     font-size: 14px;
 }

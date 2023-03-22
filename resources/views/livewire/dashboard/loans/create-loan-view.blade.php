@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Create a Loan</h4>
+                <h4 class="card-title">Create a Loan </h4>
                 <a target="_blank" href="{{ route('view-loan-requests')}}" class="btn btn-square btn-primary">
                     <span class="mx-2">View all Loans</span>
                     <span>
@@ -15,22 +15,6 @@
             </div>
             
             <div class="card-body">
-                @if (Session::has('success'))
-                    <div class="alert alert-info solid alert-end-icon alert-dismissible fade show">
-                        <span><i class="mdi mdi-check"></i></span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                        </button> {{ Session::get('success') }}
-                    </div>
-                @endif
-                @if (Session::has('error'))
-                    <div class="alert alert-danger solid alert-end-icon alert-dismissible fade show">
-                        <span><i class="mdi mdi-help"></i></span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                        </button>
-                        <strong>Error!</strong> {{ Session::get('error') }}
-                    </div
-                @endif
-
                 <div id="createNewLoanMain" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content p-4">
@@ -64,7 +48,7 @@
                                                         <option value="">Search</option>
                                                         @forelse ($users as $user)
                                                             @if(empty($user->loans->toArray()))
-                                                                <option value="{{ $user->id }}">{{ $user->fname.' '.$user->lname}}</option>
+                                                                <option wire:click="updated({{$user->id}})" value="{{ $user->id }}">{{ $user->fname.' '.$user->lname}}</option>
                                                             @endif
                                                         @empty
                                                         <option value="">No Customers</option>
@@ -127,8 +111,8 @@
                                             </div>
                                             <div class="col-lg-6 mb-3">
                                                 <div class="mb-3">
-                                                    <label class="text-label form-label">Date of Application*</label>
-                                                    <input name="datepicker" type="date" name="created_at" class="form-control" id="datepicker">
+                                                    <label class="text-label form-label">Date of Application (Optional)</label>
+                                                    <input name="datepicker" type="date" class="form-control" id="datepicker">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 mb-3">
