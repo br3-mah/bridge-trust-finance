@@ -75,6 +75,23 @@ class Loans extends Model
 
     }
 
+    public static function hasLoan($user_id){
+        $hasNoOpen = Application::where('user_id', $user_id)
+        ->where('status', 1)->where('complete', 1)
+        ->with(['loan' => function($query){
+            $query->where('closed', 0);
+        }])->get()->toArray();
+
+        $hasNoApplication = Application::where('user_id', $user_id)
+                    ->without('loan')->get()->toArray();
+
+        if(empty($hasNoOpen) && empty($hasNoApplication)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public static function loan_settled($application_id){
         return Transaction::where('application_id', $application_id)->get()->sum('amount_settled');
     }

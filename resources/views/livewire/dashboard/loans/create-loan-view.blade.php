@@ -47,7 +47,7 @@
                                                     <select type="text" id="user_field_id" name="borrower_id" class="form-control" data-live-search="true">
                                                         <option value="">Search</option>
                                                         @forelse ($users as $user)
-                                                            @if(empty($user->loans->toArray()))
+                                                            @if(App\Models\Loans::hasLoan($user->id))
                                                                 <option wire:click="updated({{$user->id}})" value="{{ $user->id }}">{{ $user->fname.' '.$user->lname}}</option>
                                                             @endif
                                                         @empty

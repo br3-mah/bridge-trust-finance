@@ -14,16 +14,15 @@ class CreateLoanView extends Component
     {
         
         $this->authorize('accept and reject loan requests');
-        $this->users = User::role('user')->without('applications')->get();
+        $this->users = User::role('user')->with('active_loans.loan')->get();
         return view('livewire.dashboard.loans.create-loan-view')->layout('layouts.dashboard');
     }
 
-    public function updated($fieldName)
-    {
-        dd($fieldName);
-        if ($fieldName === 'name') {
-            // Run your code here
-            $this->myFunction();
-        }
-    }
+    // public function updated($fieldName)
+    // {
+    //     if ($fieldName === 'name') {
+    //         // Run your code here
+    //         $this->myFunction();
+    //     }
+    // }
 }
