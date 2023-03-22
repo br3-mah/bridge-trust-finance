@@ -12,6 +12,7 @@ use App\Notifications\LoanRequestNotification;
 use Carbon\Carbon;
 use DateInterval;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
@@ -171,6 +172,7 @@ trait LoanTrait{
         } catch (\Throwable $th) {
             dd($th);
         }
+        // 0767759619
     }
 
     public function payback_ammount($amount, $duration){
@@ -179,9 +181,16 @@ trait LoanTrait{
     }
 
     public function missed_repayments(){
-        return Application::with(['loan.loan_installments' => function ($query) {
-            $query->where('next_dates', '<', now());
-        }])->where('status', 1)->where('complete', 1)->get();
+        return DB::table('applications')
+            ->join('users', 'users.id', '=', 'applications.user_id')
+            ->join('loans', 'applications.id', '=', 'loans.application_id')
+            ->join('loan_installments', 'loans.id', '=', 'loan_installments.loan_id')
+            ->where('applications.status', '=', 1)
+            ->where('applications.complete', '=', 1)
+            ->where('loan_installments.next_dates', '<', now())
+            ->whereNotNull('applications.type')
+            ->select('loans.id','users.fname', 'users.lname', 'applications.*', 'loan_installments.next_dates')
+            ->get();
     }
     public function past_maturity_date(){
         return Application::with(['loan' => function ($query) {
