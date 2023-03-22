@@ -56,22 +56,14 @@
             <td style="text:align:center;">{{ $loan->amount }}</td>
             <td style="text:align:center;">{{ $loan->repayment_plan }} Months</td>
             <td style="text:align:center;">
-            {{ App\Models\Application::interest_amount($loan->amount, $loan->repayment_plan)}}
+                {{ App\Models\Application::interest_amount($loan->amount, $loan->repayment_plan)}}
             </td>
             <td style="text:align:center;">
-                @if($loan->status == 1)
                 {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)}}
-                @else
-                0
-                @endif
             </td>
             <td style="text:align:center;">{{ App\Models\Loans::loan_settled($loan->id) ?? 0 }}</td>
-            <td style="text:align:center;">                
-                @if($loan->status == 1)
+            <td style="text:align:center;">  
                 {{ App\Models\Loans::loan_balance($loan->id) }}
-                @else
-                0
-                @endif
             </td>
             <td style="text:align:center;">                
                 @if($loan->status == 1)
