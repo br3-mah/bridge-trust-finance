@@ -221,7 +221,11 @@
                                                             <option value="" data-display=" Relation">
                                                                 Relation
                                                             </option>
+                                                            <option value="Brother">Brother</option>
+                                                            <option value="Sister">Sister</option>
+                                                            <option value="Parent">Parent</option>
                                                             <option value="Relative">Relative</option>
+                                                            <option value="Spouse">Spouse</option>
                                                             <option value="Work Mate">Work Mate</option>
                                                             <option value="Close Friend">Close Friend</option>
 
@@ -311,7 +315,11 @@
                                                             <option value="" data-display="Relation">
                                                                 Relation
                                                             </option>
+                                                            <option value="Brother">Brother</option>
+                                                            <option value="Sister">Sister</option>
+                                                            <option value="Parent">Parent</option>
                                                             <option value="Relative">Relative</option>
+                                                            <option value="Spouse">Spouse</option>
                                                             <option value="Work Mate">Work Mate</option>
                                                             <option value="Close Friend">Close Friend</option>
                                                         </select>
@@ -401,9 +409,9 @@
                                                             <option value="Sister">Sister</option>
                                                             <option value="Parent">Parent</option>
                                                             <option value="Relative">Relative</option>
+                                                            <option value="Spouse">Spouse</option>
                                                             <option value="Work Mate">Work Mate</option>
                                                             <option value="Close Friend">Close Friend</option>
-
                                                         </select>
                                                     </div>
                                                     <small id="validnok_relation" style="color:red"></small>

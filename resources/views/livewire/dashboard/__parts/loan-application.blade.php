@@ -128,8 +128,12 @@
                                 <div class="mb-3">
                                     <label class="text-label form-label">Relation*</label>
                                     <select type="text" name="g_relation" class="form-control">
-                                        <option value="Work Mate">Work Mate</option>
+                                        <option value="Brother">Brother</option>
+                                        <option value="Sister">Sister</option>
+                                        <option value="Parent">Parent</option>
                                         <option value="Relative">Relative</option>
+                                        <option value="Spouse">Spouse</option>
+                                        <option value="Work Mate">Work Mate</option>
                                         <option value="Close Friend">Close Friend</option>
                                     </select> 
                                 </div>
@@ -174,8 +178,12 @@
                                 <div class="mb-3">
                                     <label class="text-label form-label">Relation*</label>
                                     <select type="text" name="g2_relation" class="form-control">
-                                        <option value="Work Mate">Work Mate</option>
+                                        <option value="Brother">Brother</option>
+                                        <option value="Sister">Sister</option>
+                                        <option value="Parent">Parent</option>
                                         <option value="Relative">Relative</option>
+                                        <option value="Spouse">Spouse</option>
+                                        <option value="Work Mate">Work Mate</option>
                                         <option value="Close Friend">Close Friend</option>
                                     </select> 
                                 </div>
