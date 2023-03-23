@@ -43,6 +43,7 @@ class UserController extends Controller
                 'active' => 1,
                 'profile_photo_path' => $url ?? ''
             ]));
+            
             $u->syncRoles($request->assigned_role);
 
             // Onyl users with Emails

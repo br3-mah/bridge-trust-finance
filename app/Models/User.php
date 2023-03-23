@@ -10,7 +10,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use Laravel\Sanctum\NewAccessToken;
+use Illuminate\Support\Str;
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -74,7 +75,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
         'borrowed_total'
+        // 'create_token'
     ];
+
+    public function getCreateTokenAttribute()
+    {
+        $token = $this->tokens()->create([
+            'name' => $this->fname.'btf_token'.$this->email,
+            'token' => hash('sha256', $plainTextToken = Str::random(40)),
+            'abilities' => ['*'],
+        ]);
+        return new NewAccessToken($token, $token->getKey().'|'.$plainTextToken);
+    }
 
 
     public function getBorrowedTotalAttribute()

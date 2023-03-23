@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\Loans;
 use App\Models\Wallet;
 use App\Models\WithdrawRequest;
 use App\Traits\EmailTrait;
+use App\Traits\LoanTrait;
 use App\Traits\WalletTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class LoanRequestController extends Controller
 {
-    use EmailTrait, WalletTrait;
+    use EmailTrait, WalletTrait, LoanTrait;
 
     public function getMyLoans($id){
         $data = Application::with('loan')
@@ -56,7 +58,24 @@ class LoanRequestController extends Controller
         return response()->json(['amount' => $wallet]);
     }
 
-    public function createLoan(Request $request){
+    public function loan_balance($id){
+        return Loans::loan_balance($id);
+    }
 
+    public function customer_balance($user_id){
+        return Loans::customer_balance($user_id);
+    }
+
+    public function interest_amount($duration, $amount){
+        return Application::interest_amount($duration, $amount);
+    }
+
+    public function interest_rate($duration){
+        return Application::interest_rate($duration);
+    }
+
+    public function createLoan(Request $request){
+        $data = $request->all();
+        return $this->apply_loan($data);
     }
 }

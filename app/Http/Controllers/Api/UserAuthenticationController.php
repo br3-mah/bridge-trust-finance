@@ -57,12 +57,19 @@ class UserAuthenticationController extends Controller
         try {
             $credentials = $request->validate([
                 'email' => 'required|email',
-                'password' => 'required',
+                'password' => 'required'
             ]);
     
-            if (Auth::attempt($credentials)) {
+            $remember = true;
+            if (Auth::attempt($credentials, $remember)) {
                 // $request->session()->regenerate();
-                return response()->json(['message' => 'Successful.']);
+                $user = Auth::user();
+                $rememberToken = $remember ? $user->getRememberToken() : null;
+                return response()->json([
+                    'message' => 'Successful.', 
+                    'user' => $user, 
+                    'remember_me_token' => $rememberToken
+                ]);
             }else{
                 return response()->json(['message' => 'The provided credentials do not match our records.']);
             }
