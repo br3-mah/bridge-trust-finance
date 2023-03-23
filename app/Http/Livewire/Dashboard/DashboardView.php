@@ -19,7 +19,9 @@ class DashboardView extends Component
 
     public function render()
     {
-        $this->all_loan_requests = Application::get();
+        $this->all_loan_requests = Application::orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
         $this->my_loan = Application::with('loan')->where('email', auth()->user()->email)
                                     ->orWhere('user_id', auth()->user()->id)
                                     ->get()->first();
