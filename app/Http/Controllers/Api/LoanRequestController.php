@@ -58,20 +58,28 @@ class LoanRequestController extends Controller
         return response()->json(['amount' => $wallet]);
     }
 
-    public function loan_balance($id){
+    public function loanBalance($id){
         return Loans::loan_balance($id);
     }
 
-    public function customer_balance($user_id){
+    public function customerBalance($user_id){
         return Loans::customer_balance($user_id);
     }
 
-    public function interest_amount($duration, $amount){
-        return Application::interest_amount($duration, $amount);
+    public function interestAmount($duration, $amount){
+        return Application::interest_amount($amount, $duration);
     }
 
-    public function interest_rate($duration){
-        return Application::interest_rate($duration);
+    public function loanMonthlyInstallments($duration, $amount){
+        return Application::monthly_installment($amount, $duration);
+    }
+
+    public function interestRate($duration){
+        return (Application::interest_rate($duration) * 100).'%';
+    }
+
+    public function totalCollectable($duration, $amount){
+        return Application::payback($amount, $duration);
     }
 
     public function createLoan(Request $request){

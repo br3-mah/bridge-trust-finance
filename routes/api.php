@@ -25,6 +25,16 @@ Route::post('login', [UserAuthenticationController::class, 'login']);
 
 // Functions
 Route::get('get-my-loans/{id}', [LoanRequestController::class, 'getMyLoans']);
+
+Route::get('get-my-loan-balance/{loan_id}', [LoanRequestController::class, 'loanBalance']);
+Route::get('get-my-balance/{user_id}', [LoanRequestController::class, 'customerBalance']);
+
+Route::get('get-loan-interest-rate/{duration}/{principal}', [LoanRequestController::class, 'interestRate']);
+Route::get('get-loan-interest-amount/{duration}/{principal}', [LoanRequestController::class, 'interestAmount']);
+Route::get('get-loan-monthly-installment-amount/{duration}/{principal}', [LoanRequestController::class, 'loanMonthlyInstallments']);
+Route::get('get-total-payback-amount/{duration}/{principal}', [LoanRequestController::class, 'totalCollectable']);
+
+// Deprected
 Route::get('get-my-wallet/{id}', [LoanRequestController::class, 'getWallets']);
 Route::get('get-my-withdrawal-requests/{id}', [LoanRequestController::class, 'getWithdrawalRequests']);
 Route::post('make-withdrawal-request', [LoanRequestController::class, 'makeWithdrawalRequest']);

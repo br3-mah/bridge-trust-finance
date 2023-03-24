@@ -26,7 +26,7 @@
 
                         @include('livewire.dashboard.__parts.dash-alerts')
 
-                        <table wire:ignore.self id="example5" class="display" style="min-width: 845px">
+                        <table wire:ignore.self id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th class="actions-btns">Profile</th>
@@ -93,12 +93,7 @@
                                         <p>No User Found</p>
                                     </div>
                                 </div>
-                                @endforelse                                    
-                                @if($users->count() < 2)
-                                <tr style="height: 15vh">
-                                
-                                </tr>
-                                @endif
+                                @endforelse 
                             </tbody>
                         </table>
                     </div>
