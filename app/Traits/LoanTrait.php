@@ -181,21 +181,44 @@ trait LoanTrait{
     }
 
     public function missed_repayments(){
-        return DB::table('applications')
-            ->join('users', 'users.id', '=', 'applications.user_id')
-            ->join('loans', 'applications.id', '=', 'loans.application_id')
-            ->join('loan_installments', 'loans.id', '=', 'loan_installments.loan_id')
-            ->where('applications.status', '=', 1)
-            ->where('applications.complete', '=', 1)
-            ->where('loan_installments.next_dates', '<', now())
-            ->whereNotNull('applications.type')
-            ->select('loans.id','users.fname', 'users.lname', 'applications.*', 'loan_installments.next_dates')
-            ->get();
+        if (auth()->user()->hasRole('user')) {
+            return DB::table('applications')
+                ->join('users', 'users.id', '=', 'applications.user_id')
+                ->join('loans', 'applications.id', '=', 'loans.application_id')
+                ->join('loan_installments', 'loans.id', '=', 'loan_installments.loan_id')
+                ->where('applications.status', '=', 1)
+                ->where('applications.complete', '=', 1)
+                ->where('applications.user_id', '=', auth()->user()->id)
+                ->where('loan_installments.next_dates', '<', now())
+                ->whereNotNull('applications.type')
+                ->select('loans.id','users.fname', 'users.lname', 'applications.*', 'loan_installments.next_dates')
+                ->get();
+        }else{
+            return DB::table('applications')
+                ->join('users', 'users.id', '=', 'applications.user_id')
+                ->join('loans', 'applications.id', '=', 'loans.application_id')
+                ->join('loan_installments', 'loans.id', '=', 'loan_installments.loan_id')
+                ->where('applications.status', '=', 1)
+                ->where('applications.complete', '=', 1)
+                ->where('loan_installments.next_dates', '<', now())
+                ->whereNotNull('applications.type')
+                ->select('loans.id','users.fname', 'users.lname', 'applications.*', 'loan_installments.next_dates')
+                ->get();
+        }
     }
     public function past_maturity_date(){
-        return Application::with(['loan' => function ($query) {
-            $query->where('final_due_date', '<', now());
-        }])->with('user')->where('status', 1)->where('complete', 1)->get();
+        if (auth()->user()->hasRole('user')) {
+            return Application::with(['loan' => function ($query) {
+                $query->where('final_due_date', '<', now());
+            }])->with('user')
+            ->where('user_id', auth()->user()->id)
+            ->where('status', 1)->where('complete', 1)->get();
+        }else{
+            return Application::with(['loan' => function ($query) {
+                $query->where('final_due_date', '<', now());
+            }])->with('user')->where('status', 1)->where('complete', 1)->get();
+        }
+
     }
 
 }

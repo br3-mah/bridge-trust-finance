@@ -23,7 +23,7 @@ class MissedRepaymentsView extends Component
 
     public function render()
     {
-        $this->authorize('view loan relatives');
+        // $this->authorize('view loan relatives');
         $this->user_role = Role::pluck('name')->toArray();
         $this->permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);

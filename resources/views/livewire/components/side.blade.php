@@ -45,21 +45,21 @@
                     @can('view loan requests')
                     <li><a href="{{ route('view-loan-requests') }}">View Loans</a></li>
                     @endcan
-                    @hasanyrole(['admin', 'employee'])
+                    {{-- @hasanyrole(['admin', 'employee']) --}}
                     <li><a href="{{ route('repayments') }}">Pending Repayments</a></li>
                     <li><a href="{{ route('closed-loans') }}">Closed Loans</a></li>
                     {{-- <li><a href="{{ route('view-loan-rates') }}">Loan Rates</a></li> --}}
-                    @endhasanyrole
-                    @can('view loan relatives')
-                    <li><a href="{{ route('past-maturity-date') }}">Past Maturity Date</a></li>
-                    <li><a href="{{ route('guarantors') }}">Guarantors</a></li>
+                    {{-- @endhasanyrole --}}
                     <li><a href="{{ route('missed-repayments') }}">Missed Repayments</a></li>
+                    <li><a href="{{ route('past-maturity-date') }}">Past Maturity Date</a></li>
+                    @can('view loan relatives')
+                    <li><a href="{{ route('guarantors') }}">Guarantors</a></li>
                     @endcan
                     @can('view loan calculator')
                     <li><a href="{{ route('view-repayment-calculator') }}">Loan Calculator</a></li>
                     @endcan 
                     @role('user')
-                    <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li>
+                    {{-- <li><a href="{{ route('withdraw-requests') }}">Withdraw Requests</a></li> --}}
                     @endrole
                 </ul>
             </li>
