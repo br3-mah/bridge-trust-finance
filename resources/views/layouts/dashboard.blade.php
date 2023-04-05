@@ -73,7 +73,7 @@
             
                 <!-- Page Content -->
                 <div>
-                    {{ $slot }}}
+                    {{ $slot }}
                 </div>
             {{-- </div> --}}
 

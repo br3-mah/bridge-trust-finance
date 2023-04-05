@@ -258,13 +258,24 @@ class LoanApplicationController extends Controller
                 'g2phone'=> $form['g2phone'],
                 'g2_gender'=> $form['g2_gender'],
                 'g2_relation'=> $form['g2_relation'],
-    
+
                 'tpin_file' => $tpin_file ?? 'no file',
                 'payslip_file' => $payslip_file ?? 'no file',
     
                 'complete' => 0
             ];
-            // dd($data);
+            if($form['type'] !== 'Asset Financing' ){
+                $nok = [
+                    'nok_email' => $form['nok_email'],
+                    'nok_fname' => $form['nok_fname'],
+                    'nok_lname' => $form['nok_lname'],
+                    'nok_phone' => $form['nok_phone'],
+                    'nok_relation' => $form['nok_relation'],
+                    'nok_gender' => $form['nok_gender'],
+                    'user_id' => $form['user_id']
+                ];
+                $this->createNOK($nok);
+            }
             $application = $this->apply_loan($data);
             $mail = [
                 'user_id' => '',

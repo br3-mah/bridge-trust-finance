@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\LoanRequestController;
 use App\Http\Controllers\Api\UserAuthenticationController;
+use App\Http\Controllers\LoanApplicationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::post('register', [UserAuthenticationController::class, 'register']);
 Route::post('login', [UserAuthenticationController::class, 'login']);
 
 // Functions
+Route::post('apply-for-loan', [LoanApplicationController::class, 'new_loan']);
 Route::get('get-my-loans/{id}', [LoanRequestController::class, 'getMyLoans']);
 
 Route::get('get-my-loan-balance/{loan_id}', [LoanRequestController::class, 'loanBalance']);
