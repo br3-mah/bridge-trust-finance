@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\LoanRequestController;
 use App\Http\Controllers\Api\UserAuthenticationController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\LoanApplicationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('apply-loan', LoanRequestController::class);
 Route::post('register', [UserAuthenticationController::class, 'register']);
 Route::post('login', [UserAuthenticationController::class, 'login']);
+Route::post('update-profile', [UserController::class, 'updateProfile']);
+Route::post('change-password', [UserController::class, 'updatePassword']);
+Route::post('upload-files', [UserController::class, 'uploadFiles']);
+
 
 // Functions
 Route::post('apply-for-loan', [LoanApplicationController::class, 'new_loan']);
