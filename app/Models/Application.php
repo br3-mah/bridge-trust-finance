@@ -102,40 +102,189 @@ class Application extends Model
     //     return $this->hasMany()
     // }
 
+    // public static function payback($principal, $duration){
+    //     // 1 month
+    //     if( $duration < 2){
+    //         return ($principal * 0.2) + $principal;
+    //     }
+
+    //     // 2 to 6 months
+    //     if( $duration > 1 && $duration < 7 ){
+    //         return ($principal * 0.44) + $principal;
+    //     } 
+        
+    //     // 3 months and above
+    //     // if( $duration > 3){
+    //     //     return ($principal * 1.44) + $principal;
+    //     // }
+    // }
+
     public static function payback($principal, $duration){
         // 1 month
-        if( $duration < 2){
-            return ($principal * 0.2) + $principal;
+        if( $duration == 1){
+            $number = ($principal * 1.2) + $principal;
+            return number_format($number, 2, '.', '');
         }
 
-        // 2 to 6 months
-        if( $duration > 1 && $duration < 7 ){
-            return ($principal * 0.44) + $principal;
+        // 2 months
+        if( $duration == 2 ){
+            $number = ($principal * 1.2 / $duration * 1.1) + $principal;
+            return number_format($number, 2, '.', '');
         } 
         
-        // 3 months and above
-        // if( $duration > 3){
-        //     return ($principal * 1.44) + $principal;
-        // }
+        // 3 months 
+        if( $duration == 3){
+            $number = ($principal * 1.2 / $duration * 1.15) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 4 months 
+        if( $duration == 4){
+            $number = ($principal * 1.2 / $duration * 1.2) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 5){
+            $number = ($principal * 1.2 / $duration * 1.25) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 6){
+            $number = ($principal * 1.2 / $duration * 1.3) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 7){
+            $number = ($principal * 1.2 / $duration * 1.35) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 8){
+            $number = ($principal * 1.2 / $duration * 1.4) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 9){
+            $number = ($principal * 1.2 / $duration * 1.45) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 10){
+            $number = ($principal * 1.2 / $duration * 1.5) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 11){
+            $number = ($principal * 1.2 / 12 * 1.55) + $principal;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 12){
+            $number = ($principal * 1.2 / $duration * 1.6) + $principal;
+            return number_format($number, 2, '.', '');
+        }
     }
 
     public static function interest_amount($principal, $duration){
         // 1 month
-        if( $duration < 2){
-            return ($principal * 0.2);
+        if( $duration == 1){
+            $number = ($principal * 1.2);
+            return number_format($number, 2, '.', '');
         }
 
-        // 2 to 6 months
-        if( $duration > 1 && $duration < 7 ){
-            return ($principal * 0.44);
+        // 2 months
+        if( $duration == 2 ){
+            $number = $principal * 1.2 / $duration * 1.1;
+            return number_format($number, 2, '.', '');
         } 
         
-        // // 3 months and above
-        // if( $duration > 3){
-        //     return ($principal * 1.44);
-        // }
+        // 3 months 
+        if( $duration == 3){
+            $number = $principal * 1.2 / $duration * 1.15;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 4 months 
+        if( $duration == 4){
+            $number = $principal * 1.2 / $duration * 1.2;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 5){
+            $number = $principal * 1.2 / $duration * 1.25;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 6){
+            $number = $principal * 1.2 / $duration * 1.3;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 7){
+            $number = $principal * 1.2 / $duration * 1.35;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 8){
+            $number = $principal * 1.2 / $duration * 1.4;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 9){
+            $number = $principal * 1.2 / $duration * 1.45;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 10){
+            $number = $principal * 1.2 / $duration * 1.5;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 11){
+            $number = $principal * 1.2 / 12 * 1.55;
+            return number_format($number, 2, '.', '');
+        }
+        
+        // 5 months 
+        if( $duration == 12){
+            $number = $principal * 1.2 / $duration * 1.6;
+            return number_format($number, 2, '.', '');
+        }
 
     }
+
+    // public static function interest_amount($principal, $duration){
+    //     // 1 month
+    //     if( $duration < 2){
+    //         return ($principal * 0.2);
+    //     }
+
+    //     // 2 to 6 months
+    //     if( $duration > 1 && $duration < 7 ){
+    //         return ($principal * 0.44);
+    //     } 
+        
+    //     // // 3 months and above
+    //     // if( $duration > 3){
+    //     //     return ($principal * 1.44);
+    //     // }
+
+    // }
 
     public static function interest_rate($duration){
         if( $duration > 1 ){
