@@ -79,7 +79,7 @@ trait LoanTrait{
                 }
 
             } catch (\Throwable $th) {
-                dd($th);
+                return true;
             }
     }
 

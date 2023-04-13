@@ -82,7 +82,7 @@ class LoanApplicationController extends Controller
         $register = [
             'lname'=> $form['lname'],
             'fname'=> $form['fname'],
-            'email'=> $form['email'],
+            'email'=> $form['email'] ?? '',
             'password' => '20230101bridge.@2you',
             'terms' => 'accepted'
         ];
@@ -133,10 +133,11 @@ class LoanApplicationController extends Controller
             ];
             $this->createNOK($nok);
         }
-        $application = $this->apply_loan($data);
+        
+        $this->apply_loan($data);
+        // $application = $this->apply_loan($data);
         $mail = [
             'user_id' => $user->id,
-            'application_id' => $application,
             'name' => $form['fname'].' '.$form['lname'],
             'loan_type' => $form['type'],
             'phone' => $form['phone'],
@@ -152,8 +153,8 @@ class LoanApplicationController extends Controller
             return response()->json([
                 "status" => 200, 
                 "success" => true, 
-                "message" => "Your loan has been sent.", 
-                "data" => $application
+                "message" => "Your loan has been sent."
+                // "data" => $application
             ]);
         }else{
             if($process){

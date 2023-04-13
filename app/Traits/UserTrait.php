@@ -12,13 +12,37 @@ trait UserTrait{
 
     public function registerUser($input){
         $password = '20230101bridge.@2you';
-        $check = User::where('email', $input['email'])->first();
-        if($check == null){
+
+        if($input['email'] != null){
+            $check = User::where('email', $input['email'])->first();
+            if($check == null){
+                try {
+                    $user = User::create([
+                        'fname' => $input['fname'],
+                        'lname' => $input['lname'],
+                        'email' => $input['email'],
+                        'password' => Hash::make($password),
+                        'terms' => 'accepted'
+                    ]);
+                    $user->assignRole('user');
+            
+                    // Get my applications
+                    Wallet::create([
+                        'email' => $user->email ?? '',
+                        'user_id' => $user->id
+                    ]);
+                    return $user;
+                } catch (\Throwable $th) {
+                    return redirect()->to('/already-exists');
+                }
+            }else{
+                return redirect()->to('/already-exists');
+            }
+        }else{
             try {
                 $user = User::create([
                     'fname' => $input['fname'],
                     'lname' => $input['lname'],
-                    'email' => $input['email'],
                     'password' => Hash::make($password),
                     'terms' => 'accepted'
                 ]);
@@ -26,16 +50,15 @@ trait UserTrait{
         
                 // Get my applications
                 Wallet::create([
-                    'email' => $user->email,
+                    'email' => $user->email ?? '',
                     'user_id' => $user->id
                 ]);
                 return $user;
             } catch (\Throwable $th) {
                 return redirect()->to('/already-exists');
             }
-        }else{
-            return false;
         }
+
         
     }
 
