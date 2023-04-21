@@ -671,26 +671,26 @@
                     step2P.show();
                 }
             });
-            $("#checkforthisapplication").keyup(function() {
-                var myemail = $("#loanEmail").val();
-                var emailValidCheck = $('#emailValidCheck');
-                emailValidCheck.text(myemail);
-                $.ajax({    
-                    type:'GET',
-                    url:'{{ route("get-application") }}',
-                    data: { 
-                        email:myemail
-                    },
-                    success:function(data) {
-                        if(data === 1){
-                            $("#modal-overlay2").removeAttr('style');
-                            $("#modal2").removeAttr('style');
-                            $("#modal-overlay2").css("display", "block");
-                            $("#modal2").css("display", "block");
-                        }
-                    } 
-                });
-            });
+            // $("#checkforthisapplication").keyup(function() {
+            //     var myemail = $("#loanEmail").val();
+            //     var emailValidCheck = $('#emailValidCheck');
+            //     emailValidCheck.text(myemail);
+            //     $.ajax({    
+            //         type:'GET',
+            //         url:'{{ route("get-application") }}',
+            //         data: { 
+            //             email:myemail
+            //         },
+            //         success:function(data) {
+            //             if(data === 1){
+            //                 $("#modal-overlay2").removeAttr('style');
+            //                 $("#modal2").removeAttr('style');
+            //                 $("#modal-overlay2").css("display", "block");
+            //                 $("#modal2").css("display", "block");
+            //             }
+            //         } 
+            //     });
+            // });
         
             $("#updateExistingLoan").click(function() {
                 var myemail = $("#loanEmail").val();
