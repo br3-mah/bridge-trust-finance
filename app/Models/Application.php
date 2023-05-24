@@ -122,7 +122,7 @@ class Application extends Model
     public static function payback($principal, $duration){
         // 1 month
         if( $duration == 1){
-            $number = ($principal * 1.2) + $principal;
+            $number = ($principal * 0.2) + $principal;
             return number_format($number, 2, '.', '');
         }
 
@@ -196,7 +196,7 @@ class Application extends Model
     public static function interest_amount($principal, $duration){
         // 1 month
         if( $duration == 1){
-            $number = ($principal * 1.2);
+            $number = ($principal * 0.2);
             return number_format($number, 2, '.', '');
         }
 
