@@ -128,67 +128,67 @@ class Application extends Model
 
         // 2 months
         if( $duration == 2 ){
-            $number = ($principal * 1.2 / $duration * 1.1) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.1)) + $principal;
             return number_format($number, 2, '.', '');
         } 
         
         // 3 months 
         if( $duration == 3){
-            $number = ($principal * 1.2 / $duration * 1.15) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.15)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 4 months 
         if( $duration == 4){
-            $number = ($principal * 1.2 / $duration * 1.2) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.2)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 5){
-            $number = ($principal * 1.2 / $duration * 1.25) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.25)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 6){
-            $number = ($principal * 1.2 / $duration * 1.3) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.3)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 7){
-            $number = ($principal * 1.2 / $duration * 1.35) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.35)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 8){
-            $number = ($principal * 1.2 / $duration * 1.4) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.4)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 9){
-            $number = ($principal * 1.2 / $duration * 1.45) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.45)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 10){
-            $number = ($principal * 1.2 / $duration * 1.5) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.5)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 11){
-            $number = ($principal * 1.2 / 12 * 1.55) + $principal;
+            $number = (($principal * 1.2) / (12 * 1.55)) + $principal;
             return number_format($number, 2, '.', '');
         }
         
         // 5 months 
         if( $duration == 12){
-            $number = ($principal * 1.2 / $duration * 1.6) + $principal;
+            $number = (($principal * 1.2) / ($duration * 1.6)) + $principal;
             return number_format($number, 2, '.', '');
         }
     }
