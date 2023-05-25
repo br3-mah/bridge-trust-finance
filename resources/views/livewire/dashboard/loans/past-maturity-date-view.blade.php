@@ -47,7 +47,7 @@
                                 </div> --}}
                                 @endcan
                             </div>
-                            <table wire:ignore.self wire:poll id="example3" class="display" style="min-width: 845px; position:relative;">
+                            <table wire:ignore.self wire:poll.1000000ms id="example3" class="display" style="min-width: 845px; position:relative;">
                                 <thead>
                                     <tr>
                                         <th>Loan #.</th>

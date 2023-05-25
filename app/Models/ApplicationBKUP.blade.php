@@ -196,77 +196,76 @@ class Application extends Model
     public static function interest_amount($principal, $duration){
         // 1 month
         if( $duration == 1){
-            $interest = ($principal * 0.2);
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 0.2);
+            return number_format($number, 2, '.', '');
         }
-        
+
         // 2 months
         if( $duration == 2 ){
-            $interest = (($principal * 1.2) / ($duration * 1.1)) - $principal;
-            return number_format($interest, 2, '.', '');
-        }
+            $number = ($principal * 1.2) / ($duration * 1.1);
+            return number_format($number, 2, '.', '');
+        } 
         
-        // 3 months
+        // 3 months 
         if( $duration == 3){
-            $interest = (($principal * 1.2) / ($duration * 1.15)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.15);
+            return number_format($number, 2, '.', '');
         }
         
-        // 4 months
+        // 4 months 
         if( $duration == 4){
-            $interest=( ($principal * 1.2) / ($duration * 1.2)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.2);
+            return number_format($number, 2, '.', '');
         }
         
-        // 5 months
+        // 5 months 
         if( $duration == 5){
-            $interest = (($principal * 1.2) / ($duration * 1.25)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.25);
+            return number_format($number, 2, '.', '');
         }
         
-        // 6 months
+        // 5 months 
         if( $duration == 6){
-            $interest = (($principal * 1.2) / ($duration * 1.3)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.3);
+            return number_format($number, 2, '.', '');
         }
-
-
-        // 7 months
+        
+        // 5 months 
         if( $duration == 7){
-            $interest = (($principal * 1.2) / ($duration * 1.35)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number =( $principal) * 1.2 / ($duration * 1.35);
+            return number_format($number, 2, '.', '');
         }
         
-        // 8 months
+        // 5 months 
         if( $duration == 8){
-            $interest = (($principal * 1.2) / ($duration * 1.4)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number =( $principal * 1.2) / ($duration * 1.4);
+            return number_format($number, 2, '.', '');
         }
         
-        // 9 months
+        // 5 months 
         if( $duration == 9){
-            $interest = (($principal * 1.2) / ($duration * 1.45)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.45);
+            return number_format($number, 2, '.', '');
         }
         
-        // 10 months
+        // 5 months 
         if( $duration == 10){
-            $interest = (($principal * 1.2) / ($duration * 1.5)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.5);
+            return number_format($number, 2, '.', '');
         }
         
-        // 11 months
+        // 5 months 
         if( $duration == 11){
-            $interest = (($principal * 1.2) / ($duration * 1.55)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / (12 * 1.55);
+            return number_format($number, 2, '.', '');
         }
         
-        // 12 months
+        // 5 months 
         if( $duration == 12){
-            $interest = (($principal * 1.2) / ($duration * 1.6)) - $principal;
-            return number_format($interest, 2, '.', '');
+            $number = ($principal * 1.2) / ($duration * 1.6);
+            return number_format($number, 2, '.', '');
         }
-    
+
     }
 
     // public static function interest_amount($principal, $duration){

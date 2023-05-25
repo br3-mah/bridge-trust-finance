@@ -312,7 +312,7 @@
     @endif
 
 
-    <div wire:ignore.self wire:poll class="modal fade bd-example-modal-lg" id="updateBorrowerData">
+    <div wire:ignore.self wire:poll.100000ms class="modal fade bd-example-modal-lg" id="updateBorrowerData">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

@@ -1,4 +1,4 @@
-<div wire:poll class="content-body">
+<div wire:poll.1000000ms class="content-body">
     <div class="container-fluid">
         <div class="bg-white shadow rounded-lg p-4">
             <div class="flex justify-between items-center mb-4">
