@@ -69,6 +69,15 @@ class Application extends Model
         'confirmed_by'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('withUser', function ($builder) {
+            $builder->with('user');
+        });
+    }
+
     public function getDoneByAttribute(){
         return User::where('id', $this->processed_by)->first();
     }

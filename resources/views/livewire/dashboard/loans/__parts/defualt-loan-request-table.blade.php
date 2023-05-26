@@ -23,7 +23,6 @@
         </tr>
     </thead>
     <tbody style="top:0; padding-bottom:20px">
-        
         @forelse($loan_requests as $loan)
         <tr>
             {{-- <td>
@@ -51,14 +50,20 @@
                     </span>
                 </a>
             </td>
-            <td style="text:align:center; text-transform: camelcase;">{{ $loan->fname.' '. $loan->lname }}</td>
+            <td style="text:align:center; text-transform: camelcase;">
+                <a target="_blank" href="{{ route('client-account', ['key'=>$loan->user->id])}}">{{ $loan->fname.' '. $loan->lname }}</a>
+            </td>
             <td style="text:align:center; text-transform: camelcase;">{{ $loan->type }} Loan</td>
-            <td style="text:align:center;">{{ $loan->amount }}</td>
-            <td style="text:align:center;">{{ $loan->repayment_plan }} Months</td>
+            <td style="text:align:center;">
+                <span class="mx-auto text-primary"><b>K{{ $loan->amount }}</b></span>
+            </td>
+            <td style="text:align:center;">
+                <span class="badge badge-primary">{{ $loan->repayment_plan }} Months</span>
+            </td>
             <td style="text:align:center;">
                 {{ App\Models\Application::interest_amount($loan->amount, $loan->repayment_plan)}}
             </td>
-            <td style="text:align:center;">
+            <td style="text:align:center;" class="mx-auto text-primary">
                 {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan)}}
             </td>
             <td style="text:align:center;">{{ App\Models\Loans::loan_settled($loan->id) ?? 0 }}</td>

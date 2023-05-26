@@ -25,22 +25,28 @@ class LoanRequestView extends Component
 
     public function render()
     {
-        $this->users = User::role('user')->without('applications')->get();
-        $loan_requests = Application::query();
-        if(auth()->user()->can('view all loan requests')){
-            if ($this->type) {
-                $loan_requests->whereIn('type', $this->type)->orderBy('id', 'desc');
+
+        try {
+            $this->users = User::role('user')->without('applications')->get();
+            $loan_requests = Application::query();
+            
+            if(auth()->user()->can('view all loan requests')){
+                if ($this->type) {
+                    $loan_requests->whereIn('type', $this->type)->orderBy('id', 'desc');
+                }
+        
+                if ($this->status) {
+                    $loan_requests->whereIn('status', $this->status)->orderBy('id', 'desc');
+                }
+                $this->loan_requests = $loan_requests->where('complete', 1)->get();
+            }else{
+                $this->loan_requests = Application::with('loan')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
             }
-    
-            if ($this->status) {
-                $loan_requests->whereIn('status', $this->status)->orderBy('id', 'desc');
-            }
-            $this->loan_requests = $loan_requests->where('complete', 1)->get();
-        }else{
-            $this->loan_requests = Application::with('loan')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+            return view('livewire.dashboard.loans.loan-request-view')
+            ->layout('layouts.dashboard');
+        } catch (\Throwable $th) {
+            dd($th);
         }
-        return view('livewire.dashboard.loans.loan-request-view')
-        ->layout('layouts.dashboard');
     }
 
     public function exportLoans(){
